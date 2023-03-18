@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const emailValidator = require('deep-email-validator');
 
 const sendEmail = async (email, subject, text) => {
     try {
@@ -23,4 +24,11 @@ const sendEmail = async (email, subject, text) => {
     }
 }
 
-module.exports = sendEmail;
+const isEmailValid = async (email) => {
+    return emailValidator.validate(email);
+}
+
+module.exports = {
+    sendEmail,
+    isEmailValid
+}

@@ -1,4 +1,4 @@
-const sendEmail = require('../utils/email');
+const {sendEmail, isEmailValid} = require('../utils/email');
 const {User, validate} = require('../models/user');
 const crypto = require('crypto');
 const {Token} = require('../models/token');
@@ -11,7 +11,15 @@ const register = asyncHandler( async (req, res) => {
     
         let user = await User.findOne({email: req.body.email});
         if(user) return res.status(400).json({message: "Ezen az e-mail címen már létezik felhasználó!"});
-    
+        
+        /*
+        const {valid, reason, validators} = await isEmailValid(req.body.email);
+        if(!valid) return res.status(400).json({
+            message: "Kérem érvényes email címet adjon meg!",
+            reason: validators[reason].reason
+        });
+        */
+
         user = await User.create({
             name: req.body.name,
             email: req.body.email
