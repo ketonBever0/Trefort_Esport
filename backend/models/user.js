@@ -13,6 +13,11 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
+    password: {
+        type: String,
+        min: 5,
+        required: true
+    },
     verified: {
         type: Boolean,
         default: false
