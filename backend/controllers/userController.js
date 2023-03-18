@@ -7,10 +7,10 @@ const asyncHandler = require('express-async-handler');
 const register = asyncHandler( async (req, res) => {
     try {
         const {error} = validate(req.body);
-        if(error) return res.status(400).send(error.details[0].message);
+        if(error) return res.status(400).json({message: error.details[0].message});
     
         let user = await User.findOne({email: req.body.email});
-        if(user) return res.status(400).send("Ezen az e-mail címen már létezik felhasználó!");
+        if(user) return res.status(400).json({message: "Ezen az e-mail címen már létezik felhasználó!"});
     
         user = await User.create({
             name: req.body.name,
@@ -24,7 +24,7 @@ const register = asyncHandler( async (req, res) => {
     
         const message = `${process.env.BASE_URL}/user/verify/${user.id}/${token.token}`;
         await sendEmail(user.email, "Verify email", message);
-        res.send("Megerősítő emailt küldtünk.");   
+        res.json({message: "Megerősítő emailt küldtünk."});
     } catch (error) {
         console.log(error);
     }
@@ -47,7 +47,7 @@ const verifyEmail = async (req, res) => {
             verified: true
         });
         await Token.findByIdAndRemove({_id: token._id});
-        res.send("Email sikeresen jóváhagyva");
+        res.json({message: "Email sikeresen jóváhagyva"});
     } catch (error) {
         console.log(error);
     }
