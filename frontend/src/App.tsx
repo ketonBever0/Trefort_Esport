@@ -1,10 +1,20 @@
 import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import NavBar from './components/ui/NavBar'
+
 
 function App() {
 
   return (
-    <div className='container bg-black min-h-screen'>
-      <button className='btn btn-primary'>szia</button>
+    <div className='bg-black min-h-screen'>
+
+      <Router>
+        <NavBar />
+        <Routes>
+          <Route path='*' />
+          <Route path='/' />
+        </Routes>
+      </Router>
 
     </div>
   )
