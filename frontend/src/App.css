@@ -1,5 +1,6 @@
 .full-page {
   background-image: url('../assets/images/bg-top.png');
+  background-repeat: no-repeat;
 }
 
 /* #root {

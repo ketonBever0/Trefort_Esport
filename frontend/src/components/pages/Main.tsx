@@ -3,18 +3,363 @@ import React from 'react'
 function Main() {
     return (
         <div>
-            <>
+            <div className="nk-gap" />
+            <div className='m-10'>
                 {/* START: Image Slider */}
                 <div className="nk-image-slider" data-autoplay={8000}>
                     <div className="nk-image-slider-item">
                         <div className=''>Images</div>
-
                     </div>
                 </div>
-                {/* END: Image Slider */}
-            </>
+            </div>
+            {/* END: Image Slider */}
+
+            {/* START: Categories */}
+            {/* <div className="nk-gap-2" />
+                <div className="row vertical-gap">
+                    <div className="col-lg-4">
+                        <div className="nk-feature-1">
+                            <div className="nk-feature-icon">
+                                <img src="assets/images/icon-mouse.svg" alt="" />
+                            </div>
+                            <div className="nk-feature-cont">
+                                <h3 className="nk-feature-title">
+                                    <a href="#">PC</a>
+                                </h3>
+                                <h4 className="nk-feature-title text-main-1">
+                                    <a href="#">View Games</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-4">
+                        <div className="nk-feature-1">
+                            <div className="nk-feature-icon">
+                                <img src="assets/images/icon-gamepad.svg" alt="" />
+                            </div>
+                            <div className="nk-feature-cont">
+                                <h3 className="nk-feature-title">
+                                    <a href="#">PS4</a>
+                                </h3>
+                                <h4 className="nk-feature-title text-main-1">
+                                    <a href="#">View Games</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-4">
+                        <div className="nk-feature-1">
+                            <div className="nk-feature-icon">
+                                <img src="assets/images/icon-gamepad-2.svg" alt="" />
+                            </div>
+                            <div className="nk-feature-cont">
+                                <h3 className="nk-feature-title">
+                                    <a href="#">Xbox</a>
+                                </h3>
+                                <h4 className="nk-feature-title text-main-1">
+                                    <a href="#">View Games</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div> */}
+
+            <div className="nk-gap-2" />
+
+            {/* START: Upcoming Matches */}
+            <h3 className="nk-decorated-h-2">
+                <span><span className="text-main-1">Upcoming</span> Matches</span>
+            </h3>
+            <div className="nk-gap" />
+            <div className="nk-match">
+                <div className="nk-match-team-left">
+                    <a href="#">
+                        <span className="nk-match-team-logo">
+                            <img src="assets/images/team-1.jpg" alt="" />
+                        </span>
+                        <span className="nk-match-team-name"> SK Telecom T1 </span>
+                    </a>
+                </div>
+                <div className="nk-match-status">
+                    <a href="#">
+                        <span className="nk-match-status-vs">VS</span>
+                        <span className="nk-match-status-date">Apr 28, 2018 8:00 pm</span>
+                        <span className="nk-match-score bg-danger"> 2 : 17 </span>
+                    </a>
+                </div>
+                <div className="nk-match-team-right">
+                    <a href="#">
+                        <span className="nk-match-team-name"> Cloud 9 </span>
+                        <span className="nk-match-team-logo">
+                            <img src="assets/images/team-2.jpg" alt="" />
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div className="nk-match">
+                <div className="nk-match-team-left">
+                    <a href="#">
+                        <span className="nk-match-team-logo">
+                            <img src="assets/images/team-3.jpg" alt="" />
+                        </span>
+                        <span className="nk-match-team-name"> Counted logic gaming </span>
+                    </a>
+                </div>
+                <div className="nk-match-status">
+                    <a href="#">
+                        <span className="nk-match-status-vs">VS</span>
+                        <span className="nk-match-status-date">Apr 15, 2018 9:00 pm</span>
+                        <span className="nk-match-score bg-success"> 28 : 19 </span>
+                    </a>
+                </div>
+                <div className="nk-match-team-right">
+                    <a href="#">
+                        <span className="nk-match-team-name"> SK Telecom T1 </span>
+                        <span className="nk-match-team-logo">
+                            <img src="assets/images/team-1.jpg" alt="" />
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div className="nk-match">
+                <div className="nk-match-team-left">
+                    <a href="#">
+                        <span className="nk-match-team-logo">
+                            <img src="assets/images/team-4.jpg" alt="" />
+                        </span>
+                        <span className="nk-match-team-name"> Team SoloMid </span>
+                    </a>
+                </div>
+                <div className="nk-match-status">
+                    <a href="#">
+                        <span className="nk-match-status-vs">VS</span>
+                        <span className="nk-match-status-date">Apr 28, 2018 8:00 pm</span>
+                        <span className="nk-match-score bg-dark-1"> 13 : 13 </span>
+                    </a>
+                </div>
+                <div className="nk-match-team-right">
+                    <a href="#">
+                        <span className="nk-match-team-name"> SK Telecom T1 </span>
+                        <span className="nk-match-team-logo">
+                            <img src="assets/images/team-1.jpg" alt="" />
+                        </span>
+                    </a>
+                </div>
+            </div>
+            {/* END: Upcoming Matches */}
+
+            <div className='nk-gap-3' />
+
+            {/* START: Now Playing */}
+            <div className="row">
+                <div className="col-md-4">
+                    <div className="nk-match-score bg-dark-3"> Now Playing </div>
+                    <div className="nk-gap-2" />
+                    <div className="nk-widget-match p-0">
+                        <div className="nk-widget-match-teams">
+                            <div className="nk-widget-match-team-logo">
+                                <img src="assets/images/team-1.jpg" alt="" />
+                            </div>
+                            <div className="nk-widget-match-vs">VS</div>
+                            <div className="nk-widget-match-team-logo">
+                                <img src="assets/images/team-2.jpg" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="nk-gap-2" />
+                    <p>
+                        As she said this she looked down at her hands and was surprised to see.
+                    </p>
+                    <a
+                        href="tournaments.html"
+                        className="nk-btn nk-btn-rounded nk-btn-color-main-1"
+                    >
+                        Match Details
+                    </a>
+                </div>
+                <div className="col-md-8">
+                    <div className="responsive-embed responsive-embed-16x9">
+                        <iframe
+                            src="https://player.twitch.tv/?channel=lirik&autoplay=false"
+                            frameBorder={0}
+                            allowFullScreen={true}
+                            scrolling="no"
+                            height={378}
+                            width={620}
+                        />
+                    </div>
+                </div>
+            </div>
+            {/* END: Now Playing */}
+
+            <div className="nk-gap-2" />
+
+            {/* START: Latest Matches */}
+            <h3 className="nk-decorated-h-2">
+                <span><span className="text-main-1">Latest</span> Matches</span>
+            </h3>
+            <div className="nk-gap" />
+            <div className="nk-match">
+                <div className="nk-match-team-left">
+                    <a href="#">
+                        <span className="nk-match-team-logo">
+                            <img src="assets/images/team-1.jpg" alt="" />
+                        </span>
+                        <span className="nk-match-team-name"> SK Telecom T1 </span>
+                    </a>
+                </div>
+                <div className="nk-match-status">
+                    <a href="#">
+                        <span className="nk-match-status-vs">VS</span>
+                        <span className="nk-match-status-date">Apr 28, 2018 8:00 pm</span>
+                        <span className="nk-match-score bg-danger"> 2 : 17 </span>
+                    </a>
+                </div>
+                <div className="nk-match-team-right">
+                    <a href="#">
+                        <span className="nk-match-team-name"> Cloud 9 </span>
+                        <span className="nk-match-team-logo">
+                            <img src="assets/images/team-2.jpg" alt="" />
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div className="nk-match">
+                <div className="nk-match-team-left">
+                    <a href="#">
+                        <span className="nk-match-team-logo">
+                            <img src="assets/images/team-3.jpg" alt="" />
+                        </span>
+                        <span className="nk-match-team-name"> Counted logic gaming </span>
+                    </a>
+                </div>
+                <div className="nk-match-status">
+                    <a href="#">
+                        <span className="nk-match-status-vs">VS</span>
+                        <span className="nk-match-status-date">Apr 15, 2018 9:00 pm</span>
+                        <span className="nk-match-score bg-success"> 28 : 19 </span>
+                    </a>
+                </div>
+                <div className="nk-match-team-right">
+                    <a href="#">
+                        <span className="nk-match-team-name"> SK Telecom T1 </span>
+                        <span className="nk-match-team-logo">
+                            <img src="assets/images/team-1.jpg" alt="" />
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div className="nk-match">
+                <div className="nk-match-team-left">
+                    <a href="#">
+                        <span className="nk-match-team-logo">
+                            <img src="assets/images/team-4.jpg" alt="" />
+                        </span>
+                        <span className="nk-match-team-name"> Team SoloMid </span>
+                    </a>
+                </div>
+                <div className="nk-match-status">
+                    <a href="#">
+                        <span className="nk-match-status-vs">VS</span>
+                        <span className="nk-match-status-date">Apr 28, 2018 8:00 pm</span>
+                        <span className="nk-match-score bg-dark-1"> 13 : 13 </span>
+                    </a>
+                </div>
+                <div className="nk-match-team-right">
+                    <a href="#">
+                        <span className="nk-match-team-name"> SK Telecom T1 </span>
+                        <span className="nk-match-team-logo">
+                            <img src="assets/images/team-1.jpg" alt="" />
+                        </span>
+                    </a>
+                </div>
+            </div>
+            {/* END: Latest Matches */}
 
 
+
+
+
+
+            {/* START: Latest News */}
+            <div className="nk-gap-2" />
+            <h3 className="nk-decorated-h-2">
+                <span>
+                    <span className="text-main-1">Latest</span> News
+                </span>
+            </h3>
+            <div className="nk-gap" />
+            <div className="nk-news-box">
+                <div className="nk-news-box-list">
+                    <div className="nano">
+                        <div className="nano-content">
+                            <div className="nk-news-box-item nk-news-box-item-active">
+                                <div className="nk-news-box-item-img">
+                                    <img
+                                        src="assets/images/post-1-sm.jpg"
+                                        alt="Smell magic in the air. Or maybe barbecue"
+                                    />
+                                </div>
+                                <img
+                                    src="assets/images/post-1.jpg"
+                                    alt="Smell magic in the air. Or maybe barbecue"
+                                    className="nk-news-box-item-full-img"
+                                />
+                                <h3 className="nk-news-box-item-title">
+                                    Smell magic in the air. Or maybe barbecue
+                                </h3>
+                                <span className="nk-news-box-item-categories">
+                                    <span className="bg-main-4">MMO</span>
+                                </span>
+                                <div className="nk-news-box-item-text">
+                                    <p>
+                                        With what mingled joy and sorrow do I take up the pen to write
+                                        to my dearest friend! Oh, what a change between to-day and
+                                        yesterday! Now I am friendless and alone...
+                                    </p>
+                                </div>
+                                <a href="blog-article.html" className="nk-news-box-item-url">
+                                    Read More
+                                </a>
+                                <div className="nk-news-box-item-date">
+                                    <span className="fa fa-calendar" /> Sep 18, 2018
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div className="nk-news-box-each-info">
+                    <div className="nano">
+                        <div className="nano-content">
+                            {/* There will be inserted info about selected news*/}
+                            <div className="nk-news-box-item-image">
+                                <img src="assets/images/post-1.jpg" alt="" />
+                                <span className="nk-news-box-item-categories">
+                                    <span className="bg-main-4">MMO</span>
+                                </span>
+                            </div>
+                            <h3 className="nk-news-box-item-title">
+                                Smell magic in the air. Or maybe barbecue
+                            </h3>
+                            <div className="nk-news-box-item-text">
+                                <p>
+                                    With what mingled joy and sorrow do I take up the pen to write to
+                                    my dearest friend! Oh, what a change between to-day and yesterday!
+                                    Now I am friendless and alone...
+                                </p>
+                            </div>
+                            <a href="blog-article.html" className="nk-news-box-item-more">
+                                Read More
+                            </a>
+                            <div className="nk-news-box-item-date">
+                                <span className="fa fa-calendar" /> Sep 18, 2018
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="nk-gap-2" />
             <div className="nk-blog-grid">
                 <div className="row">
                     <div className="col-md-6 col-lg-3">
@@ -36,9 +381,9 @@ function Main() {
                             </h2>
                             <div className="nk-post-text">
                                 <p>
-                                    Just then her head struck against the roof of the hall: in fact she
-                                    was now more than nine feet high, and she at once took up the little
-                                    golden key and hurried off to the garden door...
+                                    Just then her head struck against the roof of the hall: in fact
+                                    she was now more than nine feet high, and she at once took up the
+                                    little golden key and hurried off to the garden door...
                                 </p>
                             </div>
                             <div className="nk-gap" />
@@ -114,9 +459,9 @@ function Main() {
                             </h2>
                             <div className="nk-post-text">
                                 <p>
-                                    TJust then her head struck against the roof of the hall: in fact she
-                                    was now more than nine feet high, and she at once took up the little
-                                    golden key and hurried off to the garden door...
+                                    TJust then her head struck against the roof of the hall: in fact
+                                    she was now more than nine feet high, and she at once took up the
+                                    little golden key and hurried off to the garden door...
                                 </p>
                             </div>
                             <div className="nk-gap" />
@@ -171,8 +516,16 @@ function Main() {
                     </div>
                 </div>
             </div>
+            {/* END: Latest News */}
 
-        </div>
+
+
+
+
+
+
+
+        </div >
     )
 }
 

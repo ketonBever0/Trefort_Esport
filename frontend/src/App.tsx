@@ -10,18 +10,18 @@ function App() {
     <div className='full-page min-vh-100'>
       <div className="nk-main">
         <div className="nk-gap-2" />
-        <div className='container-fluid'>
 
-          <Router>
-            <NavBar />
+        <Router>
+          <NavBar />
+          <div className='container'>
             <Routes>
               <Route path='*' element={<Main />} />
               <Route path='/' element={<Main />} />
             </Routes>
-          </Router>
-        </div>
+          </div>
+        </Router>
       </div>
-    </div>
+    </div >
   )
 }
 
