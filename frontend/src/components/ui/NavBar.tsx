@@ -151,7 +151,8 @@ function NavBar() {
                     <div className="container">
                         <div className="nk-nav-table">
                             <a href="index.html" className="nk-nav-logo">
-                                <img src="assets/images/logo.svg" alt="GoodGames" width={199} />
+                                {/* <img src="assets/images/logo.svg" alt="GoodGames" width={199} /> */}
+                                <img src={"src/assets/esport_logo.png"} width={280} />
                             </a>
                             <ul
                                 className="nk-nav nk-nav-right d-none d-lg-table-cell"
