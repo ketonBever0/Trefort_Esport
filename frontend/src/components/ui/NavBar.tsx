@@ -8,33 +8,28 @@ function NavBar() {
                     <div className="container">
                         <div className="nk-contacts-left">
                             <ul className="nk-social-links">
-                                <li>
+                                {/* <li>
                                     <a className="nk-social-rss" href="#">
                                         <span className="fa fa-rss" />
                                     </a>
-                                </li>
+                                </li> */}
                                 <li>
                                     <a className="nk-social-twitch" href="#">
                                         <span className="fab fa-twitch" />
                                     </a>
                                 </li>
                                 <li>
-                                    <a className="nk-social-steam" href="#">
+                                    {/* <a className="nk-social-steam" href="#">
                                         <span className="fab fa-steam" />
-                                    </a>
+                                    </a> */}
                                 </li>
                                 <li>
                                     <a className="nk-social-facebook" href="#">
                                         <span className="fab fa-facebook" />
                                     </a>
                                 </li>
-                                <li>
-                                    <a className="nk-social-google-plus" href="#">
-                                        <span className="fab fa-google-plus" />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
+                                {/* <li> */}
+                                {/* <a
                                         className="nk-social-twitter"
                                         href="https://twitter.com/nkdevv"
                                         target="_blank"
@@ -46,7 +41,7 @@ function NavBar() {
                                     <a className="nk-social-pinterest" href="#">
                                         <span className="fab fa-pinterest-p" />
                                     </a>
-                                </li>
+                                </li> */}
                                 {/* Additional Social Buttons
               <li><a class="nk-social-behance" href="#"><span class="fab fa-behance"></span></a></li>
               <li><a class="nk-social-bitbucket" href="#"><span class="fab fa-bitbucket"></span></a></li>
@@ -88,26 +83,20 @@ function NavBar() {
                                 <li>
                                     <span className="nk-cart-toggle">
                                         <span className="fa fa-shopping-cart" />
-                                        <span className="nk-badge">27</span>
+                                        {/* <span className="nk-badge">27</span> */}
                                     </span>
                                     <div className="nk-cart-dropdown">
-                                        <div className="nk-widget-post">
+                                        {/* <div className="nk-widget-post">
                                             <a href="store-product.html" className="nk-post-image">
                                                 <img
                                                     src="assets/images/product-5-xs.jpg"
                                                     alt="In all revolutions of"
                                                 />
                                             </a>
-                                            <h3 className="nk-post-title">
-                                                <a href="#" className="nk-cart-remove-item">
-                                                    <span className="ion-android-close" />
-                                                </a>
-                                                <a href="store-product.html">In all revolutions of</a>
-                                            </h3>
                                             <div className="nk-gap-1" />
                                             <div className="nk-product-price">€ 23.00</div>
-                                        </div>
-                                        <div className="nk-widget-post">
+                                        </div> */}
+                                        {/* <div className="nk-widget-post">
                                             <a href="store-product.html" className="nk-post-image">
                                                 <img
                                                     src="assets/images/product-7-xs.jpg"
@@ -122,7 +111,7 @@ function NavBar() {
                                             </h3>
                                             <div className="nk-gap-1" />
                                             <div className="nk-product-price">€ 14.00</div>
-                                        </div>
+                                        </div> */}
                                         <div className="nk-gap-2" />
                                         <div className="text-center">
                                             <a
@@ -158,102 +147,102 @@ function NavBar() {
                                 className="nk-nav nk-nav-right d-none d-lg-table-cell"
                                 data-nav-mobile="#nk-nav-mobile"
                             >
-                                <li className=" nk-drop-item">
-                                    <a href="elements.html"> Features </a>
+                                <li className="nk-drop-item">
+                                    <a href="elements.html" className='text-decoration-none'> Features </a>
                                     <ul className="dropdown">
                                         <li>
-                                            <a href="elements.html"> Elements (Shortcodes) </a>
+                                            <a href="elements.html" className='text-decoration-none'> Elements (Shortcodes) </a>
                                         </li>
                                         <li className=" nk-drop-item">
-                                            <a href="forum.html"> Forum </a>
+                                            <a href="forum.html" className='text-decoration-none'> Forum </a>
                                             <ul className="dropdown">
                                                 <li>
-                                                    <a href="forum.html"> Forum </a>
+                                                    <a href="forum.html" className='text-decoration-none'> Forum </a>
                                                 </li>
                                                 <li>
-                                                    <a href="forum-topics.html"> Topics </a>
+                                                    <a href="forum-topics.html" className='text-decoration-none'> Topics </a>
                                                 </li>
                                                 <li>
-                                                    <a href="forum-single-topic.html"> Single Topic </a>
+                                                    <a href="forum-single-topic.html" className='text-decoration-none'> Single Topic </a>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="widgets.html"> Widgets </a>
+                                            <a href="widgets.html" className='text-decoration-none'> Widgets </a>
                                         </li>
                                         <li>
-                                            <a href="coming-soon.html"> Coming Soon </a>
+                                            <a href="coming-soon.html" className='text-decoration-none'> Coming Soon </a>
                                         </li>
                                         <li>
-                                            <a href="offline.html"> Offline </a>
+                                            <a href="offline.html" className='text-decoration-none'> Offline </a>
                                         </li>
                                         <li>
-                                            <a href="404.html"> 404 </a>
+                                            <a href="404.html" className='text-decoration-none'> 404 </a>
                                         </li>
                                     </ul>
                                 </li>
-                                <li className=" nk-drop-item">
-                                    <a href="blog-list.html"> Blog </a>
+                                <li className="nk-drop-item">
+                                    <a href="blog-list.html" className='text-decoration-none'> Blog </a>
                                     <ul className="dropdown">
                                         <li>
-                                            <a href="news.html"> News </a>
+                                            <a href="news.html" className='text-decoration-none'> News </a>
                                         </li>
                                         <li className=" nk-drop-item">
-                                            <a href="blog-grid.html"> Blog With Sidebar </a>
+                                            <a href="blog-grid.html" className='text-decoration-none'> Blog With Sidebar </a>
                                             <ul className="dropdown">
                                                 <li>
-                                                    <a href="blog-grid.html"> Blog Grid </a>
+                                                    <a href="blog-grid.html" className='text-decoration-none'> Blog Grid </a>
                                                 </li>
                                                 <li>
-                                                    <a href="blog-list.html"> Blog List </a>
+                                                    <a href="blog-list.html" className='text-decoration-none'> Blog List </a>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="blog-fullwidth.html"> Blog Fullwidth </a>
+                                            <a href="blog-fullwidth.html" className='text-decoration-none'> Blog Fullwidth </a>
                                         </li>
                                         <li>
-                                            <a href="blog-article.html"> Blog Article </a>
+                                            <a href="blog-article.html" className='text-decoration-none'> Blog Article </a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="gallery.html"> Gallery </a>
+                                    <a href="gallery.html" className='text-decoration-none'> Gallery </a>
                                 </li>
                                 <li className=" nk-drop-item">
-                                    <a href="tournaments.html"> Tournaments </a>
+                                    <a href="tournaments.html" className='text-decoration-none'> Tournaments </a>
                                     <ul className="dropdown">
                                         <li>
-                                            <a href="tournaments.html"> Tournament </a>
+                                            <a href="tournaments.html" className='text-decoration-none'> Tournament </a>
                                         </li>
                                         <li>
-                                            <a href="tournaments-teams.html"> Teams </a>
+                                            <a href="tournaments-teams.html" className='text-decoration-none'> Teams </a>
                                         </li>
                                         <li>
-                                            <a href="tournaments-teammate.html"> Teammate </a>
+                                            <a href="tournaments-teammate.html" className='text-decoration-none'> Teammate </a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li className=" nk-drop-item">
-                                    <a href="store.html"> Store </a>
+                                    <a href="store.html" className='text-decoration-none'> Store </a>
                                     <ul className="dropdown">
                                         <li>
-                                            <a href="store.html"> Store </a>
+                                            <a href="store.html" className='text-decoration-none'> Store </a>
                                         </li>
                                         <li>
-                                            <a href="store-product.html"> Product </a>
+                                            <a href="store-product.html" className='text-decoration-none'> Product </a>
                                         </li>
                                         <li>
-                                            <a href="store-catalog.html"> Catalog </a>
+                                            <a href="store-catalog.html" className='text-decoration-none'> Catalog </a>
                                         </li>
                                         <li>
-                                            <a href="store-catalog-alt.html"> Catalog Alt </a>
+                                            <a href="store-catalog-alt.html" className='text-decoration-none'> Catalog Alt </a>
                                         </li>
                                         <li>
-                                            <a href="store-checkout.html"> Checkout </a>
+                                            <a href="store-checkout.html" className='text-decoration-none'> Checkout </a>
                                         </li>
                                         <li>
-                                            <a href="store-cart.html"> Cart </a>
+                                            <a href="store-cart.html" className='text-decoration-none'> Cart </a>
                                         </li>
                                     </ul>
                                 </li>

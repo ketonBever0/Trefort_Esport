@@ -66,86 +66,69 @@ function Main() {
 
             <div className="nk-gap-2" />
 
+            <h3 className="nk-decorated-h-2">
+                <span>
+                    <span className="text-main-1">Közelgő</span> Események
+                </span>
+            </h3>
+
+            <div className="nk-gap-1" />
+            {/* START: events */}
+            <div className="nk-blog-grid">
+                <div className="row">
+                    <div className="col-md-6 col-lg-3">
+
+
+
+                        <div className="nk-blog-post">
+                            <a href="blog-article.html" className="nk-post-img">
+                                <img
+                                    src="assets/images/post-5-mid.jpg"
+                                    alt="He made his passenger captain of one"
+                                />
+                                <span className="nk-post-comments-count">13</span>
+                                <span className="nk-post-categories">
+                                    <span className="bg-main-5">Indie</span>
+                                </span>
+                            </a>
+                            <div className="nk-gap" />
+                            <h2 className="nk-post-title h4">
+                                <a href="blog-article.html">He made his passenger captain of one</a>
+                            </h2>
+                            <div className="nk-post-text">
+                                <p>
+                                    Just then her head struck against the roof of the hall: in fact
+                                    she was now more than nine feet high, and she at once took up the
+                                    little golden key and hurried off to the garden door...
+                                </p>
+                            </div>
+                            <div className="nk-gap" />
+                            <a
+                                href="blog-article.html"
+                                className="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1"
+                            >
+                                Read More
+                            </a>
+                            <div className="nk-post-date float-right">
+                                <span className="fa fa-calendar" /> Jul 23, 2018
+                            </div>
+                        </div>
+                        {/* END: Post */}
+                    </div>
+
+                </div>
+            </div>
+
+
             {/* START: Upcoming Matches */}
             <h3 className="nk-decorated-h-2">
-                <span><span className="text-main-1">Upcoming</span> Matches</span>
+                <span><span className="text-main-1">Ütemezett</span> Meccsek</span>
             </h3>
             <div className="nk-gap" />
             <div className="nk-match">
-                <div className="nk-match-team-left">
-                    <a href="#">
-                        <span className="nk-match-team-logo">
-                            <img src="assets/images/team-1.jpg" alt="" />
-                        </span>
-                        <span className="nk-match-team-name"> SK Telecom T1 </span>
-                    </a>
-                </div>
-                <div className="nk-match-status">
-                    <a href="#">
-                        <span className="nk-match-status-vs">VS</span>
-                        <span className="nk-match-status-date">Apr 28, 2018 8:00 pm</span>
-                        <span className="nk-match-score bg-danger"> 2 : 17 </span>
-                    </a>
-                </div>
-                <div className="nk-match-team-right">
-                    <a href="#">
-                        <span className="nk-match-team-name"> Cloud 9 </span>
-                        <span className="nk-match-team-logo">
-                            <img src="assets/images/team-2.jpg" alt="" />
-                        </span>
-                    </a>
-                </div>
+                <p>Itt máshogy lesz megoldva (pl fekvő gridbox)</p>
             </div>
-            <div className="nk-match">
-                <div className="nk-match-team-left">
-                    <a href="#">
-                        <span className="nk-match-team-logo">
-                            <img src="assets/images/team-3.jpg" alt="" />
-                        </span>
-                        <span className="nk-match-team-name"> Counted logic gaming </span>
-                    </a>
-                </div>
-                <div className="nk-match-status">
-                    <a href="#">
-                        <span className="nk-match-status-vs">VS</span>
-                        <span className="nk-match-status-date">Apr 15, 2018 9:00 pm</span>
-                        <span className="nk-match-score bg-success"> 28 : 19 </span>
-                    </a>
-                </div>
-                <div className="nk-match-team-right">
-                    <a href="#">
-                        <span className="nk-match-team-name"> SK Telecom T1 </span>
-                        <span className="nk-match-team-logo">
-                            <img src="assets/images/team-1.jpg" alt="" />
-                        </span>
-                    </a>
-                </div>
-            </div>
-            <div className="nk-match">
-                <div className="nk-match-team-left">
-                    <a href="#">
-                        <span className="nk-match-team-logo">
-                            <img src="assets/images/team-4.jpg" alt="" />
-                        </span>
-                        <span className="nk-match-team-name"> Team SoloMid </span>
-                    </a>
-                </div>
-                <div className="nk-match-status">
-                    <a href="#">
-                        <span className="nk-match-status-vs">VS</span>
-                        <span className="nk-match-status-date">Apr 28, 2018 8:00 pm</span>
-                        <span className="nk-match-score bg-dark-1"> 13 : 13 </span>
-                    </a>
-                </div>
-                <div className="nk-match-team-right">
-                    <a href="#">
-                        <span className="nk-match-team-name"> SK Telecom T1 </span>
-                        <span className="nk-match-team-logo">
-                            <img src="assets/images/team-1.jpg" alt="" />
-                        </span>
-                    </a>
-                </div>
-            </div>
+
             {/* END: Upcoming Matches */}
 
             <div className='nk-gap-3' />
@@ -153,7 +136,7 @@ function Main() {
             {/* START: Now Playing */}
             <div className="row">
                 <div className="col-md-4">
-                    <div className="nk-match-score bg-dark-3"> Now Playing </div>
+                    <div className="nk-match-score bg-dark-3"> ÉLŐ </div>
                     <div className="nk-gap-2" />
                     <div className="nk-widget-match p-0">
                         <div className="nk-widget-match-teams">
@@ -274,9 +257,15 @@ function Main() {
                     </a>
                 </div>
             </div>
+
+            <div className="nk-gap-2" />
+            <a
+                href="tournaments.html"
+                className="nk-btn nk-btn-rounded nk-btn-color-main-1 ms-5"
+            >
+                Továbbiak
+            </a>
             {/* END: Latest Matches */}
-
-
 
 
 
@@ -285,11 +274,11 @@ function Main() {
             <div className="nk-gap-2" />
             <h3 className="nk-decorated-h-2">
                 <span>
-                    <span className="text-main-1">Latest</span> News
+                    <span className="text-main-1">Friss</span> Híreink
                 </span>
             </h3>
             <div className="nk-gap" />
-            <div className="nk-news-box">
+            <div className="nk-news-box" style={{ height: "34rem" }}>
                 <div className="nk-news-box-list">
                     <div className="nano">
                         <div className="nano-content">
@@ -359,168 +348,7 @@ function Main() {
                     </div>
                 </div>
             </div>
-            <div className="nk-gap-2" />
-            <div className="nk-blog-grid">
-                <div className="row">
-                    <div className="col-md-6 col-lg-3">
-                        {/* START: Post */}
-                        <div className="nk-blog-post">
-                            <a href="blog-article.html" className="nk-post-img">
-                                <img
-                                    src="assets/images/post-5-mid.jpg"
-                                    alt="He made his passenger captain of one"
-                                />
-                                <span className="nk-post-comments-count">13</span>
-                                <span className="nk-post-categories">
-                                    <span className="bg-main-5">Indie</span>
-                                </span>
-                            </a>
-                            <div className="nk-gap" />
-                            <h2 className="nk-post-title h4">
-                                <a href="blog-article.html">He made his passenger captain of one</a>
-                            </h2>
-                            <div className="nk-post-text">
-                                <p>
-                                    Just then her head struck against the roof of the hall: in fact
-                                    she was now more than nine feet high, and she at once took up the
-                                    little golden key and hurried off to the garden door...
-                                </p>
-                            </div>
-                            <div className="nk-gap" />
-                            <a
-                                href="blog-article.html"
-                                className="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1"
-                            >
-                                Read More
-                            </a>
-                            <div className="nk-post-date float-right">
-                                <span className="fa fa-calendar" /> Jul 23, 2018
-                            </div>
-                        </div>
-                        {/* END: Post */}
-                    </div>
-                    <div className="col-md-6 col-lg-3">
-                        {/* START: Post */}
-                        <div className="nk-blog-post">
-                            <a href="blog-article.html" className="nk-post-img">
-                                <img
-                                    src="assets/images/post-6-mid.jpg"
-                                    alt="At first, for some time, I was not able to answer"
-                                />
-                                <span className="nk-post-comments-count">0</span>
-                                <span className="nk-post-categories">
-                                    <span className="bg-main-5">Racing</span>
-                                </span>
-                            </a>
-                            <div className="nk-gap" />
-                            <h2 className="nk-post-title h4">
-                                <a href="blog-article.html">
-                                    At first, for some time, I was not able to answer
-                                </a>
-                            </h2>
-                            <div className="nk-post-text">
-                                <p>
-                                    This little wandering journey, without settled place of abode, had
-                                    been so unpleasant to me, that my own house, as I called it to
-                                    myself, was a perfect settlement to me compared to that...
-                                </p>
-                            </div>
-                            <div className="nk-gap" />
-                            <a
-                                href="blog-article.html"
-                                className="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1"
-                            >
-                                Read More
-                            </a>
-                            <div className="nk-post-date float-right">
-                                <span className="fa fa-calendar" /> Jul 3, 2018
-                            </div>
-                        </div>
-                        {/* END: Post */}
-                    </div>
-                    <div className="col-md-6 col-lg-3">
-                        {/* START: Post */}
-                        <div className="nk-blog-post">
-                            <a href="blog-article.html" className="nk-post-img">
-                                <img
-                                    src="assets/images/post-7-mid.jpg"
-                                    alt="At length one of them called out in a clear"
-                                />
-                                <span className="nk-post-comments-count">0</span>
-                                <span className="nk-post-categories">
-                                    <span className="bg-main-6">MOBA</span>
-                                </span>
-                            </a>
-                            <div className="nk-gap" />
-                            <h2 className="nk-post-title h4">
-                                <a href="blog-article.html">
-                                    At length one of them called out in a clear
-                                </a>
-                            </h2>
-                            <div className="nk-post-text">
-                                <p>
-                                    TJust then her head struck against the roof of the hall: in fact
-                                    she was now more than nine feet high, and she at once took up the
-                                    little golden key and hurried off to the garden door...
-                                </p>
-                            </div>
-                            <div className="nk-gap" />
-                            <a
-                                href="blog-article.html"
-                                className="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1"
-                            >
-                                Read More
-                            </a>
-                            <div className="nk-post-date float-right">
-                                <span className="fa fa-calendar" /> Jul 3, 2018
-                            </div>
-                        </div>
-                        {/* END: Post */}
-                    </div>
-                    <div className="col-md-6 col-lg-3">
-                        {/* START: Post */}
-                        <div className="nk-blog-post">
-                            <a href="blog-article.html" className="nk-post-img">
-                                <img
-                                    src="assets/images/post-8-mid.jpg"
-                                    alt="For good, too though, in consequence"
-                                />
-                                <span className="nk-post-comments-count">0</span>
-                                <span className="nk-post-categories">
-                                    <span className="bg-main-2">Adventure</span>
-                                </span>
-                            </a>
-                            <div className="nk-gap" />
-                            <h2 className="nk-post-title h4">
-                                <a href="blog-article.html">For good, too though, in consequence</a>
-                            </h2>
-                            <div className="nk-post-text">
-                                <p>
-                                    This little wandering journey, without settled place of abode, had
-                                    been so unpleasant to me, that my own house, as I called it to
-                                    myself, was a perfect settlement to me compared to that...
-                                </p>
-                            </div>
-                            <div className="nk-gap" />
-                            <a
-                                href="blog-article.html"
-                                className="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1"
-                            >
-                                Read More
-                            </a>
-                            <div className="nk-post-date float-right">
-                                <span className="fa fa-calendar" /> Jul 3, 2018
-                            </div>
-                        </div>
-                        {/* END: Post */}
-                    </div>
-                </div>
-            </div>
-            {/* END: Latest News */}
-
-
-
-
+            <div className="nk-gap-3" />
 
 
 
