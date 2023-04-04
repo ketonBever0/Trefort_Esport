@@ -147,45 +147,14 @@ function NavBar() {
                                 className="nk-nav nk-nav-right d-none d-lg-table-cell"
                                 data-nav-mobile="#nk-nav-mobile"
                             >
-                                <li className="nk-drop-item">
-                                    <a href="elements.html" className='text-decoration-none'> Features </a>
-                                    <ul className="dropdown">
-                                        <li>
-                                            <a href="elements.html" className='text-decoration-none'> Elements (Shortcodes) </a>
-                                        </li>
-                                        <li className=" nk-drop-item">
-                                            <a href="forum.html" className='text-decoration-none'> Forum </a>
-                                            <ul className="dropdown">
-                                                <li>
-                                                    <a href="forum.html" className='text-decoration-none'> Forum </a>
-                                                </li>
-                                                <li>
-                                                    <a href="forum-topics.html" className='text-decoration-none'> Topics </a>
-                                                </li>
-                                                <li>
-                                                    <a href="forum-single-topic.html" className='text-decoration-none'> Single Topic </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="widgets.html" className='text-decoration-none'> Widgets </a>
-                                        </li>
-                                        <li>
-                                            <a href="coming-soon.html" className='text-decoration-none'> Coming Soon </a>
-                                        </li>
-                                        <li>
-                                            <a href="offline.html" className='text-decoration-none'> Offline </a>
-                                        </li>
-                                        <li>
-                                            <a href="404.html" className='text-decoration-none'> 404 </a>
-                                        </li>
-                                    </ul>
+                                <li>
+                                    <a href="gallery.html" className='text-decoration-none'> Hírek </a>
                                 </li>
                                 <li className="nk-drop-item">
-                                    <a href="blog-list.html" className='text-decoration-none'> Blog </a>
+                                    <a href="blog-list.html" className='text-decoration-none'> Versenyek </a>
                                     <ul className="dropdown">
                                         <li>
-                                            <a href="news.html" className='text-decoration-none'> News </a>
+                                            <a href="news.html" className='text-decoration-none'> Legutóbbi </a>
                                         </li>
                                         <li className=" nk-drop-item">
                                             <a href="blog-grid.html" className='text-decoration-none'> Blog With Sidebar </a>
