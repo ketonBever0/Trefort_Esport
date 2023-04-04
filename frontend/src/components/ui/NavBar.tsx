@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function NavBar() {
     return (
@@ -139,10 +140,10 @@ function NavBar() {
                 <nav className="nk-navbar nk-navbar-top nk-navbar-sticky nk-navbar-autohide">
                     <div className="container">
                         <div className="nk-nav-table">
-                            <a href="index.html" className="nk-nav-logo">
+                            <Link to='/' className="nk-nav-logo">
                                 {/* <img src="assets/images/logo.svg" alt="GoodGames" width={199} /> */}
                                 <img src={"src/assets/esport_logo.png"} width={280} />
-                            </a>
+                            </Link>
                             <ul
                                 className="nk-nav nk-nav-right d-none d-lg-table-cell"
                                 data-nav-mobile="#nk-nav-mobile"
