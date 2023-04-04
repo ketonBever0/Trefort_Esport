@@ -1,9 +1,9 @@
 import './App.css'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Route, Routes } from 'react-router'
-import NavBar from './components/ui/NavBar'
-import Main from './components/pages/Main'
-import NotFoundPage from './components/pages/NotFoundPage'
+import NavBar from './ui/NavBar'
+import Main from './pages/Main'
+import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
 
@@ -21,6 +21,7 @@ function App() {
             </Routes>
           </div>
         </Router>
+        
       </div>
     </div >
   )

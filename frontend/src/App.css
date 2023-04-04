@@ -1,7 +1,19 @@
 .full-page {
-  background-image: url('../assets/images/bg-top.png');
+  /* background-image: url('../assets/images/bg-top.png'); */
+  background-image: url('assets/trefort_esport_bg.png');
   background-repeat: no-repeat;
+  background-position: center top;
+  background-size: contain;
 }
+
+@media only screen and (max-width: 576px) {
+  .full-page {
+    background-image: url('assets/trefort_esport_bg_mobile.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
 
 /* #root {
   max-width: 1280px;
