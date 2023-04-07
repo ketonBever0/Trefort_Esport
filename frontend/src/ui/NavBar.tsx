@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 function NavBar() {
     return (
-        <div>
-            <header className="nk-header nk-header-opaque">
+        <div className=''>
+            <header className="nk-header nk-header-opaque position-fixed">
                 <div className="nk-contacts-top">
                     <div className="container">
                         <div className="nk-contacts-left">
@@ -141,7 +141,6 @@ function NavBar() {
                     <div className="container">
                         <div className="nk-nav-table">
                             <Link to='/' className="nk-nav-logo">
-                                {/* <img src="assets/images/logo.svg" alt="GoodGames" width={199} /> */}
                                 <img src={"src/assets/esport_logo.png"} width={280} />
                             </Link>
                             <ul

@@ -8,20 +8,23 @@ import NotFoundPage from './pages/NotFoundPage'
 function App() {
 
   return (
-    <div className='full-page min-vh-100'>
-      <div className="nk-main">
-        <div className="nk-gap-2" />
+    <div className="nk-main min-vh-100">
+      <div className='full-page'>
+        {/* <div className="nk-gap-2" /> */}
 
         <Router>
           <NavBar />
+
+          {/* <div className="nk-gap-3" /> */}
           <div className='container'>
             <Routes>
               <Route path='*' element={<NotFoundPage />} />
               <Route path='/' element={<Main />} />
             </Routes>
           </div>
+
         </Router>
-        
+
       </div>
     </div >
   )

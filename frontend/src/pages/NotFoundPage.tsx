@@ -1,9 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './_css/NotFoundPage.css'
 
 function NotFoundPage() {
+
+
     return (
-        <div>
+        <div className='full-component min-vh-100'>
             <>
                 <div className="nk-main">
                     <div className="nk-fullscreen-block">
@@ -48,6 +51,7 @@ function NotFoundPage() {
                     style={{ backgroundImage: 'url("src/assets/images/bg-fixed-2.jpg")' }}
                 /> */}
                 {/* END: Page Background */}
+
 
             </>
 

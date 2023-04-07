@@ -4,19 +4,24 @@ import UpComingMatches from '../components/Main/UpComingMatches'
 import NowPlaying from '../components/Main/NowPlaying'
 import LatestMatches from '../components/Main/LatestMatches'
 import LatestNews from '../components/Main/LatestNews'
+import Header from '../components/Header'
 
 function Main() {
     return (
-        <div>
-            <div className="nk-gap" />
-            <div className='m-10'>
-                {/* START: Image Slider */}
-                <div className="nk-image-slider" data-autoplay={8000}>
+        <div className='container' style={{ marginTop: "15rem" }}>
+            <div className="nk-gap-2" />
+            {/* <div className="nk-gap-5" /> */}
+            {/* <div className='m-10'> */}
+            {/* START: Image Slider */}
+            {/* <div className="nk-image-slider" data-autoplay={8000}>
                     <div className="nk-image-slider-item">
                         <div className=''>Images</div>
                     </div>
                 </div>
-            </div>
+            </div> */}
+
+            <Header />
+
             {/* END: Image Slider */}
 
             {/* START: Categories */}

@@ -1,0 +1,6 @@
+.full-component {
+    background-image: url('assets/images/bg-top-4.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+}
