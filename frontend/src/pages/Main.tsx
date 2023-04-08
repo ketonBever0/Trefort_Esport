@@ -9,7 +9,7 @@ function Main() {
 
     useEffect(() => {
         const pageBG: Element = document.querySelector('.full-page')!;
-        pageBG.setAttribute("style", "background-image: url('assets/images/bg-top.png')")
+        pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top.png')")
     }, [])
 
     return (

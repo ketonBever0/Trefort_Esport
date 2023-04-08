@@ -6,6 +6,7 @@ import Main from './pages/Main'
 import NotFoundPage from './pages/NotFoundPage'
 import BlogArticles from './pages/BlogArticles'
 import { BlogArticleProvider } from './_context/BlogArticleContext'
+import BlogArticlePage from './pages/BlogArticlePage'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
                 <Route path='*' element={<NotFoundPage />} />
                 <Route path='/' element={<Main />} />
                 <Route path='/news' element={<BlogArticles />} />
+                <Route path='/post/:id' element={<BlogArticlePage />} />
 
               </Routes>
             </div>

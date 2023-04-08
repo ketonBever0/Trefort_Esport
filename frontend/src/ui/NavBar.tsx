@@ -90,7 +90,7 @@ function NavBar() {
                                         {/* <div className="nk-widget-post">
                                             <a href="store-product.html" className="nk-post-image">
                                                 <img
-                                                    src="assets/images/product-5-xs.jpg"
+                                                    src="/assets/images/product-5-xs.jpg"
                                                     alt="In all revolutions of"
                                                 />
                                             </a>
@@ -100,7 +100,7 @@ function NavBar() {
                                         {/* <div className="nk-widget-post">
                                             <a href="store-product.html" className="nk-post-image">
                                                 <img
-                                                    src="assets/images/product-7-xs.jpg"
+                                                    src="/assets/images/product-7-xs.jpg"
                                                     alt="With what mingled joy"
                                                 />
                                             </a>
@@ -141,8 +141,8 @@ function NavBar() {
                     <div className="container">
                         <div className="nk-nav-table">
                             <Link to='/' className="nk-nav-logo">
-                                {/* <img src="assets/images/logo.svg" alt="GoodGames" width={199} /> */}
-                                <img src={"src/assets/esport_logo.png"} width={280} />
+                                {/* <img src="/assets/images/logo.svg" alt="GoodGames" width={199} /> */}
+                                <img src={"/src/assets/esport_logo.png"} width={280} />
                             </Link>
                             <ul
                                 className="nk-nav nk-nav-right d-none d-lg-table-cell"
@@ -248,7 +248,7 @@ function NavBar() {
                     <div className="nano">
                         <div className="nano-content">
                             <a href="index.html" className="nk-nav-logo">
-                                <img src="assets/images/logo.svg" alt="" width={120} />
+                                <img src="/assets/images/logo.svg" alt="" width={120} />
                             </a>
                             <div className="nk-navbar-mobile-content">
                                 <ul className="nk-nav">

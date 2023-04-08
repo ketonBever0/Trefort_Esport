@@ -8,7 +8,7 @@ function BlogArticles() {
 
     useEffect(() => {
         const pageBG: Element = document.querySelector('.full-page')!;
-        pageBG.setAttribute("style", "background-image: url('assets/images/bg-top-2.png')")
+        pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-2.png')")
     }, [])
 
     const {

@@ -27,6 +27,19 @@ app.get('/posts', async (req: any, res: any) => {
 })
 
 
+app.get('/posts/:title', async (req: any, res: any) => {
+    const post = await prisma.post.findFirst({
+        include: {
+            author: true,
+        },
+        where: {
+            title: req.params.id
+        }
+    });
+    res.json(post);
+})
+
+
 
 
 
