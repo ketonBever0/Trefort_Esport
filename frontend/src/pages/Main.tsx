@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import UpComingEvents from '../components/Main/UpComingEvents'
 import UpComingMatches from '../components/Main/UpComingMatches'
 import NowPlaying from '../components/Main/NowPlaying'
@@ -6,6 +6,12 @@ import LatestMatches from '../components/Main/LatestMatches'
 import LatestNews from '../components/Main/LatestNews'
 
 function Main() {
+
+    useEffect(() => {
+        const pageBG: Element = document.querySelector('.full-page')!;
+        pageBG.setAttribute("style", "background-image: url('assets/images/bg-top.png')")
+    }, [])
+
     return (
         <div>
             <div className="nk-gap" />

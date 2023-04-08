@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "frontend"
+		},
+		{
+			"path": "_fake_backend"
 		}
 	],
 	"settings": {}

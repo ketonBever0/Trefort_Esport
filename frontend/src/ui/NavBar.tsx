@@ -149,7 +149,7 @@ function NavBar() {
                                 data-nav-mobile="#nk-nav-mobile"
                             >
                                 <li>
-                                    <a href="gallery.html" className='text-decoration-none'> Hírek </a>
+                                    <Link to='/news' className='text-decoration-none'> Hírek </Link>
                                 </li>
                                 <li className="nk-drop-item">
                                     <a href="blog-list.html" className='text-decoration-none'> Versenyek </a>
