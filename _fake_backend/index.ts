@@ -10,8 +10,12 @@ const dotenv = require('dotenv');
 dotenv.config()
 
 import { PrismaClient } from '@prisma/client'
-
 const prisma = new PrismaClient()
+
+app.use('/api/user', require('./_routes/userRoutes'));
+
+const { errorHandler } = require('./_middlewares/error_middleware');
+app.use(errorHandler);
 
 
 app.get('/', (req: any, res: any) => res.send('fake_api'));

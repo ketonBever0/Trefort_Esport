@@ -6,23 +6,119 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
-}
-
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
 }
 
 model Post {
   id        Int      @id @default(autoincrement())
   title     String
-  content   String?  @db.LongText
+  content   String?  @db.Text
   published Boolean  @default(false)
   createdAt DateTime @default(now())
   author    User     @relation(fields: [authorId], references: [id])
   authorId  Int
+}
+
+model Ban {
+  id       Int      @id @default(autoincrement())
+  banStart DateTime @default(now())
+  banEnd   DateTime
+  reason   String
+  user     User     @relation(fields: [userId], references: [id])
+  userId   Int
+}
+
+model Clan {
+  id        Int     @id @default(autoincrement())
+  name      String
+  logo      String?
+  email     String?
+  status    String
+  members   User[]  @relation(name: "members")
+  creator   User    @relation(name: "creator", fields: [creatorId], references: [id])
+  creatorId Int     @unique
+}
+
+model User {
+  id               Int           @id @default(autoincrement())
+  email            String        @unique
+  username         String        @unique
+  password         String
+  profilePicture   String?
+  firstName        String
+  lastName         String
+  address          String
+  educationIdNum   Int?          @unique
+  status           String        @default("active")
+  registrationDate DateTime?     @default(now())
+  lastLoginDate    DateTime?     @default(now())
+  description      String?
+  posts            Post[]
+  organization     Organization?
+  banned           Ban[]
+  memberOfClan     Clan?         @relation(name: "members", fields: [memberOfClanId], references: [id])
+  memberOfClanId   Int?
+  creatorOfClan    Clan?         @relation(name: "creator")
+  // sessionTeams     SessionTeam[]
+  // sessionTeamId    Int
+}
+
+model Organization {
+  id               Int     @id @default(autoincrement())
+  representative   User    @relation(fields: [representativeId], references: [id])
+  representativeId Int     @unique
+  events           Event[]
+  name             String
+  picture          String
+  location         String
+  email            String  @unique
+  phoneNumber      String
+  type             String
+  status           String
+  description      String?
+}
+
+model Event {
+  id             Int           @id @default(autoincrement())
+  name           String
+  startDate      DateTime
+  endDate        DateTime
+  sponsor        String?
+  description    String
+  organizers     Organization  @relation(fields: [organizationId], references: [id])
+  organizationId Int
+  competitions   Competition[]
+}
+
+model Competition {
+  id                Int       @id @default(autoincrement())
+  plannedStartDate  DateTime
+  startDate         DateTime?
+  endDate           DateTime?
+  name              String
+  game              String
+  platform          String[]
+  registrationStart DateTime?
+  registrationEnd   DateTime
+  type              String
+  description       String
+  event             Event     @relation(fields: [eventId], references: [id])
+  eventId           Int
+  // sessionTeams      SessionTeam[]
+}
+
+// model SessionTeam {
+//   id            Int         @id @default(autoincrement())
+//   position      Int?
+//   competition   Competition @relation(fields: [competitionId], references: [id])
+//   competitionId Int
+//   members       User        @relation(fields: [memberId], references: [id])
+//   memberId      Int
+// }
+
+model Roles {
+  id          Int    @id @default(autoincrement())
+  name        String
+  permissions Json
 }
