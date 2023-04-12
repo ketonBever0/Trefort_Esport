@@ -7,6 +7,7 @@ import NotFoundPage from './pages/NotFoundPage'
 import BlogArticles from './pages/BlogArticles'
 import { BlogArticleProvider } from './_context/BlogArticleContext'
 import BlogArticlePage from './pages/BlogArticlePage'
+import Tournaments from './pages/Tournaments'
 
 function App() {
 
@@ -26,6 +27,12 @@ function App() {
                 <Route path='/' element={<Main />} />
                 <Route path='/news' element={<BlogArticles />} />
                 <Route path='/post/:id' element={<BlogArticlePage />} />
+
+                <Route path='/tournaments' element={<Tournaments />} >
+                  <Route path='/tournaments/latest' />
+                  <Route path='/tournaments/upcoming' />
+
+                </Route>
 
               </Routes>
             </div>

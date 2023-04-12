@@ -46,7 +46,4 @@ app.get('/posts/:title', async (req: any, res: any) => {
 
 
 
-
-
-
-app.listen(process.env.BACKEND_PORT, () => console.log("Running!"));
+app.listen(process.env.BACKEND_PORT || 8000, () => console.log("Running!"));

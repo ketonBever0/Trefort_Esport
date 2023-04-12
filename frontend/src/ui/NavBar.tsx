@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import '../_css_all/custom.css'
+import LoginModal from '../components/LoginModal';
 
 function NavBar() {
+
+
+
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
+
     return (
         <div>
+
+
+            <div className={`${isLoginModalOpen ? 'fixed-top' : 'visually-hidden'} overlay min-vh-100 min-vw-100`} onClick={(e) => {
+                e.stopPropagation();
+                setIsLoginModalOpen(false);
+            }} />
+            <div className={`${isLoginModalOpen ? 'fixed-top' : 'visually-hidden'}`}>
+                <LoginModal closeModal={() => setIsLoginModalOpen(false)} />
+            </div>
+
+
+
             <header className="nk-header nk-header-opaque">
                 <div className="nk-contacts-top">
                     <div className="container">
@@ -77,9 +96,9 @@ function NavBar() {
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" data-toggle="modal" data-target="#modalLogin">
+                                    <button className='nostyle-button' onClick={() => setIsLoginModalOpen(true)} /*  data-toggle="modal" *//*  data-target="#modalLogin" */>
                                         <span className="fa fa-user" />
-                                    </a>
+                                    </button>
                                 </li>
                                 <li>
                                     <span className="nk-cart-toggle">
@@ -261,6 +280,11 @@ function NavBar() {
                 {/* END: Navbar Mobile */}
                 <div className="nk-main"></div>
             </>
+
+
+
+
+
 
         </div>
     )

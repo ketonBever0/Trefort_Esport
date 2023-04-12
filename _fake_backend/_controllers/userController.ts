@@ -2,7 +2,7 @@ const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-import { PrismaClient, User } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 interface UserType {
@@ -92,7 +92,7 @@ const login = asyncHandler(async (req: any, res: any) => {
 
     // console.log(user.id);
 
-    const token = await genToken(user.id);
+    const token = genToken(user.id);
 
     res.status(200).json(token);
 
