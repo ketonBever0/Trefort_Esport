@@ -1,0 +1,139 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Clan {
+  id        Int       @id @default(autoincrement())
+  userId    Int       @unique
+  name      String    @db.VarChar(255)
+  logo      String?   @db.VarChar(255)
+  clanEmail String?   @db.VarChar(255)
+  status    String    @db.VarChar(255)
+  users     User[]
+
+}
+
+model Organization {
+  id              Int       @id @default(autoincrement())
+  orgUsers        User[]    @relation("OrgUsers")  
+  picture         String?   @db.VarChar(255)
+  location        String    @db.VarChar(255)
+  email           String    @unique @db.VarChar(255)
+  phoneNumber     String    @db.VarChar(255)
+  type            String    @db.VarChar(255)
+  status          String    @db.VarChar(255)
+  description     String?   @db.VarChar(255)
+}
+
+model Post {
+  id      Int     @id @default(autoincrement())
+  text    String  @db.Text()
+}
+
+model User {
+  id                Int             @id @default(autoincrement())
+  userClan          Clan?           @relation(fields: [clanId], references: [id])
+  clanId            Int?            @unique
+  userOrg           Organization?   @relation("OrgUsers", fields: [orgId], references: [id])
+  orgId             Int?            @unique
+  representative    Boolean         @default(false)
+  username          String          @unique @db.VarChar(255)
+  profilePicture    String?         @db.VarChar(255)
+  email             String          @unique @db.VarChar(255)
+  firstName         String          @db.VarChar(255)
+  lastName          String          @db.VarChar(255)
+  password          String          @db.VarChar(255)
+  address           String          @db.VarChar(255)
+  educationNumber   Int?            @db.Int
+  status            String          @db.VarChar(255)
+  registrationDate  DateTime        @default(now())
+  lastLogin         DateTime        @default(now())
+  sessionTeams      SessionTeam[]
+  userRoles         UserRole[]
+  banned            Ban?         
+  description       String?         @db.VarChar(255)
+}
+
+model UserRole {
+  id        Int      @id @default(autoincrement())
+  roleId    Int
+  userId    Int 
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Role {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(255)
+  permissions RolePermission[]
+}
+
+model RolePermission {
+  id            Int      @id @default(autoincrement())
+  roleId        Int
+  permissionId  Int
+  permissions   Permission[]
+  role      Role         @relation(fields: [roleId], references: [id])
+}
+
+model Permission {
+  id             Int              @id @default(autoincrement())
+  RolePermission RolePermission   @relation(fields: [id], references: [id])
+  name           String           @db.VarChar(255)
+  description    String           @db.VarChar(255)
+}
+
+model Event {
+  id              Int       @id @default(autoincrement())
+  name            String    @db.VarChar(255)
+  startDate       DateTime
+  endDate         DateTime
+  sponsor         String?   @db.VarChar(255)
+  competitions    Competition[]
+  description     String    @db.VarChar(255)
+}
+
+model SessionTeam {
+  id               Int          @id @default(autoincrement())
+  sessionId        String       @db.VarChar(255)
+  user             User         @relation(fields: [userId], references: [id])
+  competitionId    Int
+  competition      Competition  @relation(fields: [competitionId], references: [id])
+  userId           Int
+  position         String       @db.VarChar(255)
+}
+
+model Competition {
+  id                Int       @id @default(autoincrement())
+  eventId           Int       @unique
+  event             Event     @relation(fields: [eventId], references: [id])
+  plannedStartDate  DateTime
+  startDate         DateTime?
+  endDate           DateTime?
+  name              String    @db.VarChar(255)
+  game              String    @db.VarChar(255)
+  platform          String    @db.VarChar(255)
+  registrationStart DateTime?
+  registrationEnd   DateTime
+  sessionTeams      SessionTeam[]
+  competitionType   String    @db.VarChar(255)
+  description       String    @db.VarChar(255)
+}
+
+model Ban {
+  id          Int      @id @default(autoincrement())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      Int      @unique
+  reason      String   @db.VarChar(255)
+  status      String   @db.VarChar(255)
+  bannedUntil DateTime 
+}
+
+
