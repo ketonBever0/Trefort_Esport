@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import BlogArticleContext from '../../_context/BlogArticleContext'
 
 function LatestNews() {
 
 
-    
+    //  active classname: nk-news-box-item-active
+
+    const {
+        isPostsLoading,
+        posts
+    } = useContext(BlogArticleContext);
 
 
     return (
@@ -20,38 +26,43 @@ function LatestNews() {
                 <div className="nk-news-box-list">
                     <div className="nano">
                         <div className="nano-content">
-                            <div className="nk-news-box-item nk-news-box-item-active">
-                                <div className="nk-news-box-item-img">
+
+                            {
+                                posts.length > 1 &&
+                                <div className="nk-news-box-item">
+                                    <div className="nk-news-box-item-img">
+                                        <img
+                                            src="assets/images/post-1-sm.jpg"
+                                            alt="Smell magic in the air. Or maybe barbecue"
+                                        />
+                                    </div>
                                     <img
-                                        src="assets/images/post-1-sm.jpg"
+                                        src="assets/images/post-1.jpg"
                                         alt="Smell magic in the air. Or maybe barbecue"
+                                        className="nk-news-box-item-full-img"
                                     />
+                                    <h3 className="nk-news-box-item-title">
+                                        
+                                    </h3>
+                                    <span className="nk-news-box-item-categories">
+                                        <span className="bg-main-4">MMO</span>
+                                    </span>
+                                    <div className="nk-news-box-item-text">
+                                        <p>
+                                            With what mingled joy and sorrow do I take up the pen to write
+                                            to my dearest friend! Oh, what a change between to-day and
+                                            yesterday! Now I am friendless and alone...
+                                        </p>
+                                    </div>
+                                    <a href="blog-article.html" className="nk-news-box-item-url">
+                                        Read More
+                                    </a>
+                                    <div className="nk-news-box-item-date">
+                                        <span className="fa fa-calendar" /> Sep 18, 2018
+                                    </div>
                                 </div>
-                                <img
-                                    src="assets/images/post-1.jpg"
-                                    alt="Smell magic in the air. Or maybe barbecue"
-                                    className="nk-news-box-item-full-img"
-                                />
-                                <h3 className="nk-news-box-item-title">
-                                    Smell magic in the air. Or maybe barbecue
-                                </h3>
-                                <span className="nk-news-box-item-categories">
-                                    <span className="bg-main-4">MMO</span>
-                                </span>
-                                <div className="nk-news-box-item-text">
-                                    <p>
-                                        With what mingled joy and sorrow do I take up the pen to write
-                                        to my dearest friend! Oh, what a change between to-day and
-                                        yesterday! Now I am friendless and alone...
-                                    </p>
-                                </div>
-                                <a href="blog-article.html" className="nk-news-box-item-url">
-                                    Read More
-                                </a>
-                                <div className="nk-news-box-item-date">
-                                    <span className="fa fa-calendar" /> Sep 18, 2018
-                                </div>
-                            </div>
+                            }
+
 
                         </div>
                     </div>

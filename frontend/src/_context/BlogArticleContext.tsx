@@ -7,7 +7,6 @@ const BlogArticleContext = createContext<any | null>(null);
 export const BlogArticleProvider = ({ children }: any) => {
 
 
-
     const [isPostsLoading, setIsPostsLoading] = useState<boolean>(false);
     const [posts, setPosts] = useState<Array<Object>>([]);
 

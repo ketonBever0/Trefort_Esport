@@ -40,30 +40,6 @@ model Clan {
   creatorId Int     @unique
 }
 
-model User {
-  id               Int           @id @default(autoincrement())
-  email            String        @unique
-  username         String        @unique
-  password         String
-  profilePicture   String?
-  firstName        String
-  lastName         String
-  address          String
-  educationIdNum   Int?          @unique
-  status           String        @default("active")
-  registrationDate DateTime?     @default(now())
-  lastLoginDate    DateTime?     @default(now())
-  description      String?
-  posts            Post[]
-  organization     Organization?
-  banned           Ban[]
-  memberOfClan     Clan?         @relation(name: "members", fields: [memberOfClanId], references: [id])
-  memberOfClanId   Int?
-  creatorOfClan    Clan?         @relation(name: "creator")
-  // sessionTeams     SessionTeam[]
-  // sessionTeamId    Int
-}
-
 model Organization {
   id               Int     @id @default(autoincrement())
   representative   User    @relation(fields: [representativeId], references: [id])
@@ -92,7 +68,7 @@ model Event {
 }
 
 model Competition {
-  id                Int       @id @default(autoincrement())
+  id                Int           @id @default(autoincrement())
   plannedStartDate  DateTime
   startDate         DateTime?
   endDate           DateTime?
@@ -103,22 +79,79 @@ model Competition {
   registrationEnd   DateTime
   type              String
   description       String
-  event             Event     @relation(fields: [eventId], references: [id])
+  event             Event         @relation(fields: [eventId], references: [id])
   eventId           Int
-  // sessionTeams      SessionTeam[]
+  sessionTeams      SessionTeam[]
 }
 
-// model SessionTeam {
-//   id            Int         @id @default(autoincrement())
-//   position      Int?
-//   competition   Competition @relation(fields: [competitionId], references: [id])
-//   competitionId Int
-//   members       User        @relation(fields: [memberId], references: [id])
-//   memberId      Int
+model SessionTeam {
+  id            Int         @id @default(autoincrement())
+  position      Int?
+  competition   Competition @relation(fields: [competitionId], references: [id])
+  competitionId Int
+  members       User        @relation(fields: [memberId], references: [id])
+  memberId      Int
+}
+
+model User {
+  id               Int           @id @default(autoincrement())
+  email            String        @unique
+  username         String        @unique
+  password         String
+  profilePicture   String?
+  firstName        String
+  lastName         String
+  address          String
+  educationIdNum   Int?          @unique
+  status           String        @default("active")
+  registrationDate DateTime?     @default(now())
+  lastLoginDate    DateTime?     @default(now())
+  description      String?
+  posts            Post[]
+  organization     Organization?
+  banned           Ban[]
+  memberOfClan     Clan?         @relation(name: "members", fields: [memberOfClanId], references: [id])
+  memberOfClanId   Int?
+  creatorOfClan    Clan?         @relation(name: "creator")
+  sessionTeams     SessionTeam[]
+  userRoles        UserRole[]
+}
+
+model UserRole {
+  id     Int  @id @default(autoincrement())
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int
+  role   Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  roleId Int
+}
+
+model Role {
+  id             Int              @id @default(autoincrement())
+  name           String           @unique
+  description    String?
+  userRole       UserRole[]
+  rolePermission RolePermission[]
+}
+
+model RolePermission {
+  id           Int        @id @default(autoincrement())
+  role         Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  roleId       Int
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+  permissionId Int
+}
+
+model Permission {
+  id          Int              @id @default(autoincrement())
+  name        String           @unique
+  description String
+  roles       RolePermission[]
+}
+
+// model Roles {
+//   id     Int    @id @default(autoincrement())
+//   name   String @unique
+//   // permissions Json
+//   users  User   @relation(fields: [userId], references: [id])
+//   userId Int
 // }
-
-model Roles {
-  id          Int    @id @default(autoincrement())
-  name        String
-  permissions Json
-}

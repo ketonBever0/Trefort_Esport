@@ -9,41 +9,21 @@ app.use(express.urlencoded({ extended: false }));
 const dotenv = require('dotenv');
 dotenv.config()
 
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+// import { PrismaClient } from '@prisma/client'
+// const prisma = new PrismaClient()
+
+const r = express.Router();
+const { protect } = require('./_middlewares/auth_middleware');
 
 app.use('/api/user', require('./_routes/userRoutes'));
+app.use('/api/post', require('./_routes/postRoutes'));
 
-const { errorHandler } = require('./_middlewares/error_middleware');
-app.use(errorHandler);
+
+const { errorHandler: errorMain } = require('./_middlewares/error_middleware');
+app.use(errorMain);
 
 
 app.get('/', (req: any, res: any) => res.send('fake_api'));
-
-
-app.get('/posts', async (req: any, res: any) => {
-    const posts = await prisma.post.findMany({
-        include: {
-            author: true,
-        }
-    });
-    res.json(posts);
-})
-
-
-app.get('/posts/:title', async (req: any, res: any) => {
-    const post = await prisma.post.findFirst({
-        include: {
-            author: true,
-        },
-        where: {
-            title: req.params.id
-        }
-    });
-    res.json(post);
-})
-
-
 
 
 app.listen(process.env.BACKEND_PORT || 8000, () => console.log("Running!"));

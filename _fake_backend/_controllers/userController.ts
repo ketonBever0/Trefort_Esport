@@ -6,6 +6,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 interface UserType {
+    id: number;
     email: string;
     username: string;
     password: string;

@@ -30,7 +30,7 @@ export const protect = asyncHandler(async (req: any, res: any, next: any) => {
             })
 
             if (queryUser != null) delete queryUser["password"];
-            console.log(queryUser);
+            // console.log(queryUser);
             req.user = queryUser;
 
             next();
