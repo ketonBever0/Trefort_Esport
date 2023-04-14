@@ -45,7 +45,7 @@ const createPost = asyncHandler(async (req: any, res: any) => {
     const user = req.user;
 
 
-    const userData = await prisma.user.findUnique({
+    const userRolesQuery: Array<Object> | any | null = await prisma.user.findUnique({
         where: {
             id: user.id
         },
@@ -57,7 +57,11 @@ const createPost = asyncHandler(async (req: any, res: any) => {
                             name: true,
                             rolePermission: {
                                 select: {
-                                    permission: true
+                                    permission: {
+                                        select: {
+                                            name: true
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -67,9 +71,24 @@ const createPost = asyncHandler(async (req: any, res: any) => {
         }
     });
 
+    var permissions: Array<string> = [];
+
+    const { userRoles } = userRolesQuery;
+
+    if (userRoles.length > 1) {
+        userRoles.forEach((i: any) => {
+            // console.log(i.role);
+            i.role.rolePermission.forEach((j: any) => {
+                permissions.push(j.permission.name);
+            });
+        });
+    } else {
+        res.status(404);
+        throw new Error("Ennek a felhasználónak nincsenek jogai!");
+    }
 
 
-    res.json(userData);
+    res.json(permissions);
 
     return;
 
