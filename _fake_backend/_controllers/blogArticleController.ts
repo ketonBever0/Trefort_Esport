@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
+const { getUserPermissions } = require('../_functions');
 
 
 const getPosts = asyncHandler(async (req: any, res: any) => {
@@ -44,68 +45,29 @@ const createPost = asyncHandler(async (req: any, res: any) => {
 
     const user = req.user;
 
+    const permissions: Array<string> = await getUserPermissions(user.id);
 
-    const userRolesQuery: Array<Object> | any | null = await prisma.user.findUnique({
-        where: {
-            id: user.id
-        },
-        select: {
-            userRoles: {
-                select: {
-                    role: {
-                        select: {
-                            name: true,
-                            rolePermission: {
-                                select: {
-                                    permission: {
-                                        select: {
-                                            name: true
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    });
 
-    var permissions: Array<string> = [];
+    // res.json(permissions)
 
-    const { userRoles } = userRolesQuery;
-
-    if (userRoles.length > 1) {
-        userRoles.forEach((i: any) => {
-            // console.log(i.role);
-            i.role.rolePermission.forEach((j: any) => {
-                permissions.push(j.permission.name);
-            });
-        });
-    } else {
-        res.status(404);
-        throw new Error("Ennek a felhasználónak nincsenek jogai!");
+    if (!permissions.includes('createPost')) {
+        res.status(403).json({ message: 'Na mennyé more haza magadnak! 😈😈' });
     }
 
+    // const post = await prisma.post.create({
+    //     data: {
+    //         title: title,
+    //         content: content
+    //     } as PostType
+    // });
 
-    res.json(permissions);
-
-    return;
-
-    const post = await prisma.post.create({
-        data: {
-            title: title,
-            content: content
-        } as PostType
-    });
-
-    if (post) {
-        res.json({ message: "Bejegyzés hozzáadva!" });
-        return;
-    } else {
-        res.status(400);
-        throw new Error("Hiba!");
-    }
+    // if (post) {
+    //     res.json({ message: "Bejegyzés hozzáadva!" });
+    //     return;
+    // } else {
+    //     res.status(400);
+    //     throw new Error("Hiba!");
+    // }
 
 })
 
