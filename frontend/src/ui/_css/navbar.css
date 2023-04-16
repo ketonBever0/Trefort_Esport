@@ -1,12 +1,27 @@
 .full-nav {
     position: sticky;
+    top: 0px;
 }
 
 .c-ui-userbox {
     background-color: #181c23;
-    height: 26rem;
-    width: 23rem;
+    height: 15rem;
+    width: 38%;
     border: 2px solid #181c23;
-    left: 35rem;
-    top: 4.5rem;
+    position: fixed;
+    left: 60%;
+    top: 7%;
+}
+
+@media only screen and (max-width: 575px) {
+
+    .c-ui-userbox {
+        background-color: #181c23;
+        height: 15rem;
+        width: 75%;
+        border: 2px solid #181c23;
+        position: fixed;
+        left: 10%;
+        top: 11%;
+    }
 }

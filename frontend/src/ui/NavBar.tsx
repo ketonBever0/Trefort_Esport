@@ -33,33 +33,34 @@ function NavBar() {
 
 
 
-            <header className="nk-header nk-header-opaque full-nav">
-                <div className="nk-contacts-top">
-                    <div className="container">
-                        <div className="nk-contacts-left">
-                            <ul className="nk-social-links">
-                                {/* <li>
+            <header className="nk-header nk-header-opaque" style={{ position: 'fixed' }}>
+                <div className=''>
+                    <div className="nk-contacts-top" style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}>
+                        <div className="container">
+                            <div className="nk-contacts-left">
+                                <ul className="nk-social-links">
+                                    {/* <li>
                                     <a className="nk-social-rss" href="#">
                                         <span className="fa fa-rss" />
                                     </a>
                                 </li> */}
-                                <li>
-                                    <a className="nk-social-twitch" href="#">
-                                        <span className="fab fa-twitch" />
-                                    </a>
-                                </li>
-                                <li>
-                                    {/* <a className="nk-social-steam" href="#">
+                                    <li>
+                                        <a className="nk-social-twitch" href="#">
+                                            <span className="fab fa-twitch" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        {/* <a className="nk-social-steam" href="#">
                                         <span className="fab fa-steam" />
                                     </a> */}
-                                </li>
-                                <li>
-                                    <a className="nk-social-facebook" href="#">
-                                        <span className="fab fa-facebook" />
-                                    </a>
-                                </li>
-                                {/* <li> */}
-                                {/* <a
+                                    </li>
+                                    <li>
+                                        <a className="nk-social-facebook" href="#">
+                                            <span className="fab fa-facebook" />
+                                        </a>
+                                    </li>
+                                    {/* <li> */}
+                                    {/* <a
                                         className="nk-social-twitter"
                                         href="https://twitter.com/nkdevv"
                                         target="_blank"
@@ -72,7 +73,7 @@ function NavBar() {
                                         <span className="fab fa-pinterest-p" />
                                     </a>
                                 </li> */}
-                                {/* Additional Social Buttons
+                                    {/* Additional Social Buttons
               <li><a class="nk-social-behance" href="#"><span class="fab fa-behance"></span></a></li>
               <li><a class="nk-social-bitbucket" href="#"><span class="fab fa-bitbucket"></span></a></li>
               <li><a class="nk-social-dropbox" href="#"><span class="fab fa-dropbox"></span></a></li>
@@ -96,48 +97,49 @@ function NavBar() {
               <li><a class="nk-social-wordpress" href="#"><span class="fab fa-wordpress"></span></a></li>
               <li><a class="nk-social-youtube" href="#"><span class="fab fa-youtube"></span></a></li>
           */}
-                            </ul>
-                        </div>
-                        <div className="nk-contacts-right">
-                            <ul className="nk-contacts-icons">
-                                <li>
-                                    <a href="#" data-toggle="modal" data-target="#modalSearch">
-                                        <span className="fa fa-search" />
-                                    </a>
-                                </li>
-                                <li>
-                                    {
-                                        userToken ?
-                                            <div>
-                                                <button className='nostyle-button' onClick={() => setIsUserBoxOpen(prev => !prev)}>
-                                                    {userData?.username}
-                                                    <span className={`mx-2 ${isUserBoxOpen && 'rotate-180'}`}><AiOutlineDown /></span>
+                                </ul>
+                            </div>
+                            <div className="nk-contacts-right">
+                                <ul className="nk-contacts-icons">
+                                    <li>
+                                        <a href="#" data-toggle="modal" data-target="#modalSearch">
+                                            <span className="fa fa-search" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        {
+                                            userToken ?
+                                                <div>
+                                                    <button className='nostyle-button' onClick={() => setIsUserBoxOpen(prev => !prev)}>
+                                                        {userData?.username}
+                                                        <span className={`mx-2 ${isUserBoxOpen && 'rotate-180'}`}><AiOutlineDown /></span>
+                                                    </button>
+                                                    {
+                                                        isUserBoxOpen &&
+                                                        <div className='c-ui-userbox fixed-top rounded'>
+                                                            <div className='nk-gap' />
+                                                            <h4>Üdv {userData?.username}!</h4>
+                                                            <button onClick={async () => {
+                                                                await logout();
+                                                                setIsUserBoxOpen(false);
+                                                            }}
+                                                                className="nk-btn nk-btn-rounded nk-btn-block" style={{ backgroundColor: '#c41536' }} //nk-btn-color-white
+                                                            >
+                                                                Kijelentkezés
+                                                            </button>
+                                                        </div>
+                                                    }
+                                                </div>
+                                                :
+                                                <button className='nostyle-button' onClick={() => setIsLoginModalOpen(true)} /*  data-toggle="modal" *//*  data-target="#modalLogin" */>
+                                                    <span className="fa fa-user" />
                                                 </button>
-                                                {
-                                                    isUserBoxOpen &&
-                                                    <div className='c-ui-userbox fixed-top rounded'>
-                                                        <div className='nk-gap' />
-                                                        <h4>Üdv {userData?.username}!</h4>
-                                                        <button onClick={async (e: any) => {
-                                                            logout();
-                                                        }}
-                                                            className="nk-btn nk-btn-rounded nk-btn-block" style={{ backgroundColor: '#c41536' }} //nk-btn-color-white
-                                                        >
-                                                            Kijelentkezés
-                                                        </button>
-                                                    </div>
-                                                }
-                                            </div>
-                                            :
-                                            <button className='nostyle-button' onClick={() => setIsLoginModalOpen(true)} /*  data-toggle="modal" *//*  data-target="#modalLogin" */>
-                                                <span className="fa fa-user" />
-                                            </button>
-                                    }
-                                </li>
-                                {/* <li>
+                                        }
+                                    </li>
+                                    {/* <li>
                                     <span className="nk-cart-toggle">
                                         <span className="fa fa-shopping-cart" /> */}
-                                {/* <span className="nk-badge">27</span>
+                                    {/* <span className="nk-badge">27</span>
                                     </span>
                                     <div className="nk-cart-dropdown">
                                         <div className="nk-widget-post">
@@ -177,12 +179,12 @@ function NavBar() {
                                         </div>
                                     </div>
                                 </li> */}
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                {/* END: Top Contacts */}
-                {/*
+                    {/* END: Top Contacts */}
+                    {/*
   START: Navbar
 
   Additional Classes:
@@ -190,104 +192,105 @@ function NavBar() {
       .nk-navbar-transparent
       .nk-navbar-autohide
     */}
-                <nav className="nk-navbar nk-navbar-top nk-navbar-sticky nk-navbar-autohide">
-                    <div className="container">
-                        <div className="nk-nav-table">
-                            <Link to='/' className="nk-nav-logo">
-                                {/* <img src="/assets/images/logo.svg" alt="GoodGames" width={199} /> */}
-                                <img src={"/src/assets/esport_logo.png"} width={280} />
-                            </Link>
-                            <ul
-                                className="nk-nav nk-nav-right d-none d-lg-table-cell"
-                                data-nav-mobile="#nk-nav-mobile"
-                            >
-                                <li>
-                                    <Link to='/news' className='text-decoration-none'> Hírek </Link>
-                                </li>
-                                <li className="nk-drop-item">
-                                    <a href="blog-list.html" className='text-decoration-none'> Versenyek </a>
-                                    <ul className="dropdown">
-                                        <li>
-                                            <a href="news.html" className='text-decoration-none'> Legutóbbi </a>
-                                        </li>
-                                        <li className=" nk-drop-item">
-                                            <a href="blog-grid.html" className='text-decoration-none'> Blog With Sidebar </a>
-                                            <ul className="dropdown">
-                                                <li>
-                                                    <a href="blog-grid.html" className='text-decoration-none'> Blog Grid </a>
-                                                </li>
-                                                <li>
-                                                    <a href="blog-list.html" className='text-decoration-none'> Blog List </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="blog-fullwidth.html" className='text-decoration-none'> Blog Fullwidth </a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-article.html" className='text-decoration-none'> Blog Article </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="gallery.html" className='text-decoration-none'> Gallery </a>
-                                </li>
-                                <li className=" nk-drop-item">
-                                    <a href="tournaments.html" className='text-decoration-none'> Tournaments </a>
-                                    <ul className="dropdown">
-                                        <li>
-                                            <a href="tournaments.html" className='text-decoration-none'> Tournament </a>
-                                        </li>
-                                        <li>
-                                            <a href="tournaments-teams.html" className='text-decoration-none'> Teams </a>
-                                        </li>
-                                        <li>
-                                            <a href="tournaments-teammate.html" className='text-decoration-none'> Teammate </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li className=" nk-drop-item">
-                                    <a href="store.html" className='text-decoration-none'> Store </a>
-                                    <ul className="dropdown">
-                                        <li>
-                                            <a href="store.html" className='text-decoration-none'> Store </a>
-                                        </li>
-                                        <li>
-                                            <a href="store-product.html" className='text-decoration-none'> Product </a>
-                                        </li>
-                                        <li>
-                                            <a href="store-catalog.html" className='text-decoration-none'> Catalog </a>
-                                        </li>
-                                        <li>
-                                            <a href="store-catalog-alt.html" className='text-decoration-none'> Catalog Alt </a>
-                                        </li>
-                                        <li>
-                                            <a href="store-checkout.html" className='text-decoration-none'> Checkout </a>
-                                        </li>
-                                        <li>
-                                            <a href="store-cart.html" className='text-decoration-none'> Cart </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <ul className="nk-nav nk-nav-right nk-nav-icons">
-                                <li className="single-icon d-lg-none">
-                                    <a
-                                        href="#"
-                                        className="no-link-effect"
-                                        data-nav-toggle="#nk-nav-mobile"
-                                    >
-                                        <span className="nk-icon-burger">
-                                            <span className="nk-t-1" />
-                                            <span className="nk-t-2" />
-                                            <span className="nk-t-3" />
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
+                    <nav className="nk-navbar nk-navbar-top nk-navbar-sticky nk-navbar-autohide">
+                        <div className="container">
+                            <div className="nk-nav-table">
+                                <Link to='/' className="nk-nav-logo">
+                                    {/* <img src="/assets/images/logo.svg" alt="GoodGames" width={199} /> */}
+                                    <img src={"/src/assets/esport_logo.png"} width={280} />
+                                </Link>
+                                <ul
+                                    className="nk-nav nk-nav-right d-none d-lg-table-cell"
+                                    data-nav-mobile="#nk-nav-mobile"
+                                >
+                                    <li>
+                                        <Link to='/news' className='text-decoration-none'> Hírek </Link>
+                                    </li>
+                                    <li className="nk-drop-item">
+                                        <a href="blog-list.html" className='text-decoration-none'> Versenyek </a>
+                                        <ul className="dropdown">
+                                            <li>
+                                                <a href="news.html" className='text-decoration-none'> Legutóbbi </a>
+                                            </li>
+                                            <li className=" nk-drop-item">
+                                                <a href="blog-grid.html" className='text-decoration-none'> Blog With Sidebar </a>
+                                                <ul className="dropdown">
+                                                    <li>
+                                                        <a href="blog-grid.html" className='text-decoration-none'> Blog Grid </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="blog-list.html" className='text-decoration-none'> Blog List </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="blog-fullwidth.html" className='text-decoration-none'> Blog Fullwidth </a>
+                                            </li>
+                                            <li>
+                                                <a href="blog-article.html" className='text-decoration-none'> Blog Article </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="gallery.html" className='text-decoration-none'> Gallery </a>
+                                    </li>
+                                    <li className=" nk-drop-item">
+                                        <a href="tournaments.html" className='text-decoration-none'> Tournaments </a>
+                                        <ul className="dropdown">
+                                            <li>
+                                                <a href="tournaments.html" className='text-decoration-none'> Tournament </a>
+                                            </li>
+                                            <li>
+                                                <a href="tournaments-teams.html" className='text-decoration-none'> Teams </a>
+                                            </li>
+                                            <li>
+                                                <a href="tournaments-teammate.html" className='text-decoration-none'> Teammate </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li className=" nk-drop-item">
+                                        <a href="store.html" className='text-decoration-none'> Store </a>
+                                        <ul className="dropdown">
+                                            <li>
+                                                <a href="store.html" className='text-decoration-none'> Store </a>
+                                            </li>
+                                            <li>
+                                                <a href="store-product.html" className='text-decoration-none'> Product </a>
+                                            </li>
+                                            <li>
+                                                <a href="store-catalog.html" className='text-decoration-none'> Catalog </a>
+                                            </li>
+                                            <li>
+                                                <a href="store-catalog-alt.html" className='text-decoration-none'> Catalog Alt </a>
+                                            </li>
+                                            <li>
+                                                <a href="store-checkout.html" className='text-decoration-none'> Checkout </a>
+                                            </li>
+                                            <li>
+                                                <a href="store-cart.html" className='text-decoration-none'> Cart </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul className="nk-nav nk-nav-right nk-nav-icons">
+                                    <li className="single-icon d-lg-none">
+                                        <a
+                                            href="#"
+                                            className="no-link-effect"
+                                            data-nav-toggle="#nk-nav-mobile"
+                                        >
+                                            <span className="nk-icon-burger">
+                                                <span className="nk-t-1" />
+                                                <span className="nk-t-2" />
+                                                <span className="nk-t-3" />
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                </nav>
+                    </nav>
+                </div>
                 {/* END: Navbar */}
             </header >
 

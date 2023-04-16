@@ -20,8 +20,10 @@ export const UserProvider = ({ children }: any) => {
         }
     }, [tokenRefresh])
 
+    const [isThereLoginError, setIsThereLoginError] = useState<boolean>(false);
 
     const login = async (formData: Object) => {
+        setIsThereLoginError(false);
         setLoggingIn(false);
         await fetch('http://localhost:8000/api/user/login', {
             method: 'POST',
@@ -33,6 +35,8 @@ export const UserProvider = ({ children }: any) => {
                 if (!token.message) {
                     setUserToken(token);
                     tokenUpdate();
+                } else {
+                    setIsThereLoginError(true);
                 }
             })
             .catch(err => console.log(err))
@@ -74,6 +78,7 @@ export const UserProvider = ({ children }: any) => {
 
         login,
         loggingIn,
+        isThereLoginError,
         userToken,
         userData,
         logout

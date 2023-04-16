@@ -19,10 +19,12 @@ function App() {
         <UserProvider>
 
           <div className="nk-main">
-            <div className="nk-gap-2" />
+
 
             <Router>
               <NavBar />
+              <div className="nk-gap-6" />
+              <div className="nk-gap-4" />
               <div className='container'>
                 <Routes>
                   <Route path='*' element={<NotFoundPage />} />

@@ -30,3 +30,11 @@
 .closebutton {
     float: right;
 }
+
+.normal-link {
+    text-decoration: none;
+}
+
+.normal-link:hover {
+    text-decoration: underline;
+}
