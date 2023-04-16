@@ -95,7 +95,7 @@ const login = asyncHandler(async (req: any, res: any) => {
 
     const token = genToken(user.id);
 
-    res.status(200).json(token);
+    res.json(token);
 
 });
 

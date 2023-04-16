@@ -1,0 +1,12 @@
+.full-nav {
+    position: sticky;
+}
+
+.c-ui-userbox {
+    background-color: #181c23;
+    height: 26rem;
+    width: 23rem;
+    border: 2px solid #181c23;
+    left: 35rem;
+    top: 4.5rem;
+}

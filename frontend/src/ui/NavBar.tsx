@@ -1,29 +1,39 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import '../_css_all/custom.css'
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../_css_all/custom.css';
+import './_css/navbar.css';
 import LoginModal from '../components/LoginModal';
+import UserContext from '../_context/UserContext';
+import { AiOutlineDown } from 'react-icons/ai';
 
 function NavBar() {
 
-
+    const {
+        userToken,
+        userData,
+        logout
+    } = useContext(UserContext);
 
     const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
+    const [isUserBoxOpen, setIsUserBoxOpen] = useState<boolean>(false);
+
 
     return (
         <div>
 
 
             <div className={`${isLoginModalOpen ? 'fixed-top' : 'visually-hidden'} overlay min-vh-100 min-vw-100`} onClick={(e) => {
-                e.stopPropagation();
                 setIsLoginModalOpen(false);
-            }} />
-            <div className={`${isLoginModalOpen ? 'fixed-top' : 'visually-hidden'}`}>
+                e.stopPropagation();
+            }} >
+                {/* <div className={`${isLoginModalOpen ? 'fixed-top' : 'visually-hidden'}`}> */}
                 <LoginModal closeModal={() => setIsLoginModalOpen(false)} />
+                {/* </div> */}
             </div>
 
 
 
-            <header className="nk-header nk-header-opaque">
+            <header className="nk-header nk-header-opaque full-nav">
                 <div className="nk-contacts-top">
                     <div className="container">
                         <div className="nk-contacts-left">
@@ -96,17 +106,41 @@ function NavBar() {
                                     </a>
                                 </li>
                                 <li>
-                                    <button className='nostyle-button' onClick={() => setIsLoginModalOpen(true)} /*  data-toggle="modal" *//*  data-target="#modalLogin" */>
-                                        <span className="fa fa-user" />
-                                    </button>
+                                    {
+                                        userToken ?
+                                            <div>
+                                                <button className='nostyle-button' onClick={() => setIsUserBoxOpen(prev => !prev)}>
+                                                    {userData?.username}
+                                                    <span className={`mx-2 ${isUserBoxOpen && 'rotate-180'}`}><AiOutlineDown /></span>
+                                                </button>
+                                                {
+                                                    isUserBoxOpen &&
+                                                    <div className='c-ui-userbox fixed-top rounded'>
+                                                        <div className='nk-gap' />
+                                                        <h4>Üdv {userData?.username}!</h4>
+                                                        <button onClick={async (e: any) => {
+                                                            logout();
+                                                        }}
+                                                            className="nk-btn nk-btn-rounded nk-btn-block" style={{ backgroundColor: '#c41536' }} //nk-btn-color-white
+                                                        >
+                                                            Kijelentkezés
+                                                        </button>
+                                                    </div>
+                                                }
+                                            </div>
+                                            :
+                                            <button className='nostyle-button' onClick={() => setIsLoginModalOpen(true)} /*  data-toggle="modal" *//*  data-target="#modalLogin" */>
+                                                <span className="fa fa-user" />
+                                            </button>
+                                    }
                                 </li>
-                                <li>
+                                {/* <li>
                                     <span className="nk-cart-toggle">
-                                        <span className="fa fa-shopping-cart" />
-                                        {/* <span className="nk-badge">27</span> */}
+                                        <span className="fa fa-shopping-cart" /> */}
+                                {/* <span className="nk-badge">27</span>
                                     </span>
                                     <div className="nk-cart-dropdown">
-                                        {/* <div className="nk-widget-post">
+                                        <div className="nk-widget-post">
                                             <a href="store-product.html" className="nk-post-image">
                                                 <img
                                                     src="/assets/images/product-5-xs.jpg"
@@ -115,8 +149,8 @@ function NavBar() {
                                             </a>
                                             <div className="nk-gap-1" />
                                             <div className="nk-product-price">€ 23.00</div>
-                                        </div> */}
-                                        {/* <div className="nk-widget-post">
+                                        </div>
+                                        <div className="nk-widget-post">
                                             <a href="store-product.html" className="nk-post-image">
                                                 <img
                                                     src="/assets/images/product-7-xs.jpg"
@@ -131,7 +165,7 @@ function NavBar() {
                                             </h3>
                                             <div className="nk-gap-1" />
                                             <div className="nk-product-price">€ 14.00</div>
-                                        </div> */}
+                                        </div>
                                         <div className="nk-gap-2" />
                                         <div className="text-center">
                                             <a
@@ -142,7 +176,7 @@ function NavBar() {
                                             </a>
                                         </div>
                                     </div>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                     </div>
@@ -255,7 +289,7 @@ function NavBar() {
                     </div>
                 </nav>
                 {/* END: Navbar */}
-            </header>
+            </header >
 
             <>
                 {/* START: Navbar Mobile Additional Classes: .nk-navbar-left-side
@@ -286,7 +320,7 @@ function NavBar() {
 
 
 
-        </div>
+        </div >
     )
 }
 
