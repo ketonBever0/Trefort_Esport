@@ -51,23 +51,24 @@ const createPost = asyncHandler(async (req: any, res: any) => {
     // res.json(permissions)
 
     if (!permissions.includes('createPost')) {
-        res.status(403).json({ message: 'Na mennyé more haza magadnak! 😈😈' });
+        throw new Error('Na mennyé more haza magadnak! 😈😈');
     }
 
-    // const post = await prisma.post.create({
-    //     data: {
-    //         title: title,
-    //         content: content
-    //     } as PostType
-    // });
+    const post = await prisma.post.create({
+        data: {
+            title: title,
+            content: content,
+            authorId: req.user.id
+        } as PostType
+    });
 
-    // if (post) {
-    //     res.json({ message: "Bejegyzés hozzáadva!" });
-    //     return;
-    // } else {
-    //     res.status(400);
-    //     throw new Error("Hiba!");
-    // }
+    if (post) {
+        res.json({ message: "Bejegyzés hozzáadva!" });
+        return;
+    } else {
+        res.status(400);
+        throw new Error("Hiba!");
+    }
 
 })
 

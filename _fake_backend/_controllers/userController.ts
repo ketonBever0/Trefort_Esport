@@ -91,7 +91,7 @@ const login = asyncHandler(async (req: any, res: any) => {
         throw new Error("Hibás jelszó!");
     }
 
-    console.log(user.id);
+    // console.log(user.id);
 
     const token = genToken(user.id);
 
