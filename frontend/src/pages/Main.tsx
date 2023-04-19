@@ -4,6 +4,7 @@ import UpComingMatches from '../components/Main/UpComingMatches'
 import NowPlaying from '../components/Main/NowPlaying'
 import LatestMatches from '../components/Main/LatestMatches'
 import LatestNews from '../components/Main/LatestNews'
+import Sidebar from '../components/Sidebar'
 
 function Main() {
 
@@ -76,9 +77,21 @@ function Main() {
                 </div> */}
 
             <div className="nk-gap-6" />
+            <div className="row vertical-gap">
+                <div className="col-lg-8">
+                    <UpComingEvents />
 
-            <UpComingEvents />
+                    <div className="nk-gap-2" />
 
+                </div>
+
+
+
+                <div className="col-lg-4">
+                    <Sidebar />
+                </div>
+            </div>
+            
             <div className="nk-gap-2" />
 
             <UpComingMatches />
@@ -94,8 +107,6 @@ function Main() {
             <LatestNews />
 
             <div className="nk-gap-3" />
-
-
 
 
         </div >

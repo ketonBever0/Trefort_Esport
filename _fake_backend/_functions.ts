@@ -44,12 +44,12 @@ const getUserPermissions = asyncHandler(async (id: number) => {
         throw new Error("Felhasználó nem található!");
     }
 
+    var userRoles: Array<string> = [];
     var permissions: Array<string> = [];
 
-
-    if (roles.length > 1) {
+    if (roles.length > 0) {
         roles.forEach((i: any) => {
-            // console.log(i.role);
+            userRoles.push(i.role.name);
             i.role.rolePermission.forEach((j: any) => {
                 permissions.push(j.permission.name);
             });
@@ -57,7 +57,10 @@ const getUserPermissions = asyncHandler(async (id: number) => {
     }
 
 
-    return permissions;
+    return {
+        roles: userRoles,
+        permissions: permissions
+    };
 })
 
 module.exports = {

@@ -15,7 +15,7 @@ const getPosts = asyncHandler(async (req: any, res: any) => {
 
 
 const getPostById = asyncHandler(async (req: any, res: any) => {
-    
+
     const post = await prisma.post.findUnique({
         include: {
             author: true,
@@ -46,14 +46,20 @@ const createPost = asyncHandler(async (req: any, res: any) => {
 
     const user = req.user;
 
-    const permissions: Array<string> = await getUserPermissions(user.id);
-
-
-    // res.json(permissions)
-
-    if (!permissions.includes('createPost')) {
-        throw new Error('Na mennyé more haza magadnak! 😈😈');
+    type PermissionResultType = {
+        roles: Array<string>;
+        permissions: Array<string>
     }
+    const permissions: PermissionResultType = await getUserPermissions(user.id);
+
+    
+    if (!permissions.roles.includes('admin')) {
+        if (!permissions.permissions?.includes('createPost')) {
+            throw new Error('Na mennyé more haza magadnak! 😈😈');
+        }
+    }
+    
+    // res.json(permissions);
 
     const post = await prisma.post.create({
         data: {

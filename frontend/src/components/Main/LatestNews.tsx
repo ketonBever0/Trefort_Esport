@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import BlogArticleContext from '../../_context/BlogArticleContext'
 import { Link } from 'react-router-dom';
+import Sidebar from '../Sidebar';
 
 function LatestNews() {
 
@@ -40,7 +41,7 @@ function LatestNews() {
 
                             {
                                 posts.length > 1 ?
-                                    posts.slice(0,5).map((post: any, index: React.Key) => (
+                                    posts.slice(0, 5).map((post: any, index: React.Key) => (
                                         <div className={`nk-news-box-item ${selectedPostItem == post && 'nk-news-box-item-active'}`} onClick={() => setSelectedPostItem(post)} key={index}>
                                             <div className="nk-news-box-item-img">
                                                 <img
@@ -103,6 +104,7 @@ function LatestNews() {
                     </div>
                 }
             </div>
+            
         </div>
     )
 }
