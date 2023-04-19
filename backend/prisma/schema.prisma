@@ -19,6 +19,7 @@ model Clan {
   status    String    @db.VarChar(255)
   users     User[]
 
+  @@map("clans")
 }
 
 model Organization {
@@ -31,11 +32,15 @@ model Organization {
   type            String    @db.VarChar(255)
   status          String    @db.VarChar(255)
   description     String?   @db.VarChar(255)
+
+  @@map("organizations")
 }
 
 model Post {
   id      Int     @id @default(autoincrement())
   text    String  @db.Text()
+
+  @@map("posts")
 }
 
 model User {
@@ -60,6 +65,8 @@ model User {
   userRoles         UserRole[]
   banned            Ban?         
   description       String?         @db.VarChar(255)
+
+  @@map("users")
 }
 
 model UserRole {
@@ -67,12 +74,16 @@ model UserRole {
   roleId    Int
   userId    Int 
   user      User     @relation(fields: [userId], references: [id])
+
+  @@map("userroles")
 }
 
 model Role {
   id          Int      @id @default(autoincrement())
   name        String   @db.VarChar(255)
   permissions RolePermission[]
+
+  @@map("roles")
 }
 
 model RolePermission {
@@ -81,6 +92,8 @@ model RolePermission {
   permissionId  Int
   permissions   Permission[]
   role      Role         @relation(fields: [roleId], references: [id])
+
+  @@map("rolepermissions")
 }
 
 model Permission {
@@ -88,6 +101,8 @@ model Permission {
   RolePermission RolePermission   @relation(fields: [id], references: [id])
   name           String           @db.VarChar(255)
   description    String           @db.VarChar(255)
+
+  @@map("permissions")
 }
 
 model Event {
@@ -98,6 +113,8 @@ model Event {
   sponsor         String?   @db.VarChar(255)
   competitions    Competition[]
   description     String    @db.VarChar(255)
+
+  @@map("events")
 }
 
 model SessionTeam {
@@ -108,6 +125,8 @@ model SessionTeam {
   competition      Competition  @relation(fields: [competitionId], references: [id])
   userId           Int
   position         String       @db.VarChar(255)
+
+  @@map("sessionteams")
 }
 
 model Competition {
@@ -125,6 +144,8 @@ model Competition {
   sessionTeams      SessionTeam[]
   competitionType   String    @db.VarChar(255)
   description       String    @db.VarChar(255)
+
+  @@map("competitions")
 }
 
 model Ban {
@@ -133,7 +154,9 @@ model Ban {
   userId      Int      @unique
   reason      String   @db.VarChar(255)
   status      String   @db.VarChar(255)
-  bannedUntil DateTime 
+  bannedUntil DateTime
+
+  @@map("bans")
 }
 
 
