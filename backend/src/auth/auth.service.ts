@@ -1,7 +1,8 @@
-import { Injectable } from "@nestjs/common";
+import { ForbiddenException, Injectable } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
 import { AuthDto } from "./dto";
 import * as argon from 'argon2';
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
 
 
 @Injectable({})
@@ -12,40 +13,49 @@ export class AuthService {
         //generate password hash
         const hash = await argon.hash(dto.password);
         // save user in the db
-        const user = await this.prisma.user.create({
-            data: {
-                email: dto.email,
-                password: hash,
-                username: dto.username,
-                firstName: dto.firstName,
-                lastName: dto.lastName,
-                address: dto.address,
-                status: dto.status,
-            },
-            select: {
-                id: false,
-                clanId: false,
-                orgId: false,
-                representative: true,
-                username: true,
-                profilePicture: false,
-                email: true,
-                firstName: true,
-                lastName: true,
-                password: false,
-                address: true,
-                educationNumber: true,
-                status: false,
-                registrationDate: true,
-                lastLogin: false,
-                description: true,
+        try {
+            const user = await this.prisma.user.create({
+                data: {
+                    email: dto.email,
+                    password: hash,
+                    username: dto.username,
+                    firstName: dto.firstName,
+                    lastName: dto.lastName,
+                    address: dto.address,
+                    status: dto.status,
+                },
+                select: {
+                    id: false,
+                    clanId: false,
+                    orgId: false,
+                    representative: true,
+                    username: true,
+                    profilePicture: false,
+                    email: true,
+                    firstName: true,
+                    lastName: true,
+                    password: false,
+                    address: true,
+                    educationNumber: true,
+                    status: false,
+                    registrationDate: true,
+                    lastLogin: false,
+                    description: true,
+                }
+            });
+            // return user for the front
+            return user; 
+        } catch (error) {
+            if(error.meta.target.includes('key')) {
+                if(error.code === 'P2002') {
+                    throw new ForbiddenException('Credentials taken');
+                }
             }
-        });
-        // return saved user
-        return user;
+        }
+        
     }
     signin() {
-
+        
         return {message: 'Sign in'}
     }
 }
