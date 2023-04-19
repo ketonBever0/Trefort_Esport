@@ -13,10 +13,6 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     }
     // Append the req user object with the payload
     validate(payload: any) {
-        console.log({
-            payload
-        });
-
         return payload;
     }
 }
