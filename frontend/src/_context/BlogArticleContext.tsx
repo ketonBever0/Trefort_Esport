@@ -12,20 +12,20 @@ export const BlogArticleProvider = ({ children }: any) => {
 
     const getArticles = async () => {
         setIsPostsLoading(true);
-        await fetch('http://localhost:8000/posts')
+        await fetch('http://localhost:8000/api/post/posts')
             .then(res => res.json())
-            .then(data => setPosts(data))
+            .then(data => setPosts(data.reverse()))
             .catch(err => console.log(err))
             .finally(() => setIsPostsLoading(false));
     }
 
 
     const [isBlogArticleLoading, setIsBlogArticleLoading] = useState<boolean>(false);
-    const [blogArticle, setblogArticle] = useState<Object | null>({});
+    const [blogArticle, setblogArticle] = useState<Object | null>(null);
 
     const getBlogArticle = async (id: number) => {
         setIsBlogArticleLoading(true);
-        await fetch(`http://localhost:8000/posts/${id}`)
+        await fetch(`http://localhost:8000/api/post/post/${id}`)
             .then(res => res.json())
             .then(data => setblogArticle(data))
             .catch(err => console.log(err))

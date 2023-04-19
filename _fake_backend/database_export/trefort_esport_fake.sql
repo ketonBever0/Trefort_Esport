@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Ápr 17. 08:52
--- Kiszolgáló verziója: 10.4.24-MariaDB
--- PHP verzió: 8.1.6
+-- Host: 127.0.0.1
+-- Generation Time: Apr 19, 2023 at 10:12 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Adatbázis: `trefort_esport_fake`
+-- Database: `trefort_esport_fake`
 --
 CREATE DATABASE IF NOT EXISTS `trefort_esport_fake` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `trefort_esport_fake`;
@@ -26,7 +26,7 @@ USE `trefort_esport_fake`;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `ban`
+-- Table structure for table `ban`
 --
 
 CREATE TABLE `ban` (
@@ -40,7 +40,7 @@ CREATE TABLE `ban` (
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `clan`
+-- Table structure for table `clan`
 --
 
 CREATE TABLE `clan` (
@@ -55,7 +55,7 @@ CREATE TABLE `clan` (
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `competition`
+-- Table structure for table `competition`
 --
 
 CREATE TABLE `competition` (
@@ -76,7 +76,7 @@ CREATE TABLE `competition` (
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `event`
+-- Table structure for table `event`
 --
 
 CREATE TABLE `event` (
@@ -92,7 +92,7 @@ CREATE TABLE `event` (
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `organization`
+-- Table structure for table `organization`
 --
 
 CREATE TABLE `organization` (
@@ -111,7 +111,7 @@ CREATE TABLE `organization` (
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `permission`
+-- Table structure for table `permission`
 --
 
 CREATE TABLE `permission` (
@@ -121,7 +121,7 @@ CREATE TABLE `permission` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- A tábla adatainak kiíratása `permission`
+-- Dumping data for table `permission`
 --
 
 INSERT INTO `permission` (`id`, `name`, `description`) VALUES
@@ -135,7 +135,7 @@ INSERT INTO `permission` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `post`
+-- Table structure for table `post`
 --
 
 CREATE TABLE `post` (
@@ -147,10 +147,18 @@ CREATE TABLE `post` (
   `authorId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`id`, `title`, `content`, `published`, `createdAt`, `authorId`) VALUES
+(1, 'Test Post1', '<p>Donec eget felis odio. Proin vehicula massa a tristique volutpat. Etiam lacinia porttitor purus. Praesent risus nisi, posuere vitae lacus non, auctor aliquam ipsum. Praesent scelerisque sodales purus sed tincidunt. Nulla ut velit ac dui maximus rutrum id ac leo. Donec pulvinar dolor non gravida malesuada. Nulla eleifend arcu tellus, eget faucibus erat lacinia non. Quisque aliquet urna risus, eget accumsan magna consectetur a. Cras dapibus tortor libero, ac egestas velit dapibus nec. Pellentesque at porttitor lectus, at malesuada lectus. Phasellus leo libero, interdum at nunc nec, pulvinar pretium purus.</p>', 0, '2023-04-19 19:17:59.606', 2),
+(2, 'Lorem Ipsum', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum ultricies turpis et hendrerit. Maecenas tortor magna, fermentum finibus vestibulum a, egestas ac mi. Nunc eleifend justo sed ipsum eleifend lobortis. Curabitur sed lobortis magna. Morbi sollicitudin elit ipsum, dictum sagittis risus pharetra non. Etiam et dictum quam. Quisque in nisl malesuada, laoreet quam nec, finibus est. Donec magna erat, sodales et mi nec, viverra semper erat. Vivamus lobortis, ante id bibendum semper, libero ex fringilla massa, eleifend commodo lectus dui ac ligula.</p><p>Sed eleifend elit risus, at dictum quam malesuada ac. Cras efficitur egestas est in placerat. Phasellus et lacus lobortis, laoreet lacus ac, auctor risus. Maecenas consequat, elit quis dapibus egestas, metus mauris ullamcorper urna, vitae lobortis arcu eros nec augue. Donec porttitor sit amet mi eu imperdiet. Morbi interdum elementum turpis eget vulputate. Cras nunc ipsum, fermentum eu neque in, tempus tempor sapien. Integer rhoncus eu nisi nec lobortis. Etiam in ante tempor, molestie urna vitae, bibendum orci.</p><p>Sed facilisis velit tincidunt mi vulputate, ac dapibus enim aliquet. Fusce laoreet nec augue ac ornare. Sed in felis ultrices, sollicitudin nunc non, rutrum ex. Morbi sed fermentum eros. Ut vestibulum rhoncus pulvinar. Duis efficitur mauris eu lorem feugiat fermentum. Sed tempor scelerisque blandit. Etiam hendrerit semper quam, a egestas est auctor non. Integer at nibh lacus. Donec pellentesque aliquet eros vel vulputate. Duis nec consequat ipsum. Phasellus vel placerat massa. Proin aliquet ornare consequat. Suspendisse tempus faucibus bibendum. Donec ac pulvinar turpis, ut vulputate tortor.</p><p>Praesent ut malesuada risus. Ut viverra lectus odio, id ullamcorper tellus fermentum nec. Curabitur hendrerit orci commodo massa vestibulum posuere. Maecenas dignissim, ligula sed vulputate finibus, nisi risus pellentesque odio, in hendrerit elit massa ut mauris. Mauris odio dui, faucibus vel ultricies at, dapibus at velit. Nunc a faucibus nunc. Phasellus rutrum at felis placerat ultricies. Vivamus tincidunt accumsan aliquam. In convallis velit sit amet fringilla maximus. Vestibulum et dui quis dolor laoreet euismod nec in diam. Aliquam placerat mi ut aliquet rhoncus. Ut sed leo aliquet ante auctor malesuada. Cras eu finibus neque, nec accumsan nunc. Proin efficitur ante vel euismod placerat. Mauris sit amet leo dui. Ut quis purus magna.</p><p>Aliquam pellentesque egestas lacus et aliquet. Nam non est vestibulum, convallis velit sit amet, ullamcorper lorem. Curabitur eu lorem facilisis, pulvinar lacus vel, ultrices leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras sem mi, interdum at vestibulum et, ultrices sit amet nibh. Nam dignissim eu neque sit amet cursus. Proin lobortis nec neque ut rhoncus. Etiam accumsan elit sed justo maximus accumsan. Nulla mi nulla, varius quis risus ac, rutrum pellentesque est. In vehicula ante a ipsum suscipit elementum. Quisque non sollicitudin felis, sit amet tristique magna. Suspendisse at maximus ante. Donec dictum purus ac consectetur varius. Maecenas vehicula lectus sit amet risus ullamcorper finibus. Praesent feugiat non libero non condimentum. Morbi lobortis tempor gravida.</p>', 0, '2023-04-19 19:29:45.269', 2);
+
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `role`
+-- Table structure for table `role`
 --
 
 CREATE TABLE `role` (
@@ -160,7 +168,7 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- A tábla adatainak kiíratása `role`
+-- Dumping data for table `role`
 --
 
 INSERT INTO `role` (`id`, `name`, `description`) VALUES
@@ -171,7 +179,7 @@ INSERT INTO `role` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `rolepermission`
+-- Table structure for table `rolepermission`
 --
 
 CREATE TABLE `rolepermission` (
@@ -181,7 +189,7 @@ CREATE TABLE `rolepermission` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- A tábla adatainak kiíratása `rolepermission`
+-- Dumping data for table `rolepermission`
 --
 
 INSERT INTO `rolepermission` (`id`, `roleId`, `permissionId`) VALUES
@@ -195,7 +203,7 @@ INSERT INTO `rolepermission` (`id`, `roleId`, `permissionId`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `sessionteam`
+-- Table structure for table `sessionteam`
 --
 
 CREATE TABLE `sessionteam` (
@@ -208,7 +216,7 @@ CREATE TABLE `sessionteam` (
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -229,7 +237,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- A tábla adatainak kiíratása `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `email`, `username`, `password`, `profilePicture`, `firstName`, `lastName`, `address`, `educationIdNum`, `status`, `registrationDate`, `lastLoginDate`, `description`, `memberOfClanId`) VALUES
@@ -240,7 +248,7 @@ INSERT INTO `user` (`id`, `email`, `username`, `password`, `profilePicture`, `fi
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `userrole`
+-- Table structure for table `userrole`
 --
 
 CREATE TABLE `userrole` (
@@ -250,7 +258,7 @@ CREATE TABLE `userrole` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- A tábla adatainak kiíratása `userrole`
+-- Dumping data for table `userrole`
 --
 
 INSERT INTO `userrole` (`id`, `userId`, `roleId`) VALUES
@@ -261,7 +269,7 @@ INSERT INTO `userrole` (`id`, `userId`, `roleId`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `_prisma_migrations`
+-- Table structure for table `_prisma_migrations`
 --
 
 CREATE TABLE `_prisma_migrations` (
@@ -276,46 +284,47 @@ CREATE TABLE `_prisma_migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- A tábla adatainak kiíratása `_prisma_migrations`
+-- Dumping data for table `_prisma_migrations`
 --
 
 INSERT INTO `_prisma_migrations` (`id`, `checksum`, `finished_at`, `migration_name`, `logs`, `rolled_back_at`, `started_at`, `applied_steps_count`) VALUES
-('0fd7eff6-f4e4-4182-8ccc-7ff4b72c1801', '8a8d8384f89a77ad9aea6cb6ff8091fc5b59a534772ecbb3c54ec3449c16498f', '2023-04-17 06:12:32.147', '20230417061231_init', NULL, NULL, '2023-04-17 06:12:31.057', 1);
+('0fd7eff6-f4e4-4182-8ccc-7ff4b72c1801', '8a8d8384f89a77ad9aea6cb6ff8091fc5b59a534772ecbb3c54ec3449c16498f', '2023-04-17 06:12:32.147', '20230417061231_init', NULL, NULL, '2023-04-17 06:12:31.057', 1),
+('7e28647e-7344-4567-841d-46a705782735', 'f53de43c3ed36ca70112ddae6aa6ae704b102fe79027bac977247ba9677695b6', '2023-04-19 19:12:24.723', '20230417061231_init', NULL, NULL, '2023-04-19 19:12:24.303', 1);
 
 --
--- Indexek a kiírt táblákhoz
+-- Indexes for dumped tables
 --
 
 --
--- A tábla indexei `ban`
+-- Indexes for table `ban`
 --
 ALTER TABLE `ban`
   ADD PRIMARY KEY (`id`),
   ADD KEY `Ban_userId_fkey` (`userId`);
 
 --
--- A tábla indexei `clan`
+-- Indexes for table `clan`
 --
 ALTER TABLE `clan`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `Clan_creatorId_key` (`creatorId`);
 
 --
--- A tábla indexei `competition`
+-- Indexes for table `competition`
 --
 ALTER TABLE `competition`
   ADD PRIMARY KEY (`id`),
   ADD KEY `Competition_eventId_fkey` (`eventId`);
 
 --
--- A tábla indexei `event`
+-- Indexes for table `event`
 --
 ALTER TABLE `event`
   ADD PRIMARY KEY (`id`),
   ADD KEY `Event_organizationId_fkey` (`organizationId`);
 
 --
--- A tábla indexei `organization`
+-- Indexes for table `organization`
 --
 ALTER TABLE `organization`
   ADD PRIMARY KEY (`id`),
@@ -323,28 +332,28 @@ ALTER TABLE `organization`
   ADD UNIQUE KEY `Organization_email_key` (`email`);
 
 --
--- A tábla indexei `permission`
+-- Indexes for table `permission`
 --
 ALTER TABLE `permission`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `Permission_name_key` (`name`);
 
 --
--- A tábla indexei `post`
+-- Indexes for table `post`
 --
 ALTER TABLE `post`
   ADD PRIMARY KEY (`id`),
   ADD KEY `Post_authorId_fkey` (`authorId`);
 
 --
--- A tábla indexei `role`
+-- Indexes for table `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `Role_name_key` (`name`);
 
 --
--- A tábla indexei `rolepermission`
+-- Indexes for table `rolepermission`
 --
 ALTER TABLE `rolepermission`
   ADD PRIMARY KEY (`id`),
@@ -352,7 +361,7 @@ ALTER TABLE `rolepermission`
   ADD KEY `RolePermission_permissionId_fkey` (`permissionId`);
 
 --
--- A tábla indexei `sessionteam`
+-- Indexes for table `sessionteam`
 --
 ALTER TABLE `sessionteam`
   ADD PRIMARY KEY (`id`),
@@ -360,7 +369,7 @@ ALTER TABLE `sessionteam`
   ADD KEY `SessionTeam_memberId_fkey` (`memberId`);
 
 --
--- A tábla indexei `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
@@ -370,7 +379,7 @@ ALTER TABLE `user`
   ADD KEY `User_memberOfClanId_fkey` (`memberOfClanId`);
 
 --
--- A tábla indexei `userrole`
+-- Indexes for table `userrole`
 --
 ALTER TABLE `userrole`
   ADD PRIMARY KEY (`id`),
@@ -378,149 +387,149 @@ ALTER TABLE `userrole`
   ADD KEY `UserRole_roleId_fkey` (`roleId`);
 
 --
--- A tábla indexei `_prisma_migrations`
+-- Indexes for table `_prisma_migrations`
 --
 ALTER TABLE `_prisma_migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- A kiírt táblák AUTO_INCREMENT értéke
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT a táblához `ban`
+-- AUTO_INCREMENT for table `ban`
 --
 ALTER TABLE `ban`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `clan`
+-- AUTO_INCREMENT for table `clan`
 --
 ALTER TABLE `clan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `competition`
+-- AUTO_INCREMENT for table `competition`
 --
 ALTER TABLE `competition`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `event`
+-- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `organization`
+-- AUTO_INCREMENT for table `organization`
 --
 ALTER TABLE `organization`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `permission`
+-- AUTO_INCREMENT for table `permission`
 --
 ALTER TABLE `permission`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT a táblához `post`
+-- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT a táblához `role`
+-- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT a táblához `rolepermission`
+-- AUTO_INCREMENT for table `rolepermission`
 --
 ALTER TABLE `rolepermission`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT a táblához `sessionteam`
+-- AUTO_INCREMENT for table `sessionteam`
 --
 ALTER TABLE `sessionteam`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT a táblához `userrole`
+-- AUTO_INCREMENT for table `userrole`
 --
 ALTER TABLE `userrole`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Megkötések a kiírt táblákhoz
+-- Constraints for dumped tables
 --
 
 --
--- Megkötések a táblához `ban`
+-- Constraints for table `ban`
 --
 ALTER TABLE `ban`
   ADD CONSTRAINT `Ban_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON UPDATE CASCADE;
 
 --
--- Megkötések a táblához `clan`
+-- Constraints for table `clan`
 --
 ALTER TABLE `clan`
   ADD CONSTRAINT `Clan_creatorId_fkey` FOREIGN KEY (`creatorId`) REFERENCES `user` (`id`) ON UPDATE CASCADE;
 
 --
--- Megkötések a táblához `competition`
+-- Constraints for table `competition`
 --
 ALTER TABLE `competition`
   ADD CONSTRAINT `Competition_eventId_fkey` FOREIGN KEY (`eventId`) REFERENCES `event` (`id`) ON UPDATE CASCADE;
 
 --
--- Megkötések a táblához `event`
+-- Constraints for table `event`
 --
 ALTER TABLE `event`
   ADD CONSTRAINT `Event_organizationId_fkey` FOREIGN KEY (`organizationId`) REFERENCES `organization` (`id`) ON UPDATE CASCADE;
 
 --
--- Megkötések a táblához `organization`
+-- Constraints for table `organization`
 --
 ALTER TABLE `organization`
   ADD CONSTRAINT `Organization_representativeId_fkey` FOREIGN KEY (`representativeId`) REFERENCES `user` (`id`) ON UPDATE CASCADE;
 
 --
--- Megkötések a táblához `post`
+-- Constraints for table `post`
 --
 ALTER TABLE `post`
   ADD CONSTRAINT `Post_authorId_fkey` FOREIGN KEY (`authorId`) REFERENCES `user` (`id`) ON UPDATE CASCADE;
 
 --
--- Megkötések a táblához `rolepermission`
+-- Constraints for table `rolepermission`
 --
 ALTER TABLE `rolepermission`
   ADD CONSTRAINT `RolePermission_permissionId_fkey` FOREIGN KEY (`permissionId`) REFERENCES `permission` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `RolePermission_roleId_fkey` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Megkötések a táblához `sessionteam`
+-- Constraints for table `sessionteam`
 --
 ALTER TABLE `sessionteam`
   ADD CONSTRAINT `SessionTeam_competitionId_fkey` FOREIGN KEY (`competitionId`) REFERENCES `competition` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `SessionTeam_memberId_fkey` FOREIGN KEY (`memberId`) REFERENCES `user` (`id`) ON UPDATE CASCADE;
 
 --
--- Megkötések a táblához `user`
+-- Constraints for table `user`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `User_memberOfClanId_fkey` FOREIGN KEY (`memberOfClanId`) REFERENCES `clan` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Megkötések a táblához `userrole`
+-- Constraints for table `userrole`
 --
 ALTER TABLE `userrole`
   ADD CONSTRAINT `UserRole_roleId_fkey` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,

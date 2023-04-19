@@ -15,12 +15,13 @@ const getPosts = asyncHandler(async (req: any, res: any) => {
 
 
 const getPostById = asyncHandler(async (req: any, res: any) => {
-    const post = await prisma.post.findFirst({
+    
+    const post = await prisma.post.findUnique({
         include: {
             author: true,
         },
         where: {
-            title: req.params.id
+            id: parseInt(req.params.id)
         }
     });
     if (post) {

@@ -54,8 +54,6 @@ const getUserPermissions = asyncHandler(async (id: number) => {
                 permissions.push(j.permission.name);
             });
         });
-    } else {
-        throw new Error("Ennek a felhasználónak nincsenek jogai!");
     }
 
 
