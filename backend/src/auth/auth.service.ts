@@ -1,6 +1,6 @@
 import { ForbiddenException, Injectable } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
-import { AuthDto, SignInDto } from "./dto";
+import { SignUpDto, SignInDto } from "./dto";
 import * as argon from 'argon2';
 
 
@@ -8,7 +8,7 @@ import * as argon from 'argon2';
 export class AuthService {
     constructor(private prisma: PrismaService){}
 
-    async signup(dto: AuthDto) {
+    async signup(dto: SignUpDto) {
         //generate password hash
         const hash = await argon.hash(dto.password);
         // save user in the db
