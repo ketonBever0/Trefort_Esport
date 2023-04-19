@@ -8,7 +8,7 @@ import * as argon from 'argon2';
 export class AuthService {
     constructor(private prisma: PrismaService){}
 
-    async signup(dto: SignUpDto) {
+    async signUp(dto: SignUpDto) {
         //generate password hash
         const hash = await argon.hash(dto.password);
         // save user in the db
@@ -53,7 +53,7 @@ export class AuthService {
         }
         
     }
-    async signin(dto: SignInDto) {
+    async signIn(dto: SignInDto) {
 
         const user = await this.prisma.user.findUnique({
             where: {
