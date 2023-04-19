@@ -21,12 +21,31 @@ export class AuthService {
                 lastName: dto.lastName,
                 address: dto.address,
                 status: dto.status,
+            },
+            select: {
+                id: false,
+                clanId: false,
+                orgId: false,
+                representative: true,
+                username: true,
+                profilePicture: false,
+                email: true,
+                firstName: true,
+                lastName: true,
+                password: false,
+                address: true,
+                educationNumber: true,
+                status: false,
+                registrationDate: true,
+                lastLogin: false,
+                description: true,
             }
         });
         // return saved user
         return user;
     }
     signin() {
+
         return {message: 'Sign in'}
     }
 }
