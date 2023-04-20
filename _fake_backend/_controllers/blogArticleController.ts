@@ -35,6 +35,7 @@ const getPostById = asyncHandler(async (req: any, res: any) => {
 
 interface PostType {
     title: string;
+    header: string;
     content: string;
     published: boolean;
     authorId: number;
@@ -42,7 +43,7 @@ interface PostType {
 
 const createPost = asyncHandler(async (req: any, res: any) => {
 
-    const { title, content } = req.body;
+    const { title, header, content } = req.body;
 
     const user = req.user;
 
@@ -52,18 +53,19 @@ const createPost = asyncHandler(async (req: any, res: any) => {
     }
     const permissions: PermissionResultType = await getUserPermissions(user.id);
 
-    
+
     if (!permissions.roles.includes('admin')) {
         if (!permissions.permissions?.includes('createPost')) {
             throw new Error('Na mennyé more haza magadnak! 😈😈');
         }
     }
-    
+
     // res.json(permissions);
 
     const post = await prisma.post.create({
         data: {
             title: title,
+            header: header,
             content: content,
             authorId: req.user.id
         } as PostType
