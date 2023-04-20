@@ -14,7 +14,7 @@ export class UserController {
     getMe(@GetUser() user: User) {
         return user;
     }
-    
+
     @Patch('modify')
     patchUser(
         @GetUser() user: User,
@@ -22,7 +22,7 @@ export class UserController {
     ) {
         return this.userService.modifyUserData(user, dto);
     }
-    
+
     @Patch('delete')
     deleteUser(
         @GetUser() user: User
