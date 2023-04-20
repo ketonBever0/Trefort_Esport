@@ -40,7 +40,7 @@ function LatestNews() {
                         <div className="nano-content">
 
                             {
-                                posts.length > 1 ?
+                                posts.length > 0 ?
                                     posts.slice(0, 5).map((post: any, index: React.Key) => (
                                         <div className={`nk-news-box-item ${selectedPostItem == post && 'nk-news-box-item-active'}`} onClick={() => setSelectedPostItem(post)} key={index}>
                                             <div className="nk-news-box-item-img">
@@ -78,7 +78,7 @@ function LatestNews() {
                 </div>
 
                 {
-                    posts.length > 1 &&
+                    posts.length > 0 &&
                     <div className="nk-news-box-each-info">
                         <div className="nano">
                             <div className="nano-content">

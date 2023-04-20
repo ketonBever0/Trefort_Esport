@@ -9,6 +9,15 @@ import { BlogArticleProvider } from './_context/BlogArticleContext'
 import BlogArticlePage from './pages/BlogArticlePage'
 import Tournaments from './pages/Tournaments'
 import { UserProvider } from './_context/UserContext'
+import OfflinePage from './pages/OfflinePage'
+import SubmitOrganisation1 from './pages/SubmitOrganisation1'
+import SubmitOrganisation2 from './pages/SubmitOrganisation2'
+import Button2 from './ui/Button2'
+import Button from './ui/Button'
+import Register2 from './pages/Register2'
+import Register1 from './pages/Register1'
+import EditEvent from './pages/EditEvent'
+import Events from './pages/Events'
 
 function App() {
 
@@ -37,6 +46,16 @@ function App() {
                     <Route path='/tournaments/upcoming' />
 
                   </Route>
+                  <Route path='/offline' element={<OfflinePage />} />
+                  <Route path='/event' element={<Events />} />
+                  <Route path='/editevent' element={<EditEvent />} />
+                  <Route path='/register1' element={<Register1 />} />
+                  <Route path='/register2' element={<Register2 />} />
+                  <Route path='/btn' element={<Button />} />
+                  <Route path='/btn2' element={<Button2 />} />
+                  <Route path='/submitorg1' element={<SubmitOrganisation1 />} />
+                  <Route path='/submitorg2' element={<SubmitOrganisation2 />} />
+
 
                 </Routes>
               </div>

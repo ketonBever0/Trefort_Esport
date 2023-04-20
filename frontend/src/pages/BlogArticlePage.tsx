@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import Sidebar from '../components/Sidebar';
 import BlogArticleContext from '../_context/BlogArticleContext';
 
 function BlogArticlePage() {
@@ -50,10 +51,13 @@ function BlogArticlePage() {
                 <div className='nk-gap-2' />
                 {/* END: Breadcrumbs */}
                 <div className="container">
+
+
+                    {/* START: Post */}
+
                     <div className="row vertical-gap">
                         <div className="col-lg-8">
 
-                            {/* START: Post */}
                             {
                                 blogArticle && (
                                     <div className="nk-blog-post nk-blog-post-single">
@@ -66,7 +70,7 @@ function BlogArticlePage() {
                                                 />
                                             </div>
                                             <div className="nk-gap-1" />
-                                            <h1 className="nk-post-title h4">Grab your sword and fight the Horde</h1>
+                                            <h1 className="nk-post-title h4">{blogArticle.header}</h1>
                                             <div className="nk-post-by">
                                                 <img
                                                     src="assets/images/avatar-2.jpg"
@@ -318,11 +322,17 @@ function BlogArticlePage() {
                                     </div>
                                 )
                             }
-
-                            {/* END: Post */}
                         </div>
+
+                        <div className='col-lg-4'>
+                            <Sidebar />
+                        </div>
+
                     </div>
+
+                    {/* END: Post */}
                 </div>
+
             </div>
 
 

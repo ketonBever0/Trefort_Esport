@@ -13,6 +13,7 @@ datasource db {
 model Post {
   id        Int      @id @default(autoincrement())
   title     String
+  header    String
   content   String?  @db.LongText
   published Boolean  @default(false)
   createdAt DateTime @default(now())
@@ -42,8 +43,6 @@ model Clan {
 
 model Organization {
   id               Int     @id @default(autoincrement())
-  representative   User    @relation(fields: [representativeId], references: [id])
-  representativeId Int     @unique
   events           Event[]
   name             String
   picture          String
@@ -53,6 +52,9 @@ model Organization {
   type             String
   status           String
   description      String?
+  members          User[]  @relation(name: "orgMembers")
+  representative   User    @relation(name: "orgRep", fields: [representativeId], references: [id])
+  representativeId Int     @unique
 }
 
 model Event {
@@ -94,27 +96,29 @@ model SessionTeam {
 }
 
 model User {
-  id               Int           @id @default(autoincrement())
-  email            String        @unique
-  username         String        @unique
-  password         String
-  profilePicture   String?
-  firstName        String
-  lastName         String
-  address          String
-  educationIdNum   Int?          @unique
-  status           String        @default("active")
-  registrationDate DateTime?     @default(now())
-  lastLoginDate    DateTime?     @default(now())
-  description      String?
-  posts            Post[]
-  organization     Organization?
-  banned           Ban[]
-  memberOfClan     Clan?         @relation(name: "members", fields: [memberOfClanId], references: [id])
-  memberOfClanId   Int?
-  creatorOfClan    Clan?         @relation(name: "creator")
-  sessionTeams     SessionTeam[]
-  userRoles        UserRole[]
+  id                           Int           @id @default(autoincrement())
+  email                        String        @unique
+  username                     String        @unique
+  password                     String
+  profilePicture               String?
+  firstName                    String
+  lastName                     String
+  address                      String
+  educationIdNum               Int?          @unique
+  status                       String        @default("active")
+  registrationDate             DateTime?     @default(now())
+  lastLoginDate                DateTime?     @default(now())
+  description                  String?
+  posts                        Post[]
+  memberOfOrganization         Organization? @relation(name: "orgMembers", fields: [memberOfOrganizationId], references: [id])
+  memberOfOrganizationId       Int?
+  representativeOfOrganization Organization? @relation(name: "orgRep")
+  banned                       Ban[]
+  memberOfClan                 Clan?         @relation(name: "members", fields: [memberOfClanId], references: [id])
+  memberOfClanId               Int?
+  creatorOfClan                Clan?         @relation(name: "creator")
+  sessionTeams                 SessionTeam[]
+  userRoles                    UserRole[]
 }
 
 model UserRole {

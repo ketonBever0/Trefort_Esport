@@ -1,0 +1,45 @@
+.mybutton {
+    background-color: transparent;
+    font-family: inherit;
+    display: inline-block;
+    line-height: 2.5em;
+    overflow: hidden;
+    margin: 20px;
+    color: white;
+    position: relative;
+    border: none;
+    border-top: 3px solid #dd163b;
+    border-bottom: 3px solid #dd163b;  
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: medium;
+    padding: 5px;
+  }
+  
+  .mybutton::before {
+    position: absolute;
+    content: "";
+    background: #dd163b;
+    width: 200px;
+    height: 200px;
+    z-index: -1;
+    border-radius: 50%;
+  }
+  
+  .mybutton:hover {
+    color: white;
+    box-shadow: 3px 3px 3px #212121;
+  }
+  
+  .mybutton:before {
+    top: 100%;
+    left: 100%;
+    transition: .2s all;
+  }
+  
+  .mybutton:hover::before {
+    top: -30px;
+    left: -30px;
+  }
