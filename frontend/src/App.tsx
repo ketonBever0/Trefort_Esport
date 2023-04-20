@@ -18,6 +18,7 @@ import Register2 from './pages/Register2'
 import Register1 from './pages/Register1'
 import EditEvent from './pages/EditEvent'
 import Events from './pages/Events'
+import Elements from './pages/Elements'
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
                   <Route path='/btn2' element={<Button2 />} />
                   <Route path='/submitorg1' element={<SubmitOrganisation1 />} />
                   <Route path='/submitorg2' element={<SubmitOrganisation2 />} />
+                  <Route path='/elements' element={<Elements />} />
 
 
                 </Routes>

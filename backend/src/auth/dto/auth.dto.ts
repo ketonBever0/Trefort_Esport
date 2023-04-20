@@ -25,11 +25,6 @@ class SignUpDto {
     @IsString()
     @IsNotEmpty()
     address: string;
-
-    @IsString()
-    @IsNotEmpty()
-    status: string;
-
 }
 
 class SignInDto {

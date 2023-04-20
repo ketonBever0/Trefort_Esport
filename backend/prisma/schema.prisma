@@ -25,13 +25,13 @@ model Clan {
 model Organization {
   id              Int       @id @default(autoincrement())
   orgUsers        User[]    @relation("OrgUsers")  
-  picture         String?   @db.VarChar(255)
+  picture         String    @db.VarChar(255)
   location        String    @db.VarChar(255)
   email           String    @unique @db.VarChar(255)
   phoneNumber     String    @db.VarChar(255)
   type            String    @db.VarChar(255)
   status          String    @db.VarChar(255)
-  description     String?   @db.VarChar(255)
+  description     String    @db.VarChar(255)
 
   @@map("organizations")
 }
@@ -58,7 +58,7 @@ model User {
   password          String          @db.VarChar(255)
   address           String          @db.VarChar(255)
   educationNumber   Int?            @db.Int
-  status            String          @db.VarChar(255)
+  status            String?         @default("active")@db.VarChar(255)
   registrationDate  DateTime        @default(now())
   lastLogin         DateTime        @default(now())
   sessionTeams      SessionTeam[]

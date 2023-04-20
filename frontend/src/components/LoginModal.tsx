@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { IoMdClose } from 'react-icons/io'
 import UserContext from '../_context/UserContext';
+import '../ui/_css/dashboard.css'
 
 function LoginModal({ closeModal }: any) {
 
@@ -48,7 +49,7 @@ function LoginModal({ closeModal }: any) {
             <div className="modal-dialog modal-sm">
                 <div className="modal-content">
                     <div className="modal-body">
-                        <button
+                        <button id='dashboard_nav-collapse'
                             type="button"
                             className="nostyle-button closebutton"
                             onClick={() => {
@@ -66,6 +67,7 @@ function LoginModal({ closeModal }: any) {
                             <div className="row vertical-gap">
                                 <div className="col-md-7">
                                     <div className="nk-gap" />
+                                    <div className="form-floating">
                                     <input
                                         type="email"
                                         value={loginFormData.email}
@@ -76,17 +78,23 @@ function LoginModal({ closeModal }: any) {
                                         placeholder="E-mail cím"
                                         required
                                     />
+                                    <label htmlFor="nev" className='opacity-50'>Név</label>
+                                    </div>
                                     <div className="nk-gap" />
+                                    <div className="form-floating">
+
                                     <input
                                         type="password"
-                                        value={loginFormData.password}
+                                        value={loginFormData.email}
                                         onChange={handleLoginFormChange}
-                                        // defaultValue=""
-                                        name="password"
-                                        className="required form-control"
+                                        // defaultValue=
+                                        name="jelszo"
+                                        className=" form-control"
                                         placeholder="Jelszó"
                                         required
                                     />
+                                    <label htmlFor="jelszo" className='opacity-50'>Jelszó</label>
+                                    </div>
                                 </div>
                                 <div className="col-md-5">
                                     Egyéb lehetőségek: <div className="nk-gap" />

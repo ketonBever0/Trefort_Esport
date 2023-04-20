@@ -8,18 +8,20 @@ import { AiOutlineDown } from 'react-icons/ai';
 
 function NavBar() {
 
-    // window.onscroll = function () { scrollFunction() };
-
-    // function scrollFunction() {
-    //     if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-    //         document.getElementById("navbar").style.padding = "30px 10px";
-    //         document.getElementById("logo").style.fontSize = "25px";
-    //     } else {
-    //         document.getElementById("navbar").style.padding = "80px 10px";
-    //         document.getElementById("logo").style.fontSize = "35px";
-    //     }
-    // }
-
+    window.onscroll = function () { scrollFunction() };
+    var navbar: any = document.getElementById("myNav");
+    function scrollFunction() {
+        if (document.body.scrollTop > 70 || document.documentElement.scrollTop > 70) {
+            navbar.setAttribute("style", "transition: .5s; position: fixed; top: 0");
+            navbar.classList.add("p-10");
+            navbar.classList.add("sticky");
+        } else {
+            navbar.classList.remove("p-10");
+            navbar.classList.remove("sticky");
+            navbar.setAttribute("style", "transition: .3s;");
+            navbar.removeAttribute("style", "position: fixed; top: 0");
+        }
+    }
     const {
         userToken,
         userData,
@@ -32,8 +34,6 @@ function NavBar() {
 
     return (
         <div>
-
-
             <div className={`${isLoginModalOpen ? 'fixed-top' : 'visually-hidden'} overlay min-vh-100 min-vw-100`} onClick={(e) => {
                 setIsLoginModalOpen(false);
                 e.stopPropagation();
@@ -45,9 +45,8 @@ function NavBar() {
 
 
 
-            <header className="nk-header nk-header-opaque" style={{ position: 'fixed' }}>
-                <div>
-                    <div className="nk-contacts-top" style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}>
+            <header className="nk-header nk-header-opaque">
+                <div>                  <div className="nk-contacts-top" style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}>
                         <div className="container">
                             <div className="nk-contacts-left">
                                 <ul className="nk-social-links">
@@ -195,113 +194,106 @@ function NavBar() {
                             </div>
                         </div>
                     </div>
-                    {/* END: Top Contacts */}
-                    {/*
-  START: Navbar
-
-  Additional Classes:
-      .nk-navbar-sticky
-      .nk-navbar-transparent
-      .nk-navbar-autohide
-    */}
-                    <nav className="nk-navbar nk-navbar-top nk-navbar-sticky nk-navbar-autohide">
-                        <div className="container">
-                            <div className="nk-nav-table">
-                                <Link to='/' className="nk-nav-logo">
-                                    {/* <img src="/assets/images/logo.svg" alt="GoodGames" width={199} /> */}
-                                    <img src={"/src/assets/esport_logo.png"} width={280} />
-                                </Link>
-                                <ul
-                                    className="nk-nav nk-nav-right d-none d-lg-table-cell"
-                                    data-nav-mobile="#nk-nav-mobile"
-                                >
-                                    <li>
-                                        <Link to='/news' className='text-decoration-none'> Hírek </Link>
-                                    </li>
-                                    <li className="nk-drop-item">
-                                        <a href="blog-list.html" className='text-decoration-none'> Versenyek </a>
-                                        <ul className="dropdown">
-                                            <li>
-                                                <a href="news.html" className='text-decoration-none'> Legutóbbi </a>
-                                            </li>
-                                            <li className=" nk-drop-item">
-                                                <a href="blog-grid.html" className='text-decoration-none'> Blog With Sidebar </a>
-                                                <ul className="dropdown">
-                                                    <li>
-                                                        <a href="blog-grid.html" className='text-decoration-none'> Blog Grid </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="blog-list.html" className='text-decoration-none'> Blog List </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="blog-fullwidth.html" className='text-decoration-none'> Blog Fullwidth </a>
-                                            </li>
-                                            <li>
-                                                <a href="blog-article.html" className='text-decoration-none'> Blog Article </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="gallery.html" className='text-decoration-none'> Gallery </a>
-                                    </li>
-                                    <li className=" nk-drop-item">
-                                        <a href="tournaments.html" className='text-decoration-none'> Tournaments </a>
-                                        <ul className="dropdown">
-                                            <li>
-                                                <a href="tournaments.html" className='text-decoration-none'> Tournament </a>
-                                            </li>
-                                            <li>
-                                                <a href="tournaments-teams.html" className='text-decoration-none'> Teams </a>
-                                            </li>
-                                            <li>
-                                                <a href="tournaments-teammate.html" className='text-decoration-none'> Teammate </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className=" nk-drop-item">
-                                        <a href="store.html" className='text-decoration-none'> Store </a>
-                                        <ul className="dropdown">
-                                            <li>
-                                                <a href="store.html" className='text-decoration-none'> Store </a>
-                                            </li>
-                                            <li>
-                                                <a href="store-product.html" className='text-decoration-none'> Product </a>
-                                            </li>
-                                            <li>
-                                                <a href="store-catalog.html" className='text-decoration-none'> Catalog </a>
-                                            </li>
-                                            <li>
-                                                <a href="store-catalog-alt.html" className='text-decoration-none'> Catalog Alt </a>
-                                            </li>
-                                            <li>
-                                                <a href="store-checkout.html" className='text-decoration-none'> Checkout </a>
-                                            </li>
-                                            <li>
-                                                <a href="store-cart.html" className='text-decoration-none'> Cart </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                                <ul className="nk-nav nk-nav-right nk-nav-icons">
-                                    <li className="single-icon d-lg-none">
-                                        <a
-                                            href="#"
-                                            className="no-link-effect"
-                                            data-nav-toggle="#nk-nav-mobile"
-                                        >
-                                            <span className="nk-icon-burger">
-                                                <span className="nk-t-1" />
-                                                <span className="nk-t-2" />
-                                                <span className="nk-t-3" />
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
+                    <div className='row justify-content-center'>
+                        <nav id='myNav' className="nk-navbar nk-navbar-top nk-navbar-sticky nk-navbar-autohide">
+                            <div className="container">
+                                <div className="nk-nav-table">
+                                    <Link to='/' className="nk-nav-logo">
+                                        {/* <img src="/assets/images/logo.svg" alt="GoodGames" width={199} /> */}
+                                        <img src={"/src/assets/esport_logo.png"} width={280} />
+                                    </Link>
+                                    <ul
+                                        className="nk-nav nk-nav-right d-none d-lg-table-cell"
+                                        data-nav-mobile="#nk-nav-mobile"
+                                    >
+                                        <li>
+                                            <Link to='/news' className='text-decoration-none'> Hírek </Link>
+                                        </li>
+                                        <li className="nk-drop-item">
+                                            <a href="blog-list.html" className='text-decoration-none'> Versenyek </a>
+                                            <ul className="dropdown">
+                                                <li>
+                                                    <a href="news.html" className='text-decoration-none'> Legutóbbi </a>
+                                                </li>
+                                                <li className=" nk-drop-item">
+                                                    <a href="blog-grid.html" className='text-decoration-none'> Blog With Sidebar </a>
+                                                    <ul className="dropdown">
+                                                        <li>
+                                                            <a href="blog-grid.html" className='text-decoration-none'> Blog Grid </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="blog-list.html" className='text-decoration-none'> Blog List </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="blog-fullwidth.html" className='text-decoration-none'> Blog Fullwidth </a>
+                                                </li>
+                                                <li>
+                                                    <a href="blog-article.html" className='text-decoration-none'> Blog Article </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="gallery.html" className='text-decoration-none'> Gallery </a>
+                                        </li>
+                                        <li className=" nk-drop-item">
+                                            <a href="tournaments.html" className='text-decoration-none'> Tournaments </a>
+                                            <ul className="dropdown">
+                                                <li>
+                                                    <a href="tournaments.html" className='text-decoration-none'> Tournament </a>
+                                                </li>
+                                                <li>
+                                                    <a href="tournaments-teams.html" className='text-decoration-none'> Teams </a>
+                                                </li>
+                                                <li>
+                                                    <a href="tournaments-teammate.html" className='text-decoration-none'> Teammate </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li className=" nk-drop-item">
+                                            <a href="store.html" className='text-decoration-none'> Store </a>
+                                            <ul className="dropdown">
+                                                <li>
+                                                    <a href="store.html" className='text-decoration-none'> Store </a>
+                                                </li>
+                                                <li>
+                                                    <a href="store-product.html" className='text-decoration-none'> Product </a>
+                                                </li>
+                                                <li>
+                                                    <a href="store-catalog.html" className='text-decoration-none'> Catalog </a>
+                                                </li>
+                                                <li>
+                                                    <a href="store-catalog-alt.html" className='text-decoration-none'> Catalog Alt </a>
+                                                </li>
+                                                <li>
+                                                    <a href="store-checkout.html" className='text-decoration-none'> Checkout </a>
+                                                </li>
+                                                <li>
+                                                    <a href="store-cart.html" className='text-decoration-none'> Cart </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <ul className="nk-nav nk-nav-right nk-nav-icons">
+                                        <li className="single-icon d-lg-none">
+                                            <a
+                                                href="#"
+                                                className="no-link-effect"
+                                                data-nav-toggle="#nk-nav-mobile"
+                                            >
+                                                <span className="nk-icon-burger">
+                                                    <span className="nk-t-1" />
+                                                    <span className="nk-t-2" />
+                                                    <span className="nk-t-3" />
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                    </nav>
+                        </nav>
+                    </div>
                 </div>
                 {/* END: Navbar */}
             </header >

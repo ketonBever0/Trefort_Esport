@@ -43,15 +43,13 @@
   color: #eee;
   display: block;
   padding: 8px 12px;
-  width: 15rem;
   text-decoration: none;  
   transition: .5s linear;
   user-select: none;
   -webkit-user-drag: none;
   z-index: 1000;
-  position: absolute;
+  position: fixed;
   left:0;
-  top:0;
 }
 
 .dashboard_sticky {
