@@ -27,7 +27,6 @@ export class AuthService {
                     firstName: dto.firstName,
                     lastName: dto.lastName,
                     address: dto.address,
-                    status: dto.status,
                 },
             });
 
