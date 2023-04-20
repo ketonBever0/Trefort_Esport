@@ -8,6 +8,18 @@ import { AiOutlineDown } from 'react-icons/ai';
 
 function NavBar() {
 
+    // window.onscroll = function () { scrollFunction() };
+
+    // function scrollFunction() {
+    //     if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+    //         document.getElementById("navbar").style.padding = "30px 10px";
+    //         document.getElementById("logo").style.fontSize = "25px";
+    //     } else {
+    //         document.getElementById("navbar").style.padding = "80px 10px";
+    //         document.getElementById("logo").style.fontSize = "35px";
+    //     }
+    // }
+
     const {
         userToken,
         userData,
@@ -34,7 +46,7 @@ function NavBar() {
 
 
             <header className="nk-header nk-header-opaque" style={{ position: 'fixed' }}>
-                <div className=''>
+                <div>
                     <div className="nk-contacts-top" style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}>
                         <div className="container">
                             <div className="nk-contacts-left">

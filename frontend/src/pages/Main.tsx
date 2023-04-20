@@ -5,6 +5,7 @@ import NowPlaying from '../components/Main/NowPlaying'
 import LatestMatches from '../components/Main/LatestMatches'
 import LatestNews from '../components/Main/LatestNews'
 import Sidebar from '../components/Sidebar'
+import Dashboard from '../ui/Dashboard'
 
 function Main() {
 
@@ -16,6 +17,7 @@ function Main() {
     return (
         <div>
             <div className="nk-gap" />
+            <Dashboard/>
             <div className='m-10'>
                 {/* START: Image Slider */}
                 <div className="nk-image-slider" data-autoplay={8000}>
