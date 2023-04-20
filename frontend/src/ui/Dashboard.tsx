@@ -20,7 +20,7 @@ function Dashboard() {
         <div>
             <a id='dashboard_nav-expand' href="#">
                 <span className="dashboard_icon dashboard_icon-menu"></span>&nbsp;
-                Menu
+                Dashboard
             </a>
             <nav className="dashboard_nav bg-dark h4 text-center">
                 <a id="dashboard_nav-collapse" href="#">

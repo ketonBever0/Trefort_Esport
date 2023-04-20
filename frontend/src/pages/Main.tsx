@@ -16,20 +16,24 @@ function Main() {
 
     return (
         <div>
-            <div className="nk-gap" />
-            <Dashboard/>
-            <div className='m-10'>
-                {/* START: Image Slider */}
-                <div className="nk-image-slider" data-autoplay={8000}>
-                    <div className="nk-image-slider-item">
-                        <div className=''>Images</div>
-                    </div>
-                </div>
-            </div>
-            {/* END: Image Slider */}
+            <div className="container-fluid">
+                <div className="">
+                    <Dashboard />
+                    <div>
+                        <div className="nk-gap" />
 
-            {/* START: Categories */}
-            {/* <div className="nk-gap-2" />
+                        <div className='m-10'>
+                            {/* START: Image Slider */}
+                            <div className="nk-image-slider" data-autoplay={8000}>
+                                <div className="nk-image-slider-item">
+                                    <div className=''>Images</div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* END: Image Slider */}
+
+                        {/* START: Categories */}
+                        {/* <div className="nk-gap-2" />
                 <div className="row vertical-gap">
                     <div className="col-lg-4">
                         <div className="nk-feature-1">
@@ -78,39 +82,41 @@ function Main() {
                     </div>
                 </div> */}
 
-            <div className="nk-gap-6" />
-            <div className="row vertical-gap">
-                <div className="col-lg-8">
-                    <UpComingEvents />
+                        <div className="nk-gap-6" />
+                        <div className="row vertical-gap">
+                            <div className="col-lg-8">
+                                <UpComingEvents />
 
-                    <div className="nk-gap-2" />
+                                <div className="nk-gap-2" />
 
-                </div>
-
-
-
-                <div className="col-lg-4">
-                    <Sidebar />
-                </div>
-            </div>
-            
-            <div className="nk-gap-2" />
-
-            <UpComingMatches />
-
-            <div className='nk-gap-3' />
-
-            <NowPlaying />
-
-            <div className="nk-gap-2" />
-
-            <LatestMatches />
-
-            <LatestNews />
-
-            <div className="nk-gap-3" />
+                            </div>
 
 
+
+                            <div className="col-lg-4">
+                                <Sidebar />
+                            </div>
+                        </div>
+
+                        <div className="nk-gap-2" />
+
+                        <UpComingMatches />
+
+                        <div className='nk-gap-3' />
+
+                        <NowPlaying />
+
+                        <div className="nk-gap-2" />
+
+                        <LatestMatches />
+
+                        <LatestNews />
+
+                        <div className="nk-gap-3" />
+
+                    </div >
+                </div >
+            </div >
         </div >
     )
 }
