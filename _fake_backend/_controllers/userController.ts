@@ -3,7 +3,11 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 import { PrismaClient } from '@prisma/client';
+import { PermissionResultType } from '../_functions';
 const prisma = new PrismaClient();
+
+const { getUserPermissions } = require('../_functions');
+const { PermissionResultType } = require('../_functions');
 
 interface UserType {
     id: number;
@@ -101,7 +105,11 @@ const login = asyncHandler(async (req: any, res: any) => {
 
 
 const getUser = async (req: any, res: any) => {
-    res.json(req.user);
+    const permissions: PermissionResultType = await getUserPermissions(req.user.id);
+    res.json({
+        user: req.user,
+        permissions: permissions
+    });
 }
 
 

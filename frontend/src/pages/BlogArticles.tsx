@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import BlogArticleContext from '../_context/BlogArticleContext';
 import BlogArticleItem from '../components/BlogArticles/BlogArticleItem';
+import UserContext from '../_context/UserContext';
 // import './_css/BlogArticles.css'
 
 function BlogArticles() {
@@ -10,6 +11,10 @@ function BlogArticles() {
         const pageBG: Element = document.querySelector('.full-page')!;
         pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-2.png')")
     }, [])
+
+    const {
+        userData
+    } = useContext(UserContext);
 
     const {
         isPostsLoading,
@@ -54,6 +59,14 @@ function BlogArticles() {
                 <div className="container">
                     <div className="row vertical-gap">
                         <div className="col-lg-8">
+
+                            <div className="d-flex justify-content-between">
+                                <button className="nk-btn nk-btn-rounded nk-btn-color-main-4 fs-3">Nem publikált cikkek</button>
+                                {/* <button></button> */}
+                                <button className="nk-btn nk-btn-rounded nk-btn-color-main-3 fs-3">Hozzáadás</button>
+                            </div>
+                            <div className="nk-gap-3" />
+
                             {/* START: Posts List */}
                             <div className="nk-blog-list">
 
@@ -67,8 +80,19 @@ function BlogArticles() {
                                             posts.length > 0 ?
                                                 posts
                                                     .slice(0, maxPostItems)
-                                                    .map((post: React.Attributes, index: React.Key) => (
-                                                        <BlogArticleItem {...post} key={index} />
+                                                    .map((post: any, index: React.Key) => (
+                                                        <div key={index}>
+                                                            <BlogArticleItem {...post} />
+                                                            {userData && (userData.permissions?.roles.includes('admin') || (
+                                                                (userData.user?.username == post.author.username && userData.permissions?.permissions.includes('deleteTheirPost')) ||
+                                                                userData.permissions?.permissions.includes('deleteOthersPost')
+                                                            )) &&
+                                                                <div className='row'>
+                                                                    <button className='nk-btn nk-btn-rounded nk-btn-color-main-1 w-25 ms-auto'>Törlés</button>
+                                                                    <div className="nk-gap-3" />
+                                                                </div>
+                                                            }
+                                                        </div>
                                                     ))
                                                 :
                                                 <></>
@@ -80,7 +104,7 @@ function BlogArticles() {
 
 
                                 {/* START: Pagination */}
-                                <div className="nk-pagination nk-pagination-center">
+                                {/* <div className="nk-pagination nk-pagination-center">
                                     <a href="#" className="nk-pagination-prev">
                                         <span className="ion-ios-arrow-back" />
                                     </a>
@@ -97,7 +121,7 @@ function BlogArticles() {
                                     <a href="#" className="nk-pagination-next">
                                         <span className="ion-ios-arrow-forward" />
                                     </a>
-                                </div>
+                                </div> */}
                                 {/* END: Pagination */}
                             </div>
                             {/* END: Posts Grid */}

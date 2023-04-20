@@ -2,6 +2,11 @@ const asyncHandler = require('express-async-handler');
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
+export type PermissionResultType = {
+    roles: Array<string>;
+    permissions: Array<string>
+}
+
 const getUserPermissions = asyncHandler(async (id: number) => {
 
     const userRolesQuery: any = () => {

@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import UserContext from '../../_context/UserContext'
+
+
 
 function BlogArticleItem(post: any) {
     return (
@@ -11,7 +14,7 @@ function BlogArticleItem(post: any) {
                         <Link to={`/post/${post.id}`} className="nk-post-img">
                             <img
                                 src="assets/images/post-1-mid.jpg"
-                                alt="Smell magic in the air. Or maybe barbecue"
+                                alt=""
                             />
                             <span className="nk-post-comments-count">{post.commentCount || 0}</span>
                         </Link>
@@ -32,7 +35,8 @@ function BlogArticleItem(post: any) {
                                 className="rounded-circle"
                                 width={35}
                             />{" "}
-                            <a href="https://nkdev.info">{post.author.name}</a> által ekkor: {post.createdAt}
+                            <a href="https://nkdev.info">{post.author.username}</a> által ekkor: {post.createdAt}
+                            { }
                         </div>
                     </div>
                 </div>

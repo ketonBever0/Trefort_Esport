@@ -17,7 +17,7 @@ function Main() {
     return (
         <div>
             <div className="nk-gap" />
-            <Dashboard/>
+            <Dashboard />
             <div className='m-10'>
                 {/* START: Image Slider */}
                 <div className="nk-image-slider" data-autoplay={8000}>
@@ -93,7 +93,7 @@ function Main() {
                     <Sidebar />
                 </div>
             </div>
-            
+
             <div className="nk-gap-2" />
 
             <UpComingMatches />
