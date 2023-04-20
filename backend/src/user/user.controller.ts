@@ -22,4 +22,11 @@ export class UserController {
     ) {
         return this.userService.modifyUserData(user, dto);
     }
+    
+    @Patch('delete')
+    deleteUser(
+        @GetUser() user: User
+    ){
+        return this.userService.deleteUser(user);
+    }
 }

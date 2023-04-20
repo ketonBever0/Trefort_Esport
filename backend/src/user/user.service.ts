@@ -10,7 +10,7 @@ export class UserService {
     async modifyUserData(
         user: User,
         dto: UserPatchDto
-    ): Promise<{ message: string }> {
+    ): Promise<{ message: string}> {
         const updateUser = await this.prisma.user.update({
             where: {
                 id: user.id
@@ -33,4 +33,24 @@ export class UserService {
             message: "Sikeres módosítás",
         };
     }
+
+    async deleteUser(
+        user: User
+    ): Promise<{message: string}> {
+
+        const deleteUser = this.prisma.user.update({
+            where: {
+                id: user.id
+            },
+            data: {
+                status: 'deleted'
+            }
+        });
+
+        return {
+            message: 'Felhasználó törölve'
+        }
+    }
+
+
 }
