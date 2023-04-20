@@ -68,32 +68,32 @@ function LoginModal({ closeModal }: any) {
                                 <div className="col-md-7">
                                     <div className="nk-gap" />
                                     <div className="form-floating">
-                                    <input
-                                        type="email"
-                                        value={loginFormData.email}
-                                        onChange={handleLoginFormChange}
-                                        // defaultValue={loginFormData.email}
-                                        name="email"
-                                        className=" form-control"
-                                        placeholder="E-mail cím"
-                                        required
-                                    />
-                                    <label htmlFor="nev" className='opacity-50'>Név</label>
+                                        <input
+                                            type="email"
+                                            value={loginFormData.email}
+                                            onChange={handleLoginFormChange}
+                                            // defaultValue={loginFormData.email}
+                                            name="email"
+                                            className=" form-control"
+                                            placeholder="E-mail cím"
+                                            required
+                                        />
+                                        <label htmlFor="nev" className='opacity-50'>Név</label>
                                     </div>
                                     <div className="nk-gap" />
                                     <div className="form-floating">
 
-                                    <input
-                                        type="password"
-                                        value={loginFormData.email}
-                                        onChange={handleLoginFormChange}
-                                        // defaultValue=
-                                        name="jelszo"
-                                        className=" form-control"
-                                        placeholder="Jelszó"
-                                        required
-                                    />
-                                    <label htmlFor="jelszo" className='opacity-50'>Jelszó</label>
+                                        <input
+                                            type="password"
+                                            value={loginFormData.password}
+                                            onChange={handleLoginFormChange}
+                                            // defaultValue=
+                                            name="password"
+                                            className=" form-control"
+                                            placeholder="Jelszó"
+                                            required
+                                        />
+                                        <label htmlFor="jelszo" className='opacity-50'>Jelszó</label>
                                     </div>
                                 </div>
                                 <div className="col-md-5">

@@ -60,12 +60,31 @@ function BlogArticles() {
                     <div className="row vertical-gap">
                         <div className="col-lg-8">
 
-                            <div className="d-flex justify-content-between">
-                                <button className="nk-btn nk-btn-rounded nk-btn-color-main-4 fs-3">Nem publikált cikkek</button>
-                                {/* <button></button> */}
-                                <button className="nk-btn nk-btn-rounded nk-btn-color-main-3 fs-3">Hozzáadás</button>
-                            </div>
-                            <div className="nk-gap-3" />
+                            {userData &&
+                                <>
+                                    <div className="d-flex justify-content-between">
+                                        <>{
+                                            (userData.permissions?.roles.includes('admin') ||
+                                                userData.permissions?.permissions.includes('canPublishTheirPost') ||
+                                                userData.permissions?.permissions.includes('canPublishOthersPost')) ?
+                                                <button className="nk-btn nk-btn-rounded nk-btn-color-main-4 fs-3">Nem publikált cikkek</button>
+                                                :
+                                                <br />
+                                        }
+                                        </>
+                                        {/* <button></button> */}
+                                        <>{
+                                            (userData.permissions?.roles.includes('admin') ||
+                                                userData.permissions?.permissions.includes('canCreatePost')) ?
+                                                <button className="nk-btn nk-btn-rounded nk-btn-color-main-3 fs-3">Hozzáadás</button>
+                                                :
+                                                <br />
+                                        }
+                                        </>
+                                    </div>
+                                    <div className="nk-gap-3" />
+                                </>
+                            }
 
                             {/* START: Posts List */}
                             <div className="nk-blog-list">
@@ -95,12 +114,14 @@ function BlogArticles() {
                                                         </div>
                                                     ))
                                                 :
-                                                <></>
+                                                <><br /></>
                                         )
 
                                 }
                                 {/* <>{posts.length}</><br /> */}
-                                {posts.length > maxPostItems && <button className='mx-auto' onClick={() => setMaxPostItems((prev: number) => prev + 1)}>Továbbiak...</button>}
+                                {posts.length > maxPostItems && <button className='mx-auto nk-btn nk-btn-rounded nk-btn-color-main-3 fs-3' onClick={() => setMaxPostItems((prev: number) => prev + 1)}>
+                                    Továbbiak...
+                                </button>}
 
 
                                 {/* START: Pagination */}
