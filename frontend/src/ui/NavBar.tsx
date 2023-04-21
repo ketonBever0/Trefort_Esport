@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import '../_css_all/custom.css';
 import './_css/navbar.css';
 import LoginModal from '../components/LoginModal';
@@ -30,6 +30,14 @@ function NavBar() {
 
     const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
     const [isUserBoxOpen, setIsUserBoxOpen] = useState<boolean>(false);
+
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        setIsLoginModalOpen(false);
+        setIsUserBoxOpen(false);
+        // console.log(pathname)
+    }, [pathname])
 
 
     return (
@@ -122,22 +130,34 @@ function NavBar() {
                                         userToken ?
                                             <div>
                                                 <button className='nostyle-button' onClick={() => setIsUserBoxOpen(prev => !prev)}>
-                                                    {userData?.username}
+                                                    {userData?.user?.username}
                                                     <span className={`mx-2 ${isUserBoxOpen && 'rotate-180'}`}><AiOutlineDown /></span>
                                                 </button>
                                                 {
                                                     isUserBoxOpen &&
                                                     <div className='c-ui-userbox fixed-top rounded'>
                                                         <div className='nk-gap' />
-                                                        <h4>Üdv {userData?.username}!</h4>
-                                                        <button onClick={async () => {
-                                                            await logout();
-                                                            setIsUserBoxOpen(false);
-                                                        }}
-                                                            className="nk-btn nk-btn-rounded nk-btn-block" style={{ backgroundColor: '#c41536' }} //nk-btn-color-white
-                                                        >
-                                                            Kijelentkezés
-                                                        </button>
+                                                        <h4>Üdv {userData?.user?.username}!</h4>
+                                                        <div className='position-absolute bottom-0 w-100'>
+                                                            <Link to='/profile/:id'
+                                                                className="nk-btn nk-btn-rounded nk-btn-block nk-btn-color-main-5" //nk-btn-color-white
+                                                            >
+                                                                Profil
+                                                            </Link>
+                                                            <Link to='/stats/:id'
+                                                                className="nk-btn nk-btn-rounded nk-btn-block nk-btn-color-main-5" //nk-btn-color-white
+                                                            >
+                                                                Profil
+                                                            </Link>
+                                                            <button onClick={async () => {
+                                                                await logout();
+                                                                setIsUserBoxOpen(false);
+                                                            }}
+                                                                className="nk-btn nk-btn-rounded nk-btn-block nk-btn-color-main-1" //nk-btn-color-white
+                                                            >
+                                                                Kijelentkezés
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 }
                                             </div>

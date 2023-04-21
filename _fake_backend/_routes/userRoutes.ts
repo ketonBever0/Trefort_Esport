@@ -8,6 +8,7 @@ const userC = require('../_controllers/userController');
 userR.post('/register', userC.register);
 userR.post('/login', userC.login);
 userR.get('/userdata', userProtect, userC.getUser);
+userR.get('/otheruserdata/:username', userC.getOtherUser)
 
 
 

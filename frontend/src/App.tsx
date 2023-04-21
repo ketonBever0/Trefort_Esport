@@ -19,6 +19,7 @@ import Register1 from './pages/Register1'
 import EditEvent from './pages/EditEvent'
 import Events from './pages/Events'
 import Elements from './pages/Elements'
+import ProfilePage from './pages/ProfilePage'
 
 function App() {
 
@@ -39,6 +40,9 @@ function App() {
                 <Routes>
                   <Route path='*' element={<NotFoundPage />} />
                   <Route path='/' element={<Main />} />
+
+                  <Route path='/profile/:id' element={<ProfilePage />} />
+
                   <Route path='/news' element={<BlogArticles />} />
                   <Route path='/post/:id' element={<BlogArticlePage />} />
 

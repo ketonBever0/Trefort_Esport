@@ -104,13 +104,65 @@ const login = asyncHandler(async (req: any, res: any) => {
 });
 
 
-const getUser = async (req: any, res: any) => {
+const getUser = asyncHandler(async (req: any, res: any) => {
     const permissions: PermissionResultType = await getUserPermissions(req.user.id);
     res.json({
         user: req.user,
         permissions: permissions
     });
-}
+})
+
+
+const getOtherUser: any | null = asyncHandler(async (req: any, res: any) => {
+
+    const { username } = req.params;
+
+    const user = await prisma.user.findUnique({
+        where: {
+            username: username
+        },
+        select: {
+            email: true,
+            username: true,
+            profilePicture: true,
+            firstName: true,
+            lastName: true,
+            address: true,
+            educationIdNum: true,
+            status: true,
+            registrationDate: true,
+            lastLoginDate: true,
+            memberOfOrganization: true,
+            memberOfClan: true,
+            creatorOfClan: true,
+            userRoles: {
+                select: {
+                    role: {
+                        select: {
+                            name: true,
+                            rolePermission: {
+                                select: {
+                                    permission: {
+                                        select: {
+                                            name: true
+                                        }
+                                    }
+                                }
+                            },
+                        }
+                    }
+                }
+            }
+        }
+    })
+
+    if (user) {
+        res.json(user);
+    } else {
+        throw new Error("Felhasználó nem található!");
+    }
+
+})
 
 
 
@@ -118,5 +170,6 @@ const getUser = async (req: any, res: any) => {
 module.exports = {
     register,
     login,
-    getUser
+    getUser,
+    getOtherUser
 }

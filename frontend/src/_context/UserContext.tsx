@@ -72,6 +72,16 @@ export const UserProvider = ({ children }: any) => {
     }
 
 
+    const [isOtherUserDataLoading, setIsOtherUserDataLoading] = useState<boolean>(false);
+    const [otherUser, setOtherUser] = useState<any | null>(null);
+
+    const getOtherUserByUsername = async (username: string) => {
+        await fetch(`http://localhost:8000/api/user/otheruserdata/${username}`)
+            .then(res => res.json())
+            .then(data => setOtherUser(data))
+            .then(err => console.log(err));
+    }
+
 
 
     return <UserContext.Provider value={{
@@ -81,7 +91,10 @@ export const UserProvider = ({ children }: any) => {
         isThereLoginError,
         userToken,
         userData,
-        logout
+        logout,
+        isOtherUserDataLoading,
+        otherUser,
+        getOtherUserByUsername
 
     }}>{children}</UserContext.Provider>
 

@@ -13,7 +13,7 @@ function UpComingEvents() {
             {/* START: events */}
             <div className="nk-blog-grid">
                 <div className="row">
-                    <div className="col-md-6 col-lg-3">
+                    <div className="col-md-6 col-lg-4">
 
 
 

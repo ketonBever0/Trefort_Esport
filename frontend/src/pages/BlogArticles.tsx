@@ -65,8 +65,8 @@ function BlogArticles() {
                                     <div className="d-flex justify-content-between">
                                         <>{
                                             (userData.permissions?.roles.includes('admin') ||
-                                                userData.permissions?.permissions.includes('canPublishTheirPost') ||
-                                                userData.permissions?.permissions.includes('canPublishOthersPost')) ?
+                                                userData.permissions?.permissions.includes('publishTheirPost') ||
+                                                userData.permissions?.permissions.includes('publishOthersPost')) ?
                                                 <button className="nk-btn nk-btn-rounded nk-btn-color-main-4 fs-3">Nem publikált cikkek</button>
                                                 :
                                                 <br />
@@ -75,7 +75,7 @@ function BlogArticles() {
                                         {/* <button></button> */}
                                         <>{
                                             (userData.permissions?.roles.includes('admin') ||
-                                                userData.permissions?.permissions.includes('canCreatePost')) ?
+                                                userData.permissions?.permissions.includes('createPost')) ?
                                                 <button className="nk-btn nk-btn-rounded nk-btn-color-main-3 fs-3">Hozzáadás</button>
                                                 :
                                                 <br />
