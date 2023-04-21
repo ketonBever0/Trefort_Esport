@@ -18,7 +18,6 @@ function Main() {
         <div>
             <div className="container-fluid">
                 <div className="">
-                    <Dashboard />
                     <div>
                         <div className="nk-gap" />
 
