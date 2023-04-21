@@ -5,21 +5,22 @@ import './_css/navbar.css';
 import LoginModal from '../components/LoginModal';
 import UserContext from '../_context/UserContext';
 import { AiOutlineDown } from 'react-icons/ai';
+import Dashboard from './Dashboard';
 
 function NavBar() {
 
     window.onscroll = function () { scrollFunction() };
     var navbar: any = document.getElementById("myNav");
+    var header: any = document.getElementById("myHeader");
+
     function scrollFunction() {
         if (document.body.scrollTop > 70 || document.documentElement.scrollTop > 70) {
-            navbar.setAttribute("style", "transition: .5s; position: fixed; top: 0");
+            header.setAttribute("style", "transition: .5s; position: fixed; top: 0");
             navbar.classList.add("p-10");
-            navbar.classList.add("sticky");
         } else {
             navbar.classList.remove("p-10");
-            navbar.classList.remove("sticky");
             navbar.setAttribute("style", "transition: .3s;");
-            navbar.removeAttribute("style", "position: fixed; top: 0");
+            header.removeAttribute("style", "position: fixed; top: 0");
         }
     }
     const {
@@ -53,8 +54,9 @@ function NavBar() {
 
 
 
-            <header className="nk-header nk-header-opaque">
-                <div>                  <div className="nk-contacts-top" style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}>
+            <header className="nk-header nk-header-opaque" id='myHeader'>
+                <div>                  
+                    <div className="nk-contacts-top" style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}>
                     <div className="container">
                         <div className="nk-contacts-left">
                             <ul className="nk-social-links">
@@ -317,6 +319,7 @@ function NavBar() {
                 </div>
                 {/* END: Navbar */}
             </header >
+            
 
             <>
                 {/* START: Navbar Mobile Additional Classes: .nk-navbar-left-side

@@ -20,6 +20,7 @@ import EditEvent from './pages/EditEvent'
 import Events from './pages/Events'
 import Elements from './pages/Elements'
 import ProfilePage from './pages/ProfilePage'
+import MyProfile from './pages/MyProfile'
 
 function App() {
 
@@ -61,6 +62,7 @@ function App() {
                   <Route path='/submitorg1' element={<SubmitOrganisation1 />} />
                   <Route path='/submitorg2' element={<SubmitOrganisation2 />} />
                   <Route path='/elements' element={<Elements />} />
+                  <Route path='/myprofile' element={<MyProfile />} />
 
 
                 </Routes>

@@ -42,9 +42,9 @@
   background-color: #333;
   color: #eee;
   display: block;
-  padding: 8px 12px;
+  padding: 15px 20px;
   text-decoration: none;  
-  transition: .5s linear;
+  transition: .2s linear;
   user-select: none;
   -webkit-user-drag: none;
   z-index: 1000;

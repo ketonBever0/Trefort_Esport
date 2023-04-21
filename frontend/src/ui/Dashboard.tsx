@@ -18,7 +18,7 @@ function Dashboard() {
 
     return (
         <div>
-            <a id='dashboard_nav-expand' href="#">
+            <a id='dashboard_nav-expand' className='lead' href="#">
                 <span className="dashboard_icon dashboard_icon-menu"></span>&nbsp;
                 Dashboard
             </a>
