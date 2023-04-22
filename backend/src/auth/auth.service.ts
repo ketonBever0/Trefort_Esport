@@ -52,6 +52,15 @@ export class AuthService {
         const pwMatches = await argon.verify(user.password, dto.password);
         if(!pwMatches) throw new ForbiddenException('Credentials incorrect');
 
+        // update the last login date for the user
+        await this.prisma.user.update({
+            where: {
+                id: user.id,
+            }, data: {
+                lastLogin: new Date()
+            }
+        });
+
         return this.signToken(user.id, user.email);
     }
 
