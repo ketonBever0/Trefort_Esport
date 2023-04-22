@@ -71,8 +71,9 @@ model User {
 
 model UserRole {
   id        Int      @id @default(autoincrement())
-  roleId    Int
-  userId    Int 
+  roleId    Int      @db.Int
+  role      Role     @relation(fields: [roleId], references: [id])
+  userId    Int      @db.Int
   user      User     @relation(fields: [userId], references: [id])
 
   @@map("userroles")
@@ -81,28 +82,9 @@ model UserRole {
 model Role {
   id          Int      @id @default(autoincrement())
   name        String   @db.VarChar(255)
-  permissions RolePermission[]
+  userRoles   UserRole[]
 
   @@map("roles")
-}
-
-model RolePermission {
-  id            Int      @id @default(autoincrement())
-  roleId        Int
-  permissionId  Int
-  permissions   Permission[]
-  role      Role         @relation(fields: [roleId], references: [id])
-
-  @@map("rolepermissions")
-}
-
-model Permission {
-  id             Int              @id @default(autoincrement())
-  RolePermission RolePermission   @relation(fields: [id], references: [id])
-  name           String           @db.VarChar(255)
-  description    String           @db.VarChar(255)
-
-  @@map("permissions")
 }
 
 model Event {
