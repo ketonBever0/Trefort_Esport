@@ -63,7 +63,7 @@ model Event {
   startDate      DateTime
   endDate        DateTime
   sponsor        String?
-  description    String
+  description    String        @db.Text()
   organizers     Organization  @relation(fields: [organizationId], references: [id])
   organizationId Int
   competitions   Competition[]

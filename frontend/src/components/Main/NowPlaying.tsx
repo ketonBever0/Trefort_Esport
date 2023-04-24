@@ -33,7 +33,7 @@ function NowPlaying() {
                 <div className="col-md-8">
                     <div className="responsive-embed responsive-embed-16x9">
                         <iframe
-                            src="https://player.twitch.tv/?channel=lirik&autoplay=false"
+                            src="https://player.twitch.tv/?channel=wearethevr&parent=localhost&muted=true"
                             frameBorder={0}
                             allowFullScreen={true}
                             scrolling="no"

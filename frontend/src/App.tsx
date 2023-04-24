@@ -21,58 +21,61 @@ import Events from './pages/Events'
 import Elements from './pages/Elements'
 import ProfilePage from './pages/ProfilePage'
 import MyProfile from './pages/MyProfile'
+import { EventProvider } from './_context/EventContext'
 
 function App() {
 
   return (
     <div className='full-page min-vh-100'>
 
-      <BlogArticleProvider>
-        <UserProvider>
+      <EventProvider>
+        <BlogArticleProvider>
+          <UserProvider>
 
-          <div className="nk-main">
-
-
-            <Router>
-              <NavBar />
-              <div className="nk-gap-6" />
-              <div className="nk-gap-4" />
-              <div className='container'>
-                <Routes>
-                  <Route path='*' element={<NotFoundPage />} />
-                  <Route path='/' element={<Main />} />
-
-                  <Route path='/profile/:id' element={<ProfilePage />} />
-
-                  <Route path='/news' element={<BlogArticles />} />
-                  <Route path='/post/:id' element={<BlogArticlePage />} />
-
-                  <Route path='/tournaments' element={<Tournaments />} >
-                    <Route path='/tournaments/latest' />
-                    <Route path='/tournaments/upcoming' />
-
-                  </Route>
-                  <Route path='/offline' element={<OfflinePage />} />
-                  <Route path='/event' element={<Events />} />
-                  <Route path='/editevent' element={<EditEvent />} />
-                  <Route path='/register1' element={<Register1 />} />
-                  <Route path='/register2' element={<Register2 />} />
-                  <Route path='/btn' element={<Button />} />
-                  <Route path='/btn2' element={<Button2 />} />
-                  <Route path='/submitorg1' element={<SubmitOrganisation1 />} />
-                  <Route path='/submitorg2' element={<SubmitOrganisation2 />} />
-                  <Route path='/elements' element={<Elements />} />
-                  <Route path='/myprofile' element={<MyProfile />} />
+            <div className="nk-main">
 
 
-                </Routes>
-              </div>
-            </Router>
+              <Router>
+                <NavBar />
+                {/* <div className="nk-gap-6" /> */}
+                <div className="nk-gap-4" />
+                <div className='container'>
+                  <Routes>
+                    <Route path='*' element={<NotFoundPage />} />
+                    <Route path='/' element={<Main />} />
 
-          </div>
+                    <Route path='/profile/:id' element={<ProfilePage />} />
 
-        </UserProvider>
-      </BlogArticleProvider>
+                    <Route path='/news' element={<BlogArticles />} />
+                    <Route path='/post/:id' element={<BlogArticlePage />} />
+
+                    <Route path='/tournaments' element={<Tournaments />} >
+                      <Route path='/tournaments/latest' />
+                      <Route path='/tournaments/upcoming' />
+
+                    </Route>
+                    <Route path='/offline' element={<OfflinePage />} />
+                    <Route path='/event' element={<Events />} />
+                    <Route path='/editevent' element={<EditEvent />} />
+                    <Route path='/register1' element={<Register1 />} />
+                    <Route path='/register2' element={<Register2 />} />
+                    <Route path='/btn' element={<Button />} />
+                    <Route path='/btn2' element={<Button2 />} />
+                    <Route path='/submitorg1' element={<SubmitOrganisation1 />} />
+                    <Route path='/submitorg2' element={<SubmitOrganisation2 />} />
+                    <Route path='/elements' element={<Elements />} />
+                    <Route path='/myprofile' element={<MyProfile />} />
+
+
+                  </Routes>
+                </div>
+              </Router>
+
+            </div>
+
+          </UserProvider>
+        </BlogArticleProvider>
+      </EventProvider>
 
     </div >
   )
