@@ -1,6 +1,6 @@
-import { Body, Controller, Patch, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Patch, Post, UseGuards } from '@nestjs/common';
 import { JwtGuard } from 'src/auth/guard';
-import { ModOrdDto, OrganizationDto } from './dto';
+import { DelOrgDto, ModOrdDto, OrganizationDto } from './dto';
 import { OrganizationService } from './organization.service';
 
 @UseGuards(JwtGuard)
@@ -16,5 +16,10 @@ export class OrganizationController {
     @Patch('')
     updateOrg(@Body() dto: ModOrdDto) {
         return this.orgService.updateOrg(dto);
+    }
+
+    @Delete('')
+    deleteOrg(@Body() dto: DelOrgDto) {
+        return this.orgService.deleteOrg(dto);
     }
 }

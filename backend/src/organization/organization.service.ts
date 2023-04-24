@@ -1,6 +1,6 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import {ModOrdDto, OrganizationDto } from './dto';
+import {DelOrgDto, ModOrdDto, OrganizationDto } from './dto';
 
 @Injectable()
 export class OrganizationService {
@@ -51,8 +51,25 @@ export class OrganizationService {
         }catch (err) {
             throw new ForbiddenException('Valami hiba lépett fel módosítás során')
         }
+    }
 
-
+    async deleteOrg(dto: DelOrgDto) {
+        try {
+            const org = await this.prisma.organization.update({
+                where: {
+                    id: dto.id,
+                },
+                data: {
+                    status: 'deleted',
+                }
+            });
+            return {
+                message: 'Szervezet sikeresen törölve',
+                org
+            }
+        } catch (err) {
+            throw new ForbiddenException('Valami hiba lépett fel a művelet közben');
+        }
     }
 
 }
