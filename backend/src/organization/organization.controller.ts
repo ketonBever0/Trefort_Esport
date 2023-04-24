@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards } from '@nestjs/common';
 import { JwtGuard } from 'src/auth/guard';
-import { DelOrgDto, ModOrdDto, OrganizationDto } from './dto';
+import { OrganizationDto } from './dto';
 import { OrganizationService } from './organization.service';
 
 @UseGuards(JwtGuard)
@@ -21,18 +21,25 @@ export class OrganizationController {
         return this.orgService.getAllOrg();
     }
 
-    @Post('signuporg')
+    @Post()
     signUpOrg(@Body() dto: OrganizationDto) {
         return this.orgService.signUpOrg(dto);
     }
 
-    @Patch()
-    updateOrg(@Body() dto: ModOrdDto) {
-        return this.orgService.updateOrg(dto);
+    @Patch(':id')
+    updateOrg(
+        @Body() dto: OrganizationDto,
+        @Param('id', new ParseIntPipe())
+        id: number
+    ) {
+        return this.orgService.updateOrg(id, dto);
     }
 
-    @Delete()
-    deleteOrg(@Body() dto: DelOrgDto) {
-        return this.orgService.deleteOrg(dto);
+    @Delete(':id')
+    deleteOrg(
+        @Param('id', new ParseIntPipe())
+        id: number
+    ) {
+        return this.orgService.deleteOrg(id);
     }
 }

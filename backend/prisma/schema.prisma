@@ -24,6 +24,7 @@ model Clan {
 
 model Organization {
   id              Int       @id @default(autoincrement())
+  name            String    @db.VarChar(255)
   orgUsers        User[]    @relation("OrgUsers")  
   picture         String    @db.VarChar(255)
   location        String    @db.VarChar(255)

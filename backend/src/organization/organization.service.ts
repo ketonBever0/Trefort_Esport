@@ -1,6 +1,6 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import {DelOrgDto, ModOrdDto, OrganizationDto } from './dto';
+import { OrganizationDto } from './dto';
 
 @Injectable()
 export class OrganizationService {
@@ -39,12 +39,12 @@ export class OrganizationService {
         try{
             const org = await this.prisma.organization.create({
                 data: {
+                    name: dto.name,
                     picture: dto.picture,
                     location: dto.location,
                     email: dto.email,
                     phoneNumber: dto.phoneNumber,
                     type: dto.type,
-                    status: dto.status,
                     description: dto.description
                 }
             });
@@ -57,19 +57,19 @@ export class OrganizationService {
         }
     }
 
-    async updateOrg(dto: ModOrdDto){
+    async updateOrg(paramId: number,dto: OrganizationDto){
         try {
             const org = await this.prisma.organization.update({
                 where: {
-                    id: dto.id,
+                    id: paramId,
                 },
                 data: {
+                    name: dto.name,
                     picture: dto.picture,
                     location: dto.location,
                     email: dto.email,
                     phoneNumber: dto.phoneNumber,
                     type: dto.type,
-                    status: dto.status,
                     description: dto.description
                 }
             });
@@ -82,11 +82,11 @@ export class OrganizationService {
         }
     }
 
-    async deleteOrg(dto: DelOrgDto) {
+    async deleteOrg(paramId: number) {
         try {
             const org = await this.prisma.organization.update({
                 where: {
-                    id: dto.id,
+                    id: paramId,
                 },
                 data: {
                     status: 'deleted',

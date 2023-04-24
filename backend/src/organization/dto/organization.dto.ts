@@ -4,6 +4,10 @@ export class OrganizationDto {
 
     @IsString()
     @IsNotEmpty()
+    name: string;
+
+    @IsString()
+    @IsNotEmpty()
     picture: string;
 
     @IsString()
@@ -22,8 +26,6 @@ export class OrganizationDto {
     @IsNotEmpty()
     type: string;
 
-    @IsString()
-    @IsNotEmpty()
     status: string;
 
     @IsString()
