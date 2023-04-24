@@ -14,7 +14,9 @@ export const BlogArticleProvider = ({ children }: any) => {
         setIsPostsLoading(true);
         await fetch('http://localhost:8000/api/post/posts')
             .then(res => res.json())
-            .then(data => setPosts(data.reverse()))
+            .then(data => {
+                if (!data.message) setPosts(data.reverse());
+            })
             .catch(err => console.log(err))
             .finally(() => setIsPostsLoading(false));
     }
