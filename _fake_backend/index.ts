@@ -18,6 +18,7 @@ const { protect } = require('./_middlewares/auth_middleware');
 app.use('/api/user', require('./_routes/userRoutes'));
 app.use('/api/post', require('./_routes/postRoutes'));
 app.use('/api/rolepermissions', require('./_routes/rolePermissionRoutes'));
+app.use('/api/events', require('./_routes/eventRoutes'));
 
 
 const { errorHandler: errorMain } = require('./_middlewares/error_middleware');

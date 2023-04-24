@@ -19,7 +19,7 @@ function Main() {
             <div className="container-fluid">
                 <div className="">
                     <div>
-                        <div className="nk-gap" />
+                        {/* <div className="nk-gap" /> */}
 
                         <div className='m-10'>
                             {/* START: Image Slider */}
@@ -97,9 +97,9 @@ function Main() {
                             </div>
                         </div>
 
-                        <div className="nk-gap-2" />
+                        {/* <div className="nk-gap-2" />
 
-                        <UpComingMatches />
+                        <UpComingMatches /> */}
 
                         <div className='nk-gap-3' />
 
