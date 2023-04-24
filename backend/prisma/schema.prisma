@@ -31,10 +31,35 @@ model Organization {
   phoneNumber     String    @db.VarChar(255)
   type            String    @db.VarChar(255)
   status          String    @default("active")@db.VarChar(255)
+  contributions   EventContributor[]
   description     String    @db.Text()
 
   @@map("organizations")
 }
+
+model EventContributor{
+  id              Int           @id @default(autoincrement())
+  orgId           Int
+  org             Organization  @relation(fields: [orgId], references: [id])
+  eventId         Int
+  event           Event         @relation(fields: [eventId], references: [id])
+
+  @@map("eventcontributors")
+}
+
+model Event {
+  id              Int       @id @default(autoincrement())
+  name            String    @db.VarChar(255)
+  startDate       DateTime
+  endDate         DateTime
+  sponsor         String?   @db.VarChar(255)
+  competitions    Competition[]
+  contributors    EventContributor[]
+  description     String    @db.Text()
+
+  @@map("events")
+}
+
 
 model Post {
   id      Int     @id @default(autoincrement())
@@ -85,18 +110,6 @@ model Role {
   userRoles   UserRole[]
 
   @@map("roles")
-}
-
-model Event {
-  id              Int       @id @default(autoincrement())
-  name            String    @db.VarChar(255)
-  startDate       DateTime
-  endDate         DateTime
-  sponsor         String?   @db.VarChar(255)
-  competitions    Competition[]
-  description     String    @db.Text()
-
-  @@map("events")
 }
 
 model SessionTeam {
