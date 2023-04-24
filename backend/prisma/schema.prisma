@@ -31,7 +31,7 @@ model Organization {
   phoneNumber     String    @db.VarChar(255)
   type            String    @db.VarChar(255)
   status          String    @default("active")@db.VarChar(255)
-  description     String    @db.VarChar(255)
+  description     String    @db.Text()
 
   @@map("organizations")
 }
@@ -64,7 +64,7 @@ model User {
   sessionTeams      SessionTeam[]
   userRoles         UserRole[]
   banned            Ban?         
-  description       String?         @db.VarChar(255)
+  description       String?         @db.Text()
 
   @@map("users")
 }
@@ -94,7 +94,7 @@ model Event {
   endDate         DateTime
   sponsor         String?   @db.VarChar(255)
   competitions    Competition[]
-  description     String    @db.VarChar(255)
+  description     String    @db.Text()
 
   @@map("events")
 }
@@ -125,7 +125,7 @@ model Competition {
   registrationEnd   DateTime
   sessionTeams      SessionTeam[]
   competitionType   String    @db.VarChar(255)
-  description       String    @db.VarChar(255)
+  description       String    @db.Text()
 
   @@map("competitions")
 }
