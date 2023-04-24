@@ -6,6 +6,36 @@ import {DelOrgDto, ModOrdDto, OrganizationDto } from './dto';
 export class OrganizationService {
     constructor(private prisma: PrismaService){}
 
+    async getOrg(paramId: number){
+        try {
+
+            const org = await this.prisma.organization.findUnique({
+                where: {
+                    id: paramId,
+                }
+            });
+
+            return {
+                org
+            };
+
+        } catch(err){
+
+        }
+    }
+
+    async getAllOrg(){
+        try {
+            const orgs = await this.prisma.organization.findMany({});
+            console.log(orgs)
+            return {
+                orgs
+            }
+        } catch (error) {
+            throw new ForbiddenException('Lekérési hiba')
+        }
+    }
+
     async signUpOrg(dto: OrganizationDto){
         try{
             const org = await this.prisma.organization.create({
