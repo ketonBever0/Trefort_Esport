@@ -6,6 +6,17 @@ import { EventDto } from './dto';
 export class EventService {
     constructor (private prismaService: PrismaService){}
 
+    async getEvent(paramId: number) {
+        const event = await this.prismaService.event.findUnique({
+            where: {
+                id: paramId,
+            }
+        });
+        
+        return event;
+    }
+
+
     async addNewEvent(dto: EventDto) {
         try {
             const event = await this.prismaService.event.create({
