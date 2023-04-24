@@ -7,7 +7,43 @@ import { UserPatchDto } from './dto';
 export class UserService {
     constructor(private prisma: PrismaService){}
 
-    async modifyUserData(
+    async getSingleUser(paramId: number) {
+        const user = await this.prisma.user.findUnique({
+            where: {
+                id: paramId
+            }
+        });
+
+        delete user.password;
+
+        return {
+            user
+        }
+    }
+
+    async getAllUsers(){
+        const users = await this.prisma.user.findMany({
+            select: {
+                username: true,
+                profilePicture: true,
+                email: true,
+                firstName: true,
+                lastName: true,
+                address: true,
+                educationNumber: true,
+                registrationDate: true,
+                lastLogin: true,
+                description: true,
+            }
+        });
+
+        return {
+            users
+        }
+
+    }
+
+    async updateUserData(
         user: User,
         dto: UserPatchDto
     ): Promise<{ message: string}> {
@@ -38,7 +74,7 @@ export class UserService {
         user: User
     ): Promise<{message: string}> {
 
-        const deleteUser = this.prisma.user.update({
+        const deleteUser = await this.prisma.user.update({
             where: {
                 id: user.id
             },
