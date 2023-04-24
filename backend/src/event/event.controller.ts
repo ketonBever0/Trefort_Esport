@@ -8,16 +8,21 @@ import { EventDto } from './dto';
 export class EventController {
     constructor (private eventService: EventService){}
 
+    @Post()
+    addNewEvent(@Body() dto: EventDto){
+        return this.eventService.addNewEvent(dto);
+    }
+
+    @Get('all')
+    getAllEvents(){
+        return this.eventService.getAllEvents();
+    }
+
     @Get(':id')
     getEvent(
         @Param('id', new ParseIntPipe())
         id: number
     ){
         return this.eventService.getEvent(id);
-    }
-
-    @Post()
-    addNewEvent(@Body() dto: EventDto){
-        return this.eventService.addNewEvent(dto);
     }
 }

@@ -7,15 +7,25 @@ export class EventService {
     constructor (private prismaService: PrismaService){}
 
     async getEvent(paramId: number) {
-        const event = await this.prismaService.event.findUnique({
-            where: {
-                id: paramId,
-            }
-        });
-        
-        return event;
+        try {
+            const event = await this.prismaService.event.findUniqueOrThrow({
+                where: {
+                    id: paramId,
+                }
+            });
+    
+            return event;   
+        } catch (error) {
+            throw new ForbiddenException('Nincs ilyen adat')
+        }
     }
 
+    async getAllEvents() {
+        const events = await this.prismaService.event.findMany({});
+        return {
+            events
+        }
+    }
 
     async addNewEvent(dto: EventDto) {
         try {
