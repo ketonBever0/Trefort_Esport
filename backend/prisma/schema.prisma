@@ -48,13 +48,14 @@ model EventContributor{
 }
 
 model Event {
-  id              Int       @id @default(autoincrement())
-  name            String    @unique @db.VarChar(255)
+  id              Int                   @id @default(autoincrement())
+  name            String                @unique @db.VarChar(255)
   startDate       DateTime
   endDate         DateTime
   competitions    Competition[]
   contributors    EventContributor[]
-  description     String    @db.Text()
+  location        String                @db.VarChar(255)
+  description     String                @db.Text()
 
   @@map("events")
 }

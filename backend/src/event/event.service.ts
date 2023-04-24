@@ -13,6 +13,7 @@ export class EventService {
                     name: dto.name,
                     startDate: dto.startDate,
                     endDate: dto.endDate,
+                    location: dto.location,
                     description: dto.description
                 }
             });
@@ -27,5 +28,5 @@ export class EventService {
             }
         }
     }
-    
+
 }

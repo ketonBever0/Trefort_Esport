@@ -20,5 +20,9 @@ export class EventDto {
 
     @IsNotEmpty()
     @IsString()
+    location: string;
+
+    @IsNotEmpty()
+    @IsString()
     description: string;
 }
