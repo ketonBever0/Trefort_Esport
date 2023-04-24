@@ -30,7 +30,7 @@ model Organization {
   email           String    @unique @db.VarChar(255)
   phoneNumber     String    @db.VarChar(255)
   type            String    @db.VarChar(255)
-  status          String    @db.VarChar(255)
+  status          String    @default("active")@db.VarChar(255)
   description     String    @db.VarChar(255)
 
   @@map("organizations")
