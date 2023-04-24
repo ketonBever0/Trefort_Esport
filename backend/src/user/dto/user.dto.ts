@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsNumber, IsString } from "class-validator"
 
-class UserPatchDto {
+export class UserPatchDto {
 
     clanId: number;
 
@@ -34,8 +34,4 @@ class UserPatchDto {
     educationNumber: number;
 
     description: string;
-}
-
-export {
-    UserPatchDto
 }
