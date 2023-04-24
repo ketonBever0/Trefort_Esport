@@ -52,7 +52,6 @@ model Event {
   name            String    @db.VarChar(255)
   startDate       DateTime
   endDate         DateTime
-  sponsor         String?   @db.VarChar(255)
   competitions    Competition[]
   contributors    EventContributor[]
   description     String    @db.Text()
