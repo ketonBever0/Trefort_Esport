@@ -22,6 +22,7 @@ import Elements from './pages/Elements'
 import ProfilePage from './pages/ProfilePage'
 import MyProfile from './pages/MyProfile'
 import { EventProvider } from './_context/EventContext'
+import EventPage from './pages/EventPage'
 
 function App() {
 
@@ -54,8 +55,14 @@ function App() {
                       <Route path='/tournaments/upcoming' />
 
                     </Route>
+
+
+
+                    {/* <Route path='/events/:id' element={<EventPage />} /> */}
+
+                    <Route path='/events/:id' element={<Events />} />
+
                     <Route path='/offline' element={<OfflinePage />} />
-                    <Route path='/event' element={<Events />} />
                     <Route path='/editevent' element={<EditEvent />} />
                     <Route path='/register1' element={<Register1 />} />
                     <Route path='/register2' element={<Register2 />} />

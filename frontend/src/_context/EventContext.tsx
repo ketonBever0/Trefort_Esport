@@ -19,10 +19,16 @@ export const EventProvider = ({ children }: any) => {
     }
 
 
-    const getEventById = (id: number) => {
+    const [isEventLoading, setIsEventLoading] = useState<boolean>(false);
+    const [event, setEvent] = useState(null);
 
-
-
+    const getEventById = async (id: number) => {
+        setIsEventLoading(true);
+        await fetch(`http://localhost:8000/api/events/event/${id}`)
+            .then(res => res.json())
+            .then(data => { if (!data.message) setEvent(data) })
+            .catch(err => console.log(err))
+            .finally(() => setIsEventLoading(false));
     }
 
 
@@ -32,7 +38,11 @@ export const EventProvider = ({ children }: any) => {
 
         isEventsLoading,
         events,
-        getEvents
+        getEvents,
+
+        isEventLoading,
+        event,
+        getEventById
 
 
     }}>

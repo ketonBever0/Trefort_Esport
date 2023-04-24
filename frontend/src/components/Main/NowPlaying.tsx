@@ -21,7 +21,7 @@ function NowPlaying() {
                     </div>
                     <div className="nk-gap-2" />
                     <p>
-                        As she said this she looked down at her hands and was surprised to see.
+                        Kövesd élőben a streamet!
                     </p>
                     <a
                         href="tournaments.html"

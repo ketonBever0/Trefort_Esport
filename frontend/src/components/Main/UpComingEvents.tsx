@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import EventContext from '../../_context/EventContext';
+import { Link } from 'react-router-dom';
 
 function UpComingEvents() {
 
@@ -37,7 +38,7 @@ function UpComingEvents() {
                                         <div key={index}>
                                             <div className="col-md-6 col-lg-4">
                                                 <div className="nk-blog-post">
-                                                    <a href="blog-article.html" className="nk-post-img">
+                                                    <Link to={`/events/${event.id}`} className="nk-post-img">
                                                         <img
                                                             src="assets/images/post-5-mid.jpg"
                                                             alt={event.name}
@@ -46,7 +47,7 @@ function UpComingEvents() {
                                                         {/* <span className="nk-post-categories">
                                                             <span className="bg-main-5">{ }</span>
                                                         </span> */}
-                                                    </a>
+                                                    </Link>
                                                     {/* <div className="nk-gap" /> */}
                                                     <div>
                                                         <p style={{
@@ -61,7 +62,7 @@ function UpComingEvents() {
                                                     </div>
                                                     {/* <div className="nk-gap" /> */}
                                                     <h2 className="nk-post-title h4">
-                                                        <a href="blog-article.html">{event.name}</a>
+                                                        <Link to={`/events/${event.id}`}>{event.name}</Link>
                                                     </h2>
                                                     <div className="nk-post-text">
                                                         <p>{
@@ -74,12 +75,10 @@ function UpComingEvents() {
                                                         }</p>
                                                     </div>
                                                     <div className="nk-gap" />
-                                                    <a
-                                                        href="blog-article.html"
-                                                        className="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1"
+                                                    <Link to={`/events/${event.id}`} className="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1"
                                                     >
                                                         Tovább
-                                                    </a>
+                                                    </Link>
                                                     <div className="nk-post-date float-right">
                                                         <span className="fa fa-calendar" /> {event.startDate}
                                                     </div>

@@ -21,8 +21,25 @@ const getEvents = asyncHandler(async (req: any, res: any) => {
 })
 
 
+const getEventById = asyncHandler(async (req: any, res: any) => {
+
+    const { id } = req.params;
+
+    const event = await prisma.event.findUniqueOrThrow({
+        where: {
+            id: parseInt(id)
+        }
+    })
+
+    res.json(event);
+
+
+})
+
+
 
 
 module.exports = {
-    getEvents
+    getEvents,
+    getEventById
 }
