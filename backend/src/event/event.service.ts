@@ -50,4 +50,23 @@ export class EventService {
         }
     }
 
+    async updateEvent(paramId: number, dto: EventDto) {
+        const event = await this.prismaService.event.update({
+            where: {
+                id: paramId
+            },
+            data: {
+                name: dto.name,
+                startDate: dto.startDate,
+                endDate: dto.endDate,
+                location: dto.location,
+                description: dto.description
+            }
+        });
+
+        return {
+            message: "Sikeres esemény módosítás",
+            event
+        }
+    }
 }
