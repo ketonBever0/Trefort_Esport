@@ -1,6 +1,6 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Patch, Post, UseGuards } from '@nestjs/common';
 import { JwtGuard } from 'src/auth/guard';
-import { OrganizationDto } from './dto';
+import { ModOrdDto, OrganizationDto } from './dto';
 import { OrganizationService } from './organization.service';
 
 @UseGuards(JwtGuard)
@@ -11,5 +11,10 @@ export class OrganizationController {
     @Post('signuporg')
     signUpOrg(@Body() dto: OrganizationDto) {
         return this.orgService.signUpOrg(dto);
+    }
+
+    @Patch('')
+    updateOrg(@Body() dto: ModOrdDto) {
+        return this.orgService.updateOrg(dto);
     }
 }
