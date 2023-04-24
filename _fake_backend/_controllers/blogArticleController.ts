@@ -35,7 +35,6 @@ const getPostById = asyncHandler(async (req: any, res: any) => {
 
 interface PostType {
     title: string;
-    header: string;
     content: string;
     published: boolean;
     authorId: number;
@@ -65,7 +64,6 @@ const createPost = asyncHandler(async (req: any, res: any) => {
     const post = await prisma.post.create({
         data: {
             title: title,
-            header: header,
             content: content,
             authorId: req.user.id
         } as PostType

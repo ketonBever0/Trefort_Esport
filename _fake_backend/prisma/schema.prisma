@@ -13,7 +13,7 @@ datasource db {
 model Post {
   id        Int      @id @default(autoincrement())
   title     String
-  header    String
+  // header    String
   content   String?  @db.LongText
   published Boolean  @default(false)
   createdAt DateTime @default(now())

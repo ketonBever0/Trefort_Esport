@@ -9,20 +9,28 @@ import Dashboard from './Dashboard';
 
 function NavBar() {
 
-    window.onscroll = function () { scrollFunction() };
-    var navbar: any = document.getElementById("myNav");
-    var header: any = document.getElementById("myHeader");
+    useEffect(() => {
+        var navbar: any = document.getElementById("myNav");
+        var header: any = document.getElementById("myHeader");
 
-    function scrollFunction() {
-        if (document.body.scrollTop > 70 || document.documentElement.scrollTop > 70) {
-            header.setAttribute("style", "transition: .5s; position: fixed; top: 0");
-            navbar.classList.add("p-10");
-        } else {
-            navbar.classList.remove("p-10");
-            navbar.setAttribute("style", "transition: .3s;");
-            header.removeAttribute("style", "position: fixed; top: 0");
+        function scrollFunction() {
+            if (document.body.scrollTop > 70 || document.documentElement.scrollTop > 70) {
+                header.setAttribute("style", "transition: .5s; position: fixed; top: 0");
+                navbar.classList.add("p-10");
+            } else {
+                navbar.classList.remove("p-10");
+                navbar.setAttribute("style", "transition: .3s;");
+                header.removeAttribute("style", "position: fixed; top: 0");
+            }
         }
-    }
+
+        if (header && navbar) window.onscroll = function () { scrollFunction() };
+
+    }, [])
+
+
+
+
     const {
         userToken,
         userData,
@@ -55,33 +63,33 @@ function NavBar() {
 
 
             <header className="nk-header nk-header-opaque" id='myHeader'>
-                <div>                  
+                <div>
                     <div className="nk-contacts-top" style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}>
-                    <div className="container">
-                        <div className="nk-contacts-left">
-                            <ul className="nk-social-links">
-                                {/* <li>
+                        <div className="container">
+                            <div className="nk-contacts-left">
+                                <ul className="nk-social-links">
+                                    {/* <li>
                                     <a className="nk-social-rss" href="#">
                                         <span className="fa fa-rss" />
                                     </a>
                                 </li> */}
-                                <li>
-                                    <a className="nk-social-twitch" href="#">
-                                        <span className="fab fa-twitch" />
-                                    </a>
-                                </li>
-                                <li>
-                                    {/* <a className="nk-social-steam" href="#">
+                                    <li>
+                                        <a className="nk-social-twitch" href="#">
+                                            <span className="fab fa-twitch" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        {/* <a className="nk-social-steam" href="#">
                                         <span className="fab fa-steam" />
                                     </a> */}
-                                </li>
-                                <li>
-                                    <a className="nk-social-facebook" href="#">
-                                        <span className="fab fa-facebook" />
-                                    </a>
-                                </li>
-                                {/* <li> */}
-                                {/* <a
+                                    </li>
+                                    <li>
+                                        <a className="nk-social-facebook" href="#">
+                                            <span className="fab fa-facebook" />
+                                        </a>
+                                    </li>
+                                    {/* <li> */}
+                                    {/* <a
                                         className="nk-social-twitter"
                                         href="https://twitter.com/nkdevv"
                                         target="_blank"
@@ -94,7 +102,7 @@ function NavBar() {
                                         <span className="fab fa-pinterest-p" />
                                     </a>
                                 </li> */}
-                                {/* Additional Social Buttons
+                                    {/* Additional Social Buttons
               <li><a class="nk-social-behance" href="#"><span class="fab fa-behance"></span></a></li>
               <li><a class="nk-social-bitbucket" href="#"><span class="fab fa-bitbucket"></span></a></li>
               <li><a class="nk-social-dropbox" href="#"><span class="fab fa-dropbox"></span></a></li>
@@ -118,61 +126,61 @@ function NavBar() {
               <li><a class="nk-social-wordpress" href="#"><span class="fab fa-wordpress"></span></a></li>
               <li><a class="nk-social-youtube" href="#"><span class="fab fa-youtube"></span></a></li>
           */}
-                            </ul>
-                        </div>
-                        <div className="nk-contacts-right">
-                            <ul className="nk-contacts-icons">
-                                <li>
-                                    <a href="#" data-toggle="modal" data-target="#modalSearch">
-                                        <span className="fa fa-search" />
-                                    </a>
-                                </li>
-                                <li>
-                                    {
-                                        userToken ?
-                                            <div>
-                                                <button className='nostyle-button' onClick={() => setIsUserBoxOpen(prev => !prev)}>
-                                                    {userData?.user?.username}
-                                                    <span className={`mx-2 ${isUserBoxOpen && 'rotate-180'}`}><AiOutlineDown /></span>
-                                                </button>
-                                                {
-                                                    isUserBoxOpen &&
-                                                    <div className='c-ui-userbox fixed-top rounded'>
-                                                        <div className='nk-gap' />
-                                                        <h4>Üdv {userData?.user?.username}!</h4>
-                                                        <div className='position-absolute bottom-0 w-100'>
-                                                            <Link to='/profile/:id'
-                                                                className="nk-btn nk-btn-rounded nk-btn-block nk-btn-color-main-5" //nk-btn-color-white
-                                                            >
-                                                                Profil
-                                                            </Link>
-                                                            <Link to='/stats/:id'
-                                                                className="nk-btn nk-btn-rounded nk-btn-block nk-btn-color-main-5" //nk-btn-color-white
-                                                            >
-                                                                Profil
-                                                            </Link>
-                                                            <button onClick={async () => {
-                                                                await logout();
-                                                                setIsUserBoxOpen(false);
-                                                            }}
-                                                                className="nk-btn nk-btn-rounded nk-btn-block nk-btn-color-main-1" //nk-btn-color-white
-                                                            >
-                                                                Kijelentkezés
-                                                            </button>
+                                </ul>
+                            </div>
+                            <div className="nk-contacts-right">
+                                <ul className="nk-contacts-icons">
+                                    <li>
+                                        <a href="#" data-toggle="modal" data-target="#modalSearch">
+                                            <span className="fa fa-search" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        {
+                                            userToken ?
+                                                <div>
+                                                    <button className='nostyle-button' onClick={() => setIsUserBoxOpen(prev => !prev)}>
+                                                        {userData?.user?.username}
+                                                        <span className={`mx-2 ${isUserBoxOpen && 'rotate-180'}`}><AiOutlineDown /></span>
+                                                    </button>
+                                                    {
+                                                        isUserBoxOpen &&
+                                                        <div className='c-ui-userbox fixed-top rounded'>
+                                                            <div className='nk-gap' />
+                                                            <h4>Üdv {userData?.user?.username}!</h4>
+                                                            <div className='position-absolute bottom-0 w-100'>
+                                                                <Link to='/profile/:id'
+                                                                    className="nk-btn nk-btn-rounded nk-btn-block nk-btn-color-main-5" //nk-btn-color-white
+                                                                >
+                                                                    Profil
+                                                                </Link>
+                                                                <Link to='/stats/:id'
+                                                                    className="nk-btn nk-btn-rounded nk-btn-block nk-btn-color-main-5" //nk-btn-color-white
+                                                                >
+                                                                    Profil
+                                                                </Link>
+                                                                <button onClick={async () => {
+                                                                    await logout();
+                                                                    setIsUserBoxOpen(false);
+                                                                }}
+                                                                    className="nk-btn nk-btn-rounded nk-btn-block nk-btn-color-main-1" //nk-btn-color-white
+                                                                >
+                                                                    Kijelentkezés
+                                                                </button>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                }
-                                            </div>
-                                            :
-                                            <button className='nostyle-button' onClick={() => setIsLoginModalOpen(true)} /*  data-toggle="modal" *//*  data-target="#modalLogin" */>
-                                                <span className="fa fa-user" />
-                                            </button>
-                                    }
-                                </li>
-                                {/* <li>
+                                                    }
+                                                </div>
+                                                :
+                                                <button className='nostyle-button' onClick={() => setIsLoginModalOpen(true)} /*  data-toggle="modal" *//*  data-target="#modalLogin" */>
+                                                    <span className="fa fa-user" />
+                                                </button>
+                                        }
+                                    </li>
+                                    {/* <li>
                                     <span className="nk-cart-toggle">
                                         <span className="fa fa-shopping-cart" /> */}
-                                {/* <span className="nk-badge">27</span>
+                                    {/* <span className="nk-badge">27</span>
                                     </span>
                                     <div className="nk-cart-dropdown">
                                         <div className="nk-widget-post">
@@ -212,10 +220,10 @@ function NavBar() {
                                         </div>
                                     </div>
                                 </li> */}
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
                     <div className='row justify-content-center'>
                         <nav id='myNav' className="nk-navbar nk-navbar-top nk-navbar-sticky nk-navbar-autohide">
                             <div className="container">
@@ -319,7 +327,7 @@ function NavBar() {
                 </div>
                 {/* END: Navbar */}
             </header >
-            
+
 
             <>
                 {/* START: Navbar Mobile Additional Classes: .nk-navbar-left-side
