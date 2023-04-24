@@ -18,7 +18,6 @@ export class OrganizationController {
 
     @Get()
     getAllOrg() {
-        console.log('dsf')
         return this.orgService.getAllOrg();
     }
 
@@ -27,12 +26,12 @@ export class OrganizationController {
         return this.orgService.signUpOrg(dto);
     }
 
-    @Patch('')
+    @Patch()
     updateOrg(@Body() dto: ModOrdDto) {
         return this.orgService.updateOrg(dto);
     }
 
-    @Delete('')
+    @Delete()
     deleteOrg(@Body() dto: DelOrgDto) {
         return this.orgService.deleteOrg(dto);
     }

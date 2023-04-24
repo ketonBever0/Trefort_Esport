@@ -20,14 +20,13 @@ export class OrganizationService {
             };
 
         } catch(err){
-
+            throw new ForbiddenException('Hiba a lekérés közben');
         }
     }
 
     async getAllOrg(){
         try {
             const orgs = await this.prisma.organization.findMany({});
-            console.log(orgs)
             return {
                 orgs
             }
