@@ -1,9 +1,12 @@
 import { IsNotEmpty, IsNumber, IsString } from "class-validator"
+import { isNullOrUndefined } from "util";
 
 export class UserPatchDto {
 
     clanId: number;
 
+    @IsNumber()
+    @IsNotEmpty()
     orgId: number;
 
     @IsNotEmpty()
@@ -31,7 +34,11 @@ export class UserPatchDto {
     @IsNotEmpty()
     address: string;
     
+    @IsNumber()
+    @IsNotEmpty()
     educationNumber: number;
 
+    @IsString()
+    @IsNotEmpty()
     description: string;
 }

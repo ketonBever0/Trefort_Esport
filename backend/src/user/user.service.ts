@@ -46,7 +46,7 @@ export class UserService {
     async updateUserData(
         user: User,
         dto: UserPatchDto
-    ): Promise<{ message: string}> {
+    ) {
         const updateUser = await this.prisma.user.update({
             where: {
                 id: user.id
@@ -67,6 +67,7 @@ export class UserService {
         });
         return {
             message: "Sikeres módosítás",
+            updateUser
         };
     }
 
