@@ -50,7 +50,31 @@ export class CompetitionService {
         }
     }
 
-    async updateCompetition(){
+    async updateCompetition(
+        paramId: number,
+        dto: CompetitionDto
+    ){
+        const competition = await this.prismaService.competition.update({
+            where: {
+                id: paramId
+            },
+            data: {
+                plannedStartDate: dto.plannedStartDate,
+                startDate: dto.startDate,
+                endDate: dto.endDate,
+                name: dto.name,
+                game: dto.game,
+                platform: dto.platform,
+                registrationStart: dto.registrationStart,
+                registrationEnd: dto.registrationEnd,
+                competitionType: dto.competitionType,
+                description: dto.description
+            }
+        });
 
+        return {
+            message: 'Sikeres módosítás',
+            competition
+        }
     }
 }
