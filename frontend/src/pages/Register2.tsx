@@ -1,18 +1,30 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ProgressBar from '../ui/ProgressBar';
 import Button2 from '../ui/Button2';
+import UserContext from '../_context/UserContext';
 
 function Register2() {
 
     const [width, setWidth] = useState(50);
 
-    var navigate = useNavigate();
+    const navigate = useNavigate();
 
-    const handleInputChange = () => {
-        const inputs = document.querySelectorAll('input');  //textarea
 
-        let count = 0;
+    const {
+        registerFormData, setRegisterFormData
+    } = useContext(UserContext);
+
+
+    const handleInputChange = (e: any) => {
+        const inputs = document.querySelectorAll('input');
+
+        setRegisterFormData((prev: any) => ({
+            ...prev,
+            [e.target.name]: e.target.value
+        }))
+
+        let count = width;
 
         inputs.forEach((input) => {
             if (input.value) {
@@ -20,11 +32,12 @@ function Register2() {
             }
         }
         )
-        setWidth(50 + count * 8.33)
+        setWidth(count * 12.5)
     };
 
+
     const handleTextareaChange = () => {
-        const textarea:any = document.querySelectorAll('textarea');
+        const textarea: any = document.querySelectorAll('textarea');
 
         if (textarea.value) {
             console.log(width);
@@ -65,10 +78,10 @@ function Register2() {
         <div>
 
             <div className='bg-dark bg-gradient p-30 rounded text-xl'>
-            
+
 
                 <ProgressBar myWidth={width} />
-                <div className= 'd-flex m-30 w-25 justify-content-center'><Button2 content="Vissza"/></div>
+                <div className='d-flex m-30 w-25 justify-content-center'><Button2 content="Vissza" /></div>
                 <>
                     <div className="tab-content">
                         <div
@@ -78,8 +91,8 @@ function Register2() {
                             aria-labelledby="tab-login">
                             <form>
                                 <div className="text-center mb-3 lead">
-                                    
-                                    
+
+
                                     <p>Regisztráció ezzel:</p>
                                     <button type="button" className="btn btn-link myColor text-2xl btn-floating mx-1">
                                         <i className="fab fa-facebook-f" />
@@ -112,8 +125,8 @@ function Register2() {
                                                 <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="email">E-mail cím</label>
                                             </div>
                                         </div>
-                                        </div>
-                                        <div className='row justify-content-center gap-5 m-20'>
+                                    </div>
+                                    <div className='row justify-content-center gap-5 m-20'>
                                         <div className="col-lg-3">
                                             <div className="form-group myform-group">
                                                 <input onChange={handleInputChange} type="password" id="jelszo" className="myform-control form-control required bg-dark p-10" required />
@@ -149,10 +162,10 @@ function Register2() {
 
                                 </div>
 
-                                    <div className='p-30'>
-                                        <Button2 content="Regisztrálok!" myFunct={console.log('hello')}/>
-                                    </div>
-                                
+                                <div className='p-30'>
+                                    <Button2 content="Regisztrálok!" myFunct={console.log('hello')} />
+                                </div>
+
 
                                 <div className="text-center">
                                     <p>

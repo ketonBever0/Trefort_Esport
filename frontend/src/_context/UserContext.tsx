@@ -76,10 +76,26 @@ export const UserProvider = ({ children }: any) => {
     const [otherUser, setOtherUser] = useState<any | null>(null);
 
     const getOtherUserByUsername = async (username: string) => {
+        setIsOtherUserDataLoading(true);
         await fetch(`http://localhost:8000/api/user/otheruserdata/${username}`)
             .then(res => res.json())
             .then(data => setOtherUser(data))
-            .then(err => console.log(err));
+            .then(err => console.log(err))
+            .finally(() => setIsOtherUserDataLoading(false));
+    }
+
+    const [registerFormData, setRegisterFormData] = useState({
+        firstName: "",
+        lastName: "",
+        address: "",
+        educationIdNum: "",
+        username: "",
+        email: "",
+        description: ""
+    });
+
+    const register = async (form: any) => {
+        console.log(form);
     }
 
 
@@ -92,9 +108,13 @@ export const UserProvider = ({ children }: any) => {
         userToken,
         userData,
         logout,
+
         isOtherUserDataLoading,
         otherUser,
-        getOtherUserByUsername
+        getOtherUserByUsername,
+
+        registerFormData, setRegisterFormData,
+        register
 
     }}>{children}</UserContext.Provider>
 

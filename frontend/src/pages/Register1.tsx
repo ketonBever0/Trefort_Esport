@@ -1,7 +1,9 @@
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ProgressBar from '../ui/ProgressBar';
 import Button2 from '../ui/Button2';
+import Notify from '../ui/Toasts';
+import UserContext from '../_context/UserContext';
 
 function Register1() {
 
@@ -10,23 +12,37 @@ function Register1() {
         pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-3.png')")
     }, [])
 
-    const [width, setWidth] = useState(0);
+    const [progressWidth, setProgressWidth] = useState(0);
 
     const navigate = useNavigate();
 
-    const handleInputChange = () => {
+
+    const {
+        registerFormData, setRegisterFormData
+    } = useContext(UserContext);
+
+
+    const handleInputChange = (e: any) => {
         const inputs = document.querySelectorAll('input');
 
-        let count = 0;
+        setRegisterFormData((prev: any) => ({
+            ...prev,
+            [e.target.name]: e.target.value
+        }))
 
-        inputs.forEach((input) => {
-            if (input.value) {
-                count++;
-            }
+        // let count = 0;
+
+        // inputs.forEach((input) => {
+        //     if (input.value) {
+        //         count++;
+        //     }
+        // }
+        // )
+        if (e.target.required == true) {
+            setProgressWidth(prev => prev + 20);
         }
-        )
-        setWidth(count * 12.5)
     };
+
 
     const areInputsFilled = () => {
 
@@ -35,6 +51,8 @@ function Register1() {
         inputs.forEach((input) => {
             if (input.value) {
                 navigate("/register2");
+            } else {
+                Notify.tError("Töltsd kia mezőket!");
             }
         })
     };
@@ -48,7 +66,7 @@ function Register1() {
 
 
             <div className='bg-dark bg-gradient p-30 rounded text-xl'>
-                <ProgressBar myWidth={width} />
+                <ProgressBar myWidth={progressWidth} />
 
                 <>
 
@@ -77,25 +95,32 @@ function Register1() {
                                     <div className='row justify-content-center gap-5 m-20'>
                                         <div className="col-md-4">
                                             <div className="form-group myform-group">
-                                                <input onChange={handleInputChange} type="text" id="vezeteknev" className="myform-control form-control required bg-dark p-10" required />
+                                                <input onChange={(e) => {
+                                                    handleInputChange(e);
+
+                                                }} type="text"
+                                                    name="firstName" value={registerFormData.firstName} id="vezeteknev" className="myform-control form-control required bg-dark p-10" required />
                                                 <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="vezeteknev">Vezetéknév</label>
                                             </div>
                                         </div>
                                         <div className="col-md-4">
                                             <div className="form-group myform-group">
-                                                <input onChange={handleInputChange} type="text" id="keresztnev" className="myform-control form-control required bg-dark p-10" required />
+                                                <input onChange={handleInputChange} type="text"
+                                                    name="lastName" value={registerFormData.lastName} id="keresztnev" className="myform-control form-control required bg-dark p-10" required />
                                                 <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="keresztnev">Keresztnév</label>
                                             </div>
                                         </div>
                                         <div className="col-md-4">
                                             <div className="form-group myform-group">
-                                                <input onChange={handleInputChange} type="text" id="lakcim" className="myform-control form-control required bg-dark p-10" required />
+                                                <input onChange={handleInputChange} type="text"
+                                                    name="address" value={registerFormData.address} id="lakcim" className="myform-control form-control required bg-dark p-10" required />
                                                 <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="lakcim">Lakcím</label>
                                             </div>
                                         </div>
                                         <div className="col-md-4">
                                             <div className="form-group myform-group">
-                                                <input onChange={handleInputChange} type="text" id="omazonosito" className="myform-control form-control required bg-dark p-10" required />
+                                                <input onChange={handleInputChange} type="text"
+                                                    name="educationIdNum" value={registerFormData.educationIdNum} id="omazonosito" className="myform-control form-control required bg-dark p-10" required />
                                                 <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="omazonosito">Oktatási azonosító</label>
                                             </div>
                                         </div>
@@ -103,7 +128,7 @@ function Register1() {
                                 </div>
 
                                 <div className='p-30'>
-                                    <Button2 content="Következő" myFunct={() => logging()} />
+                                    <Button2 content="Következő" myFunct={areInputsFilled} />
                                 </div>
 
 
