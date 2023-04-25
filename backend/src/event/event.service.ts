@@ -39,6 +39,7 @@ export class EventService {
                 }
             });
             return {
+                message: 'Esemény létrehozva!',
                 event
             }   
         } catch (error) {
@@ -69,4 +70,6 @@ export class EventService {
             event
         }
     }
+
+    
 }
