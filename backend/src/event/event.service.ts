@@ -27,7 +27,7 @@ export class EventService {
         }
     }
 
-    async addNewEvent(dto: EventDto) {
+    async createEvent(dto: EventDto) {
         try {
             const event = await this.prismaService.event.create({
                 data: {
