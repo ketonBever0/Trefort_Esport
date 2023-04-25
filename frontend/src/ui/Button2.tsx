@@ -1,9 +1,12 @@
 import './_css/button2.css'
 
-function Button2(content:any, myFunct:any) {
+function Button2({ content, myFunct }: any) {
   return (
     <div className='d-flex justify-content-center'>
-        <button onClick={()=>{myFunct.myFunct}} className="button2">{content.content}</button>
+      <button onClick={(e: any) => {
+        e.preventDefault();
+        myFunct();
+      }} className="button2">{content}</button>
     </div>
   )
 }
