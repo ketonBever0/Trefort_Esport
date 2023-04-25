@@ -8,7 +8,11 @@ const getEvents = asyncHandler(async (req: any, res: any) => {
 
     const events = await prisma.event.findMany({
         include: {
-            organizers: true
+            organizers: {
+                include: {
+                    representative: true
+                }
+            }
         }
     });
 

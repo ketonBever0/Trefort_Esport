@@ -18,11 +18,13 @@ import Register2 from './pages/Register2'
 import Register1 from './pages/Register1'
 import EditEvent from './pages/EditEvent'
 import Events from './pages/Events'
+import EventPage from './pages/EventPage'
 import Elements from './pages/Elements'
 import ProfilePage from './pages/ProfilePage'
 import MyProfile from './pages/MyProfile'
 import { EventProvider } from './_context/EventContext'
-import EventPage from './pages/EventPage'
+import OnRouting from './ui/notRendered/OnRouting'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
 
@@ -60,13 +62,14 @@ function App() {
 
                     {/* <Route path='/events/:id' element={<EventPage />} /> */}
 
-                    <Route path='/events/:id' element={<Events />} />
+                    <Route path='/events' element={<Events />} />
+                    <Route path='/events/:id' element={<EventPage />} />
                     <Route path='/events/:id/register' />
 
                     <Route path='/offline' element={<OfflinePage />} />
                     <Route path='/editevent' element={<EditEvent />} />
 
-                    
+
                     <Route path='/register1' element={<Register1 />} />
                     <Route path='/register2' element={<Register2 />} />
 
@@ -85,6 +88,7 @@ function App() {
 
                   </Routes>
                 </div>
+                <OnRouting />
               </Router>
 
             </div>
@@ -92,6 +96,8 @@ function App() {
           </UserProvider>
         </BlogArticleProvider>
       </EventProvider>
+
+      <Toaster />
 
     </div >
   )

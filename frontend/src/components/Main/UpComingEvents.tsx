@@ -83,7 +83,14 @@ function UpComingEvents() {
                                                         <span className="fa fa-calendar" /> {event.startDate}
                                                     </div>
                                                 </div>
-                                            </div >
+                                            </div>
+                                            <div className='nk-gap-2' />
+                                            <Link
+                                                to='/events'
+                                                className="nk-btn nk-btn-rounded nk-btn-color-main-1 ms-5"
+                                            >
+                                                Továbbiak
+                                            </Link>
                                         </div>
                                     )
                                 ))
