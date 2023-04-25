@@ -3,12 +3,13 @@ import { useLocation } from 'react-router-dom'
 
 function OnRouting() {
 
+    const { pathname } = useLocation();
 
     useEffect(() => {
-        
-    }, [window.location.pathname])
+        window.scrollTo(0, 0)
+    }, [pathname])
 
-    return
+    return <></>
 }
 
 export default OnRouting

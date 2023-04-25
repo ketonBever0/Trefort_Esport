@@ -1,16 +1,8 @@
-.progress-title{
-    font-size: 18px;
-    font-weight: 700;
-    color: #333;
-    text-transform: uppercase;
-    margin: 0 0 25px;
-}
-
 .progress{
     height: 10px;
     background: #e9e9ea;
     border-radius: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     overflow: visible;
     position: relative;
 }
