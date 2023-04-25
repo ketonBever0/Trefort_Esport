@@ -75,29 +75,28 @@ function Register1() {
 
                                 <div className='container'>
                                     <div className='row justify-content-center gap-5 m-20'>
-
-                                        <div className='col-4'>
-                                            <div className="form-floating">
-                                                <input type="text" className="form-control required bg-dark" id="vezeteknev" placeholder="Vezetéknév" onChange={handleInputChange} />
-                                                <label htmlFor="vezeteknev" className='opacity-50'>Vezetéknév</label>
+                                        <div className="col-4">
+                                            <div className="form-group myform-group">
+                                                <input type="text" id="vezeteknev" className="myform-control form-control required bg-dark p-10" required />
+                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="vezeteknev">Vezetéknév</label>
                                             </div>
                                         </div>
-                                        <div className='col-4'>
-                                            <div className="form-floating">
-                                                <input type="text" className="form-control required bg-dark" id="keresztnev" placeholder="Keresztnév" onChange={handleInputChange} />
-                                                <label htmlFor="keresztnev" className='opacity-50'>Keresztnév</label>
+                                        <div className="col-4">
+                                            <div className="form-group myform-group">
+                                                <input type="text" id="keresztnev" className="myform-control form-control required bg-dark p-10" required />
+                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="keresztnev">Keresztnév</label>
                                             </div>
                                         </div>
-                                        <div className='col-4'>
-                                            <div className="form-floating">
-                                                <input type="text" className="form-control required bg-dark" id="lakcim" placeholder="Lakcím" onChange={handleInputChange} />
-                                                <label htmlFor="lakcim" className='opacity-50'>Lakcím</label>
+                                        <div className="col-4">
+                                            <div className="form-group myform-group">
+                                                <input type="text" id="lakcim" className="myform-control form-control required bg-dark p-10" required />
+                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="lakcim">Lakcím</label>
                                             </div>
                                         </div>
-                                        <div className='col-4'>
-                                            <div className="form-floating">
-                                                <input type="text" className="form-control required bg-dark" id="omazonosito" placeholder="OM azonosító" onChange={handleInputChange} />
-                                                <label htmlFor="omazonosito" className='opacity-50'>OM azonosító</label>
+                                        <div className="col-4">
+                                            <div className="form-group myform-group">
+                                                <input type="text" id="omazonosito" className="myform-control form-control required bg-dark p-10" required />
+                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="omazonosito">Oktatási azonosító</label>
                                             </div>
                                         </div>
                                     </div>
