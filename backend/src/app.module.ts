@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { OrganizationModule } from './organization/organization.module';
 import { EventModule } from './event/event.module';
 import { CompetitionModule } from './competition/competition.module';
+import { SessionteamModule } from './sessionteam/sessionteam.module';
 
 @Module({
   imports: [
@@ -17,7 +18,8 @@ import { CompetitionModule } from './competition/competition.module';
     PrismaModule,
     OrganizationModule,
     EventModule,
-    CompetitionModule
+    CompetitionModule,
+    SessionteamModule,
   ],
 })
 export class AppModule {}

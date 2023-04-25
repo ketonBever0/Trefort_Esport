@@ -120,7 +120,7 @@ model SessionTeam {
   competitionId    Int
   competition      Competition  @relation(fields: [competitionId], references: [id])
   userId           Int
-  position         String       @db.VarChar(255)
+  position         Int          
 
   @@map("sessionteams")
 }
