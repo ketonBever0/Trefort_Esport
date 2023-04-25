@@ -21,32 +21,32 @@ function Register2() {
         setWidth(50 + count * 8.33)
     };
 
-        // const verifyPassword = () => {
-        //     var pw:any = document.getElementById("password").value;
-        //     var pw2 = document.getElementById("jelszo2").value;
-        //     var verify = document.getElementById("pwVerify");
-        //     if (pw != pw2) {
-        //         verify.classList.add("errorAlert");
-        //         verify.innerHTML = " A két jelszó nem egyezik!";
-        //         verify.scrollIntoView({
-        //             behavior: "smooth",
-        //             block: "center",
-        //             inline: "center"
-        //         });
-        //         return false;
-        //     } else {
-        //         return true;
-        //     }
-        // }
-    
-        // function passwordVisibility() {
-        //     var pw = document.getElementById("myInput");
-        //     if (pw.type === "password") {
-        //         pw.type = "text";
-        //     } else {
-        //         pw.type = "password";
-        //     }
-        // }
+    // const verifyPassword = () => {
+    //     var pw:any = document.getElementById("password").value;
+    //     var pw2 = document.getElementById("jelszo2").value;
+    //     var verify = document.getElementById("pwVerify");
+    //     if (pw != pw2) {
+    //         verify.classList.add("errorAlert");
+    //         verify.innerHTML = " A két jelszó nem egyezik!";
+    //         verify.scrollIntoView({
+    //             behavior: "smooth",
+    //             block: "center",
+    //             inline: "center"
+    //         });
+    //         return false;
+    //     } else {
+    //         return true;
+    //     }
+    // }
+
+    // function passwordVisibility() {
+    //     var pw = document.getElementById("myInput");
+    //     if (pw.type === "password") {
+    //         pw.type = "text";
+    //     } else {
+    //         pw.type = "password";
+    //     }
+    // }
 
 
 
@@ -54,8 +54,8 @@ function Register2() {
         <div>
 
             <div className='bg-dark bg-gradient p-30 rounded text-xl'>
-                
-            <ProgressBar myWidth={width} />
+
+                <ProgressBar myWidth={width} />
                 <>
 
                     <div className="tab-content">
@@ -84,38 +84,39 @@ function Register2() {
                                 <p className="text-center lead">vagy:</p>
 
                                 <div className='container'>
-                                    <div className='row justify-content-center gap-4 m-20'>
+                                    <div className='row justify-content-center gap-5 m-20'>
 
-                                    <div className='col-4'>
-                                            <div className="form-floating">
-                                                <input type="text" className="form-control required bg-dark" id="username" placeholder="Felhasználónév" onChange={handleInputChange} />
-                                                <label htmlFor="username" className='opacity-50'>Felhasználónév</label>
-                                            </div>
-                                        </div>                                        
-                                        <div className='col-4'>
-                                            <div className="form-floating">
-                                                <input type="text" className="form-control required bg-dark" id="email" placeholder="Vezetéknév" onChange={handleInputChange} />
-                                                <label htmlFor="email" className='opacity-50'>E-mail cím</label>
-                                            </div>
-                                        </div>
-                                        <div className='col-4'>
-                                            <div className="form-floating">
-                                                <input type="password" className="form-control required bg-dark" id="password" placeholder="Jelszó" onChange={handleInputChange} />
-                                                <label htmlFor="password" className='opacity-50'>Jelszó</label>
-                                            </div>
-                                        </div>
-
-                                        <div className='col-4'>
-                                            <div className="form-floating">
-                                                <input type="password" className="form-control required bg-dark" id="passwordagain" placeholder="Vezetéknév" onChange={handleInputChange} />
-                                                <label htmlFor="passwordagain" className='opacity-50'>Jelszó mégegyszer</label>
+                                    <div className="col-4">
+                                            <div className="form-group myform-group">
+                                                <input type="text" id="felhasznalonev" className="myform-control form-control required bg-dark p-10" required />
+                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="felhasznalonev">Felhasználónév</label>
                                             </div>
                                         </div>
                                         
-                                        <div className='w-50'>
-                                            <div className="form-floating">
-                                                <textarea className="form-control required bg-dark" id="leiras" placeholder="Vezetéknév" onChange={handleInputChange} />
-                                                <label htmlFor="leiras" className='opacity-50'>Pár szó magamról</label>
+                                        <div className="col-4">
+                                            <div className="form-group myform-group">
+                                                <input type="text" id="email" className="myform-control form-control required bg-dark p-10" required />
+                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="email">E-mail cím</label>
+                                            </div>
+                                        </div>
+                                        <div className="col-4">
+                                            <div className="form-group myform-group">
+                                                <input type="text" id="jelszo" className="myform-control form-control required bg-dark p-10" required />
+                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="jelszo">Jelszó</label>
+                                            </div>
+                                        </div>
+
+                                        <div className="col-4">
+                                            <div className="form-group myform-group">
+                                                <input type="text" id="jelszomegegyszer" className="myform-control form-control required bg-dark p-10" required />
+                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="jelszomegegyszer">Jelszó mégegyszer</label>
+                                            </div>
+                                        </div>
+
+                                        <div className="w-50">
+                                            <div className="form-group myform-group">
+                                                <textarea id="leiras" className="myform-control form-control required bg-dark p-10" required />
+                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="leiras">Pár szó magamról</label>
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +134,7 @@ function Register2() {
                                 </div>
 
 
-                                <Button2 content="Regisztrálok!"/>
+                                <Button2 content="Regisztrálok!" />
 
                                 <div className="text-center">
                                     <p>
