@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { IoMdClose } from 'react-icons/io'
 import UserContext from '../_context/UserContext';
 import '../ui/_css/dashboard.css'
+import { Link } from 'react-router-dom';
 
 function LoginModal({ closeModal }: any) {
 
@@ -137,7 +138,7 @@ function LoginModal({ closeModal }: any) {
                                     </div>
                                     <div className="mnt-5">
                                         <small>
-                                            <a href="#" className='normal-link'>Nincs fiókod? Regisztrálj!</a>
+                                            <Link to='/register1' className='normal-link'>Nincs fiókod? Regisztrálj!</Link>
                                         </small>
                                     </div>
                                 </div>

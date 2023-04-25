@@ -1,9 +1,14 @@
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProgressBar from '../ui/ProgressBar';
 import Button2 from '../ui/Button2';
 
 function Register1() {
+
+    useEffect(() => {
+        const pageBG: Element = document.querySelector('.full-page')!;
+        pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-3.png')")
+    }, [])
 
     const [width, setWidth] = useState(0);
 
@@ -49,11 +54,7 @@ function Register1() {
 
                     <div className="tab-content">
                         <div
-                            className="tab-pane fade show active"
-                            id="pills-login"
-                            role="tabpanel"
-                            aria-labelledby="tab-login"
-                        >
+                            className="tab-panel fade show active">
                             <form>
                                 <div className="text-center mb-3">
                                     <p className='lead'>Regisztráció ezzel:</p>
@@ -101,10 +102,10 @@ function Register1() {
                                     </div>
                                 </div>
 
-                                    <div className='p-30'>
-                                        <Button2 content="Következő" />
-                                    </div>
-                                
+                                <div className='p-30'>
+                                    <Button2 content="Következő" myFunct={() => logging()} />
+                                </div>
+
 
                                 <div className="text-center">
                                     <p>
