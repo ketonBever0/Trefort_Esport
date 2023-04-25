@@ -61,6 +61,7 @@ function App() {
                     {/* <Route path='/events/:id' element={<EventPage />} /> */}
 
                     <Route path='/events/:id' element={<Events />} />
+                    <Route path='/events/:id/register' />
 
                     <Route path='/offline' element={<OfflinePage />} />
                     <Route path='/editevent' element={<EditEvent />} />
