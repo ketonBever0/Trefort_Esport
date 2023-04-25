@@ -4,6 +4,7 @@ import { IsDate, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-valida
 
 export class CompetitionDto {
 
+    @IsOptional()
     @IsNumber()
     @IsNotEmpty()
     eventId: number;
