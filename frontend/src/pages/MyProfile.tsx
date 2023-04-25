@@ -7,6 +7,7 @@ function MyProfile() {
 
   const [editData, setEditData] = useState(false);
   const [editPassword, setEditPassword] = useState(false);
+  const [editDescr, setEditDescr] = useState(false);
 
   useEffect(() => {
     // var bg:any = document.querySelectorAll('.full-page');
@@ -35,13 +36,23 @@ function MyProfile() {
                     style={{ width: 150 }}
                   />
                   <h5 className="my-3 h4">John Smith</h5>
-                  <p className='myProfileData'>Just then her head struck against the roof of the hall: in fact she was now more than nine feet high, and she at once took up the little golden key and hurried off to the garden door...</p>
-                  <a
-                    href="blog-article.html"
-                    className="nk-btn nk-btn-rounded nk-btn-color-dark-1 nk-btn-hover-color-main-1"
-                  >
-                    Szerkesztés
-                  </a>
+                  {
+                    editDescr ?
+                      <>
+                        <div className="col-lg-4 m-20">
+                          <div className="form-group myform-group border">
+                            <textarea id="leiras" className="myform-control form-control required bg-dark p-10" required />
+                            <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="leiras">Pár szó magamról...</label>
+                          </div>
+                        </div>
+                      </>
+                      :
+                      <>
+                        <p className='myProfileData'>Just then her head struck against the roof of the hall: in fact she was now more than nine feet high, and she at once took up the little golden key and hurried off to the garden door...</p>
+                      </>
+                  }
+
+                  <button onClick={() => { setEditDescr(true) }} className='nk-btn nk-btn-rounded nk-btn-color-main-1'>Szerkesztés</button>
                 </div>
                 <div className='p-20'>
                   <div className='m-20 h3'>#TAGEK</div>
@@ -172,7 +183,7 @@ function MyProfile() {
                       </>
                       :
                       <>
-                      {/* DINAMIKUS ADATOK */}
+                        {/* DINAMIKUS ADATOK */}
                         <div className="row m-5">
                           <div className="col-sm-4 m-auto myProfileLabel">Név</div>
                           <div className="col-sm-8 row">

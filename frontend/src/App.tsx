@@ -13,7 +13,6 @@ import OfflinePage from './pages/OfflinePage'
 import SubmitOrganisation1 from './pages/SubmitOrganisation1'
 import SubmitOrganisation2 from './pages/SubmitOrganisation2'
 import Button2 from './ui/Button2'
-import Button from './ui/Button'
 import Register2 from './pages/Register2'
 import Register1 from './pages/Register1'
 import EditEvent from './pages/EditEvent'
@@ -25,6 +24,7 @@ import MyProfile from './pages/MyProfile'
 import { EventProvider } from './_context/EventContext'
 import OnRouting from './ui/notRendered/OnRouting'
 import { Toaster } from 'react-hot-toast'
+import Test from './pages/Test'
 
 function App() {
 
@@ -74,7 +74,6 @@ function App() {
                     <Route path='/register2' element={<Register2 />} />
 
 
-                    <Route path='/btn' element={<Button />} />
                     <Route path='/btn2' element={<Button2 />} />
 
 
@@ -84,6 +83,7 @@ function App() {
 
                     <Route path='/elements' element={<Elements />} />
                     <Route path='/myprofile' element={<MyProfile />} />
+                    <Route path='/test' element={<Test />} />
 
 
                   </Routes>
