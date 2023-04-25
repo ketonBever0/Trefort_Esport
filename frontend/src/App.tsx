@@ -61,14 +61,23 @@ function App() {
                     {/* <Route path='/events/:id' element={<EventPage />} /> */}
 
                     <Route path='/events/:id' element={<Events />} />
+                    <Route path='/events/:id/register' />
 
                     <Route path='/offline' element={<OfflinePage />} />
                     <Route path='/editevent' element={<EditEvent />} />
+
+                    
                     <Route path='/register1' element={<Register1 />} />
                     <Route path='/register2' element={<Register2 />} />
+
+
                     <Route path='/btn2' element={<Button2 />} />
+
+
                     <Route path='/submitorg1' element={<SubmitOrganisation1 />} />
                     <Route path='/submitorg2' element={<SubmitOrganisation2 />} />
+
+
                     <Route path='/elements' element={<Elements />} />
                     <Route path='/myprofile' element={<MyProfile />} />
                     <Route path='/test' element={<Test />} />

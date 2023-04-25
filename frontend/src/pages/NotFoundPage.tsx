@@ -20,7 +20,7 @@ function NotFoundPage() {
                             <div className="container text-center">
                                 <div className="row">
                                     <div className="col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-                                        <h1 className="text-main-1" style={{ fontSize: 150 }}>
+                                        <h1 className="text-main-1" style={{ fontSize: 150, whiteSpace: "nowrap" }}>
                                             404
                                         </h1>
                                         <div className="nk-gap" />
