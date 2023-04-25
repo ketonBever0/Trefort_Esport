@@ -13,7 +13,6 @@ import OfflinePage from './pages/OfflinePage'
 import SubmitOrganisation1 from './pages/SubmitOrganisation1'
 import SubmitOrganisation2 from './pages/SubmitOrganisation2'
 import Button2 from './ui/Button2'
-import Button from './ui/Button'
 import Register2 from './pages/Register2'
 import Register1 from './pages/Register1'
 import EditEvent from './pages/EditEvent'
@@ -23,6 +22,7 @@ import ProfilePage from './pages/ProfilePage'
 import MyProfile from './pages/MyProfile'
 import { EventProvider } from './_context/EventContext'
 import EventPage from './pages/EventPage'
+import Test from './pages/Test'
 
 function App() {
 
@@ -66,12 +66,12 @@ function App() {
                     <Route path='/editevent' element={<EditEvent />} />
                     <Route path='/register1' element={<Register1 />} />
                     <Route path='/register2' element={<Register2 />} />
-                    <Route path='/btn' element={<Button />} />
                     <Route path='/btn2' element={<Button2 />} />
                     <Route path='/submitorg1' element={<SubmitOrganisation1 />} />
                     <Route path='/submitorg2' element={<SubmitOrganisation2 />} />
                     <Route path='/elements' element={<Elements />} />
                     <Route path='/myprofile' element={<MyProfile />} />
+                    <Route path='/test' element={<Test />} />
 
 
                   </Routes>
