@@ -39,23 +39,32 @@ function MyProfile() {
                   {
                     editDescr ?
                       <>
-                        <div className="col-lg-4 m-20">
-                          <div className="form-group myform-group border">
-                            <textarea id="leiras" className="myform-control form-control required bg-dark p-10" required />
-                            <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="leiras">Pár szó magamról...</label>
+                        <div className="">
+                          <div className="form-group myform-group row justify-content-center">
+                            <textarea id="leiras" className="myform-control form-control required bg-dark w-75 m-10" required />
+                            <div className='row gap-4 p-20 justify-content-center'>
+                              <button className='col-sm-3 col-md-6 nk-btn nk-btn-rounded nk-btn-color-main-1'>Mentés</button>
+                              <button onClick={() => { setEditDescr(false) }} className='col-sm-3 col-md-6 col-lg-5 nk-btn nk-btn-sm nk-btn-rounded nk-btn-color-white'>Mégse</button>
+                            </div>
+
                           </div>
                         </div>
                       </>
                       :
                       <>
-                        <p className='myProfileData'>Just then her head struck against the roof of the hall: in fact she was now more than nine feet high, and she at once took up the little golden key and hurried off to the garden door...</p>
+                        <p className='myProfileData p-15'>Just then her head struck against the roof of the hall: in fact she was now more than nine feet high, and she at once took up the little golden key and hurried off to the garden door...</p>
+                        <div className='row justify-content-center p-20'>
+                          <button onClick={() => { setEditDescr(true) }} className='col-sm-4 nk-btn nk-btn-rounded nk-btn-color-main-1'>Szerkesztés</button>
+                        </div>
+                        
                       </>
                   }
 
-                  <button onClick={() => { setEditDescr(true) }} className='nk-btn nk-btn-rounded nk-btn-color-main-1'>Szerkesztés</button>
+
+
                 </div>
-                <div className='p-20'>
-                  <div className='m-20 h3'>#TAGEK</div>
+                <div className='p-30'>
+                  <div className='h3'>#TAGEK</div>
                   <div className='badges'>
                     <span style={{ fontStyle: "italic" }} className='p-10 m-5 bg-main-1 lead text-light badge'>#hello</span>
                     <span style={{ fontStyle: "italic" }} className='p-10 m-5 bg-main-1 lead text-light badge'>#hello</span>
@@ -118,13 +127,15 @@ function MyProfile() {
                         <div className="row m-5">
                           <div className="col-sm-4 m-auto myProfileLabel">Név</div>
                           <div className="col-sm-8 row gap-4 gap-md-0">
-                            <div className="col-md-6">
+                            <div className="col-md-4">
                               <div className="form-group myform-group">
+                                <label className='mb-5' htmlFor='vezeteknev'>Vezetéknév</label>
                                 <input type="text" id="vezeteknev" className="myform-control form-control required bg-dark p-10" required />
                               </div>
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-4">
                               <div className="form-group myform-group">
+                              <label className='mb-5' htmlFor='vezeteknev'>Keresztnév</label>
                                 <input type="text" id="keresztnev" className="myform-control form-control required bg-dark p-10" required />
                               </div>
                             </div>
@@ -133,10 +144,35 @@ function MyProfile() {
                         <hr />
                         <div className="row m-5">
                           <div className="col-sm-4 m-auto myProfileLabel">Lakcím</div>
-                          <div className="col-sm-8 row">
-                            <div className="col-md-6">
+                          <div className="col-sm-8 row gap-4">
+                            <div className="col-md-3 col-7">
                               <div className="form-group myform-group">
-                                <input type="text" id="lakcim" className="myform-control form-control required bg-dark p-10" required />
+                              <label className='mb-10' htmlFor='iranyitoszam'>Irányítószám</label>
+                                <input type="text" id="iranyitoszam" className="myform-control form-control required bg-dark p-10" required />
+                              </div>
+                            </div>
+                            <div className="col-md-4">
+                              <div className="form-group myform-group">
+                              <label className='mb-10' htmlFor='telepules'>Település</label>
+                                <input type="text" id="telepules" className="myform-control form-control required bg-dark p-10" required />
+                              </div>
+                            </div>
+                            <div className="col-md-4">
+                              <div className="form-group myform-group">
+                              <label className='mb-10' htmlFor='kozterulet_nev'>Közterület neve</label>
+                                <input type="text" id="kozterulet_nev" className="myform-control form-control required bg-dark p-10" required />
+                              </div>
+                            </div>
+                            <div className="col-md-4 col-4">
+                              <div className="form-group myform-group">
+                              <label className='mb-10' htmlFor='kozterulet_fajta'>Közterület jellege</label>
+                                <input type="text" id="kozterulet_fajta" className="myform-control form-control required bg-dark p-10" required />
+                              </div>
+                            </div>
+                            <div className="col-md-3 col-6">
+                              <div className="form-group myform-group">
+                              <label className='mb-10' htmlFor='hazszam'>Házszám</label>
+                                <input type="text" id="hazszam" className="myform-control form-control required bg-dark p-10" required />
                               </div>
                             </div>
                           </div>
@@ -145,18 +181,20 @@ function MyProfile() {
                         <div className="row m-5">
                           <div className="col-sm-4 m-auto myProfileLabel">Oktatási azonosító</div>
                           <div className="col-sm-8 row">
-                            <div className="col-md-6">
+                            <div className="col-md-4">
                               <div className="form-group myform-group">
                                 <input type="text" id="omazonosito" className="myform-control form-control required bg-dark p-10" required />
                               </div>
+                              
                             </div>
+                             <i className="bi bi-info-circle-fill lead col-1"></i> <div className='col-sm-5'>A diákigazolvány hátulján található 11 jegyű számsor.</div>
                           </div>
                         </div>
                         <hr />
                         <div className="row m-5">
                           <div className="col-sm-4 m-auto myProfileLabel">E-mail cím</div>
                           <div className="col-sm-8 row">
-                            <div className="col-md-6">
+                            <div className="col-md-4">
                               <div className="form-group myform-group">
                                 <input type="email" id="email" className="myform-control form-control required bg-dark p-10" required />
                               </div>
@@ -167,17 +205,17 @@ function MyProfile() {
                         <div className="row m-5">
                           <div className="col-sm-4 m-auto myProfileLabel">Felhasználónév</div>
                           <div className="col-sm-8 row">
-                            <div className="col-md-6">
+                            <div className="col-md-4">
                               <div className="form-group myform-group">
                                 <input type="text" id="felhasznalonev" className="myform-control form-control required bg-dark p-10" required />
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div className='d-flex justify-content-end row gap-5 p-20'>
-                          <button className='col-sm-3 nk-btn nk-btn-rounded nk-btn-color-main-1'>Mentés</button>
-                          <button className='col-sm-3 nk-btn nk-btn-rounded text-dark'>Alaphelyzet</button>
-                          <button onClick={() => { setEditData(false) }} className='col-sm-3 nk-btn nk-btn-rounded nk-btn-color-main-1'>Kilépés</button>
+                        <div className='d-flex justify-content-end row gap-4 p-20'>
+                          <button className='col-sm-4 col-lg-2 nk-btn nk-btn-rounded nk-btn-color-main-1'>Mentés</button>
+                          <button className='col-sm-4 col-lg-3 nk-btn nk-btn-rounded text-dark'>Alaphelyzet</button>
+                          <button onClick={() => { setEditData(false) }} className='col-sm-4 col-lg-2 nk-btn nk-btn-rounded nk-btn-color-main-1'>Kilépés</button>
                         </div>
                         {/* INPUT VÉGE */}
                       </>
@@ -234,10 +272,10 @@ function MyProfile() {
                             editPassword ?
                               <></>
                               :
-                              <button onClick={() => { setEditPassword(true) }} className="col-sm-3 nk-btn nk-btn-sm nk-btn-rounded nk-btn-color-white">Jelszó módosítása</button>
+                              <button onClick={() => { setEditPassword(true) }} style={{ whiteSpace: 'normal' }} className="col-sm-4 col-lg-3 nk-btn nk-btn-sm nk-btn-rounded nk-btn-color-white">Jelszó módosítása</button>
                           }
 
-                          <button onClick={() => { setEditData(true) }} className='col-sm-3 nk-btn nk-btn-rounded nk-btn-color-main-1'>Adatok módosítása</button>
+                          <button onClick={() => { setEditData(true) }} style={{ whiteSpace: 'normal' }} className='col-sm-4 col-lg-3 nk-btn nk-btn-rounded nk-btn-color-main-1'>Adatok módosítása</button>
                         </div>
 
                         {
@@ -265,9 +303,9 @@ function MyProfile() {
                                   </div>
                                 </div>
                               </div>
-                              <div className='d-flex justify-content-end gap-5 p-20'>
-                                <button className='nk-btn nk-btn-rounded nk-btn-color-main-1'>Jelszó módosítása</button>
-                                <button onClick={() => { setEditPassword(false) }} className='nk-btn nk-btn-sm nk-btn-rounded nk-btn-color-white'>Mégsem</button>
+                              <div className='d-flex row justify-content-end gap-5 p-20'>
+                                <button style={{ whiteSpace: 'normal' }} className='col-sm-4 col-lg-3 nk-btn nk-btn-rounded nk-btn-color-main-1'>Jelszó módosítása</button>
+                                <button onClick={() => { setEditPassword(false) }} className='col-sm-3 col-lg-2 nk-btn nk-btn-sm nk-btn-rounded nk-btn-color-white'>Mégsem</button>
                               </div>
                             </>
                             :

@@ -4,9 +4,11 @@
     font-weight:500;
     color: #fff;
     text-transform: uppercase;
+    
 
 }
 
 .myProfileData {
     font-size: 1.20rem;
+    font-weight: bold;
 }
