@@ -70,6 +70,4 @@ export class EventService {
             event
         }
     }
-
-    
 }
