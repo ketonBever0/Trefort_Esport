@@ -1,5 +1,7 @@
 
 import Button2 from "../ui/Button2";
+import './images/network_icon.png';
+
 
 
 
@@ -17,10 +19,13 @@ function OfflinePage() {
         <div className="nk-fullscreen-block-middle">
           <div className="container text-center">
             <div className="row">
-              <div className="">
+              <img src="./images/network_icon.png"></img>
+              <div>
                 <h1 className="h2 m-30">Jelenleg <span className="text-main-1">offline</span> vagy.</h1>
+                <hr />
                 <div className="text-white m-40">Az oldal csak a hálózathoz való csatlakozás után tölthető be.</div>
-                <div className='h4'>Próbáld a következőket:</div>
+
+                <div className='h4 text-main-1'>Próbáld a következőket:</div>
                 <div className='d-flex justify-content-center'>
                   <ul className="text-main-1 col-xl-3 text-start">
                     <li>
@@ -34,17 +39,26 @@ function OfflinePage() {
                     </li>
                   </ul>
                 </div>
-                <h4>VAGY</h4>
+                <h4 className=" text-main-1">VAGY</h4>
                 <div className="text-white">Várj, amíg a kapcsolatod helyreáll.</div>
+
                 <div className="nk-gap-2" />
                 <form>
-                  <div className='d-flex justify-content-center'>
-                    <div className="form-floating border3">
-                      <input type="email" className="form-control required bg-transparent" id="nev" placeholder="name@example.com" />
-                      <label htmlFor="nev" className='opacity-50'>E-mail cím</label>
+
+
+                  <div className='container'>
+                    <div className='row justify-content-center gap-5 m-20'>
+                      <div className="col-md-2">
+                        <div className="form-group myform-group">
+                          <input type="text" name="lastName" id="keresztnev" className="myform-control form-control required bg-dark p-10" required />
+                          <label className="form-control-placeholder myform-control-placeholder p-10 border" htmlFor="keresztnev">Keresztnév</label>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <Button2 content="Feliratkozom!"/>
+
+                  <div className="m-20"><Button2 content="Feliratkozom!" /></div>
+                  <div className="m-100"></div>
                 </form>
               </div>
             </div>

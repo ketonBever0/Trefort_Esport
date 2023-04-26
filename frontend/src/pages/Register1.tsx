@@ -128,7 +128,7 @@ function Register1() {
                                 </div>
 
                                 <div className='p-30'>
-                                    <Button2 content="Következő" myFunct={areInputsFilled} />
+                                    <Button2 content="Következő &#x279D;" myFunct={areInputsFilled} />
                                 </div>
 
 
