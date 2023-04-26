@@ -13,23 +13,20 @@ function SubmitOrganisation2() {
     let count = 0;
 
     inputs.forEach((input) => {
-        if (input.value) {
-            count++;
-        }
+      if (input.value) {
+        count++;
+      }
     }
     )
     setWidth(50 + count * 8.33)
-};
+  };
 
 
   return (
     <div>
-
-
       <div className='bg-dark bg-gradient p-30 rounded text-xl'>
-              <ProgressBar myWidth={width} />
+        <ProgressBar myWidth={width} />
         <>
-
           <div className="tab-content">
             <div
               className="tab-pane fade show active"
@@ -37,47 +34,60 @@ function SubmitOrganisation2() {
               role="tabpanel"
               aria-labelledby="tab-login"
             >
-              <h3 className='nk-decorated-h'>
+              <h3 className='nk-decorated-h-2 m-30 text-sm-h6'>
                 <span className='text-main'>Új szervezet beküldése</span>
               </h3>
               <form>
-                <div className='container'>
-                  <div className='row justify-content-center gap-5 m-20'>
-                  <div className='col-md-4'>
-                      <div className="form-floating border3">
-                        <input type="text" className="form-control required bg-dark" id="adoszam" placeholder="name@example.com" onChange={handleInputChange} />
-                        <label htmlFor="adoszam" className='opacity-50'>Adószám</label>
+                <div className='container mt-50'>
+                  <div className='row justify-content-center gap-5 m-30'>
+                    <div className="col-lg-3 col-md-4 col-11">
+                      <div className="form-group myform-group">
+                        <input type="text"
+                          name="adoszam" id="adoszam" className="myform-control form-control required bg-dark p-10" required />
+                        <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="adoszam">Adószám</label>
                       </div>
                     </div>
-                    <div className='col-md-4'>
-                      <div className="form-floating border3">
-                        <input type="email" className="form-control required bg-dark" id="email" placeholder="name@example.com" onChange={handleInputChange} />
-                        <label htmlFor="email" className='opacity-50'>E-mail cím</label>
+                    <div className="col-lg-3 col-md-4 col-11">
+                      <div className="form-group myform-group">
+                        <input type="text" name="email" id="email" className="myform-control form-control required bg-dark p-10" required />
+                        <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="email">E-mail cím</label>
                       </div>
                     </div>
-                    <div className='col-md-4'>
-                      <div className="form-floating border3">
-                        <input type="text" className="form-control required bg-dark" id="telefonszam" placeholder="name@example.com" onChange={handleInputChange} />
-                        <label htmlFor="telefonszam" className='opacity-50'>Telefonszám</label>
-                      </div>
-                    </div>
-                    <div className='col-md-4'>
-                      <div className="form-floating border3">
-                        <textarea  className="form-control required bg-dark" id="leiras" placeholder="name@example.com" onChange={handleInputChange} />
-                        <label htmlFor="leiras" className='opacity-50'>Leírás</label>
+
+                    <div className="col-lg-3 col-md-4 col-11">
+                      <div className="form-group myform-group">
+                        <input type="text" name="telefonszam" id="telefonszam" className="myform-control form-control required bg-dark p-10" required />
+                        <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="telefonszam">Telefonszám</label>
                       </div>
                     </div>
                   </div>
+                  <div className='container'>
+                    <div className='row justify-content-center gap-4 p-20'>
+                      <div className="col-md-5 col-lg-4 col-11">
+                        <div className="form-group myform-group">
+                          <textarea name="leiras" id="leiras" className="myform-control form-control required bg-dark p-10" required />
+                          <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="leiras">Cég leírása</label>
+                        </div>
+                        </div>
+                        <div className="col-md-5 col-lg-4 col-11">
+                          <label className=''>Profilkép feltöltése</label>
+                          <input
+                            onChange={handleInputChange}
+                            type="file"
+                            className="form-control required bg-dark"
+                          />
+                        </div>
+                    </div>
+                  </div>
                 </div>
-
-                <Button2 content="Beküldés"/>
+                <div className='p-10'>
+                  <Button2 content="Beküldés" />
+                </div>
               </form>
             </div>
           </div>
         </>
-
       </div>
-
     </div>
   )
 }

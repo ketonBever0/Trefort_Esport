@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import ProgressBar from '../ui/ProgressBar';
 import Button2 from '../ui/Button2';
+import './_css/input.css'
 
 function SubmitOrganisation1() {
 
@@ -38,9 +39,8 @@ function SubmitOrganisation1() {
     <div>
 
       <div className='bg-dark bg-gradient p-30 rounded text-xl'>
-      <ProgressBar myWidth={width} />
+        <ProgressBar myWidth={width} />
         <>
-
           <div className="tab-content">
             <div
               className="tab-pane fade show active"
@@ -48,41 +48,76 @@ function SubmitOrganisation1() {
               role="tabpanel"
               aria-labelledby="tab-login"
             >
-              <h3 className='nk-decorated-h'>
+              <h3 className='nk-decorated-h-2 m-30 mb-30 text-sm-h6'>
                 <span className='text-main'>Új szervezet beküldése</span>
               </h3>
               <form>
-                <div className='container'>
-                  <div className='row justify-content-center gap-5 m-20'>
-                  <div className='col-md-4'>
-                      <div className="form-floating">
-                        <input type="text" className="form-control required bg-dark" id="nev" placeholder="name@example.com" onChange={handleInputChange} />
-                        <label htmlFor="nev" className='opacity-50'>Név</label>
+                <div className='container mt-50'>
+                  <div className='row justify-content-center gap-5 m-30'>
+                    <div className="col-lg-3 col-md-4 col-11">
+                      <div className="form-group myform-group">
+                        <input type="text"
+                          name="nev" id="nev" className="myform-control form-control required bg-dark p-10" required />
+                        <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="vezeteknev">Teljes név</label>
                       </div>
                     </div>
-                    <div className='col-md-4'>
-                      <div className="form-floating">
-                        <input type="text" className="form-control required bg-dark" id="elerhetoseg" placeholder="name@example.com" onChange={handleInputChange} />
-                        <label htmlFor="elerhetoseg" className='opacity-50'>Elérhetőség</label>
+                    <div className="col-lg-3 col-md-4 col-11">
+                      <div className="form-group myform-group">
+                        <input type="text"
+                          name="tipus" id="tipus" className="myform-control form-control required bg-dark p-10" required />
+                        <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="tipus">Típus</label>
                       </div>
                     </div>
-                    <div className='col-md-4'>
-                      <div className="form-floating">
-                        <input type="text" className="form-control required bg-dark" id="kepviselo" placeholder="name@example.com" onChange={handleInputChange} />
-                        <label htmlFor="kepviselo" className='opacity-50'>Képviselő neve</label>
+                    <div className="col-lg-3 col-md-4 col-11">
+                      <div className="form-group myform-group">
+                        <input type="text"
+                          name="kepviselo_nev" id="kepviselo_nev" className="myform-control form-control required bg-dark p-10" required />
+                        <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="kepviselo_nev">Képviselő neve</label>
                       </div>
                     </div>
-                    <div className='col-md-4'>
-                      <div className="form-floating">
-                        <input type="text" className="form-control required bg-dark" id="cim" placeholder="name@example.com" onChange={handleInputChange} />
-                        <label htmlFor="cim" className='opacity-50'>Cím</label>
+                    
+                    <div className="col-lg-3 col-md-4 col-11 col-8">
+                      <div className="form-group myform-group">
+                        <input type="text"
+                          name="iranyitoszam" id="iranyitoszam" className="myform-control form-control required bg-dark p-10" required />
+                        <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="iranyitoszam">Irányítószám</label>
                       </div>
                     </div>
+                    <div className="col-lg-3 col-md-4 col-11">
+                      <div className="form-group myform-group">
+                        <input type="text"
+                          name="telepules" id="telepules" className="myform-control form-control required bg-dark p-10" required />
+                        <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="telepules">Település neve</label>
+                      </div>
+                    </div>
+                    <div className="col-lg-3 col-md-4 col-11">
+                      <div className="form-group myform-group">
+                        <input type="text"
+                          name="kozterulet_nev" id="kozterulet_nev" className="myform-control form-control required bg-dark p-10" required />
+                        <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="kozterulet_nev">Közterület neve</label>
+                      </div>
+                    </div>
+                    
+                    <div className="col-lg-3 col-md-4 col-11">
+                      <div className="form-group myform-group">
+                        <input type="text"
+                          name="kozterulet_jelleg" id="kozterulet_jelleg" className="myform-control form-control required bg-dark p-10" required />
+                        <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="kozterulet_jelleg">Közterület jellege</label>
+                      </div>
+                    </div>
+                    <div className="col-lg-3 col-md-4 col-11 ">
+                      <div className="form-group myform-group">
+                        <input type="text"
+                          name="hazszam" id="hazszam" className="myform-control form-control required bg-dark p-10" required />
+                        <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="hazszam">Házszám</label>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
-                  <button className=''>vissza</button>
-                  <Button2 content="Következő"/>
-                
+                <div className='p-10'>
+                  <Button2 content="Tovább	&#x279D;" />
+                </div>
               </form>
             </div>
           </div>
