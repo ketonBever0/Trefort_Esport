@@ -6,6 +6,11 @@ const UserContext = createContext<any | null>(null);
 export const UserProvider = ({ children }: any) => {
 
 
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
+    const [isUserBoxOpen, setIsUserBoxOpen] = useState<boolean>(false);
+
+
+
     const [userToken, setUserToken] = useState<string | null>(null);
     const [tokenRefresh, setTokenRefresh] = useState<boolean>(false);
     const [loggingIn, setLoggingIn] = useState<boolean>(false);
@@ -101,6 +106,9 @@ export const UserProvider = ({ children }: any) => {
 
 
     return <UserContext.Provider value={{
+
+        isLoginModalOpen, setIsLoginModalOpen,
+        isUserBoxOpen, setIsUserBoxOpen,
 
         login,
         loggingIn,

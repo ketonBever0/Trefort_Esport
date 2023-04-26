@@ -32,13 +32,14 @@ function NavBar() {
 
 
     const {
+        isLoginModalOpen, setIsLoginModalOpen,
+        isUserBoxOpen, setIsUserBoxOpen,
         userToken,
         userData,
         logout
     } = useContext(UserContext);
 
-    const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
-    const [isUserBoxOpen, setIsUserBoxOpen] = useState<boolean>(false);
+
 
     const { pathname } = useLocation();
 
@@ -139,7 +140,7 @@ function NavBar() {
                                         {
                                             userToken ?
                                                 <div>
-                                                    <button className='nostyle-button' onClick={() => setIsUserBoxOpen(prev => !prev)}>
+                                                    <button className='nostyle-button' onClick={() => setIsUserBoxOpen((prev: boolean) => !prev)}>
                                                         {userData?.user?.username}
                                                         <span className={`mx-2 ${isUserBoxOpen && 'rotate-180'}`}><AiOutlineDown /></span>
                                                     </button>

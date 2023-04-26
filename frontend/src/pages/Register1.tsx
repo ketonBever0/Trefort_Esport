@@ -1,9 +1,10 @@
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import ProgressBar from '../ui/ProgressBar';
 import Button2 from '../ui/Button2';
 import Notify from '../ui/Toasts';
 import UserContext from '../_context/UserContext';
+
 
 function Register1() {
 
@@ -18,43 +19,63 @@ function Register1() {
 
 
     const {
+        setIsLoginModalOpen,
         registerFormData, setRegisterFormData
     } = useContext(UserContext);
 
 
+    const prevFormState = useRef(registerFormData);
+
+    useEffect(() => {
+        prevFormState.current = registerFormData;
+    }, [registerFormData])
+
+
     const handleInputChange = (e: any) => {
-        const inputs = document.querySelectorAll('input');
+        // const inputs = document.querySelectorAll('input');
 
         setRegisterFormData((prev: any) => ({
             ...prev,
             [e.target.name]: e.target.value
         }))
 
-        // let count = 0;
+        // console.log(prevFormState.current);
 
-        // inputs.forEach((input) => {
-        //     if (input.value) {
-        //         count++;
-        //     }
-        // }
-        // )
+
         if (e.target.required == true) {
-            setProgressWidth(prev => prev + 20);
+            if (e.target.value != "") {
+                setProgressWidth(prev => prev + 14.2);
+            } else {
+                setProgressWidth(prev => prev - 14.2);
+            }
+
         }
     };
 
 
     const areInputsFilled = () => {
 
-        const inputs = document.querySelectorAll('input');
+        // const inputs = document.querySelectorAll('input');
 
-        inputs.forEach((input) => {
-            if (input.value) {
-                navigate("/register2");
-            } else {
-                Notify.tError("Töltsd kia mezőket!");
-            }
-        })
+        // inputs.forEach((input) => {
+        //     if (input.value) {
+        //         navigate("/register2");
+        //     } else {
+        //         Notify.tError("Töltsd ki a mezőket!");
+        //     }
+        // })
+
+
+        if (registerFormData.firstName == "" && registerFormData.lastName == "" && registerFormData.address == "") {
+            Notify.tError("Töltsd ki a kötelező mezőket!");
+            return;
+        }
+        else {
+            sessionStorage.setItem("regForm", JSON.stringify(registerFormData));
+            navigate("/register2");
+        }
+
+
     };
 
     const logging = () => {
@@ -132,12 +153,12 @@ function Register1() {
                                 </div>
 
 
-                                <div className="text-center">
-                                    <p>
-                                        Már van fiókod? <a href="#!">Jelentkezz be itt!</a>
-                                    </p>
-                                </div>
                             </form>
+                            <div className="text-center">
+                                <p>
+                                    Már van fiókod? <button onClick={() => setIsLoginModalOpen(true)} className='nostyle-button-red'>Jelentkezz be itt!</button>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </>

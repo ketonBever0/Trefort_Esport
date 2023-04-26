@@ -41,6 +41,9 @@ function App() {
               <Router>
                 <NavBar />
                 {/* <div className="nk-gap-6" /> */}
+                <div id='holditsplace' style={{ display: "none", visibility: 'hidden' }}>
+                  <NavBar />
+                </div>
                 <div className="nk-gap-4" />
                 <div className='container'>
                   <Routes>

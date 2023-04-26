@@ -6,14 +6,26 @@ import UserContext from '../_context/UserContext';
 
 function Register2() {
 
+    useEffect(() => {
+        const pageBG: Element = document.querySelector('.full-page')!;
+        pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-3.png')")
+    }, [])
+
     const [width, setWidth] = useState(50);
+
+    const {
+        setIsLoginModalOpen,
+        registerFormData, setRegisterFormData
+    } = useContext(UserContext);
 
     const navigate = useNavigate();
 
+    if (registerFormData.firstName == "" && registerFormData.lastName == "" && registerFormData.address == "") {
+        const regForm: any = sessionStorage.getItem("regForm");
+        console.log(JSON.parse(regForm));
+        setRegisterFormData(JSON.parse(regForm));
+    }
 
-    const {
-        registerFormData, setRegisterFormData
-    } = useContext(UserContext);
 
 
     const handleInputChange = (e: any) => {
@@ -163,7 +175,7 @@ function Register2() {
                                 </div>
 
                                 <div className='p-30'>
-                                    <Button2 content="Regisztrálok!" myFunct={console.log('hello')} />
+                                    <Button2 content="Regisztrálok!" myFunct={() => console.log('hello')} />
                                 </div>
 
 
