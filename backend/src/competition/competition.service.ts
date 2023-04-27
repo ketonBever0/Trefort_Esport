@@ -36,6 +36,7 @@ export class CompetitionService {
                 startDate: dto.startDate || null,
                 endDate: dto.endDate || null,
                 name: dto.name,
+                maxMemberCount: dto.maxMemberCount || null,
                 game: dto.game,
                 platform: dto.platform,
                 registrationStart: dto.registrationStart || null,

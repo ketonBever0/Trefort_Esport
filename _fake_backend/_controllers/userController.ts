@@ -2,6 +2,10 @@ const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+const fs = require('fs');
+const { dirname } = require('path')!;
+const appDir = dirname(require?.main?.filename);
+
 import { PrismaClient } from '@prisma/client';
 import { PermissionResultType } from '../_functions';
 const prisma = new PrismaClient();
@@ -32,48 +36,69 @@ const genToken = (id: Number) => {
 
 const register = asyncHandler(async (req: any, res: any) => {
 
-    const { email, username, password, firstName, lastName, address, educationIdNum } = req.body;
+    // const { email, username, password, firstName, lastName, address, educationIdNum } = req.body;
+
+    var { form } = req.body
+    form = JSON.parse(form);
+
+    const file = req.files
+
+    // console.log(form)
+    // console.log(file)
 
 
-    const usernameExists = await prisma.user.findUnique({
-        where: {
-            username: username
-        } as UserType
-    })
-    if (usernameExists) {
-        res.status(400);
-        throw new Error("A felhasználónév foglalt!");
-    }
+    if (file != null) {
 
-    const emailExists = await prisma.user.findUnique({
-        where: {
-            email: email
-        }
-    })
-    if (emailExists) {
-        res.status(400);
-        throw new Error("Az e-mail cím foglalt!");
+        var path = appDir
+
+
     }
 
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await prisma.user.create({
-        data: {
-            email: email,
-            username: username,
-            password: hashedPassword,
-            firstName: firstName,
-            lastName: lastName,
-            address: address,
-            educationIdNum: educationIdNum,
-            lastLoginDate: undefined
 
-        } as UserType
 
-    })
+    // const usernameExists = await prisma.user.findUnique({
+    //     where: {
+    //         username: username
+    //     } as UserType
+    // })
+    // if (usernameExists) {
+    //     res.status(400);
+    //     throw new Error("A felhasználónév foglalt!");
+    // }
 
-    res.json(user);
-    return;
+    // const emailExists = await prisma.user.findUnique({
+    //     where: {
+    //         email: email
+    //     }
+    // })
+    // if (emailExists) {
+    //     res.status(400);
+    //     throw new Error("Az e-mail cím foglalt!");
+    // }
+
+
+    // const hashedPassword = await bcrypt.hash(password, 10);
+    // const user = await prisma.user.create({
+    //     data: {
+    //         email: email,
+    //         username: username,
+    //         password: hashedPassword,
+    //         firstName: firstName,
+    //         lastName: lastName,
+    //         address: address,
+    //         educationIdNum: educationIdNum,
+    //         lastLoginDate: undefined
+
+    //     } as UserType
+
+    // })
+
+    // res.json(user);
+    // return;
+
+
+
 })
 
 
