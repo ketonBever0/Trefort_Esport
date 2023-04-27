@@ -27,6 +27,11 @@ export class CompetitionDto {
     @IsNotEmpty()
     name: string;
 
+    @IsNumber()
+    @IsOptional()
+    @IsNotEmpty()
+    maxMemberCount: number;
+
     @IsString()
     @IsNotEmpty()
     game: string;
