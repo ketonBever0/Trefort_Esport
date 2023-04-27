@@ -44,9 +44,23 @@ export class SessionteamService {
             }
         });
 
-        return {
-            sessionTeam
+        const res = {
+            teamName,
+            public: sessionTeam[0].public,
+            users: sessionTeam.map(user => {
+                const useraname = user.user.username;
+                const profilePicture = user.user.profilePicture;
+                return {
+                    useraname,
+                    profilePicture
+                }
+            }),
+            competitionName: sessionTeam[0].competition.name,
+            maxMemberCount: sessionTeam[0].competition.maxMemberCount
+
         }
+
+        return res;
     }
 
 }
