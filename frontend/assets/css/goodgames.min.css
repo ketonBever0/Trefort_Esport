@@ -7389,7 +7389,7 @@ div.nk-error {
   clear: both;
 }
 .nk-news-box .nk-news-box-item + .nk-news-box-item {
-  border-top: 1px solid #2f3541;
+  border-top: 0.5px solid #dd163b70;
 }
 .nk-news-box .nk-news-box-item:hover, .nk-news-box .nk-news-box-item.hover {
   background-color: #2f3541;

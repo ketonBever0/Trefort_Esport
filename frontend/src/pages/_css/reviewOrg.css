@@ -1,0 +1,18 @@
+.text-lg {
+    font-size: 1.3rem;
+}
+.text-md {
+    font-size: 1rem;
+}
+
+.h-lg {
+    min-height: 10rem;
+}
+
+.nk-news-box-item:active .nk-news-box-item-title{
+    color: #dd163b;
+}
+
+.nk-news-box-item:hover .nk-news-box-item-date, p {
+    color: white;
+}

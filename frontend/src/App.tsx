@@ -25,6 +25,7 @@ import { EventProvider } from './_context/EventContext'
 import OnRouting from './ui/notRendered/OnRouting'
 import { Toaster } from 'react-hot-toast'
 import Test from './pages/Test'
+import ReviewOrganisations from './pages/ReviewOrganisations'
 
 function App() {
 
@@ -87,6 +88,7 @@ function App() {
                     <Route path='/elements' element={<Elements />} />
                     <Route path='/myprofile' element={<MyProfile />} />
                     <Route path='/test' element={<Test />} />
+                    <Route path='/revieworg' element={<ReviewOrganisations />} />
 
 
                   </Routes>

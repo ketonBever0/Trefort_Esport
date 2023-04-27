@@ -14,6 +14,16 @@ function MyProfile() {
   }, []);
 
 
+  function myFunction() {
+    var pwinput:any = document.getElementById("regijelszo");
+
+    if (pwinput.type === "password") {
+      pwinput.type = "text";
+    } else {
+      pwinput.type = "password";
+    }
+  }
+
 
 
   return (
@@ -343,8 +353,9 @@ function MyProfile() {
                                 <div className="col-sm-4 m-auto myProfileLabel fw-bold">Régi jelszó</div>
                                 <div className="col-sm-8 row">
                                   <div className="col-md-6">
-                                    <div className="form-group myform-group">
-                                      <input type="password" id="regijelszo" className="myform-control form-control required bg-dark p-10" required />
+                                    <div className="form-group myform-group row">
+                                      <input type="password" id="regijelszo" className="myform-control form-control required bg-dark p-10 col" required />
+                                      <span className='col-2 h4 m-auto row justify-content-center'><i className="bi bi-eye-slash"></i></span>
                                     </div>
                                   </div>
                                 </div>
