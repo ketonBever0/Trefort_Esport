@@ -6,6 +6,7 @@ function ReviewOrganisations() {
     return (
         <div>
             {/* START: Latest News */}
+            <div className="m-100">.</div><div className="m-100">.</div>
             <div className="nk-gap-2" />
             <h3 className="nk-decorated-h-2 text-sm-h6">
                 <span>
@@ -13,8 +14,8 @@ function ReviewOrganisations() {
                 </span>
             </h3>
             <div className="nk-gap" />
-            <div className="nk-news-box h-lg" style={{ height: "38rem" }}>
-                <div className="nk-news-box-list">
+            <div className="nk-news-box h-lg d-flex">
+                <div className="nk-news-box-list w-md">
                     <div className="nano">
                         <div className="nano-content">
                             <div className="nk-news-box-item">
@@ -36,7 +37,7 @@ function ReviewOrganisations() {
                                 <div className="nk-news-box-item-text">
                                     <p>Intézményyy</p>
                                 </div>
-                                <div className="nk-news-box-item-date border">
+                                <div className="nk-news-box-item-date">
                                     <span className="fa fa-calendar" /> date of submit 2022.02.02.
                                 </div>
                             </div>
@@ -61,7 +62,7 @@ function ReviewOrganisations() {
                                     <p>Képviselő</p>
                                     <p>Cég leírása</p>
                                 </div>
-                                <div className="nk-news-box-item-date border">
+                                <div className="nk-news-box-item-date">
                                     <span className="fa fa-calendar" /> date of submit 2022.02.02.
                                 </div>
                             </div>
@@ -86,7 +87,7 @@ function ReviewOrganisations() {
                                     <p>Képviselő</p>
                                     <p>Cég leírása</p>
                                 </div>
-                                <div className="nk-news-box-item-date border">
+                                <div className="nk-news-box-item-date">
                                     <span className="fa fa-calendar" /> date of submit 2022.02.02.
                                 </div>
                             </div>
@@ -111,7 +112,7 @@ function ReviewOrganisations() {
                                     <p>Képviselő</p>
                                     <p>Cég leírása</p>
                                 </div>
-                                <div className="nk-news-box-item-date border">
+                                <div className="nk-news-box-item-date">
                                     <span className="fa fa-calendar" /> date of submit 2022.02.02.
                                 </div>
                             </div>
@@ -170,31 +171,43 @@ function ReviewOrganisations() {
                 </div>
 
 
-                <div className="nk-news-box-each-info h-lg">
+                <div id="details-box" className="nk-news-box-each-info w-lg border">
                     <div className="nano">
                         <div className="nano-content">
                             {/* There will be inserted info about selected news*/}
                             <div className="nk-news-box-item-image">
-                                <img src="assets/images/post-1.jpg" alt="" />
+                                <img src="https://taszi.hu/kepek/fooldali_banner/19_1.jpg" alt="" />
                                 {/* <span className="nk-news-box-item-categories">
                                     <span className="bg-main-4">MMO</span>
                                 </span> */}
                             </div>
-                            <h3 className="nk-news-box-item-title" >Trefort Ágoston Technikum, Szakképző Iskola és Kollégium</h3>
-                            <hr/>
-                            <ul>
+                            <div className="p-5">
+                                <h4>Szervezet neve:</h4>
+                                <h3 className="nk-news-box-item-title fw-normal">Trefort Ágoston Technikum, Szakképző Iskola és Kollégium</h3>
+                            </div>
+
+                            <hr />
+                            <div className="p-5">
+                                <h4>Szervezet adatai:</h4>
+                               <ul>
                                 <li className="text-lg">Típus: <span className="text-white text-lg"> Iskola</span></li>
                                 <li className="text-lg">Képviselő személy:<span className="text-white text-lg">  John Doe</span></li>
                                 <li className="text-lg">Cím:<span className="text-white text-lg">  5600 Békéscsaba, Gyulai út 32.</span></li>
                                 <li className="text-lg">E-mail cím:<span className="text-white text-lg"> user@outlook.com</span></li>
                                 <li className="text-lg">Telefonszám:<span className="text-white text-lg"> +36 (20) 476-2340</span></li>
                                 <li className="text-lg">Adószám:<span className="text-white text-lg"> 12345678-2-10</span></li>
-                                
-                            </ul>
-                            <hr/>
-                            <p className="lead">Cég leírása Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                            </ul>  
+                            </div>
+                           
+                            <hr />
+                            <div className="p-5">
+                                <h4>Szervezet leírása:</h4>
+                                <p className="lead">Cég leírása Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            </div>
+
                             <div className="m-20">
-                                <Button2 content="Intézmény elfogadása"/>
+                                <Button2 content="Intézmény elfogadása" />
                             </div>
                             <div className="nk-news-box-item-date">
                                 <span className="fa fa-calendar" /> Sep 18, 2018

@@ -6,7 +6,15 @@
 }
 
 .h-lg {
-    min-height: 10rem;
+    min-height: 40rem;
+}
+
+.w-md {
+    max-width: 30rem;
+}
+
+.w-lg {
+    min-width: 50rem;
 }
 
 .nk-news-box-item:active .nk-news-box-item-title{
@@ -15,4 +23,8 @@
 
 .nk-news-box-item:hover .nk-news-box-item-date, p {
     color: white;
+}
+
+#details-box {
+    flex-grow: 1;
 }
