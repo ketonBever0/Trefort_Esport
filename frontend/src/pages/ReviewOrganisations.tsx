@@ -15,13 +15,13 @@ function ReviewOrganisations() {
             </h3>
             <div className="nk-gap" />
             <div className="nk-news-box h-lg d-flex">
-                <div className="nk-news-box-list">
+                <div className="nk-news-box-list w-md">
                     <div className="nano">
                         <div className="nano-content">
                             
                         <div className="nk-news-box-item d-flex">
                                 <div className="nk-news-box-item-img">
-                                    <div className="border">
+                                    <div className="">
                                         <img
                                             src="https://lh5.googleusercontent.com/p/AF1QipOR5XURlA81HnIPtdh_-4Qiq5I3_IBVbeNrSRIm=w650-h486-k-no"
                                             alt="Smell magic in the air. Or maybe barbecue"
@@ -42,7 +42,7 @@ function ReviewOrganisations() {
                             </div>
                             <div className="nk-news-box-item d-flex">
                                 <div className="nk-news-box-item-img">
-                                    <div className="border">
+                                    <div className="">
                                         <img
                                             src="https://lh5.googleusercontent.com/p/AF1QipOR5XURlA81HnIPtdh_-4Qiq5I3_IBVbeNrSRIm=w650-h486-k-no"
                                             alt="Smell magic in the air. Or maybe barbecue"
@@ -63,7 +63,7 @@ function ReviewOrganisations() {
                             </div>
                             <div className="nk-news-box-item d-flex">
                                 <div className="nk-news-box-item-img">
-                                    <div className="border">
+                                    <div className="">
                                         <img
                                             src="https://lh5.googleusercontent.com/p/AF1QipOR5XURlA81HnIPtdh_-4Qiq5I3_IBVbeNrSRIm=w650-h486-k-no"
                                             alt="Smell magic in the air. Or maybe barbecue"
@@ -162,7 +162,7 @@ function ReviewOrganisations() {
                 </div>
 
 
-                <div id="details-box" className="nk-news-box-each-info w-lg border">
+                <div id="details-box" className="nk-news-box-each-info w-lg">
                     <div className="nano">
                         <div className="nano-content">
                             {/* There will be inserted info about selected news*/}
@@ -197,10 +197,9 @@ function ReviewOrganisations() {
                                 <p className="lead">Cég leírása Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                             </div>
 
-                            <div className="m-20 border d-flex justify-content-around">
-                            <button className="button2" style={{c:"green"}}>Intézmény elfogadása</button>
-                                {/* <Button2 content="Intézmény elutasítása" />
-                                <Button2 content="Intézmény elfogadása" /> */}
+                            <div className="m-20 d-flex justify-content-around">
+                                <button id="reviewAcceptBtn" className="button2">Intézmény elfogadása</button>
+                                <button id="reviewDeclineBtn" className="button2">Intézmény elutasítása</button>
                             </div>
                             <div className="nk-news-box-item-date">
                                 <span className="fa fa-calendar" /> Sep 18, 2018

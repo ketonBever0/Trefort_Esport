@@ -10,7 +10,7 @@
 }
 
 .w-md {
-    max-width: 30rem;
+    max-width: 35rem;
 }
 
 .w-lg {
@@ -27,4 +27,12 @@
 
 #details-box {
     flex-grow: 1;
+}
+
+#reviewAcceptBtn {
+    --c:  #38a220;
+}
+
+#reviewDeclineBtn {
+    --c: #e2361f;
 }
