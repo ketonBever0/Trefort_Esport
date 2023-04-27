@@ -111,7 +111,10 @@ export const UserProvider = ({ children }: any) => {
             body: form
         })
             .then(res => res.json())
-            .then(response => console.log(response))
+            .then(response => {
+                if (response.success) Notify.tSuccess(response.message);
+                else Notify.tError(response.message);
+            })
             .catch(err => console.log(err));
 
 

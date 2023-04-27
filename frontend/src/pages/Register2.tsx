@@ -22,11 +22,21 @@ function Register2() {
 
     const navigate = useNavigate();
 
-    if (registerFormData.firstName == "" && registerFormData.lastName == "" && registerFormData.address == "") {
-        const regForm: any = sessionStorage.getItem("regForm");
-        // console.log(JSON.parse(regForm));
-        setRegisterFormData(JSON.parse(regForm));
-    }
+    useEffect(() => {
+        if (registerFormData.firstName == "" && registerFormData.lastName == "" && registerFormData.address == "") {
+            const regForm: any = sessionStorage.getItem("regForm");
+
+            if (!regForm) {
+                navigate('/register1')
+                return;
+            }
+            else {
+                setRegisterFormData(JSON.parse(regForm));
+            }
+        }
+
+    }, [])
+
 
 
 

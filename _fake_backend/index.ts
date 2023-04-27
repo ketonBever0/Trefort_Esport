@@ -10,6 +10,7 @@ const path = require('path');
 
 const fileUpload = require("express-fileupload");
 app.use(fileUpload());
+app.use('/profilepicture', express.static(path.join(__dirname, 'files/user_profile_pictures')));
 
 const dotenv = require('dotenv');
 dotenv.config();

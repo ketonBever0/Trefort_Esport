@@ -106,7 +106,7 @@ model User {
   firstName                    String
   lastName                     String
   address                      String
-  educationIdNum               Int?          @unique
+  educationIdNum               String?       @unique
   status                       String        @default("active")
   registrationDate             DateTime?     @default(now())
   lastLoginDate                DateTime?     @default(now())
