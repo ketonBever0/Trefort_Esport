@@ -93,7 +93,7 @@ function MyProfile() {
 
                 </div>
                 <div className='p-30 bg-dark-2'>
-                  <div className='h3'>#TAGEK</div>
+                  <div className='h3 text-sm-h6'>#TAGEK</div>
                   <div className='badges'>
                     <span style={{ fontStyle: "italic" }} className='p-10 m-5 bg-main-1 lead text-light badge'>#hello</span>
                     <span style={{ fontStyle: "italic" }} className='p-10 m-5 bg-main-1 lead text-light badge'>#hello</span>
@@ -173,7 +173,7 @@ function MyProfile() {
                             </table>
             </div>
             <div className="col-lg-8">
-              <div className='nk-decorated-h-2 h3 p-15 mt-40'><span> </span>Profil adataim<span> </span></div>
+              <div className='nk-decorated-h-2 h3 p-15 mt-40 text-sm-h6'><span> </span>Profil adataim<span> </span></div>
               <div className="card mb-4 bg-dark-4">
                 <div className="card-body">
 
@@ -373,7 +373,7 @@ function MyProfile() {
                   }
                 </div>
               </div>
-              <div className='nk-decorated-h-2 h3 p-15 mt-40'><span> </span>Saját bejegyzéseim<span> </span></div>
+              <div className='nk-decorated-h-2 h3 p-15 mt-40 text-sm-h6'><span> </span>Saját bejegyzéseim<span> </span></div>
               <div className="nk-blog-grid p-20 row d-flex gap-20">
 
                 <div className="nk-blog-post col-6">

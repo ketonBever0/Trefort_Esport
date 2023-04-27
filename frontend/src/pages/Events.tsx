@@ -31,8 +31,6 @@ function Events() {
 
     return (
         <div>
-
-
             <div className="nk-blog-fullwidth">
 
                 {
