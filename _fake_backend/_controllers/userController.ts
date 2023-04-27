@@ -32,48 +32,54 @@ const genToken = (id: Number) => {
 
 const register = asyncHandler(async (req: any, res: any) => {
 
-    const { email, username, password, firstName, lastName, address, educationIdNum } = req.body;
+    // const { email, username, password, firstName, lastName, address, educationIdNum } = req.body;
+
+    // console.log("eddig eljut")
+
+    console.log(req.body)
+    console.log(req.files)
+
+    res.json({ message: "ez egy fos" });
+
+    // const usernameExists = await prisma.user.findUnique({
+    //     where: {
+    //         username: username
+    //     } as UserType
+    // })
+    // if (usernameExists) {
+    //     res.status(400);
+    //     throw new Error("A felhasználónév foglalt!");
+    // }
+
+    // const emailExists = await prisma.user.findUnique({
+    //     where: {
+    //         email: email
+    //     }
+    // })
+    // if (emailExists) {
+    //     res.status(400);
+    //     throw new Error("Az e-mail cím foglalt!");
+    // }
 
 
-    const usernameExists = await prisma.user.findUnique({
-        where: {
-            username: username
-        } as UserType
-    })
-    if (usernameExists) {
-        res.status(400);
-        throw new Error("A felhasználónév foglalt!");
-    }
+    // const hashedPassword = await bcrypt.hash(password, 10);
+    // const user = await prisma.user.create({
+    //     data: {
+    //         email: email,
+    //         username: username,
+    //         password: hashedPassword,
+    //         firstName: firstName,
+    //         lastName: lastName,
+    //         address: address,
+    //         educationIdNum: educationIdNum,
+    //         lastLoginDate: undefined
 
-    const emailExists = await prisma.user.findUnique({
-        where: {
-            email: email
-        }
-    })
-    if (emailExists) {
-        res.status(400);
-        throw new Error("Az e-mail cím foglalt!");
-    }
+    //     } as UserType
 
+    // })
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await prisma.user.create({
-        data: {
-            email: email,
-            username: username,
-            password: hashedPassword,
-            firstName: firstName,
-            lastName: lastName,
-            address: address,
-            educationIdNum: educationIdNum,
-            lastLoginDate: undefined
-
-        } as UserType
-
-    })
-
-    res.json(user);
-    return;
+    // res.json(user);
+    // return;
 })
 
 

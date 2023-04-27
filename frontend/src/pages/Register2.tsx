@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import ProgressBar from '../ui/ProgressBar';
 import Button2 from '../ui/Button2';
 import UserContext from '../_context/UserContext';
+import Notify from '../ui/Toasts';
 
 function Register2() {
 
@@ -15,47 +16,40 @@ function Register2() {
 
     const {
         setIsLoginModalOpen,
-        registerFormData, setRegisterFormData
+        registerFormData, setRegisterFormData,
+        register
     } = useContext(UserContext);
 
     const navigate = useNavigate();
 
     if (registerFormData.firstName == "" && registerFormData.lastName == "" && registerFormData.address == "") {
         const regForm: any = sessionStorage.getItem("regForm");
-        console.log(JSON.parse(regForm));
+        // console.log(JSON.parse(regForm));
         setRegisterFormData(JSON.parse(regForm));
     }
 
 
 
     const handleInputChange = (e: any) => {
-        const inputs = document.querySelectorAll('input');
+        // const inputs = document.querySelectorAll('input');
 
         setRegisterFormData((prev: any) => ({
             ...prev,
             [e.target.name]: e.target.value
         }))
 
-        let count = width;
+        // let count = width;
 
-        inputs.forEach((input) => {
-            if (input.value) {
-                count++;
-            }
-        }
-        )
-        setWidth(count * 12.5)
+        // inputs.forEach((input) => {
+        //     if (input.value) {
+        //         count++;
+        //     }
+        // }
+        // )
+        // setWidth(count * 12.5)
     };
 
 
-    const handleTextareaChange = () => {
-        const textarea: any = document.querySelectorAll('textarea');
-
-        if (textarea.value) {
-            console.log(width);
-            setWidth(width + 8.33);
-        }
-    }
 
     // const verifyPassword = () => {
     //     var pw:any = document.getElementById("password").value;
@@ -83,6 +77,32 @@ function Register2() {
     //         pw.type = "password";
     //     }
     // }
+
+
+    const [confirmPassword, setConfirmPassword] = useState<string>("");
+    const [fileInput, setFileInput] = useState<any | null>(null);
+
+
+    const submit = async () => {
+
+        if (registerFormData.password != confirmPassword) {
+            Notify.tError("A két jelszó nem egyezik!");
+            return;
+        }
+        else {
+            var payload = new FormData();
+
+            payload.append("form", JSON.stringify(registerFormData));
+            fileInput && payload.append("file", fileInput);
+
+            // console.log(payload.getAll("form")[0])
+
+            await register(payload);
+
+
+        }
+
+    }
 
 
 
@@ -126,29 +146,30 @@ function Register2() {
 
                                         <div className="col-lg-3">
                                             <div className="form-group myform-group">
-                                                <input onChange={handleInputChange} type="text" id="felhasznalonev" className="myform-control form-control required bg-dark p-10" required />
+                                                <input onChange={handleInputChange} name='username' value={registerFormData.username} type="text" id="felhasznalonev" className="myform-control form-control required bg-dark p-10" required />
                                                 <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="felhasznalonev">Felhasználónév</label>
                                             </div>
                                         </div>
 
                                         <div className="col-lg-3">
                                             <div className="form-group myform-group">
-                                                <input onChange={handleInputChange} type="email" id="email" className="myform-control form-control required bg-dark p-10" required />
-                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="email">E-mail cím</label>
+                                                <input onChange={handleInputChange} name='email' value={registerFormData.email} type="text" id="email" className="myform-control form-control required bg-dark p-10" required />
+                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="text">E-mail cím</label>
                                             </div>
                                         </div>
                                     </div>
+
                                     <div className='row justify-content-center gap-5 m-20'>
                                         <div className="col-lg-3">
                                             <div className="form-group myform-group">
-                                                <input onChange={handleInputChange} type="password" id="jelszo" className="myform-control form-control required bg-dark p-10" required />
+                                                <input onChange={handleInputChange} name='password' value={registerFormData.password} type="password" id="jelszo" className="myform-control form-control required bg-dark p-10" required />
                                                 <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="jelszo">Jelszó</label>
                                             </div>
                                         </div>
 
                                         <div className="col-lg-3">
                                             <div className="form-group myform-group">
-                                                <input onChange={handleInputChange} type="password" id="jelszomegegyszer" className="myform-control form-control required bg-dark p-10" required />
+                                                <input type="password" id="jelszomegegyszer" value={confirmPassword} onChange={(e: any) => setConfirmPassword(e.target.value)} className="myform-control form-control required bg-dark p-10" required />
                                                 <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="jelszomegegyszer">Jelszó mégegyszer</label>
                                             </div>
                                         </div>
@@ -157,7 +178,7 @@ function Register2() {
                                     </div>
                                     <div className="col-lg-4 m-20">
                                         <div className="form-group myform-group">
-                                            <textarea id="leiras" onChange={handleTextareaChange} className="myform-control form-control required bg-dark p-10" required />
+                                            <textarea id="leiras" onChange={handleInputChange} name='description' className="myform-control form-control required bg-dark p-10" />
                                             <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="leiras">Pár szó magamról...</label>
                                         </div>
                                     </div>
@@ -165,8 +186,9 @@ function Register2() {
                                         <div className=''>
                                             <label className=''>Profilkép feltöltése</label>
                                             <input
-                                                onChange={handleInputChange}
+                                                onChange={(e: any) => setFileInput(e.target.files[0])}
                                                 type="file"
+                                                accept='image/png, image/jpeg'
                                                 className="form-control required bg-dark"
                                             />
                                         </div>
@@ -175,7 +197,7 @@ function Register2() {
                                 </div>
 
                                 <div className='p-30'>
-                                    <Button2 content="Regisztrálok!" myFunct={() => console.log('hello')} />
+                                    <Button2 content="Regisztrálok!" myFunct={() => submit()} />
                                 </div>
 
 

@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
+import Notify from '../ui/Toasts';
 
 
 const UserContext = createContext<any | null>(null);
@@ -99,8 +100,22 @@ export const UserProvider = ({ children }: any) => {
         description: ""
     });
 
+
+
     const register = async (form: any) => {
-        console.log(form);
+        // console.log(form);
+
+
+        await fetch('http://localhost:8000/api/user/register', {
+            method: 'POST',
+            // headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify(form)
+        })
+            .then(res => res.json())
+            .then(response => console.log(response))
+            .catch(err => console.log(err));
+
+
     }
 
 
