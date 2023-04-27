@@ -93,9 +93,8 @@ function Register2() {
             var payload = new FormData();
 
             payload.append("form", JSON.stringify(registerFormData));
-            fileInput && payload.append("file", fileInput);
+            fileInput != null && payload.append("file", fileInput);
 
-            // console.log(payload.getAll("form")[0])
 
             await register(payload);
 

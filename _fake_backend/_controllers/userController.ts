@@ -2,6 +2,10 @@ const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+const fs = require('fs');
+const { dirname } = require('path')!;
+const appDir = dirname(require?.main?.filename);
+
 import { PrismaClient } from '@prisma/client';
 import { PermissionResultType } from '../_functions';
 const prisma = new PrismaClient();
@@ -34,12 +38,24 @@ const register = asyncHandler(async (req: any, res: any) => {
 
     // const { email, username, password, firstName, lastName, address, educationIdNum } = req.body;
 
-    // console.log("eddig eljut")
+    var { form } = req.body
+    form = JSON.parse(form);
 
-    console.log(req.body)
-    console.log(req.files)
+    const file = req.files
 
-    res.json({ message: "ez egy fos" });
+    // console.log(form)
+    // console.log(file)
+
+
+    if (file != null) {
+
+        var path = appDir
+
+
+    }
+
+
+
 
     // const usernameExists = await prisma.user.findUnique({
     //     where: {
@@ -80,6 +96,9 @@ const register = asyncHandler(async (req: any, res: any) => {
 
     // res.json(user);
     // return;
+
+
+
 })
 
 

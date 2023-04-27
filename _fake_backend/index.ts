@@ -4,10 +4,15 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+
+const path = require('path');
+
+const fileUpload = require("express-fileupload");
+app.use(fileUpload());
 
 const dotenv = require('dotenv');
-dotenv.config()
+dotenv.config();
 
 // import { PrismaClient } from '@prisma/client'
 // const prisma = new PrismaClient()
