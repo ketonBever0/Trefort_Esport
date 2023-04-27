@@ -1,4 +1,0 @@
-id;email;username;password;profilePicture;firstName;lastName;address;educationIdNum;status;registrationDate;description;memberOfClanId;lastLoginDate
-1;johndoe@example.com;johndoe;$2a$10$X3ynsBTBVhUsaJSv6hqfNO1yCpk7.G6wbcTsgSEllXxDPBOeHgKHi;;John;Doe;no address;;active;2023-04-14 15:07:55.553;;;2023-04-14 15:07:55.553
-2;janedoe@example.com;janedoe;$2a$10$/sVyfA9.VE2wh3ilmx6EDeLPEBp9Hl5gWXjYiLNbE8MBXt/cao7Ki;;Jane;Doe;no address;;active;2023-04-14 15:08:28.92;;;2023-04-14 15:08:28.92
-3;testuser1@example.com;testuser1;$2a$10$VrJbRRuIohS.j4ZTTJaWBuvzZhFPDG0tAG71L9hATerbZiRDEfQvW;;Test;User;no address;;active;2023-04-14 16:36:08.013;;;2023-04-14 16:36:08.013

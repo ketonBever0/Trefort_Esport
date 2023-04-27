@@ -1,7 +1,0 @@
-id;name;description
-1;createPost;Létrehozhat bejegyzést.
-2;modifyTheirPost;Módosíthatja a saját bejegyzését.
-3;deleteTheirPost;Törölheti a saját bejegyzését.
-4;publishTheirPost;Publikálhatja a saját bejegyzését.
-5;createEvents;Létrehozhat eseményeket.
-6;deleteEvents;Lefújhat eseményeket.

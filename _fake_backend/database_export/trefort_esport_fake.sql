@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2023 at 10:12 PM
+-- Generation Time: Apr 27, 2023 at 11:15 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -85,8 +85,10 @@ CREATE TABLE `event` (
   `startDate` datetime(3) NOT NULL,
   `endDate` datetime(3) NOT NULL,
   `sponsor` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `organizationId` int(11) NOT NULL
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `organizationId` int(11) NOT NULL,
+  `address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `location` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -228,22 +230,24 @@ CREATE TABLE `user` (
   `firstName` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lastName` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `educationIdNum` int(11) DEFAULT NULL,
+  `educationIdNum` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `registrationDate` datetime(3) DEFAULT current_timestamp(3),
   `lastLoginDate` datetime(3) DEFAULT current_timestamp(3),
   `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `memberOfClanId` int(11) DEFAULT NULL
+  `memberOfClanId` int(11) DEFAULT NULL,
+  `memberOfOrganizationId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `username`, `password`, `profilePicture`, `firstName`, `lastName`, `address`, `educationIdNum`, `status`, `registrationDate`, `lastLoginDate`, `description`, `memberOfClanId`) VALUES
-(1, 'johndoe@example.com', 'johndoe', '$2a$10$X3ynsBTBVhUsaJSv6hqfNO1yCpk7.G6wbcTsgSEllXxDPBOeHgKHi', NULL, 'John', 'Doe', 'no address', NULL, 'active', '2023-04-14 15:07:55.553', '2023-04-14 15:07:55.553', NULL, NULL),
-(2, 'janedoe@example.com', 'janedoe', '$2a$10$/sVyfA9.VE2wh3ilmx6EDeLPEBp9Hl5gWXjYiLNbE8MBXt/cao7Ki', NULL, 'Jane', 'Doe', 'no address', NULL, 'active', '2023-04-14 15:08:28.920', '2023-04-14 15:08:28.920', NULL, NULL),
-(3, 'testuser1@example.com', 'testuser1', '$2a$10$VrJbRRuIohS.j4ZTTJaWBuvzZhFPDG0tAG71L9hATerbZiRDEfQvW', NULL, 'Test', 'User', 'no address', NULL, 'active', '2023-04-14 16:36:08.013', '2023-04-14 16:36:08.013', NULL, NULL);
+INSERT INTO `user` (`id`, `email`, `username`, `password`, `profilePicture`, `firstName`, `lastName`, `address`, `educationIdNum`, `status`, `registrationDate`, `lastLoginDate`, `description`, `memberOfClanId`, `memberOfOrganizationId`) VALUES
+(1, 'johndoe@example.com', 'johndoe', '$2a$10$X3ynsBTBVhUsaJSv6hqfNO1yCpk7.G6wbcTsgSEllXxDPBOeHgKHi', NULL, 'John', 'Doe', 'no address', NULL, 'active', '2023-04-14 15:07:55.553', '2023-04-14 15:07:55.553', NULL, NULL, NULL),
+(2, 'janedoe@example.com', 'janedoe', '$2a$10$/sVyfA9.VE2wh3ilmx6EDeLPEBp9Hl5gWXjYiLNbE8MBXt/cao7Ki', NULL, 'Jane', 'Doe', 'no address', NULL, 'active', '2023-04-14 15:08:28.920', '2023-04-14 15:08:28.920', NULL, NULL, NULL),
+(4, 'testuser1@example.com', 'TestUser', '$2a$10$sdQdjxC9aW/YCKc4aukpnOI68loChOe401lpdffKTRHlH2JRwCZTi', 'TestUser_profile_picture.png', 'Test', 'User1', 'no address', '', 'active', '2023-04-27 17:41:52.571', '2023-04-27 17:41:52.571', 'Test user registered on frontend!', NULL, NULL),
+(5, 'testdiak@example.com', 'testDiak', '$2a$10$t6QVEJla5D996vE53cstMeVxdRDrD4r4nb9Xgqj2nv7Ux4a30Sq4i', 'testDiak_profile_picture.png', 'Test', 'Diak', 'no address', '12345678', 'active', '2023-04-27 17:45:29.515', '2023-04-27 17:45:29.515', 'Valorantozok', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -288,8 +292,14 @@ CREATE TABLE `_prisma_migrations` (
 --
 
 INSERT INTO `_prisma_migrations` (`id`, `checksum`, `finished_at`, `migration_name`, `logs`, `rolled_back_at`, `started_at`, `applied_steps_count`) VALUES
+('05f7510d-26e3-4eaa-ae11-34fe15173b2b', 'c48faf52ed75a18bad7abfef6c05d6b122346ecc6463cde98055d4ac92d619af', '2023-04-27 17:39:31.437', '20230427173931_init', NULL, NULL, '2023-04-27 17:39:31.403', 1),
 ('0fd7eff6-f4e4-4182-8ccc-7ff4b72c1801', '8a8d8384f89a77ad9aea6cb6ff8091fc5b59a534772ecbb3c54ec3449c16498f', '2023-04-17 06:12:32.147', '20230417061231_init', NULL, NULL, '2023-04-17 06:12:31.057', 1),
-('7e28647e-7344-4567-841d-46a705782735', 'f53de43c3ed36ca70112ddae6aa6ae704b102fe79027bac977247ba9677695b6', '2023-04-19 19:12:24.723', '20230417061231_init', NULL, NULL, '2023-04-19 19:12:24.303', 1);
+('3438f5b3-b0cb-4083-b39c-66f6bcace44c', 'c2a750665dede81f508443e8685ac643fc89b3fc5e22d6d896303836339c3ebd', '2023-04-26 19:34:25.882', '20230420091850_init', NULL, NULL, '2023-04-26 19:34:25.825', 1),
+('3c27ee0a-b342-402d-8d2f-823126a7581f', '4376408999a58fcc9b7607f57fc933698357512d86efc64af518f01d4d8587fb', '2023-04-26 19:34:25.900', '20230424065700_init', NULL, NULL, '2023-04-26 19:34:25.892', 1),
+('77b9ee44-d353-441c-b20d-5c4b647d98a9', '99253d981a4527697ed9104f75ceffc0bc12f07e10bec3f46f5903ccc01a1015', '2023-04-26 19:34:25.941', '20230424074427_init', NULL, NULL, '2023-04-26 19:34:25.901', 1),
+('7e28647e-7344-4567-841d-46a705782735', 'f53de43c3ed36ca70112ddae6aa6ae704b102fe79027bac977247ba9677695b6', '2023-04-19 19:12:24.723', '20230417061231_init', NULL, NULL, '2023-04-19 19:12:24.303', 1),
+('c87d39bb-62a0-41f0-a805-41bdbc8eaeac', '7c6c7887a484f23e1e1bc95478a7328e8c1cef403c9a3f1702f106b0df267fb0', '2023-04-26 19:34:25.951', '20230424104916_init', NULL, NULL, '2023-04-26 19:34:25.942', 1),
+('d0d1056b-671c-481e-a007-075422cf2b36', '288d180bf6fd67b59ba32c0d0d89204cee2e86395551f601f3d227db476147be', '2023-04-26 19:34:25.891', '20230420094529_init', NULL, NULL, '2023-04-26 19:34:25.882', 1);
 
 --
 -- Indexes for dumped tables
@@ -376,7 +386,8 @@ ALTER TABLE `user`
   ADD UNIQUE KEY `User_email_key` (`email`),
   ADD UNIQUE KEY `User_username_key` (`username`),
   ADD UNIQUE KEY `User_educationIdNum_key` (`educationIdNum`),
-  ADD KEY `User_memberOfClanId_fkey` (`memberOfClanId`);
+  ADD KEY `User_memberOfClanId_fkey` (`memberOfClanId`),
+  ADD KEY `User_memberOfOrganizationId_fkey` (`memberOfOrganizationId`);
 
 --
 -- Indexes for table `userrole`
@@ -460,7 +471,7 @@ ALTER TABLE `sessionteam`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `userrole`
@@ -526,7 +537,8 @@ ALTER TABLE `sessionteam`
 -- Constraints for table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `User_memberOfClanId_fkey` FOREIGN KEY (`memberOfClanId`) REFERENCES `clan` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `User_memberOfClanId_fkey` FOREIGN KEY (`memberOfClanId`) REFERENCES `clan` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `User_memberOfOrganizationId_fkey` FOREIGN KEY (`memberOfOrganizationId`) REFERENCES `organization` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `userrole`
