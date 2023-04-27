@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, ParseIntPipe } from '@nestjs/common';
 import { SessionTeamDto } from './dto';
 import { SessionteamService } from './sessionteam.service';
 
@@ -13,11 +13,13 @@ export class SessionteamController {
         return this.sessionTeamService.newSessionTeam(dto);
     }
 
-    @Get(':teamname')
+    @Get(':teamname/:compid')
     getSessionTeam(
         @Param("teamname")
-        teamname: string
+        teamname: string,
+        @Param("compid", new ParseIntPipe())
+        compid: number
     ){
-        return this.sessionTeamService.getSessionTeam(teamname);
+        return this.sessionTeamService.getSessionTeam(teamname, compid);
     }
 }

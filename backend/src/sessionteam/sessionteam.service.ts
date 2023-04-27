@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { SessionTeamDto } from './dto';
 
@@ -16,51 +16,54 @@ export class SessionteamService {
                     position: dto.position
                 }
             });
-            console.log(sessionTeamRecord);
         }
     }
 
-    async getSessionTeam(teamName: string) {
-        const sessionTeam = await this.prismaService.sessionTeam.findMany({
-            where: {
-                teamName: teamName,
-            },
-            select: {
-                teamName: true,
-                public: true,
-                user: {
-                    select: {
-                        username: true,
-                        profilePicture: true,
-
-                    }
+    async getSessionTeam(teamName: string, compid: number) {
+        try {
+            const sessionTeam = await this.prismaService.sessionTeam.findMany({
+                where: {
+                    teamName: teamName,
+                    competitionId: compid
                 },
-                competition: {
-                    select: {
-                        name: true,
-                        maxMemberCount: true,
+                select: {
+                    teamName: true,
+                    public: true,
+                    user: {
+                        select: {
+                            username: true,
+                            profilePicture: true,
+    
+                        }
+                    },
+                    competition: {
+                        select: {
+                            name: true,
+                            maxMemberCount: true,
+                        }
                     }
                 }
+            });
+    
+            const res = {
+                teamName,
+                public: sessionTeam[0].public,
+                users: sessionTeam.map(user => {
+                    const useraname = user.user.username;
+                    const profilePicture = user.user.profilePicture;
+                    return {
+                        useraname,
+                        profilePicture
+                    }
+                }),
+                competitionName: sessionTeam[0].competition.name,
+                maxMemberCount: sessionTeam[0].competition.maxMemberCount
             }
-        });
-
-        const res = {
-            teamName,
-            public: sessionTeam[0].public,
-            users: sessionTeam.map(user => {
-                const useraname = user.user.username;
-                const profilePicture = user.user.profilePicture;
-                return {
-                    useraname,
-                    profilePicture
-                }
-            }),
-            competitionName: sessionTeam[0].competition.name,
-            maxMemberCount: sessionTeam[0].competition.maxMemberCount
-
+    
+            return res;   
+        } catch (error) {
+            throw new ForbiddenException('Valami gond');
         }
-
-        return res;
     }
 
 }
