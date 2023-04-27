@@ -41,20 +41,36 @@ const register = asyncHandler(async (req: any, res: any) => {
     var { form } = req.body
     form = JSON.parse(form);
 
-    const file = req.files
+    const file: any = req.files
 
     // console.log(form)
     // console.log(file)
 
+    // console.log(appDir)
 
-    if (file != null) {
+    // if (file != null) {
 
-        var path = appDir
+    const path = appDir + '/files/user_profile_pictures/';
 
-
+    if (!fs.existsSync(path)) {
+        fs.mkdir(path, { recursive: true }, (err: any) => {
+            err && console.log(err);
+            // throw new Error("Mappalétrehozás nem sikerült");
+        })
     }
 
+    // file.mv(`${path}/${form.username}_profile_picture`);
 
+    // console.log(path.extname(file.file.name))
+
+
+
+
+
+
+    // }
+
+    res.json({})
 
 
     // const usernameExists = await prisma.user.findUnique({

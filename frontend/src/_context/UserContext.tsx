@@ -108,8 +108,7 @@ export const UserProvider = ({ children }: any) => {
 
         await fetch('http://localhost:8000/api/user/register', {
             method: 'POST',
-            // headers: { 'Content-Type': "multipart/form-data" },
-            body: form 
+            body: form
         })
             .then(res => res.json())
             .then(response => console.log(response))
