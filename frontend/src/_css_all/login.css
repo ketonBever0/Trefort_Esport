@@ -1,0 +1,11 @@
+.closebutton {
+    position: absolute;
+    right: 0;
+    top: 0;
+    
+    border: 1px solid red;
+  }
+  
+.closebuttonhover {
+    background-color: #dd163b;
+  }

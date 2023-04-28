@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { IoMdClose } from 'react-icons/io'
 import UserContext from '../_context/UserContext';
-import '../ui/_css/dashboard.css'
+import '../_css_all/login.css'
 import { Link } from 'react-router-dom';
 
 function LoginModal({ closeModal }: any) {
@@ -50,7 +50,7 @@ function LoginModal({ closeModal }: any) {
             <div className="modal-dialog modal-sm">
                 <div className="modal-content">
                     <div className="modal-body">
-                        <button id='dashboard_nav-collapse'
+                        <button
                             type="button"
                             className="nostyle-button closebutton"
                             onClick={() => {
@@ -68,33 +68,31 @@ function LoginModal({ closeModal }: any) {
                             <div className="row vertical-gap">
                                 <div className="col-md-7">
                                     <div className="nk-gap" />
-                                    <div className="form-floating">
+                                    <div className="form-group myform-group">
+                                        <input 
+                                            type="password"
+                                            name="jelszo" 
+                                            id="jelszo" 
+                                            className="myform-control form-control required p-10" 
+                                            required
+                                            value={loginFormData.password}
+                                            onChange={handleLoginFormChange} />
+                                        <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="jelszo">Jelszó</label>
+                                    </div>
+                                    <div className="nk-gap" />
+                                    <div className="nk-gap" />
+                                    <div className="form-group myform-group">
                                         <input
-                                            type="email"
+                                            type="text"
+                                            name="email"
+                                            id="jelszo" 
                                             value={loginFormData.email}
                                             onChange={handleLoginFormChange}
                                             // defaultValue={loginFormData.email}
-                                            name="email"
-                                            className=" form-control"
-                                            placeholder="E-mail cím"
+                                            className="myform-control form-control required p-10"
                                             required
                                         />
-                                        <label htmlFor="nev" className='opacity-50'>Név</label>
-                                    </div>
-                                    <div className="nk-gap" />
-                                    <div className="form-floating">
-
-                                        <input
-                                            type="password"
-                                            value={loginFormData.password}
-                                            onChange={handleLoginFormChange}
-                                            // defaultValue=
-                                            name="password"
-                                            className=" form-control"
-                                            placeholder="Jelszó"
-                                            required
-                                        />
-                                        <label htmlFor="jelszo" className='opacity-50'>Jelszó</label>
+                                        <label htmlFor="nev" className='form-control-placeholder myform-control-placeholder p-10'>E-mail cím</label>
                                     </div>
                                 </div>
                                 <div className="col-md-5">

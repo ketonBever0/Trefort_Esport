@@ -1,6 +1,7 @@
 .text-lg {
     font-size: 1.3rem;
 }
+
 .text-md {
     font-size: 1rem;
 }
@@ -17,11 +18,12 @@
     min-width: 50rem;
 }
 
-.nk-news-box-item:active .nk-news-box-item-title{
+.nk-news-box-item:active .nk-news-box-item-title {
     color: #dd163b;
 }
 
-.nk-news-box-item:hover .nk-news-box-item-date, p {
+.nk-news-box-item:hover .nk-news-box-item-date,
+p {
     color: white;
 }
 
@@ -30,9 +32,79 @@
 }
 
 #reviewAcceptBtn {
-    --c:  #38a220;
+    --c: #38a220;
 }
 
 #reviewDeclineBtn {
     --c: #e2361f;
+}
+
+.nk-news-box .nk-news-box-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.15s color, 0.15s background-color;
+}
+
+.nk-news-box .nk-news-box-item::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.nk-news-box .nk-news-box-item+.nk-news-box-item {
+    border-top: 0.5px solid #dd163b70;
+}
+
+.nk-news-box .nk-news-box-item:hover,
+.nk-news-box .nk-news-box-item.hover {
+    background-color: #2f3541;
+}
+
+.nk-news-box .nk-news-box-item.nk-news-box-item-active {
+    color: #fff;
+    background-color: #dd163b;
+}
+
+.reviewList {
+    -webkit-overflow-scrolling:touch;
+}
+
+.reviewList_item {
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.15s color, 0.15s background-color;
+    
+}
+
+.reviewList_item_title {
+    margin-top: 5px;
+    margin-bottom: 2px;
+    font-size: 1.1rem;
+}
+
+.reviewThumbnail{
+    width: 8rem;
+    height: auto;
+    transition: transform 0.15s ease-in-out;
+    transform: scale(1);
+    will-change: transform;
+}
+
+.reviewList_itemcontainer:hover .reviewThumbnail {
+    transform: scale(1.05);
+
+}
+
+.reviewList_itemcontainer {
+    border-bottom: 0.5px solid #dd163b70;
+}
+
+.reviewList_itemcontainer:hover {
+    background-color: #2f3541;;
+}
+.reviewList_itemcontainer:active {
+    background-color: #313947;
+}
+.lightgreybg {
+    background-color: #292e38;
 }

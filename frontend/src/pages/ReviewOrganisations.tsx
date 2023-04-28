@@ -18,7 +18,6 @@ function ReviewOrganisations() {
                 <div className="nk-news-box-list w-md">
                     <div className="nano">
                         <div className="nano-content">
-                            
                         <div className="nk-news-box-item d-flex">
                                 <div className="nk-news-box-item-img">
                                     <div className="">
