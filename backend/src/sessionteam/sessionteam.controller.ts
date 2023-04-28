@@ -1,7 +1,11 @@
-import { Body, Controller, Get, Param, Post, ParseIntPipe } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, ParseIntPipe, UseGuards } from '@nestjs/common';
 import { SessionTeamDto } from './dto';
 import { SessionteamService } from './sessionteam.service';
+import { JwtGuard } from 'src/auth/guard';
+import { GetUser } from 'src/auth/decorator';
+import { User } from '@prisma/client';
 
+@UseGuards(JwtGuard)
 @Controller('sessionteams')
 export class SessionteamController {
     constructor(private sessionTeamService: SessionteamService){}
@@ -11,15 +15,5 @@ export class SessionteamController {
         @Body() dto: SessionTeamDto
     ) {
         return this.sessionTeamService.newSessionTeam(dto);
-    }
-
-    @Get(':teamname/:compid')
-    getSessionTeam(
-        @Param("teamname")
-        teamname: string,
-        @Param("compid", new ParseIntPipe())
-        compid: number
-    ){
-        return this.sessionTeamService.getSessionTeam(teamname, compid);
     }
 }

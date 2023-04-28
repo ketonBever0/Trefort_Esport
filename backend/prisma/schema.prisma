@@ -70,27 +70,27 @@ model Post {
 }
 
 model User {
-  id                Int             @id @default(autoincrement())
-  userClan          Clan?           @relation(fields: [clanId], references: [id])
-  clanId            Int?            @unique
-  userOrg           Organization?   @relation("OrgUsers", fields: [orgId], references: [id])
-  orgId             Int?            @unique
-  representative    Boolean         @default(false)
-  username          String          @unique @db.VarChar(255)
-  profilePicture    String?         @db.VarChar(255)
-  email             String          @unique @db.VarChar(255)
-  firstName         String          @db.VarChar(255)
-  lastName          String          @db.VarChar(255)
-  password          String          @db.VarChar(255)
-  address           String          @db.VarChar(255)
-  educationNumber   Int?            @db.Int
-  status            String?         @default("active")@db.VarChar(255)
-  registrationDate  DateTime        @default(now())
-  lastLogin         DateTime        @default(now())
-  sessionTeams      SessionTeam[]
-  userRoles         UserRole[]
-  banned            Ban?         
-  description       String?         @db.Text()
+  id                          Int             @id @default(autoincrement())
+  userClan                    Clan?           @relation(fields: [clanId], references: [id])
+  clanId                      Int?            @unique
+  userOrg                     Organization?   @relation("OrgUsers", fields: [orgId], references: [id])
+  orgId                       Int?            @unique
+  representative              Boolean         @default(false)
+  username                    String          @unique @db.VarChar(255)
+  profilePicture              String?         @db.VarChar(255)
+  email                       String          @unique @db.VarChar(255)
+  firstName                   String          @db.VarChar(255)
+  lastName                    String          @db.VarChar(255)
+  password                    String          @db.VarChar(255)
+  address                     String          @db.VarChar(255)
+  educationNumber             Int?            @db.Int
+  status                      String?         @default("active")@db.VarChar(255)
+  registrationDate            DateTime        @default(now())
+  lastLogin                   DateTime        @default(now())
+  userRoles                   UserRole[]
+  competitionParticipations   SessionTeamUser[]
+  banned                      Ban?
+  description                 String?         @db.Text()
 
   @@map("users")
 }
@@ -117,14 +117,23 @@ model SessionTeam {
   id               Int          @id @default(autoincrement())
   teamName         String       @db.VarChar(255)
   password         String?      @db.VarChar(255)
-  user             User         @relation(fields: [userId], references: [id])
   competitionId    Int
   competition      Competition  @relation(fields: [competitionId], references: [id])
+  members          SessionTeamUser[]
   public           Boolean      @default(true)
-  userId           Int
-  position         Int          
+  points           Int          
 
   @@map("sessionteams")
+}
+
+model SessionTeamUser {
+  id               Int          @id @default(autoincrement())
+  userId           Int
+  user             User         @relation(fields: [userId], references: [id])
+  teamId           Int
+  team             SessionTeam  @relation(fields: [teamId], references: [id])
+
+  @@map("sessionteamusers")
 }
 
 model Competition {

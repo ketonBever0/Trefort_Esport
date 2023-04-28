@@ -1,4 +1,4 @@
-import { IsArray, IsNotEmpty, IsNumber, IsString, NotContains } from "class-validator";
+import { IsArray, IsBoolean, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 
 export class SessionTeamDto {
 
@@ -10,11 +10,22 @@ export class SessionTeamDto {
     @IsNotEmpty()
     competitionId: number;
 
+    @IsOptional()
+    @IsNotEmpty()
+    @IsString()
+    password: string;
+
     @IsNotEmpty()
     @IsArray()
     users: Array<number>;
 
+    @IsOptional()
+    @IsBoolean()
+    @IsNotEmpty()
+    public: boolean;
+
+    @IsOptional()
     @IsNotEmpty()
     @IsNumber()
-    position: number;
+    points: number;
 }
