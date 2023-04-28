@@ -106,7 +106,7 @@ function Register2() {
             fileInput != null && payload.append("file", fileInput);
 
 
-            await register(payload);
+            await register(payload).then(() => navigate('/'));
 
 
         }

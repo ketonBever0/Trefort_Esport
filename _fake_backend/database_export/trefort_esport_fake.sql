@@ -29,7 +29,7 @@ USE `trefort_esport_fake`;
 -- Table structure for table `ban`
 --
 
-CREATE TABLE `ban` (
+CREATE OR REPLACE TABLE `ban` (
   `id` int(11) NOT NULL,
   `banStart` datetime(3) NOT NULL DEFAULT current_timestamp(3),
   `banEnd` datetime(3) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `ban` (
 -- Table structure for table `clan`
 --
 
-CREATE TABLE `clan` (
+CREATE OR REPLACE TABLE `clan` (
   `id` int(11) NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `logo` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE `clan` (
 -- Table structure for table `competition`
 --
 
-CREATE TABLE `competition` (
+CREATE OR REPLACE TABLE `competition` (
   `id` int(11) NOT NULL,
   `plannedStartDate` datetime(3) NOT NULL,
   `startDate` datetime(3) DEFAULT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE `competition` (
 -- Table structure for table `event`
 --
 
-CREATE TABLE `event` (
+CREATE OR REPLACE TABLE `event` (
   `id` int(11) NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `startDate` datetime(3) NOT NULL,
@@ -97,7 +97,7 @@ CREATE TABLE `event` (
 -- Table structure for table `organization`
 --
 
-CREATE TABLE `organization` (
+CREATE OR REPLACE TABLE `organization` (
   `id` int(11) NOT NULL,
   `representativeId` int(11) NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -116,7 +116,7 @@ CREATE TABLE `organization` (
 -- Table structure for table `permission`
 --
 
-CREATE TABLE `permission` (
+CREATE OR REPLACE TABLE `permission` (
   `id` int(11) NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
@@ -140,7 +140,7 @@ INSERT INTO `permission` (`id`, `name`, `description`) VALUES
 -- Table structure for table `post`
 --
 
-CREATE TABLE `post` (
+CREATE OR REPLACE TABLE `post` (
   `id` int(11) NOT NULL,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -163,7 +163,7 @@ INSERT INTO `post` (`id`, `title`, `content`, `published`, `createdAt`, `authorI
 -- Table structure for table `role`
 --
 
-CREATE TABLE `role` (
+CREATE OR REPLACE TABLE `role` (
   `id` int(11) NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL
@@ -184,7 +184,7 @@ INSERT INTO `role` (`id`, `name`, `description`) VALUES
 -- Table structure for table `rolepermission`
 --
 
-CREATE TABLE `rolepermission` (
+CREATE OR REPLACE TABLE `rolepermission` (
   `id` int(11) NOT NULL,
   `roleId` int(11) NOT NULL,
   `permissionId` int(11) NOT NULL
@@ -208,7 +208,7 @@ INSERT INTO `rolepermission` (`id`, `roleId`, `permissionId`) VALUES
 -- Table structure for table `sessionteam`
 --
 
-CREATE TABLE `sessionteam` (
+CREATE OR REPLACE TABLE `sessionteam` (
   `id` int(11) NOT NULL,
   `position` int(11) DEFAULT NULL,
   `competitionId` int(11) NOT NULL,
@@ -221,7 +221,7 @@ CREATE TABLE `sessionteam` (
 -- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
+CREATE OR REPLACE TABLE `user` (
   `id` int(11) NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -255,7 +255,7 @@ INSERT INTO `user` (`id`, `email`, `username`, `password`, `profilePicture`, `fi
 -- Table structure for table `userrole`
 --
 
-CREATE TABLE `userrole` (
+CREATE OR REPLACE TABLE `userrole` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `roleId` int(11) NOT NULL
@@ -276,7 +276,7 @@ INSERT INTO `userrole` (`id`, `userId`, `roleId`) VALUES
 -- Table structure for table `_prisma_migrations`
 --
 
-CREATE TABLE `_prisma_migrations` (
+CREATE OR REPLACE TABLE `_prisma_migrations` (
   `id` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `checksum` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `finished_at` datetime(3) DEFAULT NULL,

@@ -12,21 +12,18 @@ export const UserProvider = ({ children }: any) => {
 
 
 
-    const [userToken, setUserToken] = useState<string | null>(null);
+    const [userToken, setUserToken] = useState<string | null>(localStorage.getItem("usertoken"));
     const [tokenRefresh, setTokenRefresh] = useState<boolean>(false);
     const [loggingIn, setLoggingIn] = useState<boolean>(false);
 
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
     const tokenUpdate = () => setTokenRefresh(prev => !prev);
 
-    useEffect(() => {
-        if (userToken != null) {
-            sessionStorage.setItem('usertoken', userToken);
-        } else {
-            setUserToken(sessionStorage.getItem('usertoken'));
-        }
-    }, [tokenRefresh])
 
     const [isThereLoginError, setIsThereLoginError] = useState<boolean>(false);
+
+
 
     const login = async (formData: Object) => {
         setIsThereLoginError(false);
@@ -39,32 +36,52 @@ export const UserProvider = ({ children }: any) => {
             .then(res => res.json())
             .then((token: any) => {
                 if (!token.message) {
+                    localStorage.setItem("usertoken", token);
                     setUserToken(token);
                     tokenUpdate();
+                    Notify.tSuccess("Sikeres bejelentkezés!");
+                    userUpdate();
                 } else {
                     setIsThereLoginError(true);
+                    Notify.tError(token.message);
                 }
             })
             .catch(err => console.log(err))
             .finally(() => setLoggingIn(false));
     }
 
-    const logout = () => {
+    const logout = (isInvalidSession: boolean | null = false) => {
         setUserToken(null);
-        sessionStorage.removeItem('usertoken');
+        localStorage.removeItem('usertoken');
         setUserData(null);
+        if (!isInvalidSession) Notify.tSuccess("Kijelentkezve!");
+        userUpdate();
     }
 
 
     const [userData, setUserData] = useState<object | null>(null);
+    const [isUserDataLoading, setIsUserDataLoading] = useState<boolean>(false);
     const [userRefresh, setUserRefresh] = useState<boolean>(false);
+
+    const userUpdate = () => setUserRefresh(prev => !prev);
+
+    useEffect(() => {
+        if (!userToken) {
+            setUserToken(sessionStorage.getItem('usertoken'));
+        }
+    }, [tokenRefresh])
+
+    const [time, setTime] = useState(0);
+
 
 
     useEffect(() => {
         if (userToken) getUserData(userToken);
-    }, [userToken])
+    }, [userRefresh])
+
 
     const getUserData = async (token: string | null) => {
+        setIsUserDataLoading(true);
         await fetch('http://localhost:8000/api/user/userdata', {
             method: 'GET',
             headers: {
@@ -73,8 +90,17 @@ export const UserProvider = ({ children }: any) => {
             }
         })
             .then(res => res.json())
-            .then(data => setUserData(data))
-            .catch(err => console.log(err));
+            .then(data => {
+                if (data.message) {
+                    // console.log(data)
+                    Notify.tError(data.message);
+                    logout(true);
+                } else {
+                    setUserData(data);
+                }
+            })
+            .catch(err => console.log(err))
+            .finally(() => setIsUserDataLoading(false));
     }
 
 
@@ -105,7 +131,6 @@ export const UserProvider = ({ children }: any) => {
     const register = async (form: any) => {
         // console.log(form);
 
-
         await fetch('http://localhost:8000/api/user/register', {
             method: 'POST',
             body: form
@@ -127,6 +152,7 @@ export const UserProvider = ({ children }: any) => {
         isLoginModalOpen, setIsLoginModalOpen,
         isUserBoxOpen, setIsUserBoxOpen,
 
+        userUpdate,
         login,
         loggingIn,
         isThereLoginError,

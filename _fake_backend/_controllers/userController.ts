@@ -149,6 +149,7 @@ const login = asyncHandler(async (req: any, res: any) => {
 });
 
 
+
 const getUser = asyncHandler(async (req: any, res: any) => {
     const permissions: PermissionResultType = await getUserPermissions(req.user.id);
     res.json({

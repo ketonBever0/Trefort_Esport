@@ -36,7 +36,7 @@ export const protect = asyncHandler(async (req: any, res: any, next: any) => {
             next();
         } catch (error) {
             res.status(401);
-            throw new Error("Érvénytelen munkamenet!");
+            throw new Error("Érvénytelen munkamenet!\nJelentkezz be újra!");
         }
 
     }

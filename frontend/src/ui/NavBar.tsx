@@ -121,15 +121,15 @@ function NavBar() {
                                                             <div className='nk-gap' />
                                                             <h4>Üdv {userData?.user?.username}!</h4>
                                                             <div className='position-absolute bottom-0 w-100'>
-                                                                <Link to='/profile/:id'
+                                                                <Link to='/myprofile'
                                                                     className="nk-btn nk-btn-rounded nk-btn-block nk-btn-color-main-5" //nk-btn-color-white
                                                                 >
                                                                     Profil
                                                                 </Link>
                                                                 <Link to='/stats/:id'
-                                                                    className="nk-btn nk-btn-rounded nk-btn-block nk-btn-color-main-5" //nk-btn-color-white
+                                                                    className="nk-btn nk-btn-rounded nk-btn-block nk-btn-color-main-2" //nk-btn-color-white
                                                                 >
-                                                                    Profil
+                                                                    Korábbi eredményeim
                                                                 </Link>
                                                                 <button onClick={async () => {
                                                                     await logout();

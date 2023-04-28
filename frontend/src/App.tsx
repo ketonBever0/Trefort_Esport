@@ -31,10 +31,12 @@ function App() {
 
   return (
     <div className='full-page min-vh-100'>
+      <Toaster />
 
       <EventProvider>
         <BlogArticleProvider>
           <UserProvider>
+
 
             <div className="nk-main">
 
@@ -102,7 +104,6 @@ function App() {
         </BlogArticleProvider>
       </EventProvider>
 
-      <Toaster />
 
     </div >
   )
