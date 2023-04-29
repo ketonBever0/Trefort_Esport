@@ -120,8 +120,8 @@ model SessionTeam {
   competitionId    Int
   competition      Competition  @relation(fields: [competitionId], references: [id])
   members          SessionTeamUser[]
-  public           Boolean      @default(true)
-  points           Int          
+  public           Boolean?      @default(true)
+  points           Int?          
 
   @@map("sessionteams")
 }

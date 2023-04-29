@@ -11,6 +11,29 @@ export class SessionteamService {
 
     async newSessionTeam(dto: SessionTeamDto) {
         const hash = await argon.hash(dto.password);
+        const sessionTeam = await this.prismaService.sessionTeam.create({
+           data: {
+                teamName: dto.teamName,
+                competitionId: dto.competitionId,
+                password: hash,
+                public: dto.public,
+                points: dto.points,
+           }
+        });
+
+        dto.users.forEach(async (user) => {
+            const sessionTeamUser = await this.prismaService.sessionTeamUser.create({
+                data: {
+                    userId: user,
+                    teamId: sessionTeam.id,
+                }
+            });
+        });
+
+        return {
+            message: 'Csapat sikeresen lérehozva!',
+            sessionTeam
+        }
     }
 
     async getSessionTeam(teamName: string, compid: number) {
