@@ -6,6 +6,11 @@ export class SessionTeamDto {
     @IsNotEmpty()
     teamName: string;
 
+    @IsOptional()
+    @IsNumber()
+    @IsNotEmpty()
+    clanId: number;
+
     @IsNumber()
     @IsNotEmpty()
     competitionId: number;
