@@ -37,7 +37,6 @@ CREATE TABLE `Clan` (
 -- CreateTable
 CREATE TABLE `Organization` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `representativeId` INTEGER NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `picture` VARCHAR(191) NOT NULL,
     `location` VARCHAR(191) NOT NULL,
@@ -46,9 +45,10 @@ CREATE TABLE `Organization` (
     `type` VARCHAR(191) NOT NULL,
     `status` VARCHAR(191) NOT NULL,
     `description` VARCHAR(191) NULL,
+    `representativeId` INTEGER NOT NULL,
 
-    UNIQUE INDEX `Organization_representativeId_key`(`representativeId`),
     UNIQUE INDEX `Organization_email_key`(`email`),
+    UNIQUE INDEX `Organization_representativeId_key`(`representativeId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -56,10 +56,12 @@ CREATE TABLE `Organization` (
 CREATE TABLE `Event` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
+    `address` VARCHAR(191) NULL,
+    `location` VARCHAR(191) NULL,
     `startDate` DATETIME(3) NOT NULL,
     `endDate` DATETIME(3) NOT NULL,
     `sponsor` VARCHAR(191) NULL,
-    `description` VARCHAR(191) NOT NULL,
+    `description` TEXT NOT NULL,
     `organizationId` INTEGER NOT NULL,
 
     PRIMARY KEY (`id`)
@@ -103,11 +105,12 @@ CREATE TABLE `User` (
     `firstName` VARCHAR(191) NOT NULL,
     `lastName` VARCHAR(191) NOT NULL,
     `address` VARCHAR(191) NOT NULL,
-    `educationIdNum` INTEGER NULL,
+    `educationIdNum` VARCHAR(191) NULL,
     `status` VARCHAR(191) NOT NULL DEFAULT 'active',
     `registrationDate` DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3),
     `lastLoginDate` DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3),
     `description` VARCHAR(191) NULL,
+    `memberOfOrganizationId` INTEGER NULL,
     `memberOfClanId` INTEGER NULL,
 
     UNIQUE INDEX `User_email_key`(`email`),
@@ -177,6 +180,9 @@ ALTER TABLE `SessionTeam` ADD CONSTRAINT `SessionTeam_competitionId_fkey` FOREIG
 
 -- AddForeignKey
 ALTER TABLE `SessionTeam` ADD CONSTRAINT `SessionTeam_memberId_fkey` FOREIGN KEY (`memberId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `User` ADD CONSTRAINT `User_memberOfOrganizationId_fkey` FOREIGN KEY (`memberOfOrganizationId`) REFERENCES `Organization`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `User` ADD CONSTRAINT `User_memberOfClanId_fkey` FOREIGN KEY (`memberOfClanId`) REFERENCES `Clan`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;

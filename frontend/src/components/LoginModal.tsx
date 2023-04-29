@@ -67,25 +67,12 @@ function LoginModal({ closeModal }: any) {
                         <form className="nk-form text-white">
                             <div className="row vertical-gap">
                                 <div className="col-md-7">
-                                    <div className="nk-gap" />
-                                    <div className="form-group myform-group">
-                                        <input 
-                                            type="password"
-                                            name="jelszo" 
-                                            id="jelszo" 
-                                            className="myform-control form-control required p-10" 
-                                            required
-                                            value={loginFormData.password}
-                                            onChange={handleLoginFormChange} />
-                                        <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="jelszo">Jelszó</label>
-                                    </div>
-                                    <div className="nk-gap" />
+
                                     <div className="nk-gap" />
                                     <div className="form-group myform-group">
                                         <input
                                             type="text"
                                             name="email"
-                                            id="jelszo" 
                                             value={loginFormData.email}
                                             onChange={handleLoginFormChange}
                                             // defaultValue={loginFormData.email}
@@ -93,6 +80,18 @@ function LoginModal({ closeModal }: any) {
                                             required
                                         />
                                         <label htmlFor="nev" className='form-control-placeholder myform-control-placeholder p-10'>E-mail cím</label>
+                                    </div>
+                                    <div className="nk-gap-2" />
+                                    <div className="form-group myform-group">
+                                        <input
+                                            type="password"
+                                            name="password"
+                                            className="myform-control form-control required p-10"
+                                            value={loginFormData.password}
+                                            onChange={handleLoginFormChange}
+                                            required
+                                        />
+                                        <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="jelszo">Jelszó</label>
                                     </div>
                                 </div>
                                 <div className="col-md-5">
