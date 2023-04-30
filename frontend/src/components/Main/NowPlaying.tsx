@@ -23,12 +23,12 @@ function NowPlaying() {
                     <p>
                         Kövesd élőben a streamet!
                     </p>
-                    <a
+                    {/* <a
                         href="tournaments.html"
                         className="nk-btn nk-btn-rounded nk-btn-color-main-1"
                     >
                         Match Details
-                    </a>
+                    </a> */}
                 </div>
                 <div className="col-md-8">
                     <div className="responsive-embed responsive-embed-16x9">

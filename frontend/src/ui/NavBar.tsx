@@ -255,7 +255,7 @@ function NavBar() {
                                 <div className="nk-nav-table">
                                     <Link to='/' className="nk-nav-logo">
                                         {/* <img src="/assets/images/logo.svg" alt="GoodGames" width={199} /> */}
-                                        <img src={"/src/assets/esport_logo.png"} width={280} />
+                                        <img src={"/src/assets/esport_logo.png"} width={280} style={{marginLeft: "2%"}}/>
                                     </Link>
                                     <ul
                                         className="nk-nav nk-nav-right d-none d-lg-table-cell"
