@@ -20,7 +20,7 @@ function NavBar() {
             if (document.body.scrollTop > 70 || document.documentElement.scrollTop > 70) {
                 header.setAttribute("style", "transition: .5s; position: fixed; top: 0");
                 navbar.classList.add("p-10");
-                contacts_left.style.display = "none";
+                if (window.innerWidth < 575) contacts_left.style.display = "none";
             } else {
                 navbar.classList.remove("p-10");
                 navbar.setAttribute("style", "transition: .3s;");
