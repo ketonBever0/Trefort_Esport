@@ -125,13 +125,44 @@ function NavBar() {
                                                 <div>
                                                     <button className='nostyle-button' onClick={() => setIsUserBoxOpen((prev: boolean) => !prev)}>
                                                         {userData?.user?.username}
-                                                        <span className={`mx-2 ${isUserBoxOpen && 'rotate-180'}`}><AiOutlineDown /></span>
+                                                        <img
+                                                            src={
+                                                                userData?.user?.username ?
+                                                                    `http://localhost:8000/profilepicture/${userData?.user?.username}_profile_picture.png`
+                                                                    :
+                                                                    'http://localhost:8000/profilepicture/_user_placeholder.png'
+                                                            }
+                                                            onError={({ currentTarget }) => {
+                                                                currentTarget.onerror = null; // prevents looping
+                                                                currentTarget.src = "http://localhost:8000/profilepicture/_user_placeholder.png";
+                                                            }}
+                                                            alt="avatar"
+                                                            className="rounded-circle img-fluid ms-2"
+                                                            style={{ width: 20 }}
+                                                        />
+                                                        {/* <span className={`mx-2 ${isUserBoxOpen && 'rotate-180'}`}><AiOutlineDown /></span> */}
                                                     </button>
                                                     {
                                                         isUserBoxOpen &&
                                                         <div className='c-ui-userbox fixed-top rounded'>
                                                             <div className='nk-gap' />
                                                             <h4>Üdv {userData?.user?.username}!</h4>
+
+                                                            <img
+                                                                src={
+                                                                    userData?.user?.username ?
+                                                                        `http://localhost:8000/profilepicture/${userData?.user?.username}_profile_picture.png`
+                                                                        :
+                                                                        'http://localhost:8000/profilepicture/_user_placeholder.png'
+                                                                }
+                                                                onError={({ currentTarget }) => {
+                                                                    currentTarget.onerror = null; // prevents looping
+                                                                    currentTarget.src = "http://localhost:8000/profilepicture/_user_placeholder.png";
+                                                                }}
+                                                                alt="avatar"
+                                                                className="rounded-circle img-fluid mb-10"
+                                                                style={{ width: 100 }}
+                                                            />
                                                             <div className='position-absolute bottom-0 w-100'>
                                                                 <Link to='/myprofile'
                                                                     className="nk-btn nk-btn-rounded nk-btn-block nk-btn-color-main-5" //nk-btn-color-white

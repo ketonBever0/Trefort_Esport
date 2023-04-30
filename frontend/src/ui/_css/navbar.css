@@ -5,7 +5,7 @@
 
 .c-ui-userbox {
     background-color: #181c23;
-    height: 15rem;
+    height: 20rem;
     width: 30%;
     border: 2px solid #181c23;
     position: fixed;
@@ -28,7 +28,7 @@
 
     .c-ui-userbox {
         background-color: #181c23;
-        height: 15rem;
+        height: 20rem;
         width: 75%;
         border: 2px solid #181c23;
         position: fixed;
