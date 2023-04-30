@@ -123,7 +123,8 @@ export const UserProvider = ({ children }: any) => {
         educationIdNum: "",
         username: "",
         email: "",
-        description: ""
+        description: "",
+        password: ""
     });
 
 

@@ -211,6 +211,44 @@ const getOtherUser: any | null = asyncHandler(async (req: any, res: any) => {
 })
 
 
+const checkIfUsernameExists = asyncHandler(async (req: any, res: any) => {
+
+    const exists = await prisma.user.findUnique({
+        where: { username: req.body.username },
+        select: { username: true }
+    })
+
+    if (exists) {
+        res.json({ exists: true, message: "Ez a felhasználónév nem elérhető!" })
+        return;
+    }
+    else {
+        res.json({ exists: false, message: "Ez a felhasználónév elérhető!" })
+        return;
+    }
+
+})
+
+
+const checkIfEmailExists = asyncHandler(async (req: any, res: any) => {
+
+    const exists = await prisma.user.findUnique({
+        where: { email: req.body.email },
+        select: { email: true }
+    })
+
+    if (exists) {
+        res.json({ exists: true, message: "Ez az e-mail címmel már regisztráltak!" })
+        return;
+    }
+    else {
+        res.json({ exists: false, message: "Ez az e-mail cím elérhető!" })
+        return;
+    }
+
+})
+
+
 
 
 
@@ -218,5 +256,7 @@ module.exports = {
     register,
     login,
     getUser,
-    getOtherUser
+    getOtherUser,
+    checkIfUsernameExists,
+    checkIfEmailExists
 }

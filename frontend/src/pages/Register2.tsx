@@ -105,12 +105,50 @@ function Register2() {
             payload.append("form", JSON.stringify(registerFormData));
             fileInput != null && payload.append("file", fileInput);
 
-
             await register(payload).then(() => navigate('/'));
-
 
         }
 
+    }
+
+    const checkIfUsernameExists = async (e: any) => {
+        if (e.target.value == "") {
+            return;
+        } else {
+            await fetch('http://localhost:8000/api/user/checkusername', {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    username: e.target.value
+                })
+            })
+                .then(res => res.json())
+                .then(response => {
+                    if (response.exists) Notify.tError(response.message);
+                    else Notify.tSuccess(response.message);
+                })
+                .catch(err => console.log(err));
+        }
+    }
+
+    const checkIfEmailExists = async (e: any) => {
+        if (e.target.value == "") {
+            return;
+        } else {
+            await fetch('http://localhost:8000/api/user/checkemail', {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email: e.target.value
+                })
+            })
+                .then(res => res.json())
+                .then(response => {
+                    if (response.exists) Notify.tError(response.message);
+                    else Notify.tSuccess(response.message);
+                })
+                .catch(err => console.log(err));
+        }
     }
 
 
@@ -122,7 +160,7 @@ function Register2() {
 
 
                 <ProgressBar myWidth={width} />
-                <div className='d-flex m-30 w-25 justify-content-center'><Button2 content="Vissza" /></div>
+                <div className='d-flex m-30 w-25 justify-content-center'><Button2 myFunct={() => navigate('/register1')} content="Vissza" /></div>
                 <>
                     <div className="tab-content">
                         <div
@@ -155,14 +193,14 @@ function Register2() {
 
                                         <div className="col-lg-3">
                                             <div className="form-group myform-group">
-                                                <input onChange={handleInputChange} name='username' value={registerFormData.username} type="text" id="felhasznalonev" className="myform-control form-control required bg-dark p-10" required />
+                                                <input onChange={handleInputChange} onBlur={checkIfUsernameExists} name='username' value={registerFormData.username} type="text" id="felhasznalonev" className="myform-control form-control required bg-dark p-10" required />
                                                 <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="felhasznalonev">Felhasználónév</label>
                                             </div>
                                         </div>
 
                                         <div className="col-lg-3">
                                             <div className="form-group myform-group">
-                                                <input onChange={handleInputChange} name='email' value={registerFormData.email} type="text" id="email" className="myform-control form-control required bg-dark p-10" required />
+                                                <input onChange={handleInputChange} onBlur={checkIfEmailExists} name='email' value={registerFormData.email} type="text" id="email" className="myform-control form-control required bg-dark p-10" required />
                                                 <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="text">E-mail cím</label>
                                             </div>
                                         </div>
@@ -171,7 +209,7 @@ function Register2() {
                                     <div className='row justify-content-center gap-5 m-20'>
                                         <div className="col-lg-3">
                                             <div className="form-group myform-group">
-                                                <input onChange={handleInputChange} name='password' value={registerFormData.password} type="password" id="jelszo" className="myform-control form-control required bg-dark p-10" required />
+                                                <input onChange={handleInputChange} name='password' value={registerFormData.password} type="password" className="myform-control form-control required bg-dark p-10" required />
                                                 <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="jelszo">Jelszó</label>
                                             </div>
                                         </div>
