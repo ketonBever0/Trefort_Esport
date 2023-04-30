@@ -30,17 +30,6 @@ import { useEffect } from 'react'
 
 function App() {
 
-  // useEffect(() => {
-
-  //   var fillItsPlace: any = document.getElementById("fillitsplace")!;
-
-  //   function scroll() {
-
-  //   }
-
-  //   if (fillItsPlace) window.onscroll = function () { scroll() };
-  // }, [])
-
   return (
     <div className='full-page min-vh-100'>
       <Toaster />
@@ -56,7 +45,7 @@ function App() {
               <Router>
                 <NavBar />
                 {/* <div className="nk-gap-6" /> */}
-                <div id='fillitsplace' style={{ visibility: 'hidden', height: "70px" }} />
+                {/* <div id='fillitsplace' style={{ height: "70px" }} /> */}
                 <div className="nk-gap-4" />
                 <div className='container'>
                   <Routes>

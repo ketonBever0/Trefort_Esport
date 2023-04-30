@@ -15,17 +15,27 @@ function NavBar() {
         var navbar: any = document.getElementById("myNav");
         var header: any = document.getElementById("myHeader");
         var contacts_left: any = document.getElementById("contacts-left");
+        // var fillItsPlace: any = document.getElementById("fillitsplace");
 
         function scrollFunction() {
             if (document.body.scrollTop > 70 || document.documentElement.scrollTop > 70) {
                 header.setAttribute("style", "transition: .5s; position: fixed; top: 0");
                 navbar.classList.add("p-10");
+
+                // fillItsPlace.setAttribute("style", "height: 155px;");
+
                 if (window.innerWidth < 575) contacts_left.style.display = "none";
+
             } else {
                 navbar.classList.remove("p-10");
                 navbar.setAttribute("style", "transition: .3s;");
-                header.removeAttribute("style", "position: fixed; top: 0");
+                header.setAttribute("style", "transition: .3s; position: fixed; top: 0");
+                // header.removeAttribute("style", "position: fixed; top: 0");
+
                 contacts_left.style.display = "block";
+
+                // fillItsPlace.setAttribute("style", "height: 155px;");
+
             }
         }
 
@@ -68,9 +78,9 @@ function NavBar() {
 
 
 
-            <header className="nk-header nk-header-opaque" id='myHeader'>
+            <header className="nk-header nk-header-opaque" id='myHeader' style={{ position: "fixed", top: "0" }}>
                 <div>
-                    <div id='topnav' className="nk-contacts-top" style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}>
+                    <div id='topnav' className="nk-contacts-top" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
                         <div className="container">
                             <div id='contacts-left' className="nk-contacts-left">
                                 <ul className="nk-social-links">
@@ -343,6 +353,8 @@ function NavBar() {
                 {/* END: Navbar */}
             </header >
 
+            <div id='fillitsplace' style={{ height: "155px" }} />
+
 
             <>
                 {/* START: Navbar Mobile Additional Classes: .nk-navbar-left-side
@@ -371,9 +383,7 @@ function NavBar() {
 
 
 
-
-
-        </div >
+        </div>
     )
 }
 
