@@ -159,7 +159,7 @@ function Register2() {
             <div className='bg-dark bg-gradient p-30 rounded text-xl'>
 
 
-                <ProgressBar myWidth={width} />
+                {/* <ProgressBar myWidth={width} /> */}
                 <div className='d-flex m-30 w-25 justify-content-center'><Button2 myFunct={() => navigate('/register1')} content="Vissza" /></div>
                 <>
                     <div className="tab-content">

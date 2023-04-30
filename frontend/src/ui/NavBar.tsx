@@ -6,6 +6,8 @@ import LoginModal from '../components/LoginModal';
 import UserContext from '../_context/UserContext';
 import { AiOutlineDown } from 'react-icons/ai';
 import Dashboard from './Dashboard';
+import { FaTiktok } from 'react-icons/fa'
+
 
 function NavBar() {
 
@@ -78,8 +80,13 @@ function NavBar() {
                                     </a>
                                 </li> */}
                                     <li>
-                                        <a className="nk-social-twitch" href="#">
-                                            <span className="fab fa-twitch" />
+                                        <a className="nk-social-twitch" target='blank' href="https://www.twitch.tv/trefortesport">
+                                            <span className="fab fa-twitch" /><sub>1</sub>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a className="nk-social-twitch" target='blank' href="https://www.twitch.tv/trefortesport2">
+                                            <span className="fab fa-twitch" /><sub>2</sub>
                                         </a>
                                     </li>
                                     <li>
@@ -88,14 +95,19 @@ function NavBar() {
                                     </a> */}
                                     </li>
                                     <li>
-                                        <a className="nk-social-facebook" href="#">
+                                        <a className="nk-social-facebook" target='blank' href="https://www.facebook.com/bszctrefort">
                                             <span className="fab fa-facebook" />
                                         </a>
                                     </li>
                                     <li>
-                                        <a className="nk-social-discord" href="#">
+                                        <a id="c-social-discord" target='blank' href="https://discord.gg/Xe76v3wG2E">
                                             <span className="fab fa-discord">
                                             </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="c-social-tiktok" target='blank' href="https://www.tiktok.com/@bszc_trefort">
+                                            <FaTiktok />
                                         </a>
                                     </li>
                                 </ul>
