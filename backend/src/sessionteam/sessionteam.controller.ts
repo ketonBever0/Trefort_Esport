@@ -10,11 +10,24 @@ import { User } from '@prisma/client';
 export class SessionteamController {
     constructor(private sessionTeamService: SessionteamService){}
 
+    @Get('/all')
+    getAllSessionTeams(){
+        return this.sessionTeamService.getAllSessionTeam();
+    }
+
     @Post()
     createSessionTeam(
         @Body() dto: SessionTeamDto
     ) {
         return this.sessionTeamService.newSessionTeam(dto);
+    }
+
+    @Get('/:teamId')
+    getSEssionTeam(
+        @Param('teamId', new ParseIntPipe())
+        teamId: number
+    ){
+        return this.sessionTeamService.getSessionTeam(teamId);
     }
 
     @Post('/join/:teamId')

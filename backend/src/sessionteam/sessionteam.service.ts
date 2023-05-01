@@ -46,10 +46,69 @@ export class SessionteamService {
         const sessionTeam = await this.prismaService.sessionTeam.findUnique({
             where: {
                 id: teamId
-            }
+            },
+            select: {
+                id: true,
+                teamName: true,
+                public: true,
+                points: true,
+                competition: {
+                    select: {
+                        id: true,
+                        name: true,
+                        game: true,
+                        platform: true
+                    }
+                },
+                members: {
+                    select: {
+                        user: {
+                            select: {
+                                username: true,
+                                profilePicture: true
+                            }
+                        }
+                    }
+                }
+           }
         });
 
-        return sessionTeam;
+        return sessionTeam ? {
+            sessionTeam
+        }: {message: 'Nincs ilyen csapat!'};
+    }
+
+    async getAllSessionTeam() {
+        const sessionTeams = await this.prismaService.sessionTeam.findMany({
+           select: {
+                id: true,
+                teamName: true,
+                public: true,
+                points: true,
+                competition: {
+                    select: {
+                        id: true,
+                        name: true,
+                        game: true,
+                        platform: true
+                    }
+                },
+                members: {
+                    select: {
+                        user: {
+                            select: {
+                                username: true,
+                                profilePicture: true
+                            }
+                        }
+                    }
+                }
+           }
+        });
+
+        return {
+            sessionTeams
+        };
     }
 
     async joinSessionTeam(
@@ -87,7 +146,6 @@ export class SessionteamService {
         }
             
     }
-    
 
     async getSessionTeamById(steamId: number){
         const sessionTeam = await this.prismaService.sessionTeam.findUnique({
