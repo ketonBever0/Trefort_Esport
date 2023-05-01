@@ -57,11 +57,7 @@ export class SessionteamService {
         steamId: number,
         dto: JoinSessionTeamDto
     ){
-        const sessionTeam = await this.prismaService.sessionTeam.findUnique({
-            where: {
-                id: steamId
-            }
-        });
+        const sessionTeam = await this.getSessionTeamById(steamId);
 
         if (sessionTeam.public) {
             const sessionTeamUser = await this.prismaService.sessionTeamUser.create({
@@ -70,14 +66,37 @@ export class SessionteamService {
                     teamId: sessionTeam.id,
                 }
             });
+            
+            const updatedSessionTeam = await this.getSessionTeamById(steamId);
 
             return {
                 message: 'Sikeres csatlakozás a csapathoz',
-                sessionTeamUser
+                updatedSessionTeam
             }
         } else {
             throw new ForbiddenException('Csatlakozás sikertelen!');
         }
+    }
+    
+
+    async getSessionTeamById(steamId: number){
+        const sessionTeam = await this.prismaService.sessionTeam.findUnique({
+            where: {
+                id: steamId
+            }, include: {
+                members: {
+                    select: {
+                        user: {
+                            select: {
+                                username: true,
+                                profilePicture: true
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        return sessionTeam;
     }
 
 }
