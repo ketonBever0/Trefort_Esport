@@ -64,7 +64,7 @@ export class SessionteamService {
                 teamId: sessionTeam.id
             }
         });
-
+        // check if user is already in the team
         if(sessionTeamUsers.map((user) => user.userId).includes(user.id)) return {message: 'Már csatlakoztál a csapathoz!'};
 
         if (!sessionTeam.public) {
