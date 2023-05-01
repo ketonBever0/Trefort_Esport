@@ -26,6 +26,7 @@ import OnRouting from './ui/notRendered/OnRouting'
 import { Toaster } from 'react-hot-toast'
 import Test from './pages/Test'
 import ReviewOrganisations from './pages/ReviewOrganisations'
+import { useEffect } from 'react'
 
 function App() {
 
@@ -44,9 +45,7 @@ function App() {
               <Router>
                 <NavBar />
                 {/* <div className="nk-gap-6" /> */}
-                <div id='holditsplace' style={{ display: "none", visibility: 'hidden' }}>
-                  <NavBar />
-                </div>
+                {/* <div id='fillitsplace' style={{ height: "70px" }} /> */}
                 <div className="nk-gap-4" />
                 <div className='container'>
                   <Routes>

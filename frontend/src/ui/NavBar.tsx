@@ -6,6 +6,8 @@ import LoginModal from '../components/LoginModal';
 import UserContext from '../_context/UserContext';
 import { AiOutlineDown } from 'react-icons/ai';
 import Dashboard from './Dashboard';
+import { FaTiktok } from 'react-icons/fa'
+
 
 function NavBar() {
 
@@ -13,17 +15,27 @@ function NavBar() {
         var navbar: any = document.getElementById("myNav");
         var header: any = document.getElementById("myHeader");
         var contacts_left: any = document.getElementById("contacts-left");
+        // var fillItsPlace: any = document.getElementById("fillitsplace");
 
         function scrollFunction() {
             if (document.body.scrollTop > 70 || document.documentElement.scrollTop > 70) {
                 header.setAttribute("style", "transition: .5s; position: fixed; top: 0");
                 navbar.classList.add("p-10");
-                contacts_left.style.display = "none";
+
+                // fillItsPlace.setAttribute("style", "height: 155px;");
+
+                if (window.innerWidth < 575) contacts_left.style.display = "none";
+
             } else {
                 navbar.classList.remove("p-10");
                 navbar.setAttribute("style", "transition: .3s;");
-                header.removeAttribute("style", "position: fixed; top: 0");
+                header.setAttribute("style", "transition: .3s; position: fixed; top: 0");
+                // header.removeAttribute("style", "position: fixed; top: 0");
+
                 contacts_left.style.display = "block";
+
+                // fillItsPlace.setAttribute("style", "height: 155px;");
+
             }
         }
 
@@ -66,9 +78,9 @@ function NavBar() {
 
 
 
-            <header className="nk-header nk-header-opaque" id='myHeader'>
+            <header className="nk-header nk-header-opaque" id='myHeader' style={{ position: "fixed", top: "0" }}>
                 <div>
-                    <div id='topnav' className="nk-contacts-top" style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}>
+                    <div id='topnav' className="nk-contacts-top" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
                         <div className="container">
                             <div id='contacts-left' className="nk-contacts-left">
                                 <ul className="nk-social-links">
@@ -78,8 +90,13 @@ function NavBar() {
                                     </a>
                                 </li> */}
                                     <li>
-                                        <a className="nk-social-twitch" href="#">
-                                            <span className="fab fa-twitch" />
+                                        <a className="nk-social-twitch" target='blank' href="https://www.twitch.tv/trefortesport">
+                                            <span className="fab fa-twitch" /><sub>1</sub>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a className="nk-social-twitch" target='blank' href="https://www.twitch.tv/trefortesport2">
+                                            <span className="fab fa-twitch" /><sub>2</sub>
                                         </a>
                                     </li>
                                     <li>
@@ -88,14 +105,19 @@ function NavBar() {
                                     </a> */}
                                     </li>
                                     <li>
-                                        <a className="nk-social-facebook" href="#">
+                                        <a className="nk-social-facebook" target='blank' href="https://www.facebook.com/bszctrefort">
                                             <span className="fab fa-facebook" />
                                         </a>
                                     </li>
                                     <li>
-                                        <a className="nk-social-discord" href="#">
+                                        <a id="c-social-discord" target='blank' href="https://discord.gg/Xe76v3wG2E">
                                             <span className="fab fa-discord">
                                             </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="c-social-tiktok" target='blank' href="https://www.tiktok.com/@bszc_trefort">
+                                            <FaTiktok />
                                         </a>
                                     </li>
                                 </ul>
@@ -113,13 +135,44 @@ function NavBar() {
                                                 <div>
                                                     <button className='nostyle-button' onClick={() => setIsUserBoxOpen((prev: boolean) => !prev)}>
                                                         {userData?.user?.username}
-                                                        <span className={`mx-2 ${isUserBoxOpen && 'rotate-180'}`}><AiOutlineDown /></span>
+                                                        <img
+                                                            src={
+                                                                userData?.user?.username ?
+                                                                    `http://localhost:8000/profilepicture/${userData?.user?.username}_profile_picture.png`
+                                                                    :
+                                                                    'http://localhost:8000/profilepicture/_user_placeholder.png'
+                                                            }
+                                                            onError={({ currentTarget }) => {
+                                                                currentTarget.onerror = null; // prevents looping
+                                                                currentTarget.src = "http://localhost:8000/profilepicture/_user_placeholder.png";
+                                                            }}
+                                                            alt="avatar"
+                                                            className="rounded-circle img-fluid ms-2"
+                                                            style={{ width: 20 }}
+                                                        />
+                                                        {/* <span className={`mx-2 ${isUserBoxOpen && 'rotate-180'}`}><AiOutlineDown /></span> */}
                                                     </button>
                                                     {
                                                         isUserBoxOpen &&
                                                         <div className='c-ui-userbox fixed-top rounded'>
                                                             <div className='nk-gap' />
                                                             <h4>Üdv {userData?.user?.username}!</h4>
+
+                                                            <img
+                                                                src={
+                                                                    userData?.user?.username ?
+                                                                        `http://localhost:8000/profilepicture/${userData?.user?.username}_profile_picture.png`
+                                                                        :
+                                                                        'http://localhost:8000/profilepicture/_user_placeholder.png'
+                                                                }
+                                                                onError={({ currentTarget }) => {
+                                                                    currentTarget.onerror = null; // prevents looping
+                                                                    currentTarget.src = "http://localhost:8000/profilepicture/_user_placeholder.png";
+                                                                }}
+                                                                alt="avatar"
+                                                                className="rounded-circle img-fluid mb-10"
+                                                                style={{ width: 100 }}
+                                                            />
                                                             <div className='position-absolute bottom-0 w-100'>
                                                                 <Link to='/myprofile'
                                                                     className="nk-btn nk-btn-rounded nk-btn-block nk-btn-color-main-5" //nk-btn-color-white
@@ -202,7 +255,7 @@ function NavBar() {
                                 <div className="nk-nav-table">
                                     <Link to='/' className="nk-nav-logo">
                                         {/* <img src="/assets/images/logo.svg" alt="GoodGames" width={199} /> */}
-                                        <img src={"/src/assets/esport_logo.png"} width={280} />
+                                        <img src={"/src/assets/esport_logo.png"} width={280} style={{marginLeft: "2%"}}/>
                                     </Link>
                                     <ul
                                         className="nk-nav nk-nav-right d-none d-lg-table-cell"
@@ -300,6 +353,8 @@ function NavBar() {
                 {/* END: Navbar */}
             </header >
 
+            <div id='fillitsplace' style={{ height: "155px" }} />
+
 
             <>
                 {/* START: Navbar Mobile Additional Classes: .nk-navbar-left-side
@@ -328,9 +383,7 @@ function NavBar() {
 
 
 
-
-
-        </div >
+        </div>
     )
 }
 

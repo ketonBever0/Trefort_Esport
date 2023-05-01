@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { IoMdClose } from 'react-icons/io'
 import UserContext from '../_context/UserContext';
 import '../_css_all/login.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Button2 from '../ui/Button2';
 
 function LoginModal({ closeModal }: any) {
 
@@ -32,6 +33,7 @@ function LoginModal({ closeModal }: any) {
         }
     }, [userToken])
 
+    const navigate = useNavigate();
 
 
     return (
@@ -118,24 +120,29 @@ function LoginModal({ closeModal }: any) {
                             <div className="nk-gap-1" />
                             <div className="row vertical-gap">
                                 <div className="col-md-7">
-                                    <button onClick={async (e: any) => {
+                                    <Button2 myFunct={async () => await login(loginFormData)} content="Belépés" />
+                                    {/* <button onClick={async (e: any) => {
                                         e.preventDefault();
                                         await login(loginFormData);
                                     }}
                                         className="nk-btn nk-btn-rounded nk-btn-color-white nk-btn-block"
                                         disabled={loggingIn}>
                                         Tovább
-                                    </button>
+                                    </button> */}
                                 </div>
                                 <div className="col-md-5">
                                     <div className="mnt-5">
                                         <small>
-                                            <a href="#" className='normal-link' > Elfelejtett jelszó...</a>
+                                            <a href="#" className='nostyle-button normal-link' > Elfelejtett jelszó...</a>
                                         </small>
                                     </div>
                                     <div className="mnt-5">
                                         <small>
-                                            <Link to='/register1' className='normal-link'>Nincs fiókod? Regisztrálj!</Link>
+                                            <button onClick={(e: any) => {
+                                                e.preventDefault();
+                                                closeModal();
+                                                navigate('/register1');
+                                            }} className='nostyle-button normal-link'>Nincs fiókod? Regisztrálj!</button>
                                         </small>
                                     </div>
                                 </div>

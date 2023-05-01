@@ -55,16 +55,6 @@ function Register1() {
 
     const areInputsFilled = () => {
 
-        // const inputs = document.querySelectorAll('input');
-
-        // inputs.forEach((input) => {
-        //     if (input.value) {
-        //         navigate("/register2");
-        //     } else {
-        //         Notify.tError("Töltsd ki a mezőket!");
-        //     }
-        // })
-
 
         if (registerFormData.firstName == "" && registerFormData.lastName == "" && registerFormData.address == "") {
             Notify.tError("Töltsd ki a kötelező mezőket!");
@@ -78,16 +68,13 @@ function Register1() {
 
     };
 
-    const logging = () => {
-        console.log('hi')
-    }
 
     return (
         <div>
 
 
             <div className='bg-dark bg-gradient p-30 rounded text-xl'>
-                <ProgressBar myWidth={progressWidth} />
+                {/* <ProgressBar myWidth={progressWidth} /> */}
 
                 <>
 

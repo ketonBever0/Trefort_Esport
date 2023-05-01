@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 function NotFoundPage() {
+
+    useEffect(() => {
+        const pageBG: Element = document.querySelector('.full-page')!;
+        pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top.png')")
+    }, [])
+
     return (
         <div>
             <>
@@ -26,8 +32,8 @@ function NotFoundPage() {
                                         <div className="nk-gap" />
                                         <h2 className="h4">Oldal nem található!</h2>
                                         <div>
-                                            Nem létező útvonalat írtál be <br />
-                                            vagy (már) nem létező bejegyzést nyitottál meg.
+                                            Ismeretlen útvonalat írtál be <br />
+                                            vagy egy (már) nem létező bejegyzést próbáltál megnyitni.
                                         </div>
                                         <div className="nk-gap-3" />
                                         <Link to="/"
