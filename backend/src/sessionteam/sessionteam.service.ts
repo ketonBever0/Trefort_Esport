@@ -1,7 +1,7 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { JoinSessionTeamDto, SessionTeamDto } from './dto';
-import { User } from '@prisma/client';
+import { SessionTeam, User } from '@prisma/client';
 import * as argon from 'argon2';
 
 @Injectable({})
@@ -59,23 +59,26 @@ export class SessionteamService {
     ){
         const sessionTeam = await this.getSessionTeamById(steamId);
 
-        if (sessionTeam.public) {
-            const sessionTeamUser = await this.prismaService.sessionTeamUser.create({
-                data: {
-                    userId: user.id,
-                    teamId: sessionTeam.id,
-                }
-            });
-            
-            const updatedSessionTeam = await this.getSessionTeamById(steamId);
+        if (!sessionTeam.public) {
+            const valid = await argon.verify(sessionTeam.password, dto.password);
+            if (!valid) return {message: 'Hibás jelszó!'};
+
+            const updatedSessionTeam = await this.signUserToSessionTeam(sessionTeam, user, steamId);
 
             return {
                 message: 'Sikeres csatlakozás a csapathoz',
                 updatedSessionTeam
             }
+
         } else {
-            throw new ForbiddenException('Csatlakozás sikertelen!');
+
+            const updatedSessionTeam = await this.signUserToSessionTeam(sessionTeam, user, steamId);
+            return {
+                message: 'Sikeres csatlakozás a csapathoz',
+                updatedSessionTeam
+            }
         }
+            
     }
     
 
@@ -97,6 +100,19 @@ export class SessionteamService {
             }
         });
         return sessionTeam;
+    }
+
+    async signUserToSessionTeam(sessionTeam: SessionTeam, user: User, steamId: number) {
+        const sessionTeamUser = await this.prismaService.sessionTeamUser.create({
+            data: {
+                userId: user.id,
+                teamId: sessionTeam.id,
+            }
+        });
+        
+        const updatedSessionTeam = await this.getSessionTeamById(steamId);
+
+        return updatedSessionTeam;
     }
 
 }

@@ -1,6 +1,8 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsOptional, IsString } from "class-validator";
 
 export class JoinSessionTeamDto {
+    
+    @IsOptional()
     @IsString()
     @IsNotEmpty()
     password: string;
