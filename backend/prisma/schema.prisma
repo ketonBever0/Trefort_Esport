@@ -12,7 +12,8 @@ datasource db {
 
 model Clan {
   id            Int       @id @default(autoincrement())
-  userId        Int       @unique
+  leaderId      Int       @unique()
+  leader        User      @relation("Leader",fields: [leaderId], references: [id])
   name          String    @db.VarChar(255)
   logo          String?   @db.VarChar(255)
   clanEmail     String?   @db.VarChar(255)
@@ -73,6 +74,7 @@ model Post {
 model User {
   id                          Int             @id @default(autoincrement())
   userClan                    Clan?           @relation(fields: [clanId], references: [id])
+  leader                      Clan?           @relation("Leader")
   clanId                      Int?            @unique
   userOrg                     Organization?   @relation("OrgUsers", fields: [orgId], references: [id])
   orgId                       Int?            @unique
