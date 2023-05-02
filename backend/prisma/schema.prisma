@@ -17,7 +17,7 @@ model Clan {
   name          String    @db.VarChar(255)
   logo          String?   @db.VarChar(255)
   clanEmail     String?   @db.VarChar(255)
-  status        String    @db.VarChar(255)
+  status        String    @db.VarChar(255)@default("active")
   cTeams        SessionTeam[]
   users         User[]
 
