@@ -92,4 +92,10 @@ export class ClanService {
         };
     }
 
+    async joinClan(
+        paramId: number,
+        user: User
+    ) {
+    }
+
 }
