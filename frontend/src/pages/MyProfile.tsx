@@ -265,8 +265,8 @@ function MyProfile() {
                       <>
                         {/* INPUTOK */}
                         <div className="row m-5">
-                          <div className="col-sm-4 m-auto myProfileLabel">Név</div>
-                          <div className="col-sm-8 row gap-4">
+                          <div className="col-sm-4 m-auto myProfileLabel fw-bold text-center">Név</div>
+                          <div className="col-sm-8 row gap-4 d-flex justify-content-center">
                             <div className="col-md-6 col-lg-5 col-9">
                               <div className="form-group myform-group">
                                 <label className='mb-5' htmlFor='vezeteknev'>Vezetéknév</label>
@@ -283,27 +283,27 @@ function MyProfile() {
                         </div>
                         <hr />
                         <div className="row m-5">
-                          <div className="col-sm-4 m-auto myProfileLabel fw-bold fw-bold">Lakcím</div>
-                          <div className="col-sm-8 row gap-4">
-                            <div className="col-md-6 col-lg-5 col-9">
+                          <div className="col-sm-4 m-auto myProfileLabel fw-bold text-center">Lakcím</div>
+                          <div className="col-sm-8 row gap-4 d-flex justify-content-center">
+                            <div className="col-md-6 col-lg-5 col-9 d-flex justify-content-center align-items-center">
                               <div className="form-group myform-group">
                                 <label className='mb-10' htmlFor='iranyitoszam'>Irányítószám</label>
                                 <input type="text" id="iranyitoszam" className="myform-control form-control required bg-dark p-10" required />
                               </div>
                             </div>
-                            <div className="col-md-6 col-lg-5 col-9">
+                            <div className="col-md-6 col-lg-5 col-9 d-flex justify-content-center align-items-center">
                               <div className="form-group myform-group">
                                 <label className='mb-10' htmlFor='telepules'>Település</label>
                                 <input type="text" id="telepules" className="myform-control form-control required bg-dark p-10" required />
                               </div>
                             </div>
-                            <div className="col-md-6 col-lg-5 col-9">
+                            <div className="col-md-6 col-lg-5 col-9 d-flex justify-content-center align-items-center">
                               <div className="form-group myform-group">
                                 <label className='mb-10' htmlFor='kozterulet_nev'>Közterület neve</label>
                                 <input type="text" id="kozterulet_nev" className="myform-control form-control required bg-dark p-10" required />
                               </div>
                             </div>
-                            <div className="col-md-6 col-lg-5 col-9">
+                            <div className="col-md-6 col-lg-5 col-9 d-flex justify-content-center align-items-center">
                               <div className="form-group myform-group">
                                 <label className='mb-10' htmlFor='kozterulet_fajta'>Közterület jellege</label>
                                 <input type="text" id="kozterulet_fajta" className="myform-control form-control required bg-dark p-10" required />
@@ -319,36 +319,38 @@ function MyProfile() {
                         </div>
                         <hr />
                         <div className="row m-5">
-                          <div className="col-sm-4 m-auto myProfileLabel fw-bold">Oktatási azonosító</div>
-                          <div className="col-sm-8 row">
-                            <div className="col-md-6 col-9 border">
+                          <div className="col-sm-4 m-auto myProfileLabel fw-bold text-center">Oktatási azonosító</div>
+                          <div className="col-sm-8 row d-flex align-items-center justify-content-center">
+                            <div className="col-md-5 col-9">
                               <div className="form-group myform-group">
-                                <input type="text" id="omazonosito" name='educationIdNum' value={editDataForm.educationIdNum} onChange={handleEditDataFormChange} defaultValue={user?.educationIdNum} className="myform-control form-control required bg-dark p-10 d-flex align-items-center border" required />
+                                <input type="text" id="omazonosito" name='educationIdNum' value={editDataForm.educationIdNum} onChange={handleEditDataFormChange} defaultValue={user?.educationIdNum} className="myform-control form-control required bg-dark p-10 align-items-center" required />
                               </div>
                             </div>
-                            <i className="bi bi-info-circle-fill lead col-1"></i> <div className='col-md-6'>A diákigazolvány hátulján található 11 jegyű számsor.</div>
+                            <div className='col-md-6'><i className="bi bi-info-circle-fill lead col-1"></i> A diákigazolvány hátulján található 11 jegyű számsor.</div>
                           </div>
                         </div>
                         <hr />
                         <div className="row m-5">
-                          <div className="col-sm-4 m-auto myProfileLabel fw-bold">E-mail cím</div>
-                          <div className="col-sm-8 row">
-                            <div className="col-md-6 col-9">
+                          <div className="col-sm-4 m-auto myProfileLabel fw-bold text-center">E-mail cím</div>
+                          <div className="col-sm-8 row d-flex align-items-center justify-content-center">
+                            <div className="col-md-5 col-9">
                               <div className="form-group myform-group">
                                 <input type="email" id="email" name='email' value={editDataForm.email} onChange={handleEditDataFormChange} defaultValue={user?.email} className="myform-control form-control required bg-dark p-10" required />
                               </div>
                             </div>
+                            <div className='col-md-6'><i className="bi bi-info-circle-fill lead col-1"></i> pelda@email.com</div>
                           </div>
                         </div>
                         <hr />
                         <div className="row m-5">
-                          <div style={{ hyphens: "auto", WebkitHyphens: 'auto', msHyphens: 'auto' }} className="col-sm-4 m-auto myProfileLabel fw-bold">Felhasználó­­név</div>
-                          <div className="col-sm-8 row">
-                            <div className="col-md-6 col-9">
+                          <div style={{ hyphens: "auto", WebkitHyphens: 'auto', msHyphens: 'auto' }} className="col-sm-4 m-auto myProfileLabel fw-bold text-center">Felhasználó­­név</div>
+                          <div className="col-sm-8 row d-flex justify-content-center align-items-center">
+                            <div className="col-md-5 col-9">
                               <div className="form-group myform-group">
                                 <input type="text" id="felhasznalonev" name='username' value={editDataForm.username} onChange={handleEditDataFormChange} defaultValue={user?.username} className="myform-control form-control required bg-dark p-10" required />
                               </div>
                             </div>
+                            <div className='col-md-6'> <i className="bi bi-info-circle-fill lead col-1"></i> A felhasználónév nem tartalmazhat szóközt.</div>
                           </div>
                         </div>
                         <div className='d-flex justify-content-end row gap-4 p-20'>
