@@ -9,23 +9,15 @@ import { RoleGuard } from 'src/auth/guard/role.guard';
 @UseGuards(JwtGuard, RoleGuard)
 @Controller('users')
 export class UserController {
-    constructor(private userService: UserService){}
+    constructor(private userService: UserService) { }
 
-    @Roles('admin')
+    // @Roles('admin')
     @Get('me')
     getMe(@GetUser() user: User) {
         return user;
     }
 
-    @Get(':id')
-    getSingleUser(
-        @Param('id', new ParseIntPipe())
-        id: number
-    ){
-        return this.userService.getSingleUser(id);
-    }
-
-    @Get()
+    @Get('all')
     getAllUsers() {
         return this.userService.getAllUsers();
     }
@@ -41,7 +33,15 @@ export class UserController {
     @Delete()
     deleteUser(
         @GetUser() user: User
-    ){
+    ) {
         return this.userService.deleteUser(user);
+    }
+
+    @Get(':id')
+    getSingleUser(
+        @Param('id', new ParseIntPipe())
+        id: number
+    ) {
+        return this.userService.getSingleUser(id);
     }
 }
