@@ -1,18 +1,34 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ClanDto } from './dto';
+import { User } from '@prisma/client';
 
 @Injectable()
 export class ClanService {
     constructor(private prismaService: PrismaService) {}
 
-    async createClan(dto: ClanDto) {
+    async createClan(
+        dto: ClanDto,
+        user: User
+
+    ) {
+
         const clan = await this.prismaService.clan.create({
             data: {
-                leaderId: dto.leaderId,
+                leaderId: user.id,
                 name: dto.name,
                 logo: dto.logo,
                 clanEmail: dto.clanEmail
+            }
+        });
+
+        // update user clan in user profile
+        await this.prismaService.user.update({
+            where: {
+                id: user.id,
+            },
+            data: {
+                clanId: clan.id
             }
         });
 
