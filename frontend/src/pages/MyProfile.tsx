@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import './_css/input.css';
 import './_css/myProfile.css'
 import UserContext from '../_context/UserContext';
+import Button2 from '../ui/Button2';
 
 function MyProfile() {
 
@@ -91,11 +92,13 @@ function MyProfile() {
   return (
     <div>
       <section className='bg-dark-1'>
-        <div className="container py-5">
-          <div className="row">
-            <div className="col">
-            </div>
+        <div className="container pb-5">
+          <div className='row'>
+          <div className="justify-content-start d-flex pl-70 mt-40 mb-40">
+              <Button2 content="⭠ Vissza"/>
           </div>
+          </div>
+
           <div className="row">
             <div className="col-lg-4">
               <div className="card mb-4 bg-dark-4">
@@ -461,9 +464,8 @@ function MyProfile() {
                 </div>
               </div>
               <div className='nk-decorated-h-2 h3 p-15 mt-40 text-sm-h6'><span> </span>Saját bejegyzéseim<span> </span></div>
-              <div className="nk-blog-grid p-20 row d-flex gap-20">
-
-                <div className="nk-blog-post col-6">
+              <div className="nk-blog-grid p-20 row d-flex justify-content-center">
+                <div className="nk-blog-post col-md-6 col-12">
                   <a href="blog-article.html" className="nk-post-img">
                     <img
                       src="assets/images/post-5-mid.jpg"
@@ -496,7 +498,7 @@ function MyProfile() {
                     <span className="fa fa-calendar" /> Jul 23, 2018
                   </div>
                 </div>
-                <div className="nk-blog-post col-6">
+                <div className="nk-blog-post col-md-6 col-12">
                   <a href="blog-article.html" className="nk-post-img">
                     <img
                       src="assets/images/post-5-mid.jpg"
@@ -529,7 +531,7 @@ function MyProfile() {
                     <span className="fa fa-calendar" /> Jul 23, 2018
                   </div>
                 </div>
-                <div className="nk-blog-post col-6">
+                <div className="nk-blog-post col-md-6 col-12">
                   <a href="blog-article.html" className="nk-post-img">
                     <img
                       src="assets/images/post-5-mid.jpg"
@@ -562,7 +564,7 @@ function MyProfile() {
                     <span className="fa fa-calendar" /> Jul 23, 2018
                   </div>
                 </div>
-                <div className="nk-blog-post col-6">
+                <div className="nk-blog-post col-md-6 col-12">
                   <a href="blog-article.html" className="nk-post-img">
                     <img
                       src="assets/images/post-5-mid.jpg"

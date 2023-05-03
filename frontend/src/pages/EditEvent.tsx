@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Button2 from '../ui/Button2';
 
 
 function EditEvent() {
@@ -42,16 +43,21 @@ function EditEvent() {
                     <span className="text-main-6">Játékok adatainak módosítása:</span>
                 </span>
             </h3>
-            <div className="position-fixed bottom-0 end-0 m-50" style={{ zIndex: '100' }}>
+            <span className='position-fixed bottom-0 end-0' style={{ zIndex: '100' }}>
+                <Button2 content={<i className="fa-solid fa-plus px-2" /> }/>
+            </span>
+            
+
+            {/* <div className="position-fixed bottom-0 end-0 m-50" style={{ zIndex: '100' }}>
                 <button 
                 // onClick={addGame} 
                 className='nk-btn nk-btn-rounded nk-btn-color-main-1 '>
                     <h4 className=' m-0'>
                         <i className="fa-solid fa-plus px-2" />
-                        Játék <br /> hozááadása
+                        Játék <br /> hozzáadása
                     </h4>
                 </button>
-            </div>
+            </div> */}
             <div className='p-50'>
                 <div className="nk-info-box text-danger">
 

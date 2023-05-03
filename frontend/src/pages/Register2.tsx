@@ -160,7 +160,7 @@ function Register2() {
 
 
                 {/* <ProgressBar myWidth={width} /> */}
-                <div className='d-flex m-30 w-25 justify-content-center'><Button2 myFunct={() => navigate('/register1')} content="Vissza" /></div>
+                
                 <>
                     <div className="tab-content">
                         <div
@@ -169,23 +169,33 @@ function Register2() {
                             role="tabpanel"
                             aria-labelledby="tab-login">
                             <form>
-                                <div className="text-center mb-3 lead">
+                                <div className='row d-flex'>
+                                    <div className='col row justify-content-center'>
+                                    <div className='d-flex m-30 justify-content-center'><Button2 myFunct={() => navigate('/register1')} content="⭠ Vissza" /></div>
+                                    </div>
 
 
-                                    <p>Regisztráció ezzel:</p>
-                                    <button type="button" className="btn btn-link myColor text-2xl btn-floating mx-1">
-                                        <i className="fab fa-facebook-f" />
-                                    </button>
-                                    <button type="button" className="btn btn-link myColor text-2xl btn-floating mx-1">
-                                        <i className="fab fa-google" />
-                                    </button>
-                                    <button type="button" className="btn btn-link myColor text-2xl btn-floating mx-1">
-                                        <i className="fab fa-twitter" />
-                                    </button>
-                                    <button type="button" className="btn btn-link myColor text-2xl btn-floating mx-1">
-                                        <i className="fab fa-github" />
-                                    </button>
+                                    <div className="text-center col mb-3 lead">
+
+
+                                        <p>Regisztráció ezzel:</p>
+                                        <button type="button" className="btn btn-link myColor text-2xl btn-floating mx-1">
+                                            <i className="fab fa-facebook-f" />
+                                        </button>
+                                        <button type="button" className="btn btn-link myColor text-2xl btn-floating mx-1">
+                                            <i className="fab fa-google" />
+                                        </button>
+                                        <button type="button" className="btn btn-link myColor text-2xl btn-floating mx-1">
+                                            <i className="fab fa-twitter" />
+                                        </button>
+                                        <button type="button" className="btn btn-link myColor text-2xl btn-floating mx-1">
+                                            <i className="fab fa-github" />
+                                        </button>
+                                    </div>
+                                    <div className='col'>
+                                    </div>
                                 </div>
+
                                 <p className="text-center lead">vagy:</p>
 
                                 <div className='container justify-content-center row gap-1'>
@@ -201,7 +211,7 @@ function Register2() {
                                         <div className="col-lg-3">
                                             <div className="form-group myform-group">
                                                 <input onChange={handleInputChange} onBlur={checkIfEmailExists} name='email' value={registerFormData.email} type="text" id="email" className="myform-control form-control required bg-dark p-10" required />
-                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="text">E-mail cím</label>
+                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="email">E-mail cím</label>
                                             </div>
                                         </div>
                                     </div>

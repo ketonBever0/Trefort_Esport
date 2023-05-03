@@ -82,20 +82,31 @@ function Register1() {
                         <div
                             className="tab-panel fade show active">
                             <form>
-                                <div className="text-center mb-3">
-                                    <p className='lead'>Regisztráció ezzel:</p>
-                                    <button type="button" className="btn btn-link myColor text-2xl btn-floating mx-1">
-                                        <i className="fab fa-facebook-f" />
-                                    </button>
-                                    <button type="button" className="btn btn-link myColor text-2xl btn-floating mx-1">
-                                        <i className="fab fa-google" />
-                                    </button>
-                                    <button type="button" className="btn btn-link myColor text-2xl btn-floating mx-1">
-                                        <i className="fab fa-twitter" />
-                                    </button>
-                                    <button type="button" className="btn btn-link myColor text-2xl btn-floating mx-1">
-                                        <i className="fab fa-github" />
-                                    </button>
+                            <div className='row d-flex'>
+                                    <div className='col row justify-content-center'>
+                                    <div className='d-flex m-30 justify-content-center'><Button2 myFunct={() => navigate('/register1')} content="⭠ Vissza" /></div>
+                                    </div>
+
+
+                                    <div className="text-center col mb-3 lead">
+
+
+                                        <p>Regisztráció ezzel:</p>
+                                        <button type="button" className="btn btn-link myColor text-2xl btn-floating mx-1">
+                                            <i className="fab fa-facebook-f" />
+                                        </button>
+                                        <button type="button" className="btn btn-link myColor text-2xl btn-floating mx-1">
+                                            <i className="fab fa-google" />
+                                        </button>
+                                        <button type="button" className="btn btn-link myColor text-2xl btn-floating mx-1">
+                                            <i className="fab fa-twitter" />
+                                        </button>
+                                        <button type="button" className="btn btn-link myColor text-2xl btn-floating mx-1">
+                                            <i className="fab fa-github" />
+                                        </button>
+                                    </div>
+                                    <div className='col'>
+                                    </div>
                                 </div>
                                 <p className="text-center lead">vagy:</p>
 

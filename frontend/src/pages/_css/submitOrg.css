@@ -1,9 +1,17 @@
-
-
-@media screen and (min-width: 1200px) {
-
-.col-lg-custom {
+@media screen and (min-width: 1000px) {
+  .col-lg-custom {
     width: 13rem;
-}
-    
   }
+}
+
+@media screen and (min-width: 720px) {
+  .col-md-custom {
+    width: 17rem
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .col-md-custom {
+    width: 13rem
+  }
+}
