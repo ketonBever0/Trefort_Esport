@@ -11,7 +11,7 @@ import { RoleGuard } from 'src/auth/guard/role.guard';
 export class UserController {
     constructor(private userService: UserService){}
 
-    @Roles('admin')
+    // @Roles('admin')
     @Get('me')
     getMe(@GetUser() user: User) {
         return user;
@@ -25,7 +25,7 @@ export class UserController {
         return this.userService.getSingleUser(id);
     }
 
-    @Get()
+    @Get('all')
     getAllUsers() {
         return this.userService.getAllUsers();
     }
