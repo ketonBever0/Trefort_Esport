@@ -3,6 +3,7 @@ import { useState } from 'react';
 import ProgressBar from '../ui/ProgressBar';
 import Button2 from '../ui/Button2';
 import './_css/input.css'
+import './_css/submitOrg.css'
 
 function SubmitOrganisation1() {
 
@@ -55,21 +56,21 @@ function SubmitOrganisation1() {
                 <div className='container mt-50'>
                   <div className='m-30 gap-5 row'>
                     <div className='row justify-content-center gap-4 gap-md-5'>
-                      <div className="col-xl-2 col-lg-3 col-md-4 col-8">
+                      <div className="col-xl-2 col-lg-3 col-md-4 col-sm-8 col-9">
                         <div className="form-group myform-group">
                           <input type="text"
                             name="nev" id="nev" className="myform-control form-control required bg-dark p-10" required />
                           <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="vezeteknev">Teljes név</label>
                         </div>
                       </div>
-                      <div className="col-xl-2 col-lg-3 col-md-4 col-8">
+                      <div className="col-xl-2 col-lg-3 col-md-4 col-sm-8 col-9">
                         <div className="form-group myform-group">
                           <input type="text"
                             name="tipus" id="tipus" className="myform-control form-control required bg-dark p-10" required />
                           <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="tipus">Típus</label>
                         </div>
                       </div>
-                      <div className="col-xl-2 col-lg-3 col-md-4 col-8">
+                      <div className="col-xl-2 col-lg-3 col-md-4 col-sm-8 col-9">
                         <div className="form-group myform-group">
                           <input type="text"
                             name="kepviselo_nev" id="kepviselo_nev" className="myform-control form-control required bg-dark p-10" required />
@@ -78,7 +79,7 @@ function SubmitOrganisation1() {
                       </div>
                     </div>
                     <div className='row justify-content-center gap-4 gap-md-5'>
-                      <div className="col-xl-2 col-lg-3 col-md-4 col-8">
+                      <div className="col-xl-2 col-lg-3 col-md-4 col-sm-8 col-9">
                         <div className="form-group myform-group">
                           <input type="text"
                             name="iranyitoszam" id="iranyitoszam" className="myform-control form-control required bg-dark p-10" required />
@@ -86,14 +87,14 @@ function SubmitOrganisation1() {
                         </div>
                       </div>
 
-                      <div className="col-xl-2 col-lg-3 col-md-4 col-8">
+                      <div className="col-xl-2 col-lg-3 col-md-4 col-sm-8 col-9">
                         <div className="form-group myform-group">
                           <input type="text"
                             name="telepules" id="telepules" className="myform-control form-control required bg-dark p-10" required />
                           <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="telepules">Település neve</label>
                         </div>
                       </div>
-                      <div className="col-xl-2 col-lg-3 col-md-4 col-8">
+                      <div className="col-xl-2 col-lg-3 col-md-4 col-sm-8 col-9">
                         <div className="form-group myform-group">
                           <input type="text"
                             name="kozterulet_nev" id="kozterulet_nev" className="myform-control form-control required bg-dark p-10" required />
@@ -102,14 +103,14 @@ function SubmitOrganisation1() {
                       </div>
                     </div>
                     <div className='row justify-content-center gap-4 gap-md-5'>
-                      <div className="col-lg-2 col-md-4 col-8">
+                      <div className="col-lg-custom col-md-3 col-sm-8 col-9">
                         <div className="form-group myform-group">
                           <input type="text"
                             name="kozterulet_jelleg" id="kozterulet_jelleg" className="myform-control form-control required bg-dark p-10" required />
-                          <label className="border form-control-placeholder myform-control-placeholder p-10" htmlFor="kozterulet_jelleg">Közterület jellege</label>
+                          <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="kozterulet_jelleg">Közterület jellege</label>
                         </div>
                       </div>
-                      <div className="col-xl-2 col-lg-3 col-md-4 col-8">
+                      <div className="col-xl-2 col-lg-3 col-md-4 col-sm-8 col-9">
                         <div className="form-group myform-group">
                           <input type="text"
                             name="hazszam" id="hazszam" className="myform-control form-control required bg-dark p-10" required />
