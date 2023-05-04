@@ -75,7 +75,6 @@ function SubmitOrganisation2() {
                   <Button2 content="Beküldés" />
                 </div>
               </form>
-              <div className='m-100'></div>
             </div>
           </div>
         </>

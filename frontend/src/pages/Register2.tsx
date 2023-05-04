@@ -224,7 +224,7 @@ function Register2() {
                                         <div className="col-lg-3">
                                             <div className="form-group myform-group">
                                                 <input onChange={handleInputChange} name='password' value={registerFormData.password} type="password" className="myform-control form-control required bg-dark p-10" required />
-                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="jelszo">Jelszó</label>
+                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="password">Jelszó</label>
                                             </div>
                                         </div>
 

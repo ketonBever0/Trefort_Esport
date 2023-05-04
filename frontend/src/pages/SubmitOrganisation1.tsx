@@ -60,7 +60,7 @@ function SubmitOrganisation1() {
                         <div className="form-group myform-group">
                           <input type="text"
                             name="nev" id="nev" className="myform-control form-control required bg-dark p-10" required />
-                          <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="vezeteknev">Teljes név</label>
+                          <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="nev">Teljes név</label>
                         </div>
                       </div>
                       <div className="col-xl-2 col-lg-3 col-md-4 col-sm-8 col-10">

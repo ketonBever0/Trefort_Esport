@@ -412,7 +412,6 @@ function MyProfile() {
                             </div>
                           </div>
                         </div>
-                        <hr />
                         <div className='d-flex row justify-content-end gap-5 p-20'>
                           {
                             editPassword ?
