@@ -30,10 +30,12 @@ export class AuthService {
                 },
             });
 
+            const token = await this.signToken(user.id, user.email);
+
             return {
                 success: true,
                 mesage: "Sikeres regisztráció",
-                access_token: await this.signToken(user.id, user.email)
+                access_token: token
             }
         } catch (error) {
             if(error.meta.target.includes('key')) {
@@ -64,8 +66,11 @@ export class AuthService {
                 lastLogin: new Date()
             }
         });
-
-        return this.signToken(user.id, user.email);
+        const token = await this.signToken(user.id, user.email);
+        
+        return {
+            access_token: token
+        }
     }
 
     async signToken(userId: number, email: string){
@@ -78,8 +83,7 @@ export class AuthService {
             expiresIn: '1d',
             secret: secret
         });
-        return {
-            token,
-        };
+
+        return token;
     }
 }
