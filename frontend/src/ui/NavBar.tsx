@@ -138,13 +138,13 @@ function NavBar() {
                                                         <img
                                                             src={
                                                                 userData?.user?.username ?
-                                                                    `http://localhost:8000/profilepicture/${userData?.user?.username}_profile_picture.png`
+                                                                    `http://localhost:3333/profilepicture/${userData?.user?.username}_profile_picture.png`
                                                                     :
-                                                                    'http://localhost:8000/profilepicture/_user_placeholder.png'
+                                                                    '/src/assets/avatar_placeholder.png'
                                                             }
                                                             onError={({ currentTarget }) => {
                                                                 currentTarget.onerror = null; // prevents looping
-                                                                currentTarget.src = "http://localhost:8000/profilepicture/_user_placeholder.png";
+                                                                currentTarget.src = "/src/assets/avatar_placeholder.png";
                                                             }}
                                                             alt="avatar"
                                                             className="rounded-circle img-fluid ms-2"
@@ -255,7 +255,7 @@ function NavBar() {
                                 <div className="nk-nav-table">
                                     <Link to='/' className="nk-nav-logo">
                                         {/* <img src="/assets/images/logo.svg" alt="GoodGames" width={199} /> */}
-                                        <img src={"/src/assets/esport_logo.png"} width={280} style={{marginLeft: "2%"}}/>
+                                        <img src={"/src/assets/esport_logo.png"} width={280} style={{ marginLeft: "2%" }} />
                                     </Link>
                                     <ul
                                         className="nk-nav nk-nav-right d-none d-lg-table-cell"
