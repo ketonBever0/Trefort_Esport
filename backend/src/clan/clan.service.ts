@@ -22,15 +22,14 @@ export class ClanService {
             }
         });
 
-        // update user clan in user profile
-        await this.prismaService.user.update({
-            where: {
-                id: user.id,
-            },
+        // creatre user clan record
+        await this.prismaService.clanUser.create({
             data: {
-                clanId: clan.id
+                clanId: clan.id,
+                userId: user.id
             }
         });
+
 
         return {
             message: "Clan sikeresen létrehozva!",
@@ -58,7 +57,10 @@ export class ClanService {
         };
     }
 
-    async updateClan(paramId: number, dto: ClanDto) {
+    async updateClan(
+        paramId: number,
+        dto: ClanDto
+    ) {
         const clan = await this.prismaService.clan.update({
             where: {
                 id: paramId,
@@ -96,6 +98,39 @@ export class ClanService {
         paramId: number,
         user: User
     ) {
+
+        const clan = await this.prismaService.clan.findUnique({
+            where: {
+                id: paramId
+            }
+        });
+
+        const memberOfClan = await this.prismaService.clanUser.findMany({
+            where: {
+                userId: user.id,
+                clanId: clan.id
+            }
+        });
+
+        if(memberOfClan.length > 0) return {message: "Már a klán tagja vagy!"}
+
+        const newClanMember = await this.prismaService.clanUser.create({
+            data: {
+                userId: user.id,
+                clanId: clan.id
+            }
+        });
+
+        return {
+            message: `Kérésed jóváhagyásra vár!`
+        }
+    }
+
+    async leaveClan(
+        paramId: number,
+        user: User
+    ) {
+
     }
 
 }
