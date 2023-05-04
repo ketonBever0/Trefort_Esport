@@ -139,6 +139,7 @@ export const UserProvider = ({ children }: any) => {
 
         await fetch('http://localhost:3333/api/auth/signup', {
             method: 'POST',
+            headers: { "Content-Type": "application/json" },
             body: form
         })
             .then((res: Response) => res.json())
