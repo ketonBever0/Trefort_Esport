@@ -94,9 +94,9 @@ function MyProfile() {
       <section className='bg-dark-1'>
         <div className="container pb-5">
           <div className='row'>
-          <div className="justify-content-start d-flex pl-70 mt-40 mb-40">
-              <Button2 content="⭠ Vissza"/>
-          </div>
+            <div className="justify-content-start d-flex pl-70 mt-40 mb-40">
+              <Button2 content="⭠ Vissza" />
+            </div>
           </div>
 
           <div className="row">
@@ -109,11 +109,11 @@ function MyProfile() {
                       user?.username ?
                         `http://localhost:8000/profilepicture/${user?.username}_profile_picture.png`
                         :
-                        'http://localhost:8000/profilepicture/_user_placeholder.png'
+                        '/src/assets/avatar_placeholder.png'
                     }
                     onError={({ currentTarget }) => {
                       currentTarget.onerror = null; // prevents looping
-                      currentTarget.src = "http://localhost:8000/profilepicture/_user_placeholder.png";
+                      currentTarget.src = "/src/assets/avatar_placeholder.png";
                     }}
                     alt="avatar"
                     className="rounded-circle img-fluid"
@@ -389,7 +389,7 @@ function MyProfile() {
                           <div className="col-sm-4 m-auto myProfileLabel fw-bold">Oktatási azonosító</div>
                           <div className="col-sm-8 row">
                             <div className="sm-col-6 myProfileData">
-                              {user?.educationIdNum}
+                              {(user?.educationNumber == null || user?.educationNumber == "") ? "Nincs megadva" : user?.educationNumber}
                               {/* 71608965663 */}
                             </div>
                           </div>
@@ -412,7 +412,6 @@ function MyProfile() {
                             </div>
                           </div>
                         </div>
-                        <hr />
                         <div className='d-flex row justify-content-end gap-5 p-20'>
                           {
                             editPassword ?

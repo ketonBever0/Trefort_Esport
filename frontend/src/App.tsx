@@ -27,6 +27,8 @@ import { Toaster } from 'react-hot-toast'
 import Test from './pages/Test'
 import ReviewOrganisations from './pages/ReviewOrganisations'
 import { useEffect } from 'react'
+import AddClan from './pages/AddClan'
+import ClanProfile from './pages/ClanProfile'
 
 function App() {
 
@@ -90,6 +92,8 @@ function App() {
                     <Route path='/myprofile' element={<MyProfile />} />
                     <Route path='/test' element={<Test />} />
                     <Route path='/revieworg' element={<ReviewOrganisations />} />
+                    <Route path='/addclan' element={<AddClan />} />
+                    <Route path='/clanprofile' element={<ClanProfile />} />
 
 
                   </Routes>

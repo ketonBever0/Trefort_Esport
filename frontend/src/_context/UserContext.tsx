@@ -31,15 +31,14 @@ export const UserProvider = ({ children }: any) => {
         setLoggingIn(false);
         await fetch('http://localhost:3333/api/auth/login', {
             method: 'POST',
-            mode: "no-cors",
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify(formData)
         })
             .then(res => res.json())
             .then((token: any) => {
                 if (!token.message) {
-                    localStorage.setItem("usertoken", token);
-                    setUserToken(token);
+                    localStorage.setItem("usertoken", token.access_token);
+                    setUserToken(token.access_token);
                     tokenUpdate();
                     Notify.tSuccess("Sikeres bejelentkezés!");
                     userUpdate();
@@ -84,7 +83,7 @@ export const UserProvider = ({ children }: any) => {
 
     const getUserData = async (token: string | null) => {
         setIsUserDataLoading(true);
-        await fetch('http://localhost:8000/api/user/userdata', {
+        await fetch('http://localhost:3333/api/users/me', {
             method: 'GET',
             headers: {
                 "Content-type": "application/json",
@@ -98,7 +97,7 @@ export const UserProvider = ({ children }: any) => {
                     Notify.tError(data.message);
                     logout(true);
                 } else {
-                    setUserData(data);
+                    setUserData({ user: data });
                 }
             })
             .catch(err => console.log(err))
@@ -140,19 +139,23 @@ export const UserProvider = ({ children }: any) => {
         await fetch('http://localhost:3333/api/auth/signup', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
-            body: form
+            body: JSON.stringify(form)
         })
             .then((res: Response) => res.json())
             .then((response: any) => {
                 console.log(response);
-                // if (response.success) {
-                //     setIsRegistrationSuccessful(true);
-                //     Notify.tSuccess(response.message);
-                // }
-                // else {
-                //     setIsRegistrationSuccessful(false);
-                //     Notify.tError(response.message);
-                // }
+                if (response.success) {
+                    setIsRegistrationSuccessful(true);
+                    Notify.tSuccess(response.message);
+                    localStorage.setItem("usertoken", response.access_token);
+                    setUserToken(response.access_token);
+                    tokenUpdate();
+                    userUpdate();
+                }
+                else {
+                    setIsRegistrationSuccessful(false);
+                    Notify.tError(response.message);
+                }
             })
             .catch(err => console.log(err));
 
