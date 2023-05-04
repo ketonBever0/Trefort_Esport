@@ -126,6 +126,27 @@ export class ClanService {
         }
     }
 
+    async acceptClanRequest(
+        user: User,
+        paramId: number
+    ){
+        const clan = await this.prismaService.clan.findUnique({
+            where: {
+                id: paramId
+            }
+        });
+        const pendingRequest = await this.prismaService.clanUser.findMany({
+            where: {
+                userId: user.id,
+                clanId: clan.id
+            },
+            select: {
+                id: true
+            }
+        });
+
+    }
+
     async leaveClan(
         paramId: number,
         user: User
