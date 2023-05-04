@@ -30,7 +30,10 @@ export class AuthService {
                 },
             });
 
-            return this.signToken(user.id, user.email);
+            return {
+                mesage: "Sikeres regisztráció",
+                access_token: this.signToken(user.id, user.email)
+            }
         } catch (error) {
             if(error.meta.target.includes('key')) {
                 if(error.code === 'P2002') {
@@ -75,7 +78,7 @@ export class AuthService {
             secret: secret
         });
         return {
-            access_token: token,
+            token,
         };
     }
 }
