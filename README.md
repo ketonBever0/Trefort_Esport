@@ -1,8 +1,7 @@
 # Környezeti változók
 
-## _fake_backend
+## backend
 - DATABASE_URL (string): adatbázis connection string
-
-- TOKEN_LIFETIME (string): token élettartama (percben (m), órában(h) stb)
+    - csinálj egy usert mysqlben, add meg neki minden szerkezeti és adatkezelési rangot
+    - PL: mysql://prismauser:prisma123@localhost:3306/trefort_esport
 - JWT_SECRET (string): random jelszó token generáláshoz és hitelesítéshez
-- (opcionális) BACKEND_PORT (number): a szerver portja, hiányában 8000
