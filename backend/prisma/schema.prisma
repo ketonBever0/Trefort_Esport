@@ -19,7 +19,7 @@ model Clan {
   clanEmail     String?   @db.VarChar(255)
   status        String    @db.VarChar(255)@default("active")
   cTeams        SessionTeam[]
-  users         User[]
+  users         ClanUser[]
 
   @@map("clans")
 }
@@ -71,13 +71,23 @@ model Post {
   @@map("posts")
 }
 
+model ClanUser {
+  id                          Int           @id@default(autoincrement())
+  userId                      Int           
+  user                        User          @relation(fields: [userId], references: [id])
+  clanId                      Int
+  clan                        Clan          @relation(fields: [clanId], references: [id])
+  member                      Boolean       @default(false)
+
+  @@map("clanusers")
+}
+
 model User {
   id                          Int             @id @default(autoincrement())
-  userClan                    Clan?           @relation(fields: [clanId], references: [id])
-  leader                      Clan?           @relation("Leader")
-  clanId                      Int?            @unique
+  userClan                    ClanUser[]        
+  leader                      Clan?           @relation("Leader")        
   userOrg                     Organization?   @relation("OrgUsers", fields: [orgId], references: [id])
-  orgId                       Int?            @unique
+  orgId                       Int?            
   representative              Boolean         @default(false)
   username                    String          @unique @db.VarChar(255)
   profilePicture              String?         @db.VarChar(255)
