@@ -52,7 +52,6 @@ export class UserService {
                 id: user.id
             },
             data: {
-                clanId: dto.clanId,
                 orgId: dto.orgId,
                 representative: dto.representative,
                 username: dto.username,

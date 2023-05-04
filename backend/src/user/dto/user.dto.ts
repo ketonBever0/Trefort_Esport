@@ -1,9 +1,6 @@
 import { IsNotEmpty, IsNumber, IsString } from "class-validator"
-import { isNullOrUndefined } from "util";
 
 export class UserPatchDto {
-
-    clanId: number;
 
     @IsNumber()
     @IsNotEmpty()

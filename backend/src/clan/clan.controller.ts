@@ -31,4 +31,13 @@ export class ClanController {
         return this.clanService.getClanById(id);
     }
 
+    @Post('/join/:id')
+    joinClan(
+        @Param('id', new ParseIntPipe())
+        id: number,
+        @GetUser() user: User
+    ){
+        return this.clanService.joinClan(id, user);
+    }
+
 }
