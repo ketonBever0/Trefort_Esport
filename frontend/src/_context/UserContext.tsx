@@ -139,19 +139,22 @@ export const UserProvider = ({ children }: any) => {
 
         await fetch('http://localhost:3333/api/auth/signup', {
             method: 'POST',
-            mode: "no-cors",
-            body: form
+            body: JSON.stringify(form)
         })
-            .then(res => res.json())
-            .then(response => {
-                if (response.success) {
-                    setIsRegistrationSuccessful(true);
-                    Notify.tSuccess(response.message);
-                }
-                else {
-                    setIsRegistrationSuccessful(false);
-                    Notify.tError(response.message);
-                }
+            .then((res: Response) => {
+                console.log(res)
+                res.json();
+            })
+            .then((response: any) => {
+                console.log(response.message);
+                // if (response.success) {
+                //     setIsRegistrationSuccessful(true);
+                //     Notify.tSuccess(response.message);
+                // }
+                // else {
+                //     setIsRegistrationSuccessful(false);
+                //     Notify.tError(response.message);
+                // }
             })
             .catch(err => console.log(err));
 
