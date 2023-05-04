@@ -17,7 +17,7 @@ function Register2() {
     const {
         setIsLoginModalOpen,
         registerFormData, setRegisterFormData,
-        register
+        register, isRegistrationSuccessful
     } = useContext(UserContext);
 
     const navigate = useNavigate();
@@ -100,12 +100,16 @@ function Register2() {
             return;
         }
         else {
-            var payload = new FormData();
+            // var payload = new FormData();
 
-            payload.append("form", JSON.stringify(registerFormData));
-            fileInput != null && payload.append("file", fileInput);
+            // payload.append("form", JSON.stringify(registerFormData));
+            // fileInput != null && payload.append("file", fileInput);
 
-            await register(payload).then(() => navigate('/'));
+
+
+            await register(registerFormData).then(() => {
+                isRegistrationSuccessful && navigate('/');
+            });
 
         }
 
@@ -160,7 +164,7 @@ function Register2() {
 
 
                 {/* <ProgressBar myWidth={width} /> */}
-                
+
                 <>
                     <div className="tab-content">
                         <div
@@ -171,7 +175,7 @@ function Register2() {
                             <form>
                                 <div className='row d-flex'>
                                     <div className='col row justify-content-center'>
-                                    <div className='d-flex m-30 justify-content-center'><Button2 myFunct={() => navigate('/register1')} content="⭠ Vissza" /></div>
+                                        <div className='d-flex m-30 justify-content-center'><Button2 myFunct={() => navigate('/register1')} content="⭠ Vissza" /></div>
                                     </div>
 
 

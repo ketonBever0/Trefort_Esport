@@ -24,12 +24,14 @@ export const UserProvider = ({ children }: any) => {
     const [isThereLoginError, setIsThereLoginError] = useState<boolean>(false);
 
 
+    // http://localhost:8000/api/user/login
 
     const login = async (formData: Object) => {
         setIsThereLoginError(false);
         setLoggingIn(false);
-        await fetch('http://localhost:8000/api/user/login', {
+        await fetch('http://localhost:3333/api/auth/login', {
             method: 'POST',
+            mode: "no-cors",
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify(formData)
         })
@@ -128,18 +130,31 @@ export const UserProvider = ({ children }: any) => {
     });
 
 
+    // http://localhost:8000/api/user/register
+
+    const [isRegistrationSuccessful, setIsRegistrationSuccessful] = useState<boolean>(false);
 
     const register = async (form: any) => {
         // console.log(form);
 
-        await fetch('http://localhost:8000/api/user/register', {
+        await fetch('http://localhost:3333/api/auth/signup', {
             method: 'POST',
-            body: form
+            body: JSON.stringify(form)
         })
-            .then(res => res.json())
-            .then(response => {
-                if (response.success) Notify.tSuccess(response.message);
-                else Notify.tError(response.message);
+            .then((res: Response) => {
+                console.log(res)
+                res.json();
+            })
+            .then((response: any) => {
+                console.log(response.message);
+                // if (response.success) {
+                //     setIsRegistrationSuccessful(true);
+                //     Notify.tSuccess(response.message);
+                // }
+                // else {
+                //     setIsRegistrationSuccessful(false);
+                //     Notify.tError(response.message);
+                // }
             })
             .catch(err => console.log(err));
 
@@ -166,7 +181,8 @@ export const UserProvider = ({ children }: any) => {
         getOtherUserByUsername,
 
         registerFormData, setRegisterFormData,
-        register
+        register,
+        isRegistrationSuccessful
 
     }}>{children}</UserContext.Provider>
 
