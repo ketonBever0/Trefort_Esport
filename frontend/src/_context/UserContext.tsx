@@ -139,14 +139,12 @@ export const UserProvider = ({ children }: any) => {
 
         await fetch('http://localhost:3333/api/auth/signup', {
             method: 'POST',
-            body: JSON.stringify(form)
+            headers: { "Content-Type": "application/json" },
+            body: form
         })
-            .then((res: Response) => {
-                console.log(res)
-                res.json();
-            })
+            .then((res: Response) => res.json())
             .then((response: any) => {
-                console.log(response.message);
+                console.log(response);
                 // if (response.success) {
                 //     setIsRegistrationSuccessful(true);
                 //     Notify.tSuccess(response.message);
