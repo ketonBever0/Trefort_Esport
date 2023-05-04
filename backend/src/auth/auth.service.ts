@@ -31,8 +31,9 @@ export class AuthService {
             });
 
             return {
+                success: true,
                 mesage: "Sikeres regisztráció",
-                access_token: this.signToken(user.id, user.email)
+                access_token: await this.signToken(user.id, user.email)
             }
         } catch (error) {
             if(error.meta.target.includes('key')) {
