@@ -1,0 +1,11 @@
+#approvalApproveBtn {
+    --c: #38a220;
+    font-size: medium;
+    padding: 10px;
+}
+
+#approvalDeclineBtn {
+    --c: #e2361f;
+    font-size: medium;
+    padding: 10px;
+}

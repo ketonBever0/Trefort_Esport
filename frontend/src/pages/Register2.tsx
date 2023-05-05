@@ -41,22 +41,22 @@ function Register2() {
 
 
     const handleInputChange = (e: any) => {
-        // const inputs = document.querySelectorAll('input');
+        const inputs = document.querySelectorAll('input');
 
         setRegisterFormData((prev: any) => ({
             ...prev,
             [e.target.name]: e.target.value
         }))
 
-        // let count = width;
+        let count = width;
 
-        // inputs.forEach((input) => {
-        //     if (input.value) {
-        //         count++;
-        //     }
-        // }
-        // )
-        // setWidth(count * 12.5)
+        inputs.forEach((input) => {
+            if (input.value) {
+                count++;
+            }
+        }
+        )
+        setWidth(count * 12.5)
     };
 
 
@@ -161,10 +161,7 @@ function Register2() {
         <div>
 
             <div className='bg-dark bg-gradient p-30 rounded text-xl'>
-
-
-                {/* <ProgressBar myWidth={width} /> */}
-
+                <ProgressBar myWidth={width} />
                 <>
                     <div className="tab-content">
                         <div

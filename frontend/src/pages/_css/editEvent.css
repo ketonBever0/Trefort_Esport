@@ -1,0 +1,11 @@
+.cursor-pointer {
+    cursor: pointer;
+  }
+  
+  .border-main {
+    border-color: #dd163b;
+  }
+
+  .border-main-left {
+    border-left: #dd163b;
+  }
