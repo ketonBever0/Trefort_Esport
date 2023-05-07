@@ -377,7 +377,7 @@ function NavBar() {
                     </div>
                 </div>
                 {/* END: Navbar Mobile */}
-                <div className="nk-main"></div>
+                <Dashboard/>
             </>
 
 

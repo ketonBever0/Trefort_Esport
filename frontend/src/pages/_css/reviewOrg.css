@@ -66,7 +66,7 @@ p {
 }
 
 .reviewList {
-    -webkit-overflow-scrolling:touch;
+    overflow-y: auto;
 }
 
 .reviewList_item {

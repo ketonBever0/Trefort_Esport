@@ -29,6 +29,7 @@ import ReviewOrganisations from './pages/ReviewOrganisations'
 import { useEffect } from 'react'
 import AddClan from './pages/AddClan'
 import ClanProfile from './pages/ClanProfile'
+import Users from './pages/Users'
 
 function App() {
 
@@ -94,6 +95,7 @@ function App() {
                     <Route path='/revieworg' element={<ReviewOrganisations />} />
                     <Route path='/addclan' element={<AddClan />} />
                     <Route path='/clanprofile' element={<ClanProfile />} />
+                    <Route path='/users' element={<Users />} />
 
 
                   </Routes>

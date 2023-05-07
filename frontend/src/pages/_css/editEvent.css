@@ -1,11 +1,43 @@
 .cursor-pointer {
-    cursor: pointer;
-  }
-  
-  .border-main {
-    border-color: #dd163b;
+  cursor: pointer;
+}
+
+.border-main {
+  border: 1px solid #dd163b;
+}
+
+.border-main-left {
+  border-left: #dd163b;
+}
+
+.border-top-btm-main {
+  border-top: 4px solid #dd163b;
+  border-bottom: 4px solid #dd163b;
+}
+
+.darkInputs input[type="text"],
+.darkInputs input[type="date"],
+.darkInputs textarea {
+  background-color: #181c23;
+  border-style: none;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.darkInputs input:focus {
+  border-color: #dd163b;
+}
+
+@media screen and (max-width: 576px) {
+  .jatekAdatok {
+    text-align: center;
   }
 
-  .border-main-left {
-    border-left: #dd163b;
+  .jatekAdatok div {
+    margin: 0px;
+    border: 1px solid red
   }
+  
+}

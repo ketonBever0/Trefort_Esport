@@ -21,7 +21,7 @@ function EditEvent() {
             </h3>
             <div className="row vertical-gap text-white">
                 <div className="col-lg-6">
-                    <div style={{borderTop:"2px solid #dd163b"}} className="nk-box-2 bg-dark-2">
+                    <div style={{borderTop: "2px solid #dd163b" }} className="nk-box-2 bg-dark-2">
                         <label className='h4 m-10 pl-10 border-main-left'>Esemény neve:</label><br></br>
                         <input className="form-control required bg-dark m-10"></input>
                         <label className='h4 m-10'>Megrendező:</label><br></br>
@@ -31,11 +31,11 @@ function EditEvent() {
                         <label className='h4 m-10'>Esemény leírása:</label>
                         <textarea className="form-control required bg-dark m-10"></textarea>
                     </div>
-                    
+
                 </div>
 
                 <div className="col-lg-6  myColor2">
-                    <div style={{borderTop:"2px solid #dd163b"}} className="nk-box-2 bg-dark-2">
+                    <div style={{ borderTop: "2px solid #dd163b" }} className="nk-box-2 bg-dark-2">
                         <label className='h4 m-10'>Esemény helyszíne:</label><br></br>
                         <label className='ml-10'>(Város, utca, házszám)</label>
                         <input className="form-control required bg-dark m-10" ></input>
@@ -44,7 +44,7 @@ function EditEvent() {
                     </div>
                 </div>
                 <div className="col-lg-6">
-                    <div style={{borderTop:"2px solid #dd163b"}} className="nk-box-2 bg-dark-2">
+                    <div style={{ borderTop: "2px solid #dd163b" }} className="nk-box-2 bg-dark-2">
                         <label className='h4 m-10'>Esemény kezdési időpontja:</label><br></br>
                         <label className='ml-10'>(Év, hónap, nap, óra, perc)</label>
                         <input className="form-control required bg-dark m-10"></input>
@@ -53,7 +53,7 @@ function EditEvent() {
                     </div>
                 </div>
                 <div className="col-lg-6">
-                    <div style={{borderTop:"2px solid #dd163b"}} className="nk-box-2 bg-dark-2">
+                    <div style={{ borderTop: "2px solid #dd163b" }} className="nk-box-2 bg-dark-2">
                         <label className='h4 m-10'>Esemény vége:</label><br></br>
                         <p className='opacity-50 p-10'>Kizárólag a verseny végén töltendő ki.</p>
                         <label className='ml-10'>(Év, hónap, nap, óra, perc)</label>
@@ -80,47 +80,80 @@ function EditEvent() {
                 </button>
             </div> */}
             <div className=''>
-                <div className="p-10 text-danger d-flex ">
-                    <div className=' col-2'>
-                        <img style={{ width: '100px' }} src='https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM='></img>
-                    </div>
-                    <div className='col border'>
-                        <label className='h4 m-10'>Játék neve</label><br></br>
-                        <hr></hr>
-                        <div className='container m-20'>
-                        <div className='d-flex row'>
-                            <div className='col-lg-3 border'>
-                                <label htmlFor="">Tervezett kezdés:</label>
-                                <input type="date" />
-                                <label htmlFor="">Aktuális kezdés:</label>
-                                <input type="date" />
-                                <label htmlFor="">Verseny vége::</label>
-                                <input type="date" />
-                            </div>
-                            <div className='col-lg-3 border'>
-                                <label htmlFor="">Verseny típusa:</label>
-                                <input type="text" />
-                                <label htmlFor="">Játék:</label>
-                                <input type="text" />
-                            </div>
-                            <div className='col-lg-3 border'>
-                            <label htmlFor="">Regisztráció kezdete:</label>
-                                <input type="date" />
-                                <label htmlFor="">Regisztráció vége::</label>
-                                <input type="date" />
-                            </div>
-                            <div className='col-lg-3 border'>
-                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault3" />
-                                    <label className="form-check-label" htmlFor="flexCheckDefault3">
-                                        platform 4
-                                    </label>
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault3" />
-                                    <label className="form-check-label" htmlFor="flexCheckDefault3">
-                                        platform 4
-                                    </label>
-                            </div>
-
+                <div className="p-30 text-danger d-flex bg-dark-3 border-top-btm-main">
+                    <div className='col'>
+                        <div className='d-flex'>
+                           <img style={{ width: '150px' }} src='https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM='></img>                      
+                        <div className='m-20 darkInputs'>
+                        <label className='h4 m-10'>Játék neve</label><br />
+                        <input type="text" />                            
+                        </div>                           
                         </div>
+
+
+
+                        <hr></hr>
+                        <div className='container darkInputs'>
+                            <div className='d-flex row fw-normal border jatekAdatok'>
+                                <div className='col-lg-3 border'>
+                                    <div className='m-10 border'>
+                                        <label htmlFor="">Tervezett kezdés:</label><br />
+                                        <input className='form-control' type="date" />
+                                    </div>
+                                    <div className='m-10'>
+                                        <label htmlFor="">Aktuális kezdés:</label><br />
+                                        <input type="date" />
+                                    </div>
+                                    <div className='m-10'>
+                                        <label htmlFor="">Verseny vége:</label><br />
+                                        <input type="date" />
+                                    </div>
+
+                                </div>
+                                <div className='col-lg-3'>
+                                    <div className='m-10'>
+                                        <label htmlFor="">Verseny típusa:</label> <br />
+                                        <input type="text" />
+                                    </div>
+                                    <div className='m-10'>
+                                        <label htmlFor="">Játék:</label><br />
+                                        <input type="text" />
+                                    </div>
+
+                                </div>
+
+                                <div className='col-lg-3 border'>
+                                    <div className='m-10'>
+                                        <label htmlFor="">Regisztráció kezdete:</label><br />
+                                        <input type="date" />
+                                    </div>
+
+                                    <div className='m-10'>
+                                        <label htmlFor="">Regisztráció vége:</label><br />
+                                        <input type="date" />
+                                    </div>
+                                </div>
+                                <div className='col-lg-3 border'>
+                                    <div className='m-10'>
+                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault3" />
+                                        <label className="form-check-label" htmlFor="flexCheckDefault3">
+                                            platform 1
+                                        </label>
+
+                                    </div>
+                                    <div className='m-10'>
+                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault3" />
+                                        <label className="form-check-label" htmlFor="flexCheckDefault3">
+                                            platform 2
+                                        </label>
+                                    </div>
+                                    <div className='m-10'>
+                                        <label htmlFor="leiras">Leírás</label> <br />
+                                        <textarea name="" id="leiras"></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
 
 

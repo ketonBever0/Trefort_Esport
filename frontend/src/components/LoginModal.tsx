@@ -81,7 +81,7 @@ function LoginModal({ closeModal }: any) {
                                             className="myform-control form-control required p-10"
                                             required
                                         />
-                                        <label htmlFor="nev" className='form-control-placeholder myform-control-placeholder p-10'>E-mail cím</label>
+                                        <label htmlFor="email" className='form-control-placeholder myform-control-placeholder p-10'>E-mail cím</label>
                                     </div>
                                     <div className="nk-gap-2" />
                                     <div className="form-group myform-group">

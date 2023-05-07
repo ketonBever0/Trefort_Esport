@@ -1,4 +1,5 @@
 import './_css/dashboard.css'
+import { Link } from 'react-router-dom';
 
 function Dashboard() {
 
@@ -18,7 +19,7 @@ function Dashboard() {
 
     return (
         <div>
-            <a id='dashboard_nav-expand' className='lead' href="#">
+            <a id='dashboard_nav-expand' className='' href="#">
                 <span className="dashboard_icon dashboard_icon-menu"></span>&nbsp;
                 Dashboard
             </a>
@@ -26,11 +27,14 @@ function Dashboard() {
                 <a id="dashboard_nav-collapse" href="#">
                     <span className="dashboard_icon dashboard_icon-cross"></span>
                 </a>
-                <h3 className='border-bottom border-warning text-warning border-2 mt-30 pb-30'>Dashboard</h3>
-                <a href="#">Home</a>
-                <a href="#">Services</a>
-                <a href="#">Portfolio</a>
-                <a href="#">About</a>
+                <h3 className='border-bottom border-warning text-warning border-2 mt-70 pb-30'>Dashboard</h3>
+                <Link to="/events"> <a href="#">Események szerkesztése</a></Link>
+                <Link to="/revieworg"><a href="#">Beküldött szervezetek</a></Link>
+                <Link to="/users"><a href="#">Felhasználók</a></Link>
+                <Link to="/"><a href="#">Klánok</a></Link>
+                <Link to="/"><a href="#">Bejegyzések</a></Link>
+                <Link to="/"><a href="#">Tournament ágrajzok</a></Link>
+
             </nav>
         </div>
     )

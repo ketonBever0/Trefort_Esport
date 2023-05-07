@@ -17,3 +17,11 @@ hr {
     border-top: 0.5px solid #dd163b;
     opacity: 60%;
 }
+
+.rankInputs input:focus .rankInputs label {
+    color: #dd163b;
+}
+
+.rankInputs label:hover {
+    cursor: pointer;
+}
