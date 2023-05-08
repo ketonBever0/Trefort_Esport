@@ -31,36 +31,58 @@ function Register1() {
     }, [registerFormData])
 
 
+    const [address, setAddress] = useState({
+        postcode: "",
+        city: "",
+        street: "",
+        address: ""
+    });
+
+    const handleAddressChange = (e: any) => {
+
+        setAddress((prev: any) => ({
+            ...prev,
+            [e.target.name]: e.target.value
+        }));
+
+
+    }
+
+
     const handleInputChange = (e: any) => {
         // const inputs = document.querySelectorAll('input');
 
         setRegisterFormData((prev: any) => ({
             ...prev,
             [e.target.name]: e.target.value
-        }))
+        }));
 
         // console.log(prevFormState.current);
 
 
-        if (e.target.required == true) {
-            if (e.target.value != "") {
-                setProgressWidth(prev => prev + 14.2);
-            } else {
-                setProgressWidth(prev => prev - 14.2);
-            }
+        // if (e.target.required == true) {
+        //     if (e.target.value != "") {
+        //         setProgressWidth(prev => prev + 14.2);
+        //     } else {
+        //         setProgressWidth(prev => prev - 14.2);
+        //     }
 
-        }
+        // }
     };
 
 
     const areInputsFilled = () => {
 
 
-        if (registerFormData.firstName == "" && registerFormData.lastName == "" && registerFormData.address == "") {
+        if (registerFormData.firstName == "" || registerFormData.lastName == "" || address.postcode == "" || address.city == "" || address.street == "" || address.address == "") {
             Notify.tError("Töltsd ki a kötelező mezőket!");
             return;
         }
         else {
+            setRegisterFormData((prev: any) => ({
+                ...prev,
+                address: `${address.postcode}\n${address.city}\n${address.street}\n${address.address}`
+            }));
             sessionStorage.setItem("regForm", JSON.stringify(registerFormData));
             navigate("/register2");
         }
@@ -80,9 +102,9 @@ function Register1() {
                         <div
                             className="tab-panel fade show active">
                             <form>
-                            <div className='row d-flex'>
+                                <div className='row d-flex'>
                                     <div className='col row justify-content-center'>
-                                    <div className='d-flex m-30 justify-content-center'><Button2 myFunct={() => navigate('/register1')} content="⭠ Vissza" /></div>
+                                        <div className='d-flex m-30 justify-content-center'><Button2 myFunct={() => navigate('/register1')} content="⭠ Vissza" /></div>
                                     </div>
 
 
@@ -128,10 +150,26 @@ function Register1() {
                                             </div>
                                         </div>
                                         <div className="col-md-4">
-                                            <div className="form-group myform-group">
-                                                <input onChange={handleInputChange} type="text"
-                                                    name="address" value={registerFormData.address} id="lakcim" className="myform-control form-control required bg-dark p-10" required />
-                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="lakcim">Lakcím</label>
+                                            <label>Lakcím</label>
+                                            <div className="form-group myform-group mt-30">
+                                                <input onChange={handleAddressChange} type="text"
+                                                    name="postcode" value={address.postcode} id="postcode" className="myform-control form-control required bg-dark p-10" required />
+                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="postcode">Irányítószám</label>
+                                            </div>
+                                            <div className="form-group myform-group mt-30">
+                                                <input onChange={handleAddressChange} type="text"
+                                                    name="city" value={address.city} id="city" className="myform-control form-control required bg-dark p-10" required />
+                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="city">Település</label>
+                                            </div>
+                                            <div className="form-group myform-group mt-30">
+                                                <input onChange={handleAddressChange} type="text"
+                                                    name="street" value={address.street} id="street" className="myform-control form-control required bg-dark p-10" required />
+                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="street">Utca</label>
+                                            </div>
+                                            <div className="form-group myform-group mt-30">
+                                                <input onChange={handleAddressChange} type="text"
+                                                    name="address" value={address.address} id="address" className="myform-control form-control required bg-dark p-10" required />
+                                                <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="address">Házszám</label>
                                             </div>
                                         </div>
                                         <div className="col-md-4">

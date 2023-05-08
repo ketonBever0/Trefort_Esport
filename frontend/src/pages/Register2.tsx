@@ -107,9 +107,9 @@ function Register2() {
 
 
 
-            await register(registerFormData).then(() => {
-                isRegistrationSuccessful && navigate('/');
-            });
+            await register(registerFormData);
+            isRegistrationSuccessful && navigate('/');
+
 
         }
 
