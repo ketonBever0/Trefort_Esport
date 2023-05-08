@@ -126,8 +126,32 @@ export class ClanService {
         }
     }
 
+    async getPendingRequests(
+        clanId: number
+    ) {
+        const pendingRequests = await this.prismaService.clanUser.findMany({
+            where: {
+                member: false,
+                clanId: clanId
+            },
+            select: {
+                user: {
+                    select: {
+                        id: true,
+                        username: true,
+                        profilePicture: true
+                    }
+                }
+            }
+        });
+
+        return {
+            pendingRequests
+        }
+    }
+
     async acceptClanRequest(
-        user: User,
+        paramUserId: number,
         paramId: number
     ){
         const clan = await this.prismaService.clan.findUnique({
@@ -135,15 +159,30 @@ export class ClanService {
                 id: paramId
             }
         });
+
+        if(!clan) return {message: "Nincs ilyen klán!"};
+
         const pendingRequest = await this.prismaService.clanUser.findMany({
             where: {
-                userId: user.id,
+                userId: paramUserId,
                 clanId: clan.id
             },
             select: {
                 id: true
             }
         });
+
+        const acceptClanRequest = await this.prismaService.clanUser.update({
+            where: {
+                id: pendingRequest[0].id
+            }, data: {
+                member: true,
+            }
+        });
+
+        return {
+            message: "Kérés sikeresen elfogadva!"
+        }
 
     }
 

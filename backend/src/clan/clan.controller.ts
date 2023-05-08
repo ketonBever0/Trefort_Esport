@@ -31,6 +31,14 @@ export class ClanController {
         return this.clanService.getClanById(id);
     }
 
+    @Get('pendingrequests/:id')
+    getPendingRequests(
+        @Param('id', new ParseIntPipe())
+        id: number
+    ){
+        return this.clanService.getPendingRequests(id);
+    }
+
     @Post('/join/:id')
     joinClan(
         @Param('id', new ParseIntPipe())
@@ -38,6 +46,16 @@ export class ClanController {
         @GetUser() user: User
     ){
         return this.clanService.joinClan(id, user);
+    }
+
+    @Post('accept/clan/:id/user/:userId')
+    acceptClanRequest(
+        @Param('id', new ParseIntPipe())
+        id: number,
+        @Param('userId', new ParseIntPipe())
+        userId: number,
+    ) {
+        return this.clanService.acceptClanRequest(userId, id);
     }
 
 }
