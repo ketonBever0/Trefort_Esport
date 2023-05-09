@@ -132,7 +132,7 @@ function MyProfile() {
                   <form action="" className='text-start ml-30 mb-30 rankInputs'>
                     <input id='felhasznalo' name='rank' type="radio" /> <span> </span>
                     <label className='fw-normal ' htmlFor="felhasznalo">felhasználó</label><br />
-                    <emp>Felhasználó jogkörei: </emp> <br />
+                    <p>Felhasználó jogkörei: </p> <br />
                     <input id='admin' name='rank' type="radio" /> <span> </span>
                     <label className='fw-normal ' htmlFor="admin">admin</label><br />
                     <input id='szuperadmin' name='rank' type="radio" /> <span> </span>

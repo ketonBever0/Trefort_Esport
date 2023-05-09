@@ -7,7 +7,8 @@
 }
 
 .border-main-left {
-  border-left: #dd163b;
+  border-left: 5px solid #dd163b;
+  padding-left: 10px;
 }
 
 .border-top-btm-main {
@@ -24,20 +25,85 @@
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 5px;
+  cursor:text;
 }
 
-.darkInputs input:focus {
-  border-color: #dd163b;
+.darkInputs input, .darkInputs textarea {
+  border-radius: 4px;
 }
 
 @media screen and (max-width: 576px) {
   .jatekAdatok {
     text-align: center;
   }
+}
 
-  .jatekAdatok div {
-    margin: 0px;
-    border: 1px solid red
-  }
-  
+
+.jatekAdatok div {
+  margin: 0px;
+}
+
+
+
+.darkInputs input[type=date]:focus, .darkInputs input:focus, .darkInputs textarea:focus {
+  border: 1px solid #dd163b;
+  outline: none;
+}
+
+#addBtn {
+  z-index: 10000;
+  font-size: 1.1rem;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+
+.custom-file-input {
+  color: transparent;
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility:hidden;
+}
+.custom-file-input{
+  border-radius: 4px;
+  margin: 10px;
+}
+
+.custom-file-input::after{
+  border-radius: 4px;
+}
+.custom-file-input::before {
+  content: 'Kép hozzáadása';
+  color: white;
+  border-radius: 4px;
+  outline: none;
+  background-color: #dd163b;
+  border-color: #a5102c;
+  border-style: solid;
+  display: inline-block;
+  padding: 9px 19px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.87rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  border: 0;
+  transition: 0.15s all;
+}
+.custom-file-input:hover::before {
+  background-color: #eb3154;
+  border-color: #ee526f;
+}
+
+.custom-file-input:active::before {
+  background-color: #ee526f;
+  border-color: #f1728a;
 }

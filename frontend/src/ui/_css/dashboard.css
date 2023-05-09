@@ -1,6 +1,8 @@
 
 
 .dashboard_nav {
+  border-right: 1px solid #ef9e2b;
+  border-top: 1px solid #ef9e2b;
   bottom: 0;
   height: 100%;
   left: -17.5rem;

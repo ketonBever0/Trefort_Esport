@@ -30,6 +30,7 @@ import { useEffect } from 'react'
 import AddClan from './pages/AddClan'
 import ClanProfile from './pages/ClanProfile'
 import Users from './pages/Users'
+import AddEvent from './pages/AddEvent'
 
 function App() {
 
@@ -76,6 +77,7 @@ function App() {
 
                     <Route path='/offline' element={<OfflinePage />} />
                     <Route path='/editevent' element={<EditEvent />} />
+                    <Route path='/addevent' element={<AddEvent />} />
 
 
                     <Route path='/register1' element={<Register1 />} />
