@@ -32,6 +32,22 @@ function MyProfile() {
   } = useContext(UserContext);
 
 
+  const string = "5650\nTelepülés\nUtca út\nházszám";
+
+  const stringArray = string.split("\n");
+  useEffect(() => {
+    console.log(stringArray)
+    stringArray.forEach((i) => {
+      console.log(i)
+    })
+
+    console.log("Tömb hossza: " + stringArray.length)
+
+    // console.log(stringArray[1]);
+
+  }, [])
+
+
   useEffect(() => {
     if (!userData) {
       userUpdate();
@@ -45,7 +61,7 @@ function MyProfile() {
   const [editDataForm, setEditDataForm] = useState({
     firstName: "",
     lastName: "",
-    address: "no address",
+    address: "",
     educationIdNum: "",
     username: "",
     email: ""
@@ -88,7 +104,6 @@ function MyProfile() {
   }
 
 
-
   return (
     <div>
       <section className='bg-dark-1'>
@@ -126,6 +141,10 @@ function MyProfile() {
                   <div className='mt-20 d-flex justify-content-center gap-3'>
                     <p className='lead fw-bold'>RANG:</p> <p className='d-flex align-items-center'>felhasználó</p>
                   </div>
+                  {/* <p className=''>ONLINE<span className='h6'>ㅤ</span><i className="mr-5 bi bi-circle-fill h6 position-absolute mt-4 m-auto text-success m-auto"></i></p>
+                  <p className=''>Legutóbb online: 26 perce<span className='h6'>ㅤ</span><i className="mr-5 bi bi-circle h6 position-absolute mt-4 m-auto text-success m-auto"></i></p>
+                  <p className=''>OFFLINE<span className='h6'>ㅤ</span><i className="mr-5 bi bi-circle-fill h6 position-absolute mt-4 m-auto text-secondary m-auto"></i></p>
+                  <p>BANNED<span className='h6'>ㅤ</span><i className="mr-5 bi bi-circle-fill h6 position-absolute mt-4 m-auto text-danger m-auto"></i></p> */}
                   <hr />
 
                   <h5 className='mt-10 text-start mt-30 ml-30 mb-10'>Felhasználó rangja: </h5>
@@ -153,9 +172,10 @@ function MyProfile() {
                   {
                     editDescr ?
                       <>
-                        <div className="">
+                        <div>
                           <div className="form-group myform-group row justify-content-center">
-                            <textarea id="leiras" className="myform-control form-control required bg-dark w-75 m-10" required />
+                            <p className='m-0 p-4'>Írj valamit magadról vagy arról, amit éppen gondolsz:</p>
+                            <textarea id="leiras" className="myform-control form-control required bg-dark w-75 m-10" />
                             <div className='row gap-4 p-20 justify-content-center'>
                               <button className='col-sm-3 col-md-6 nk-btn nk-btn-rounded nk-btn-color-main-1'>Mentés</button>
                               <button onClick={() => { setEditDescr(false) }} className='col-sm-3 col-md-6 col-lg-5 nk-btn nk-btn-sm nk-btn-rounded nk-btn-color-white'>Mégse</button>
@@ -166,13 +186,16 @@ function MyProfile() {
                       </>
                       :
                       <>
-                        <p className='myProfileData p-15 mb-5'>{user?.description}</p>
-                        <div className='row justify-content-center mb-20'>
-                          <button onClick={() => { setEditDescr(true) }} className='col-sm-4 col-md-3 col-lg-6 nk-btn nk-btn-rounded nk-btn-color-main-1'>Szerkesztés</button>
-                        </div>
+                        {user?.description == null || user?.description == "" ? <h6>(Nincs megadva leírás)</h6> : <p className='myProfileData p-15 mb-5'>{user?.description}</p>}
+                        {
+                          <div className='row justify-content-center mb-20'>
+                            <button onClick={() => { setEditDescr(true) }} className='col-sm-4 col-md-3 col-lg-6 nk-btn nk-btn-rounded nk-btn-color-main-1'>Szerkesztés</button>
+                          </div>
+                        }
 
                       </>
                   }
+                  <hr />
                   <div className='bg-dark-4'>
                     <div className='card-body d-flex justify-content-center gap-2'>
                       <div className=' fw-bold'>
@@ -399,7 +422,7 @@ function MyProfile() {
                           <div className="col-sm-4 m-auto myProfileLabel fw-bold">Lakcím</div>
                           <div className="col-sm-8 row">
                             <div className="sm-sm-col-6 myProfileData">
-                              {user?.address}
+                              {stringArray[0]} {stringArray[1]} {stringArray[2]} {stringArray[3]}
                             </div>
                           </div>
                         </div>

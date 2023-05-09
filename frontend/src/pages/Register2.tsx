@@ -23,7 +23,7 @@ function Register2() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (registerFormData.firstName == "" && registerFormData.lastName == "" && registerFormData.address == "") {
+        if (registerFormData.firstName == "" || registerFormData.lastName == "" || registerFormData.address == "") {
             const regForm: any = sessionStorage.getItem("regForm");
 
             if (!regForm) {
@@ -105,11 +105,9 @@ function Register2() {
             // payload.append("form", JSON.stringify(registerFormData));
             // fileInput != null && payload.append("file", fileInput);
 
+            await register(registerFormData);
+            isRegistrationSuccessful && navigate('/');
 
-
-            await register(registerFormData).then(() => {
-                isRegistrationSuccessful && navigate('/');
-            });
 
         }
 

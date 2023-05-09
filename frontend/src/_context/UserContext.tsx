@@ -108,9 +108,14 @@ export const UserProvider = ({ children }: any) => {
     const [isOtherUserDataLoading, setIsOtherUserDataLoading] = useState<boolean>(false);
     const [otherUser, setOtherUser] = useState<any | null>(null);
 
-    const getOtherUserByUsername = async (username: string) => {
+    const getOtherUserById = async (id: number | string) => {
         setIsOtherUserDataLoading(true);
-        await fetch(`http://localhost:8000/api/user/otheruserdata/${username}`)
+        await fetch(`http://localhost:3333/api/users/${id}`, {
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${userToken}`
+            }
+        })
             .then(res => res.json())
             .then(data => setOtherUser(data))
             .then(err => console.log(err))
@@ -121,7 +126,7 @@ export const UserProvider = ({ children }: any) => {
         firstName: "",
         lastName: "",
         address: "",
-        educationIdNum: "",
+        educationNumber: null,
         username: "",
         email: "",
         description: "",
@@ -146,11 +151,24 @@ export const UserProvider = ({ children }: any) => {
                 console.log(response);
                 if (response.success) {
                     setIsRegistrationSuccessful(true);
-                    Notify.tSuccess(response.message);
+                    Notify.tSuccess(response.message || response.mesage);
                     localStorage.setItem("usertoken", response.access_token);
                     setUserToken(response.access_token);
                     tokenUpdate();
                     userUpdate();
+
+                    setRegisterFormData({
+                        firstName: "",
+                        lastName: "",
+                        address: "",
+                        educationNumber: null,
+                        username: "",
+                        email: "",
+                        description: "",
+                        password: ""
+                    });
+                    sessionStorage.removeItem("regForm");
+
                 }
                 else {
                     setIsRegistrationSuccessful(false);
@@ -179,7 +197,7 @@ export const UserProvider = ({ children }: any) => {
 
         isOtherUserDataLoading,
         otherUser,
-        getOtherUserByUsername,
+        getOtherUserById,
 
         registerFormData, setRegisterFormData,
         register,

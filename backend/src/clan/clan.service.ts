@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ClanDto } from './dto';
-import { User } from '@prisma/client';
+import { Clan, User } from '@prisma/client';
 
 @Injectable()
 export class ClanService {
@@ -46,11 +46,7 @@ export class ClanService {
     }
 
     async getClanById(paramId: number) {
-        const clan = await this.prismaService.clan.findUnique({
-            where: {
-                id: paramId,
-            }
-        });
+        const clan = await this.getClan(paramId);
 
         return {
             clan
@@ -99,11 +95,7 @@ export class ClanService {
         user: User
     ) {
 
-        const clan = await this.prismaService.clan.findUnique({
-            where: {
-                id: paramId
-            }
-        });
+        const clan = await this.getClan(paramId);
 
         const memberOfClan = await this.prismaService.clanUser.findMany({
             where: {
@@ -126,24 +118,86 @@ export class ClanService {
         }
     }
 
-    async acceptClanRequest(
-        user: User,
-        paramId: number
-    ){
-        const clan = await this.prismaService.clan.findUnique({
+    async getPendingRequests(
+        clanId: number
+    ) {
+        const pendingRequests = await this.prismaService.clanUser.findMany({
             where: {
-                id: paramId
+                member: false,
+                clanId: clanId
+            },
+            select: {
+                user: {
+                    select: {
+                        id: true,
+                        username: true,
+                        profilePicture: true
+                    }
+                }
             }
         });
+
+        return {
+            pendingRequests
+        }
+    }
+
+    async getClanMembers(
+        id: number
+    ) {
+        const clanMembers = await this.prismaService.clan.findUnique({
+            where: {
+                id: id
+            },
+            select: {
+                users: {
+                    select: {
+                        user: {
+                            select: {
+                                id: true,
+                                username: true,
+                                profilePicture: true
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        return {
+            clanMembers
+        }
+    }
+
+    async acceptClanRequest(
+        paramUserId: number,
+        paramId: number
+    ){
+        const clan = await this.getClan(paramId);
+
+        if(!clan) return {message: "Nincs ilyen klán!"};
+
         const pendingRequest = await this.prismaService.clanUser.findMany({
             where: {
-                userId: user.id,
-                clanId: clan.id
+                userId: paramUserId,
+                clanId: clan.id,
             },
             select: {
                 id: true
             }
         });
+
+        const acceptClanRequest = await this.prismaService.clanUser.update({
+            where: {
+                id: pendingRequest[0].id
+            }, data: {
+                member: true,
+            }
+        });
+
+        return {
+            message: "Kérés sikeresen elfogadva!"
+        }
 
     }
 
@@ -151,7 +205,38 @@ export class ClanService {
         paramId: number,
         user: User
     ) {
+        const clan = await this.getClan(paramId);
 
+        const memberOfClan = await this.prismaService.clanUser.findMany({
+            where: {
+                userId: user.id,
+                clanId: clan.id
+            }
+        });
+
+        const leaveClan = await this.prismaService.clanUser.delete({
+            where: {
+                id: memberOfClan[0].id,
+            }
+        });
+
+        return {
+            message: `Klán elhagyva!`
+        }
+    }
+
+    async kickFromClan() {
+        
+    }
+
+    async getClan(id: number)
+    : Promise<Clan> 
+    {
+        return await this.prismaService.clan.findUnique({
+            where: {
+                id: id
+            }
+        });
     }
 
 }
