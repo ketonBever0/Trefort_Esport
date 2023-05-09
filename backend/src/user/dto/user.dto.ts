@@ -1,7 +1,8 @@
-import { IsNotEmpty, IsNumber, IsString } from "class-validator"
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator"
 
 export class UserPatchDto {
 
+    @IsOptional()
     @IsNumber()
     @IsNotEmpty()
     orgId: number;
@@ -13,6 +14,7 @@ export class UserPatchDto {
     @IsNotEmpty()
     username: string;
 
+    @IsOptional()
     profilePicture: string;
 
     @IsString()
@@ -23,6 +25,7 @@ export class UserPatchDto {
     @IsNotEmpty()
     lastName: string;
 
+    @IsOptional()
     @IsString()
     @IsNotEmpty()
     password: string;
@@ -30,11 +33,13 @@ export class UserPatchDto {
     @IsString()
     @IsNotEmpty()
     address: string;
-    
+
+    @IsOptional()
     @IsNumber()
     @IsNotEmpty()
     educationNumber: number;
 
+    @IsOptional()
     @IsString()
     @IsNotEmpty()
     description: string;

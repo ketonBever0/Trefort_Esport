@@ -3,6 +3,7 @@ import './_css/input.css';
 import './_css/myProfile.css'
 import UserContext from '../_context/UserContext';
 import Button2 from '../ui/Button2';
+import Notify from '../ui/Toasts';
 
 function MyProfile() {
 
@@ -28,7 +29,8 @@ function MyProfile() {
 
   const {
     userUpdate,
-    userData
+    userData,
+    userToken
   } = useContext(UserContext);
 
 
@@ -47,6 +49,7 @@ function MyProfile() {
 
   }, [])
 
+  const [updateUserPayload, setUpdateUserPayload] = useState(userData.user);
 
   useEffect(() => {
     if (!userData) {
@@ -54,8 +57,48 @@ function MyProfile() {
     }
   }, [])
 
+  const [description, setDescription] = useState<string | null>(null);
+  const [isDescrSaving, setIsDescrSaving] = useState(false);
+
+  useEffect(() => {
+    if (userData) {
+      setUpdateUserPayload(userData.user);
+      setDescription(userData.user?.description)
+    }
+  }, [userData])
+
   if (userData) {
     var { user } = userData;
+  }
+
+
+
+  const saveDescr = async () => {
+    setIsDescrSaving(true);
+
+
+    await fetch("http://localhost:3333/api/users", {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${userToken}`
+      },
+      body: JSON.stringify(updateUserPayload)
+    })
+      .then(res => res.json())
+      .then(response => {
+        if (response.message?.includes("Sikeres")) {
+          Notify.tSuccess(response.message);
+          userUpdate();
+          setDescription(null);
+          setEditDescr(false);
+          setDescription(userData.user?.description);
+        } else {
+          Notify.tError(response.message);
+        }
+      })
+      .catch(err => console.log(err))
+      .finally(() => setIsDescrSaving(false));
   }
 
   const [editDataForm, setEditDataForm] = useState({
@@ -72,7 +115,7 @@ function MyProfile() {
       {
         firstName: user?.firstName,
         lastName: user?.lastName,
-        address: "no address",
+        address: user?.address,
         educationIdNum: user?.educationIdNum,
         username: user?.username,
         email: user?.email
@@ -152,10 +195,27 @@ function MyProfile() {
                         <div>
                           <div className="form-group myform-group row justify-content-center">
                             <p className='m-0 p-4'>Írj valamit magadról vagy arról, amit éppen gondolsz:</p>
-                            <textarea id="leiras" className="myform-control form-control required bg-dark w-75 m-10" />
+                            <textarea id="leiras" value={updateUserPayload.description} onChange={(e: any) => {
+                              if (e.target.value == "") {
+                                setDescription(null);
+                                setUpdateUserPayload((prev: any) => ({
+                                  ...prev,
+                                  description: null
+                                }))
+                              }
+                              else {
+                                setDescription(e.target.value);
+                                setUpdateUserPayload((prev: any) => ({
+                                  ...prev,
+                                  description: e.target.value
+                                }))
+                              }
+
+
+                            }} className="myform-control form-control required bg-dark w-75 m-10" />
                             <div className='row gap-4 p-20 justify-content-center'>
-                              <button className='col-sm-3 col-md-6 nk-btn nk-btn-rounded nk-btn-color-main-1'>Mentés</button>
-                              <button onClick={() => { setEditDescr(false) }} className='col-sm-3 col-md-6 col-lg-5 nk-btn nk-btn-sm nk-btn-rounded nk-btn-color-white'>Mégse</button>
+                              <button onClick={() => { saveDescr(); }} className='col-sm-3 col-md-6 nk-btn nk-btn-rounded nk-btn-color-main-1'>Mentés</button>
+                              <button onClick={() => { setDescription(userData.user?.description); setEditDescr(false); }} className='col-sm-3 col-md-6 col-lg-5 nk-btn nk-btn-sm nk-btn-rounded nk-btn-color-white'>Mégse</button>
                             </div>
 
                           </div>
@@ -166,7 +226,7 @@ function MyProfile() {
                         {user?.description == null || user?.description == "" ? <h6>(Nincs megadva leírás)</h6> : <p className='myProfileData p-15 mb-5'>{user?.description}</p>}
                         {
                           <div className='row justify-content-center mb-20'>
-                            <button onClick={() => { setEditDescr(true) }} className='col-sm-4 col-md-3 col-lg-6 nk-btn nk-btn-rounded nk-btn-color-main-1'>Szerkesztés</button>
+                            <button onClick={() => { setDescription(userData.user?.description); setEditDescr(true) }} className='col-sm-4 col-md-3 col-lg-6 nk-btn nk-btn-rounded nk-btn-color-main-1'>Szerkesztés</button>
                           </div>
                         }
 
