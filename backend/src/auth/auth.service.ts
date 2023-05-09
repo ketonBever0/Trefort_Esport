@@ -27,6 +27,8 @@ export class AuthService {
                     firstName: dto.firstName,
                     lastName: dto.lastName,
                     address: dto.address,
+                    educationNumber: dto.educationNumber || null,
+                    description: dto.description || null,
                 },
             });
 
