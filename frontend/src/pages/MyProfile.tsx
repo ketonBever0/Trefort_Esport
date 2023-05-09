@@ -34,22 +34,22 @@ function MyProfile() {
   } = useContext(UserContext);
 
 
-  const string = "5650\nTelepülés\nUtca út\nházszám";
+  // const string = "5650\nTelepülés\nUtca út\nházszám";
 
-  const stringArray = string.split("\n");
-  useEffect(() => {
-    console.log(stringArray)
-    stringArray.forEach((i) => {
-      console.log(i)
-    })
+  // const stringArray = string.split("\n");
+  // useEffect(() => {
+  //   console.log(stringArray)
+  //   stringArray.forEach((i) => {
+  //     console.log(i)
+  //   })
 
-    console.log("Tömb hossza: " + stringArray.length)
+  //   console.log("Tömb hossza: " + stringArray.length)
 
-    // console.log(stringArray[1]);
+  //   // console.log(stringArray[1]);
 
-  }, [])
+  // }, [])
 
-  const [updateUserPayload, setUpdateUserPayload] = useState(userData.user);
+  const [updateUserPayload, setUpdateUserPayload] = useState(userData?.user);
 
   useEffect(() => {
     if (!userData) {
@@ -60,10 +60,13 @@ function MyProfile() {
   const [description, setDescription] = useState<string | null>(null);
   const [isDescrSaving, setIsDescrSaving] = useState(false);
 
+  const [address, setAddress] = useState(userData?.user?.address);
+
   useEffect(() => {
     if (userData) {
       setUpdateUserPayload(userData.user);
       setDescription(userData.user?.description)
+      setAddress(userData.user?.address?.split('\n'));
     }
   }, [userData])
 
@@ -459,7 +462,9 @@ function MyProfile() {
                           <div className="col-sm-4 m-auto myProfileLabel fw-bold">Lakcím</div>
                           <div className="col-sm-8 row">
                             <div className="sm-sm-col-6 myProfileData">
-                              {stringArray[0]} {stringArray[1]} {stringArray[2]} {stringArray[3]}
+                              {/* {stringArray[0]} {stringArray[1]} {stringArray[2]} {stringArray[3]} */}
+                              {address && <>{address[0]} {address[1]} {address[2]} {address[3]}</>}
+
                             </div>
                           </div>
                         </div>
