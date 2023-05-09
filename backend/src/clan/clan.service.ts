@@ -142,6 +142,33 @@ export class ClanService {
         }
     }
 
+    async getClanMembers(
+        id: number
+    ) {
+        const clanMembers = await this.prismaService.clan.findUnique({
+            where: {
+                id: id
+            },
+            select: {
+                users: {
+                    select: {
+                        user: {
+                            select: {
+                                id: true,
+                                username: true,
+                                profilePicture: true
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        return {
+            clanMembers
+        }
+    }
+
     async acceptClanRequest(
         paramUserId: number,
         paramId: number
@@ -196,6 +223,10 @@ export class ClanService {
         return {
             message: `Klán elhagyva!`
         }
+    }
+
+    async kickFromClan() {
+        
     }
 
     async getClan(id: number)

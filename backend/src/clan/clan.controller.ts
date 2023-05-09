@@ -39,6 +39,14 @@ export class ClanController {
         return this.clanService.getPendingRequests(id);
     }
 
+    @Get('members/:id')
+    getClanMembers(
+        @Param('id', new ParseIntPipe())
+        id: number
+    ) {
+        return this.clanService.getClanMembers(id);
+    }
+
     @Post('leave/:id')
     leaveClan(
         @Param('id', new ParseIntPipe())
