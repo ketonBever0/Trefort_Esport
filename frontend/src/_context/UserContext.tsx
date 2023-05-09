@@ -126,7 +126,7 @@ export const UserProvider = ({ children }: any) => {
         firstName: "",
         lastName: "",
         address: "",
-        educationIdNum: "",
+        educationNumber: null,
         username: "",
         email: "",
         description: "",
@@ -151,11 +151,24 @@ export const UserProvider = ({ children }: any) => {
                 console.log(response);
                 if (response.success) {
                     setIsRegistrationSuccessful(true);
-                    Notify.tSuccess(response.message);
+                    Notify.tSuccess(response.message || response.mesage);
                     localStorage.setItem("usertoken", response.access_token);
                     setUserToken(response.access_token);
                     tokenUpdate();
                     userUpdate();
+
+                    setRegisterFormData({
+                        firstName: "",
+                        lastName: "",
+                        address: "",
+                        educationNumber: null,
+                        username: "",
+                        email: "",
+                        description: "",
+                        password: ""
+                    });
+                    sessionStorage.removeItem("regForm");
+
                 }
                 else {
                     setIsRegistrationSuccessful(false);

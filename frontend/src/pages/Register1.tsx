@@ -4,6 +4,7 @@ import ProgressBar from '../ui/ProgressBar';
 import Button2 from '../ui/Button2';
 import Notify from '../ui/Toasts';
 import UserContext from '../_context/UserContext';
+import '../_css_all/inputs.css'
 
 
 function Register1() {
@@ -70,6 +71,12 @@ function Register1() {
         // }
     };
 
+    const updateAddress = () => {
+        setRegisterFormData((prev: any) => ({
+            ...prev,
+            address: `${address.postcode}\n${address.city}\n${address.street}\n${address.address}`
+        }));
+    }
 
     const areInputsFilled = () => {
 
@@ -79,14 +86,12 @@ function Register1() {
             return;
         }
         else {
-            setRegisterFormData((prev: any) => ({
-                ...prev,
-                address: `${address.postcode}\n${address.city}\n${address.street}\n${address.address}`
-            }));
+
             sessionStorage.setItem("regForm", JSON.stringify(registerFormData));
             navigate("/register2");
         }
-
+        // const array = registerFormData.address.split("\n");
+        // console.log(array)
 
     };
 
@@ -152,30 +157,39 @@ function Register1() {
                                         <div className="col-md-4">
                                             <label>Lakcím</label>
                                             <div className="form-group myform-group mt-30">
-                                                <input onChange={handleAddressChange} type="text"
+                                                <input onChange={handleAddressChange} onBlur={updateAddress} type="text"
                                                     name="postcode" value={address.postcode} id="postcode" className="myform-control form-control required bg-dark p-10" required />
                                                 <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="postcode">Irányítószám</label>
                                             </div>
                                             <div className="form-group myform-group mt-30">
-                                                <input onChange={handleAddressChange} type="text"
+                                                <input onChange={handleAddressChange} onBlur={updateAddress} type="text"
                                                     name="city" value={address.city} id="city" className="myform-control form-control required bg-dark p-10" required />
                                                 <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="city">Település</label>
                                             </div>
                                             <div className="form-group myform-group mt-30">
-                                                <input onChange={handleAddressChange} type="text"
+                                                <input onChange={handleAddressChange} onBlur={updateAddress} type="text"
                                                     name="street" value={address.street} id="street" className="myform-control form-control required bg-dark p-10" required />
                                                 <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="street">Utca</label>
                                             </div>
                                             <div className="form-group myform-group mt-30">
-                                                <input onChange={handleAddressChange} type="text"
+                                                <input onChange={handleAddressChange} onBlur={updateAddress} type="text"
                                                     name="address" value={address.address} id="address" className="myform-control form-control required bg-dark p-10" required />
                                                 <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="address">Házszám</label>
                                             </div>
                                         </div>
                                         <div className="col-md-4">
                                             <div className="form-group myform-group">
-                                                <input onChange={handleInputChange} type="text"
-                                                    name="educationIdNum" value={registerFormData.educationIdNum} id="omazonosito" className="myform-control form-control required bg-dark p-10" required />
+                                                <input onChange={(e: any) => {
+                                                    if (e.target.value == "") {
+                                                        setRegisterFormData((prev: any) =>
+                                                            ({ ...prev, [e.target.name]: null }));
+                                                        return;
+                                                    } else {
+                                                        setRegisterFormData((prev: any) =>
+                                                            ({ ...prev, [e.target.name]: parseInt(e.target.value) }));
+                                                    }
+                                                }} type="number"
+                                                    name="educationNumber" value={registerFormData.educationNumber} id="omazonosito" className="myform-control form-control required bg-dark p-10" required />
                                                 <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="omazonosito">Oktatási azonosító</label>
                                             </div>
                                         </div>
