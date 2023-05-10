@@ -5,6 +5,7 @@ import Button2 from '../ui/Button2';
 import Notify from '../ui/Toasts';
 import UserContext from '../_context/UserContext';
 import '../_css_all/inputs.css'
+import GoBackButton from '../ui/GoBackButton';
 
 
 function Register1() {
@@ -109,7 +110,7 @@ function Register1() {
                             <form>
                                 <div className='row d-flex'>
                                     <div className='col row justify-content-center'>
-                                        <div className='d-flex m-30 justify-content-center'><Button2 myFunct={() => navigate('/register1')} content="⭠ Vissza" /></div>
+                                        <div className='d-flex m-30 justify-content-center'><GoBackButton/></div>
                                     </div>
 
 

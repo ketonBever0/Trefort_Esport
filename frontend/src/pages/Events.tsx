@@ -3,6 +3,7 @@ import Sidebar from '../components/Sidebar'
 import EventContext from '../_context/EventContext'
 import { Link } from 'react-router-dom';
 import Notify from '../ui/Toasts';
+import GoBackButton from '../ui/GoBackButton';
 
 function Events() {
 
@@ -32,6 +33,9 @@ function Events() {
     return (
         <div>
             <div className="nk-blog-fullwidth">
+            <div className='d-flex justify-content-start'>
+            <GoBackButton/>
+            </div>
 
                 {
                     !isEventsLoading && events.length > 0 && (

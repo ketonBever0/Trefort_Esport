@@ -31,6 +31,8 @@ import AddClan from './pages/AddClan'
 import ClanProfile from './pages/ClanProfile'
 import Users from './pages/Users'
 import AddEvent from './pages/AddEvent'
+import OrganisationProfile from './pages/OrganisationProfile'
+import Clans from './pages/Clans'
 
 function App() {
 
@@ -97,7 +99,9 @@ function App() {
                     <Route path='/revieworg' element={<ReviewOrganisations />} />
                     <Route path='/addclan' element={<AddClan />} />
                     <Route path='/clanprofile' element={<ClanProfile />} />
+                    <Route path='/organisationprofile' element={<OrganisationProfile />} />
                     <Route path='/users' element={<Users />} />
+                    <Route path='/clans' element={<Clans />} />
 
 
                   </Routes>

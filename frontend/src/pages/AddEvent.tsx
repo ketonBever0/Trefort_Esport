@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button2 from '../ui/Button2';
 import './_css/editEvent.css';
+import GoBackButton from '../ui/GoBackButton';
 
 
 function AddEvent() {
@@ -22,6 +23,9 @@ function AddEvent() {
 
     return (
         <div className='m-20'>
+                        <div className='d-flex justify-content-start'>
+            <GoBackButton/>
+            </div>
             <div className='nk-decorated-h-2 h3 p-15 mt-40 text-sm-h6'><span> </span>Esemény adatai<span> </span></div>
             <div className="row vertical-gap text-white">
                 <div className="col-lg-6">
@@ -73,7 +77,7 @@ function AddEvent() {
             </span>
             {
                 item?.map((currentitem, index) => {
-                    return <div key={currentitem} id={`expense-`}>
+                    return <div key={currentitem} id={``}>
                         <div className='mb-40' id='gameDetailsCard'>
                             <div className="p-30 text-danger d-flex bg-dark-3 border-top-btm-main">
                                 <div className='col-11 container'>

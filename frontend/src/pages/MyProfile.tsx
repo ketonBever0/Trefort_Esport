@@ -3,6 +3,7 @@ import './_css/input.css';
 import './_css/myProfile.css'
 import UserContext from '../_context/UserContext';
 import Button2 from '../ui/Button2';
+import GoBackButton from '../ui/GoBackButton';
 
 function MyProfile() {
 
@@ -110,7 +111,7 @@ function MyProfile() {
         <div className="container pb-5">
           <div className='row'>
             <div className="justify-content-start d-flex pl-70 mt-40 mb-40">
-              <Button2 content="⭠ Vissza" />
+            <GoBackButton/>
             </div>
           </div>
 

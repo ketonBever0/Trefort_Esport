@@ -27,7 +27,7 @@ function Dashboard() {
                 <a id="dashboard_nav-collapse" href="#">
                     <span className="dashboard_icon dashboard_icon-cross"></span>
                 </a>
-                <h3 className='border-bottom border-warning text-warning border-2 mt-70 pb-30'>Dashboard</h3>
+                <h3 className='border-main-1 text-main-1 border-2 mt-70 pb-30'>Dashboard</h3>
                 <Link to="/users"><a href="#">Felhasználók</a></Link>
                 <Link to="/"><a href="#">Klánok</a></Link>
                 <Link to="/"><a href="#">Bejegyzések</a></Link>

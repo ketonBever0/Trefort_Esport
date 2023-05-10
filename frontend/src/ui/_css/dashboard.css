@@ -1,8 +1,6 @@
 
 
 .dashboard_nav {
-  border-right: 1px solid #ef9e2b;
-  border-top: 1px solid #ef9e2b;
   bottom: 0;
   height: 100%;
   left: -17.5rem;
@@ -43,7 +41,7 @@
 }
 
 #dashboard_nav-expand {
-  background-color: #333;
+  background-color: rgba(0, 0, 0, 0.6);
   color: #eee;
   display: block;
   padding: 10px 14px;
@@ -62,6 +60,10 @@
   top: 0;
 }
 
+.border-main-1 {
+  border-bottom: 3px solid #dd163b;
+}
+
 #dashboard_nav-expand:focus {
   opacity: 0;
 }
@@ -77,7 +79,7 @@
 }
 
 #dashboard_nav-expand:hover {
-  background-color: #181c23;
+  background-color: black;
   color: #dd163b;
 }
 

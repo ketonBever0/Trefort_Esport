@@ -1,21 +1,25 @@
 import React, { useEffect } from 'react'
+import GoBackButton from '../ui/GoBackButton';
 
 function Test() {
 
   useEffect(() => {
 
-    var reviewDetails:any = document.getElementById('reviewDetails');
-    var reviewList:any = document.getElementById('reviewList');
+    var reviewDetails: any = document.getElementById('reviewDetails');
+    var reviewList: any = document.getElementById('reviewList');
 
     reviewList.style.maxHeight = reviewDetails.style.height;
 
 
   }, [])
-  
+
   return (
     <div>
-
+      <div className='d-flex justify-content-start mb-40'>
+        <GoBackButton />
+      </div>
       <h3 className="nk-decorated-h-2 text-sm-h6">
+
         <span>
           Beküldött <span className="text-main-1">szervezetek</span>
         </span>
@@ -24,206 +28,206 @@ function Test() {
       <div className='container'>
         <div className='d-flex row'>
           <div className='col-lg-5 lightgreybg'>
-              <div id='reviewList' className="reviewList ">
-                <div className='reviewList_itemcontainer container'>
-                  <div className='reviewList_item row gap-1 justify-content-between'>
+            <div id='reviewList' className="reviewList ">
+              <div className='reviewList_itemcontainer container'>
+                <div className='reviewList_item row gap-1 justify-content-between'>
 
 
-                    <div className='col-md-3 col-3 p-10'>
-                      
-                    </div>
+                  <div className='col-md-3 col-3 p-10'>
+
+                  </div>
 
 
-                    <div className='col-md-5 col-5'>
-                      <h3 className="reviewList_item_title" >Szervezet neve</h3>
+                  <div className='col-md-5 col-5'>
+                    <h3 className="reviewList_item_title" >Szervezet neve</h3>
+                    <div className="">
+                      <p>Intézmény</p>
                       <div className="">
-                        <p>Intézmény</p>
-                        <div className="">
-                          <span className="fa fa-calendar" /> 2022.02.02.
-                        </div>
+                        <span className="fa fa-calendar" /> 2022.02.02.
                       </div>
                     </div>
-                    <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
-                    </p>
                   </div>
-                </div>
-                <div className='reviewList_itemcontainer container'>
-                  <div className='reviewList_item row gap-1 justify-content-between'>
-
-
-                    <div className='col-md-3 col-3 p-10'>
-                      
-                    </div>
-
-
-                    <div className='col-md-5 col-5'>
-                      <h3 className="reviewList_item_title" >Szervezet neve</h3>
-                      <div className="">
-                        <p>Intézmény</p>
-                        <div className="">
-                          <span className="fa fa-calendar" /> 2022.02.02.
-                        </div>
-                      </div>
-                    </div>
-                    <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
-                    </p>
-                  </div>
-                </div>
-                <div className='reviewList_itemcontainer container'>
-                  <div className='reviewList_item row gap-1 justify-content-between'>
-
-
-                    <div className='col-md-3 col-3 p-10'>
-                      
-                    </div>
-
-
-                    <div className='col-md-5 col-5'>
-                      <h3 className="reviewList_item_title" >Szervezet neve</h3>
-                      <div className="">
-                        <p>Intézmény</p>
-                        <div className="">
-                          <span className="fa fa-calendar" /> 2022.02.02.
-                        </div>
-                      </div>
-                    </div>
-                    <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
-                    </p>
-                  </div>
-                </div>
-                <div className='reviewList_itemcontainer container'>
-                  <div className='reviewList_item row gap-1 justify-content-between'>
-
-
-                    <div className='col-md-3 col-3 p-10'>
-                      
-                    </div>
-
-
-                    <div className='col-md-5 col-5'>
-                      <h3 className="reviewList_item_title" >Szervezet neve</h3>
-                      <div className="">
-                        <p>Intézmény</p>
-                        <div className="">
-                          <span className="fa fa-calendar" /> 2022.02.02.
-                        </div>
-                      </div>
-                    </div>
-                    <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
-                    </p>
-                  </div>
-                </div>
-                <div className='reviewList_itemcontainer container'>
-                  <div className='reviewList_item row gap-1 justify-content-between'>
-
-
-                    <div className='col-md-3 col-3 p-10'>
-                      
-                    </div>
-
-
-                    <div className='col-md-5 col-5'>
-                      <h3 className="reviewList_item_title" >Szervezet neve</h3>
-                      <div className="">
-                        <p>Intézmény</p>
-                        <div className="">
-                          <span className="fa fa-calendar" /> 2022.02.02.
-                        </div>
-                      </div>
-                    </div>
-                    <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
-                    </p>
-                  </div>
-                </div>
-                <div className='reviewList_itemcontainer container'>
-                  <div className='reviewList_item row gap-1 justify-content-between'>
-
-
-                    <div className='col-md-3 col-3 p-10'>
-                      
-                    </div>
-
-
-                    <div className='col-md-5 col-5'>
-                      <h3 className="reviewList_item_title" >Szervezet neve</h3>
-                      <div className="">
-                        <p>Intézmény</p>
-                        <div className="">
-                          <span className="fa fa-calendar" /> 2022.02.02.
-                        </div>
-                      </div>
-                    </div>
-                    <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
-                    </p>
-                  </div>
-                </div>
-                <div className='reviewList_itemcontainer container'>
-                  <div className='reviewList_item row gap-1 justify-content-between'>
-
-
-                    <div className='col-md-3 col-3 p-10'>
-                      
-                    </div>
-
-
-                    <div className='col-md-5 col-5'>
-                      <h3 className="reviewList_item_title" >Szervezet neve</h3>
-                      <div className="">
-                        <p>Intézmény</p>
-                        <div className="">
-                          <span className="fa fa-calendar" /> 2022.02.02.
-                        </div>
-                      </div>
-                    </div>
-                    <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
-                    </p>
-                  </div>
-                </div>
-                <div className='reviewList_itemcontainer container'>
-                  <div className='reviewList_item row gap-1 justify-content-between'>
-
-
-                    <div className='col-md-3 col-3 p-10'>
-                      
-                    </div>
-
-
-                    <div className='col-md-5 col-5'>
-                      <h3 className="reviewList_item_title" >Szervezet neve</h3>
-                      <div className="">
-                        <p>Intézmény</p>
-                        <div className="">
-                          <span className="fa fa-calendar" /> 2022.02.02.
-                        </div>
-                      </div>
-                    </div>
-                    <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
-                    </p>
-                  </div>
-                </div>
-                <div className='reviewList_itemcontainer container'>
-                  <div className='reviewList_item row gap-1 justify-content-between'>
-
-
-                    <div className='col-md-3 col-3 p-10'>
-                      
-                    </div>
-
-
-                    <div className='col-md-5 col-5'>
-                      <h3 className="reviewList_item_title" >Szervezet neve</h3>
-                      <div className="">
-                        <p>Intézmény</p>
-                        <div className="">
-                          <span className="fa fa-calendar" /> 2022.02.02.
-                        </div>
-                      </div>
-                    </div>
-                    <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
-                    </p>
-                  </div>
+                  <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
+                  </p>
                 </div>
               </div>
+              <div className='reviewList_itemcontainer container'>
+                <div className='reviewList_item row gap-1 justify-content-between'>
+
+
+                  <div className='col-md-3 col-3 p-10'>
+
+                  </div>
+
+
+                  <div className='col-md-5 col-5'>
+                    <h3 className="reviewList_item_title" >Szervezet neve</h3>
+                    <div className="">
+                      <p>Intézmény</p>
+                      <div className="">
+                        <span className="fa fa-calendar" /> 2022.02.02.
+                      </div>
+                    </div>
+                  </div>
+                  <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
+                  </p>
+                </div>
+              </div>
+              <div className='reviewList_itemcontainer container'>
+                <div className='reviewList_item row gap-1 justify-content-between'>
+
+
+                  <div className='col-md-3 col-3 p-10'>
+
+                  </div>
+
+
+                  <div className='col-md-5 col-5'>
+                    <h3 className="reviewList_item_title" >Szervezet neve</h3>
+                    <div className="">
+                      <p>Intézmény</p>
+                      <div className="">
+                        <span className="fa fa-calendar" /> 2022.02.02.
+                      </div>
+                    </div>
+                  </div>
+                  <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
+                  </p>
+                </div>
+              </div>
+              <div className='reviewList_itemcontainer container'>
+                <div className='reviewList_item row gap-1 justify-content-between'>
+
+
+                  <div className='col-md-3 col-3 p-10'>
+
+                  </div>
+
+
+                  <div className='col-md-5 col-5'>
+                    <h3 className="reviewList_item_title" >Szervezet neve</h3>
+                    <div className="">
+                      <p>Intézmény</p>
+                      <div className="">
+                        <span className="fa fa-calendar" /> 2022.02.02.
+                      </div>
+                    </div>
+                  </div>
+                  <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
+                  </p>
+                </div>
+              </div>
+              <div className='reviewList_itemcontainer container'>
+                <div className='reviewList_item row gap-1 justify-content-between'>
+
+
+                  <div className='col-md-3 col-3 p-10'>
+
+                  </div>
+
+
+                  <div className='col-md-5 col-5'>
+                    <h3 className="reviewList_item_title" >Szervezet neve</h3>
+                    <div className="">
+                      <p>Intézmény</p>
+                      <div className="">
+                        <span className="fa fa-calendar" /> 2022.02.02.
+                      </div>
+                    </div>
+                  </div>
+                  <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
+                  </p>
+                </div>
+              </div>
+              <div className='reviewList_itemcontainer container'>
+                <div className='reviewList_item row gap-1 justify-content-between'>
+
+
+                  <div className='col-md-3 col-3 p-10'>
+
+                  </div>
+
+
+                  <div className='col-md-5 col-5'>
+                    <h3 className="reviewList_item_title" >Szervezet neve</h3>
+                    <div className="">
+                      <p>Intézmény</p>
+                      <div className="">
+                        <span className="fa fa-calendar" /> 2022.02.02.
+                      </div>
+                    </div>
+                  </div>
+                  <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
+                  </p>
+                </div>
+              </div>
+              <div className='reviewList_itemcontainer container'>
+                <div className='reviewList_item row gap-1 justify-content-between'>
+
+
+                  <div className='col-md-3 col-3 p-10'>
+
+                  </div>
+
+
+                  <div className='col-md-5 col-5'>
+                    <h3 className="reviewList_item_title" >Szervezet neve</h3>
+                    <div className="">
+                      <p>Intézmény</p>
+                      <div className="">
+                        <span className="fa fa-calendar" /> 2022.02.02.
+                      </div>
+                    </div>
+                  </div>
+                  <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
+                  </p>
+                </div>
+              </div>
+              <div className='reviewList_itemcontainer container'>
+                <div className='reviewList_item row gap-1 justify-content-between'>
+
+
+                  <div className='col-md-3 col-3 p-10'>
+
+                  </div>
+
+
+                  <div className='col-md-5 col-5'>
+                    <h3 className="reviewList_item_title" >Szervezet neve</h3>
+                    <div className="">
+                      <p>Intézmény</p>
+                      <div className="">
+                        <span className="fa fa-calendar" /> 2022.02.02.
+                      </div>
+                    </div>
+                  </div>
+                  <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
+                  </p>
+                </div>
+              </div>
+              <div className='reviewList_itemcontainer container'>
+                <div className='reviewList_item row gap-1 justify-content-between'>
+
+
+                  <div className='col-md-3 col-3 p-10'>
+
+                  </div>
+
+
+                  <div className='col-md-5 col-5'>
+                    <h3 className="reviewList_item_title" >Szervezet neve</h3>
+                    <div className="">
+                      <p>Intézmény</p>
+                      <div className="">
+                        <span className="fa fa-calendar" /> 2022.02.02.
+                      </div>
+                    </div>
+                  </div>
+                  <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
 

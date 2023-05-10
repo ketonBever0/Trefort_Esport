@@ -1,7 +1,7 @@
 import React from 'react'
 import GoBackButton from '../ui/GoBackButton'
 
-function Users() {
+function Clans() {
   return (
     <div className='container'>
       <div className='d-flex mb-40'>
@@ -9,12 +9,12 @@ function Users() {
       </div>
       
     <div className='row gap-1'>
-    <div className='nk-decorated-h-2 h3 p-15 mt-40 text-sm-h6'><span>Felhasználók</span></div>
+    <div className='nk-decorated-h-2 h3 p-15 mt-40 text-sm-h6'><span>Klánok</span></div>
                 <table className="nk-table">
                   <tbody className='container bg-transparent border-none'>
                     <tr className='row bg-transparent text-center'>
                       <th className='col-md'>Ábécé sorrend</th>
-                      <th className='col-md'>Legutolsó regisztráció</th>
+                      <th className='col-md'>Legutolsó létrehozott</th>
                       <th className='col-md'>
                         <form action="#" method="post" className="nk-form nk-form-style-2">
                           <div className="input-group">
@@ -36,7 +36,7 @@ function Users() {
                     <img width={'100px'} className='clanuserImage' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
                   </div>
                   <div className='row align-items-center'>
-                    <h3 className='text-main-1'>user_43</h3>
+                    <h3 className='text-main-1'>clan_123</h3>
                     <p className='lead mb-10'>klán neve</p>
                     <p>Leírás... It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                   </div>
@@ -46,7 +46,7 @@ function Users() {
                     <img width={'100px'} src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
                   </div>
                   <div className='row align-items-center '>
-                    <h3 className='text-main-1'>user_43</h3>
+                    <h3 className='text-main-1'>clan_123</h3>
                     <p className='lead mb-10'>klán neve</p>
                     <p>Leírás... It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                   </div>
@@ -56,7 +56,7 @@ function Users() {
                     <img width={'100px'} src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
                   </div>
                   <div className='row align-items-center'>
-                    <h3 className='text-main-1'>user_43</h3>
+                    <h3 className='text-main-1'>clan_123</h3>
                     <p className='lead mb-10'>klán neve</p>
                     <p>Leírás... It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                   </div>
@@ -66,7 +66,7 @@ function Users() {
                     <img width={'100px'} src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
                   </div>
                   <div className='row align-items-center'>
-                    <h3 className='text-main-1'>user_43</h3>
+                    <h3 className='text-main-1'>clan_123</h3>
                     <p className='lead mb-10'>klán neve</p>
                     <p>Leírás... It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                   </div>
@@ -81,4 +81,4 @@ function Users() {
   )
 }
 
-export default Users
+export default Clans

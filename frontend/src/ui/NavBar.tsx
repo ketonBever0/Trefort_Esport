@@ -64,7 +64,6 @@ function NavBar() {
         // console.log(pathname)
     }, [pathname])
 
-
     return (
         <div>
             <div className={`${isLoginModalOpen ? 'fixed-top' : 'visually-hidden'} overlay min-vh-100 min-vw-100`} onClick={(e) => {
@@ -337,7 +336,7 @@ function NavBar() {
                                                 className="no-link-effect"
                                                 data-nav-toggle="#nk-nav-mobile"
                                             >
-                                                <span className="nk-icon-burger">
+                                                <span className="nk-icon-burger border">
                                                     <span className="nk-t-1" />
                                                     <span className="nk-t-2" />
                                                     <span className="nk-t-3" />
@@ -351,6 +350,7 @@ function NavBar() {
                     </div>
                 </div>
                 {/* END: Navbar */}
+                <Dashboard/>
             </header >
 
             <div id='fillitsplace' style={{ height: "155px" }} />
@@ -370,19 +370,15 @@ function NavBar() {
                             </a>
                             <div className="nk-navbar-mobile-content">
                                 <ul className="nk-nav">
-                                    {/* Here will be inserted menu from [data-mobile-menu="#nk-nav-mobile"] */}
+                                    
+                                    <li>hello</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
                 {/* END: Navbar Mobile */}
-                <Dashboard/>
             </>
-
-
-
-
         </div>
     )
 }

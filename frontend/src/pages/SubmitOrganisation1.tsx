@@ -4,6 +4,7 @@ import ProgressBar from '../ui/ProgressBar';
 import Button2 from '../ui/Button2';
 import './_css/input.css'
 import './_css/submitOrg.css'
+import GoBackButton from '../ui/GoBackButton';
 
 function SubmitOrganisation1() {
 
@@ -40,8 +41,18 @@ function SubmitOrganisation1() {
     <div>
 
       <div className='bg-dark bg-gradient p-30 rounded text-xl'>
+        <div className='row d-flex'>
+          <div className='col row justify-content-center'>
+            <div className='d-flex m-30 justify-content-center'><GoBackButton/></div>
+          </div>
+          <div className='col'>
+          </div>
+          <div className='col'>
+          </div>
+        </div>
         <ProgressBar myWidth={width} />
         <>
+
           <div className="tab-content">
             <div
               className="tab-pane fade show active"

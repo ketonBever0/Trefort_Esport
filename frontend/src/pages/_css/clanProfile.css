@@ -1,21 +1,19 @@
 
   @media only screen and (min-width: 992px) {
     .clanusers_col-lg-custom {
-        width: 45rem;
+        width: 32rem;
     }
   }
 
-
-
   @media only screen and (min-width: 1000px) {
     .clanusers_col-lg-custom {
-        width: 35rem;
+        width: 32rem;
     }
   }
 
   @media only screen and (min-width: 1350px) {
     .clanusers_col-lg-custom {
-        width: 45rem;
+        width: 39rem;
     }
   }
 
@@ -37,3 +35,7 @@
     transform: scale(1.05);
   }
 
+#clans_tbody tr, #clans_tbody th {
+  border-style: none;
+  border: none;
+}

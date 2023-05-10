@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button2 from '../ui/Button2';
 import './_css/editEvent.css';
+import GoBackButton from '../ui/GoBackButton';
 
 
 function EditEvent() {
@@ -15,6 +16,9 @@ function EditEvent() {
 
     return (
         <div className='m-20'>
+            <div className='d-flex justify-content-start'>
+            <GoBackButton/>
+            </div>
             <div className='nk-decorated-h-2 h3 p-15 mt-40 text-sm-h6'><span> </span>Esemény adatainak módosítása<span> </span></div>
             <div className="row vertical-gap text-white">
                 <div className="col-lg-6">

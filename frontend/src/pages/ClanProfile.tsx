@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Button2 from '../ui/Button2';
 import './_css/clanProfile.css'
+import GoBackButton from '../ui/GoBackButton';
 
 function ClanProfile() {
 
@@ -12,7 +13,7 @@ function ClanProfile() {
         <div className="container pb-5">
           <div className='row'>
             <div className="justify-content-start d-flex pl-70 mt-40 mb-40">
-              <Button2 content="⭠ Vissza" />
+            <GoBackButton/>
             </div>
           </div>
           <div className="row">
@@ -131,9 +132,9 @@ function ClanProfile() {
             <div>
 
 
-              <div className='nk-decorated-h-2 h3 p-15 mt-40 text-sm-h6'><span> </span><span className='text-main-1'>klan_123</span>klán tagjai<span> </span></div>
+              <div className='nk-decorated-h-2 h3 p-15 mt-40 text-sm-h6'><span className='text-main-1'>klan_123</span>klán tagjai<span> </span></div>
                 <table className="nk-table">
-                  <tbody className='container'>
+                  <tbody className='container' id='clans_tbody'>
                     <tr className='d-flex row overflow-hidden'>
                       <th className='col-md'>Ábécé sorrend</th>
                       <th className='col-md'>Legutolsó regisztráció</th>
