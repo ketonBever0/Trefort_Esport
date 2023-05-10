@@ -107,9 +107,10 @@ function Register2() {
             // fileInput != null && payload.append("file", fileInput);
 
             await register(registerFormData);
-            isRegistrationSuccessful && navigate('/');
-
-
+            if (isRegistrationSuccessful == true) {
+                setConfirmPassword("");
+                navigate('/');
+            }
         }
 
     }
@@ -235,7 +236,16 @@ function Register2() {
                                     </div>
                                     <div className="col-lg-4 m-20">
                                         <div className="form-group myform-group">
-                                            <textarea id="leiras" onChange={handleInputChange} name='description' className="myform-control form-control required bg-dark p-10" />
+                                            <textarea id="leiras" onChange={(e: any) => {
+                                                if (e.target.value == "") {
+                                                    setRegisterFormData((prev: any) =>
+                                                        ({ ...prev, [e.target.name]: null }));
+                                                    return;
+                                                } else {
+                                                    setRegisterFormData((prev: any) =>
+                                                        ({ ...prev, [e.target.name]: e.target.value }));
+                                                }
+                                            }} name='description' className="myform-control form-control required bg-dark p-10" />
                                             <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="leiras">Pár szó magamról...</label>
                                         </div>
                                     </div>
