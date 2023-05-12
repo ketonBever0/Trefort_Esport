@@ -61,7 +61,7 @@ function MyProfile() {
   const [description, setDescription] = useState<string | null>(null);
   const [isDescrSaving, setIsDescrSaving] = useState(false);
 
-  const [address, setAddress] = useState(userData?.user?.address);
+  const [address, setAddress] = useState(null);
 
   useEffect(() => {
     if (userData) {
@@ -97,6 +97,7 @@ function MyProfile() {
           setDescription(null);
           setEditDescr(false);
           setDescription(userData.user?.description);
+          revertEditForm();
         } else {
           Notify.tError(response.message);
         }
@@ -109,22 +110,53 @@ function MyProfile() {
     firstName: "",
     lastName: "",
     address: "",
-    educationIdNum: "",
+    educationNumber: "",
     username: "",
     email: ""
   });
 
+
+  const [editAddress, setEditAddress] = useState({
+    postcode: "",
+    city: "",
+    street: "",
+    address: ""
+  });
+
+  const handleEditAddressChange = (e: any) => {
+
+    setEditAddress((prev: any) => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+
+  }
+
+  const updateEditAddress = () => {
+    setUpdateUserPayload((prev: any) => ({
+      ...prev,
+      address: `${editAddress.postcode}\n${editAddress.city}\n${editAddress.street}\n${editAddress.address}`
+    }));
+  }
+
   useEffect(() => {
+    address && setEditAddress({
+      postcode: address[0],
+      city: address[1],
+      street: address[2],
+      address: address[3]
+    })
+
     setEditDataForm(
       {
         firstName: user?.firstName,
         lastName: user?.lastName,
         address: user?.address,
-        educationIdNum: user?.educationIdNum,
+        educationNumber: user?.educationNumber,
         username: user?.username,
         email: user?.email
       })
-  }, [userData])
+  }, [userData, address])
 
 
   const handleEditDataFormChange = (e: any) => {
@@ -138,11 +170,21 @@ function MyProfile() {
     setEditDataForm({
       firstName: user?.firstName,
       lastName: user?.lastName,
-      address: "no address",
-      educationIdNum: user?.educationIdNum,
+      address: user?.address,
+      educationNumber: user?.educationNumber || "",
       username: user?.username,
       email: user?.email
+    });
+
+    setUpdateUserPayload(userData?.user);
+
+    address && setEditAddress({
+      postcode: address[0],
+      city: address[1],
+      street: address[2],
+      address: address[3]
     })
+
   }
 
   const scrollBack = () => {
@@ -151,13 +193,46 @@ function MyProfile() {
   }
 
 
+  const changePayload = (e: any) => {
+    setUpdateUserPayload((prev: any) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const [isUserDataSaving, setIsUserDataSaving] = useState(false);
+
+  const updateUser = async () => {
+    setIsUserDataSaving(true);
+    await fetch("http://localhost:3333/api/users", {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${userToken}`
+      },
+      body: JSON.stringify(updateUserPayload)
+    })
+      .then(res => res.json())
+      .then(response => {
+        if (response.message?.includes("Sikeres")) {
+          Notify.tSuccess(response.message);
+          userUpdate();
+          setEditData(false);
+          revertEditForm();
+        } else {
+          Notify.tError(response.message);
+        }
+      })
+      .catch(err => console.log(err))
+      .finally(() => setIsUserDataSaving(false));
+  }
+
+
+
   return (
     <div>
       <section className='bg-dark-1'>
         <div className="container pb-5">
           <div className='row'>
             <div className="justify-content-start d-flex pl-70 mt-40 mb-40">
-            <GoBackButton/>
+              <GoBackButton />
             </div>
           </div>
 
@@ -211,8 +286,8 @@ function MyProfile() {
                   </form>
 
                   <hr />
-<div className='m-40'><Button2 content="Felhasználó bannolása" /></div>
-                  
+                  <div className='m-40'><Button2 content="Felhasználó bannolása" /></div>
+
 
                   <hr />
 
@@ -242,7 +317,7 @@ function MyProfile() {
                             }} className="myform-control form-control required bg-dark w-75 m-10" />
                             <div className='row gap-4 p-20 justify-content-center'>
                               <button onClick={() => { saveDescr(); }} className='col-sm-3 col-md-6 nk-btn nk-btn-rounded nk-btn-color-main-1'>Mentés</button>
-                              <button onClick={() => { setDescription(userData.user?.description); setEditDescr(false); }} className='col-sm-3 col-md-6 col-lg-5 nk-btn nk-btn-sm nk-btn-rounded nk-btn-color-white'>Mégse</button>
+                              <button onClick={() => { setDescription(userData.user?.description); setEditDescr(false); revertEditForm(); }} className='col-sm-3 col-md-6 col-lg-5 nk-btn nk-btn-sm nk-btn-rounded nk-btn-color-white'>Mégse</button>
                             </div>
 
                           </div>
@@ -275,7 +350,7 @@ function MyProfile() {
                         Legutolsó bejelentkezés:
                       </div>
                       <div className='col-lg-5 text-start'>
-                        2023. 02. 13.
+                        {user && user?.lastLogin.slice(0, 10).replaceAll('-', '. ') + '.'}
                       </div>
                     </div>
                   </div>
@@ -379,13 +454,15 @@ function MyProfile() {
                             <div className="col-md-6 col-lg-5 col-9">
                               <div className="form-group myform-group">
                                 <label className='mb-5' htmlFor='vezeteknev'>Vezetéknév</label>
-                                <input type="text" id="vezeteknev" name='firstName' value={editDataForm.firstName} onChange={handleEditDataFormChange} defaultValue={user?.firstName} className="myform-control form-control required bg-dark p-10" required />
+                                <input type="text" id="vezeteknev" name='firstName' value={editDataForm.firstName} onChange={handleEditDataFormChange}
+                                  onBlur={changePayload} defaultValue={user?.firstName} className="myform-control form-control required bg-dark p-10" required />
                               </div>
                             </div>
                             <div className="col-md-6 col-lg-5 col-9">
                               <div className="form-group myform-group">
                                 <label className='mb-5' htmlFor='vezeteknev'>Keresztnév</label>
-                                <input type="text" id="keresztnev" name='lastName' value={editDataForm.lastName} defaultValue={user?.lastName} className="myform-control form-control required bg-dark p-10" required />
+                                <input type="text" id="keresztnev" name='lastName' value={editDataForm.lastName} onChange={handleEditDataFormChange}
+                                  onBlur={changePayload} defaultValue={user?.lastName} className="myform-control form-control required bg-dark p-10" required />
                               </div>
                             </div>
                           </div>
@@ -397,31 +474,47 @@ function MyProfile() {
                             <div className="col-md-6 col-lg-5 col-9 d-flex justify-content-center align-items-center">
                               <div className="form-group myform-group">
                                 <label className='mb-10' htmlFor='iranyitoszam'>Irányítószám</label>
-                                <input type="text" id="iranyitoszam" className="myform-control form-control required bg-dark p-10" required />
+                                <input type="text" id="iranyitoszam" name='postcode'
+                                  value={editAddress?.postcode} onChange={(e: any) => {
+                                    handleEditAddressChange(e);
+                                  }} onBlur={() => updateEditAddress()}
+                                  defaultValue={editAddress?.postcode} className="myform-control form-control required bg-dark p-10" required />
                               </div>
                             </div>
                             <div className="col-md-6 col-lg-5 col-9 d-flex justify-content-center align-items-center">
                               <div className="form-group myform-group">
                                 <label className='mb-10' htmlFor='telepules'>Település</label>
-                                <input type="text" id="telepules" className="myform-control form-control required bg-dark p-10" required />
+                                <input type="text" id="telepules" name='city'
+                                  value={editAddress?.city} onChange={(e: any) => {
+                                    handleEditAddressChange(e);
+                                  }} onBlur={() => updateEditAddress()}
+                                  defaultValue={editAddress?.city} className="myform-control form-control required bg-dark p-10" required />
                               </div>
                             </div>
                             <div className="col-md-6 col-lg-5 col-9 d-flex justify-content-center align-items-center">
                               <div className="form-group myform-group">
                                 <label className='mb-10' htmlFor='kozterulet_nev'>Közterület neve</label>
-                                <input type="text" id="kozterulet_nev" className="myform-control form-control required bg-dark p-10" required />
+                                <input type="text" id="kozterulet_nev" name='street'
+                                  value={editAddress?.street} onChange={(e: any) => {
+                                    handleEditAddressChange(e);
+                                  }} onBlur={() => updateEditAddress()}
+                                  defaultValue={editAddress?.street} className="myform-control form-control required bg-dark p-10" required />
                               </div>
                             </div>
-                            <div className="col-md-6 col-lg-5 col-9 d-flex justify-content-center align-items-center">
+                            {/* <div className="col-md-6 col-lg-5 col-9 d-flex justify-content-center align-items-center">
                               <div className="form-group myform-group">
                                 <label className='mb-10' htmlFor='kozterulet_fajta'>Közterület jellege</label>
                                 <input type="text" id="kozterulet_fajta" className="myform-control form-control required bg-dark p-10" required />
                               </div>
-                            </div>
+                            </div> */}
                             <div className="col-md-3 col-6">
                               <div className="form-group myform-group">
                                 <label className='mb-10' htmlFor='hazszam'>Házszám</label>
-                                <input type="text" id="hazszam" className="myform-control form-control required bg-dark p-10" required />
+                                <input type="text" id="hazszam" name='address'
+                                  value={editAddress?.address} onChange={(e: any) => {
+                                    handleEditAddressChange(e);
+                                  }} onBlur={() => updateEditAddress()}
+                                  defaultValue={editAddress?.address} className="myform-control form-control required bg-dark p-10" required />
                               </div>
                             </div>
                           </div>
@@ -432,7 +525,14 @@ function MyProfile() {
                           <div className="col-sm-8 row d-flex align-items-center justify-content-center">
                             <div className="col-md-5 col-9">
                               <div className="form-group myform-group">
-                                <input type="text" id="omazonosito" name='educationIdNum' value={editDataForm.educationIdNum} onChange={handleEditDataFormChange} defaultValue={user?.educationIdNum} className="myform-control form-control required bg-dark p-10 align-items-center" required />
+                                <input type="text" id="omazonosito" name='educationNumber' value={editDataForm.educationNumber}
+                                  onChange={(e: any) => {
+                                    if (e.target.value == "") setEditDataForm((prev: any) => ({ ...prev, [e.target.name]: "" }));
+                                    else setEditDataForm((prev: any) => ({ ...prev, [e.target.name]: parseInt(e.target.value) }));
+                                  }} onBlur={(e: any) => {
+                                    if (e.target.value == "") setUpdateUserPayload((prev: any) => ({ ...prev, [e.target.name]: null }))
+                                    else setUpdateUserPayload((prev: any) => ({ ...prev, [e.target.name]: parseInt(e.target.value) }))
+                                  }} defaultValue={user?.educationNumber} className="myform-control form-control required bg-dark p-10 align-items-center" />
                               </div>
                             </div>
                             <div className='col-md-6'><i className="bi bi-info-circle-fill lead col-1"></i> A diákigazolvány hátulján található 11 jegyű számsor.</div>
@@ -442,12 +542,13 @@ function MyProfile() {
                         <div className="row m-5">
                           <div className="col-sm-4 m-auto myProfileLabel fw-bold text-center">E-mail cím</div>
                           <div className="col-sm-8 row d-flex align-items-center justify-content-center">
-                            <div className="col-md-5 col-9">
+                            <div className="col-md-10 col-9">
                               <div className="form-group myform-group">
-                                <input type="email" id="email" name='email' value={editDataForm.email} onChange={handleEditDataFormChange} defaultValue={user?.email} className="myform-control form-control required bg-dark p-10" required />
+                                <input type="email" id="email" name='email' value={editDataForm.email} onChange={handleEditDataFormChange}
+                                  onBlur={changePayload} defaultValue={user?.email} className="myform-control form-control required bg-dark p-10" required />
                               </div>
                             </div>
-                            <div className='col-md-6'><i className="bi bi-info-circle-fill lead col-1"></i> pelda@email.com</div>
+                            {/* <div className='col-md-6'><i className="bi bi-info-circle-fill lead col-1"></i> pelda@email.com</div> */}
                           </div>
                         </div>
                         <hr />
@@ -456,17 +557,19 @@ function MyProfile() {
                           <div className="col-sm-8 row d-flex justify-content-center align-items-center">
                             <div className="col-md-5 col-9">
                               <div className="form-group myform-group">
-                                <input type="text" id="felhasznalonev" name='username' value={editDataForm.username} onChange={handleEditDataFormChange} defaultValue={user?.username} className="myform-control form-control required bg-dark p-10" required />
+                                <input type="text" id="felhasznalonev" name='username' value={editDataForm.username} onChange={handleEditDataFormChange}
+                                  onBlur={changePayload} defaultValue={user?.username} className="myform-control form-control required bg-dark p-10" required />
                               </div>
                             </div>
                             <div className='col-md-6'> <i className="bi bi-info-circle-fill lead col-1"></i> A felhasználónév nem tartalmazhat szóközt.</div>
                           </div>
                         </div>
                         <div className='d-flex justify-content-end row gap-4 p-20'>
-                          <button className='col-sm-4 col-lg-2 nk-btn nk-btn-rounded nk-btn-color-main-1'>Mentés</button>
+                          <button onClick={() => { scrollBack(); revertEditForm(); setEditData(false); }} className='col-sm-4 col-lg-2 nk-btn nk-btn-rounded nk-btn-color-main-1'>Kilépés</button>
                           <button className='col-sm-4 col-lg-3 nk-btn nk-btn-rounded text-dark'
                             onClick={() => revertEditForm()}>Alaphelyzet</button>
-                          <button onClick={() => { scrollBack(); revertEditForm(); setEditData(false); }} className='col-sm-4 col-lg-2 nk-btn nk-btn-rounded nk-btn-color-main-1'>Kilépés</button>
+                          <button className='col-sm-4 col-lg-2 nk-btn nk-btn-rounded nk-btn-color-main-1'
+                            onClick={() => updateUser()}>Mentés</button>
                         </div>
                         {/* INPUT VÉGE */}
                       </>
