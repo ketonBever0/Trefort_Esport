@@ -103,12 +103,13 @@ function App() {
                     <Route path='/organisationprofile' element={<OrganisationProfile />} />
                     <Route path='/users' element={<Users />} />
                     <Route path='/clans' element={<Clans />} />
-                    <Route path='/footer' element={<Footer />} />
+                    {/* <Route path='/footer' element={<Footer />} /> */}
 
 
                   </Routes>
                 </div>
-                <Footer/>
+                <div className='nk-gap-6' />
+                <Footer />
                 <OnRouting />
               </Router>
 
