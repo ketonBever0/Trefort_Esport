@@ -539,19 +539,19 @@ function MyProfile() {
                           </div>
                         </div>
                         <hr />
-                        <div className="row m-5">
-                          <div className="col-sm-4 m-auto myProfileLabel fw-bold text-center">E-mail cím</div>
-                          <div className="col-sm-8 row d-flex align-items-center justify-content-center">
+                        {/* <div className="row m-5">
+                          <div className="col-sm-4 m-auto myProfileLabel fw-bold text-center">E-mail cím</div> */}
+                        {/* <div className="col-sm-8 row d-flex align-items-center justify-content-center">
                             <div className="col-md-10 col-9">
                               <div className="form-group myform-group">
                                 <input type="email" id="email" name='email' value={editDataForm.email} onChange={handleEditDataFormChange}
                                   onBlur={changePayload} defaultValue={user?.email} className="myform-control form-control required bg-dark p-10" required />
                               </div>
                             </div>
-                            {/* <div className='col-md-6'><i className="bi bi-info-circle-fill lead col-1"></i> pelda@email.com</div> */}
-                          </div>
-                        </div>
-                        <hr />
+                          </div> */}
+                        {/* <div className='col-md-6'><i className="bi bi-info-circle-fill lead col-1"></i> pelda@email.com</div> */}
+                        {/* </div> */}
+                        {/* <hr /> */}
                         <div className="row m-5">
                           <div style={{ hyphens: "auto", WebkitHyphens: 'auto', msHyphens: 'auto' }} className="col-sm-4 m-auto myProfileLabel fw-bold text-center">Felhasználó­­név</div>
                           <div className="col-sm-8 row d-flex justify-content-center align-items-center">
