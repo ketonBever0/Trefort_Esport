@@ -152,6 +152,21 @@ export class SessionteamService {
             
     }
 
+    async getSessionTeamsByCompetition(
+        competitionId: number
+    ){
+
+        const sessionTeamsByCompetition = await this.prismaService.sessionTeam.findMany({
+            where: {
+                competitionId: competitionId
+            },
+        });
+
+        return {
+            sessionTeamsByCompetition
+        }
+    }
+
     async getSessionTeamById(steamId: number){
         const sessionTeam = await this.prismaService.sessionTeam.findUnique({
             where: {
@@ -170,21 +185,6 @@ export class SessionteamService {
             }
         });
         return sessionTeam;
-    }
-
-    async getSessionTeamsByCompetition(
-        competitionId: number
-    ){
-
-        const sessionTeamsByCompetition = await this.prismaService.sessionTeam.findMany({
-            where: {
-                competitionId: competitionId
-            }
-        });
-
-        return {
-            sessionTeamsByCompetition
-        }
     }
 
     async signUserToSessionTeam(sessionTeam: SessionTeam, user: User, steamId: number) {

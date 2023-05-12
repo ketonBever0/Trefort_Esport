@@ -47,4 +47,5 @@ export class SessionteamController {
     ){
         return this.sessionTeamService.joinSessionTeam(user, teamId, dto);
     }
+    
 }
