@@ -11,10 +11,19 @@ export class UserService {
         const user = await this.prisma.user.findUnique({
             where: {
                 id: paramId
+            }, 
+            select: {
+                username: true,
+                profilePicture: true,
+                email: true,
+                firstName: true,
+                lastName: true,
+                educationNumber: true,
+                registrationDate: true,
+                lastLogin: true,
+                description: true,
             }
         });
-
-        delete user.password;
 
         return {
             user
@@ -29,7 +38,6 @@ export class UserService {
                 email: true,
                 firstName: true,
                 lastName: true,
-                address: true,
                 educationNumber: true,
                 registrationDate: true,
                 lastLogin: true,
