@@ -21,6 +21,23 @@ export class CompetitionService {
         }
     }
 
+    async getCompetitionsByEvent(
+        paramId: number
+    ) {
+        const competitions = await this.prismaService.competition.findMany({
+            where: {
+                eventId: paramId
+            },
+            include: {
+                event: true,
+            }
+        });
+
+        return {
+            competitions
+        }
+    }
+
     async getAllCompetition() {
         const competitions = await this.prismaService.competition.findMany({});
         return {

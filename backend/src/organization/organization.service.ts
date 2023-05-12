@@ -57,6 +57,25 @@ export class OrganizationService {
         }
     }
 
+    async acceptOrg(paramId: number){
+        try {
+            const org = await this.prisma.organization.update({
+                where: {
+                    id: paramId,
+                },
+                data: {
+                    status: 'active',
+                }
+            });
+            return {
+                message: 'Szervezet elfogadva',
+                org
+            }
+        } catch (err) {
+            throw new ForbiddenException('Valami hiba lépett fel a művelet közben');
+        }
+    }
+
     async updateOrg(paramId: number,dto: OrganizationDto){
         try {
             const org = await this.prisma.organization.update({

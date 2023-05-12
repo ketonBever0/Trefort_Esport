@@ -30,6 +30,14 @@ export class SessionteamController {
         return this.sessionTeamService.getSessionTeam(teamId);
     }
 
+    @Get('competition/:competitionId')
+    getSessionTeamsByCompetition(
+        @Param('competitionId', new ParseIntPipe())
+        competitionId: number
+    ) {
+        return this.sessionTeamService.getSessionTeamsByCompetition(competitionId);
+    }
+
     @Post('/join/:teamId')
     joinSessionTeam(
         @Param('teamId', new ParseIntPipe())
@@ -39,4 +47,5 @@ export class SessionteamController {
     ){
         return this.sessionTeamService.joinSessionTeam(user, teamId, dto);
     }
+    
 }

@@ -26,6 +26,14 @@ export class OrganizationController {
         return this.orgService.signUpOrg(dto);
     }
 
+    @Patch('accept/:id')
+    acceptOrg(
+        @Param('id', new ParseIntPipe())
+        id: number
+    ){
+        return this.orgService.acceptOrg(id);
+    }
+
     @Patch(':id')
     updateOrg(
         @Body() dto: OrganizationDto,

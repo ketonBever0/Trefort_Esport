@@ -57,7 +57,8 @@ export class SessionteamService {
                         id: true,
                         name: true,
                         game: true,
-                        platform: true
+                        platform: true,
+                        maxMemberCount: true,
                     }
                 },
                 members: {
@@ -80,7 +81,10 @@ export class SessionteamService {
 
     async getAllSessionTeam() {
         const sessionTeams = await this.prismaService.sessionTeam.findMany({
-           select: {
+            where: {
+                public: true
+            },
+            select: {
                 id: true,
                 teamName: true,
                 public: true,
@@ -90,7 +94,8 @@ export class SessionteamService {
                         id: true,
                         name: true,
                         game: true,
-                        platform: true
+                        platform: true,
+                        maxMemberCount: true,
                     }
                 },
                 members: {
@@ -145,6 +150,21 @@ export class SessionteamService {
             }
         }
             
+    }
+
+    async getSessionTeamsByCompetition(
+        competitionId: number
+    ){
+
+        const sessionTeamsByCompetition = await this.prismaService.sessionTeam.findMany({
+            where: {
+                competitionId: competitionId
+            },
+        });
+
+        return {
+            sessionTeamsByCompetition
+        }
     }
 
     async getSessionTeamById(steamId: number){

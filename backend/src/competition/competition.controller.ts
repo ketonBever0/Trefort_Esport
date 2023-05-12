@@ -26,6 +26,14 @@ export class CompetitionController {
         return this.competitionService.getCompetition(id);
     }
 
+    @Get('event/:id')
+    getCompetitionsByEvent(
+        @Param('id', new ParseIntPipe())
+        id: number
+    ) {
+        return this.competitionService.getCompetitionsByEvent(id);
+    }
+
     @Patch(':id')
     updateCompetition(
         @Param('id', new ParseIntPipe())
