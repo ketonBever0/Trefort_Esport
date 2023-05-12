@@ -32,6 +32,9 @@ export class UserService {
 
     async getAllUsers(){
         const users = await this.prisma.user.findMany({
+            where: {
+                status: 'active'
+            },
             select: {
                 id: true,
                 username: true,
