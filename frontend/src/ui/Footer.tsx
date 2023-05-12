@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import './_css/footer.css'
 
@@ -24,10 +23,6 @@ function Footer() {
         counter("count2", 0, 70, 2000);
         counter("count3", 0, 200, 2000);
     }, [])
-
-
-
-
 
     return (
         <div>

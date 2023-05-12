@@ -37,3 +37,13 @@
     }
 
 }
+
+.nk-drop-item:hover {
+    text-decoration: none;
+    color: #dd163b;
+    cursor: pointer;
+}
+
+.nk-drop-item Link {
+    text-decoration: none;
+}
