@@ -1,0 +1,67 @@
+.footerLink {
+    text-decoration: none;
+    color: white;
+}
+
+.footerLink:hover img {
+    opacity: 70%;
+    cursor: pointer;
+}
+
+.footerLink:hover {
+    color: #dd163b;
+    cursor: pointer;
+}
+
+.footerLink2 {
+    color: white;
+    text-decoration: none;
+}
+
+.footerLink2:hover p {
+    color: #dd163b;
+}
+
+.border-btm-main-1{
+    border-bottom: 2px solid #dd163b;
+}
+
+.border-left-main-1 {
+    border-radius: 0;
+}
+
+.border-right-main-1 {
+    border-radius: 0;
+}
+
+@media only screen and (max-width: 992px) {
+    .nk-copyright-right {
+        display: flex;
+        justify-content: center;
+    }
+    .nk-copyright-right{
+        margin-top: 20px;
+    }
+  }
+
+  @media only screen and (min-width: 992px) {  
+    .border-left-main-1 {
+        border-left: 2px solid #dd163b;
+    }
+    .border-right-main-1 {
+        border-right: 2px solid #dd163b;
+    }
+  }
+
+  @media only screen and (max-width: 992px) {
+    .border-left-main-1 {
+        border-top: 1px solid #dd163b;
+    }
+    .border-right-main-1 {
+        border-bottom: 1px solid #dd163b;
+    }
+    .responsiveBorder {
+        border-bottom: 1px solid #dd163b;
+    }
+  }
+

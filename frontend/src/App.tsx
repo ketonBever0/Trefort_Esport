@@ -33,6 +33,7 @@ import Users from './pages/Users'
 import AddEvent from './pages/AddEvent'
 import OrganisationProfile from './pages/OrganisationProfile'
 import Clans from './pages/Clans'
+import Footer from './ui/Footer'
 
 function App() {
 
@@ -102,10 +103,12 @@ function App() {
                     <Route path='/organisationprofile' element={<OrganisationProfile />} />
                     <Route path='/users' element={<Users />} />
                     <Route path='/clans' element={<Clans />} />
+                    <Route path='/footer' element={<Footer />} />
 
 
                   </Routes>
                 </div>
+                <Footer/>
                 <OnRouting />
               </Router>
 

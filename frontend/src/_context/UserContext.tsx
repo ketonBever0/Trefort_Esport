@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 import Notify from '../ui/Toasts';
 
 
@@ -178,7 +178,9 @@ export const UserProvider = ({ children }: any) => {
             .catch(err => console.log(err));
 
 
-    }
+    };
+
+    const [isDashboardOpen, setIsDashboardOpen] = useState(false);
 
 
 
@@ -201,7 +203,9 @@ export const UserProvider = ({ children }: any) => {
 
         registerFormData, setRegisterFormData,
         register,
-        isRegistrationSuccessful
+        isRegistrationSuccessful,
+        isDashboardOpen,
+        setIsDashboardOpen
 
     }}>{children}</UserContext.Provider>
 

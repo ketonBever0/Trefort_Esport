@@ -1,13 +1,12 @@
 import './_css/dashboard.css'
 import { Link } from 'react-router-dom';
-
+import { useEffect, useContext } from "react"
+import UserContext from '../_context/UserContext';
 function Dashboard() {
-
-    window.onscroll = function () { myFunction() };
 
     var navbar: any = document.getElementById("dashboard_nav-expand");
 
-    function myFunction() {
+    function scrollingSticky() {
         if (window.pageYOffset) {
             //navbar.classList.add("dashboard_sticky");
             navbar.setAttribute("style", "position: fixed, top: 0");
@@ -16,10 +15,12 @@ function Dashboard() {
             navbar.setAttribute("style", "position: absolute, top: 0");
         }
     }
+    const { setIsDashboardOpen, isDashboardOpen } = useContext(UserContext);
+
 
     return (
         <div>
-            <a id='dashboard_nav-expand' className='' href="#">
+            <a onFocus={()=>{setIsDashboardOpen(false);console.log(isDashboardOpen)}} onBlur={()=>{setIsDashboardOpen(true); console.log(isDashboardOpen)}} id='dashboard_nav-expand' className='' href="#">
                 <span className="dashboard_icon dashboard_icon-menu"></span>&nbsp;
                 Dashboard
             </a>
