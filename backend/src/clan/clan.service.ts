@@ -12,7 +12,7 @@ export class ClanService {
         user: User
 
     ) {
-
+        // check if user already has a clan
         const clan = await this.prismaService.clan.create({
             data: {
                 leaderId: user.id,
@@ -29,7 +29,6 @@ export class ClanService {
                 userId: user.id
             }
         });
-
 
         return {
             message: "Clan sikeresen létrehozva!",
