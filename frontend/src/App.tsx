@@ -34,6 +34,9 @@ import AddEvent from './pages/AddEvent'
 import OrganisationProfile from './pages/OrganisationProfile'
 import Clans from './pages/Clans'
 import Footer from './ui/Footer'
+import ApprovalModal from './pages/AddClanApprovalModal'
+import JoinClanApprovalModal from './pages/JoinClanApprovalModal'
+import AddClanApprovalModal from './pages/AddClanApprovalModal'
 
 function App() {
 
@@ -100,6 +103,8 @@ function App() {
                     <Route path='/organisationprofile' element={<OrganisationProfile />} />
                     <Route path='/users' element={<Users />} />
                     <Route path='/clans' element={<Clans />} />
+                    <Route path='/addclanapproval' element={<AddClanApprovalModal />} />
+                    <Route path='/joinclanapproval' element={<JoinClanApprovalModal />} />
                     {/* <Route path='/footer' element={<Footer />} /> */}
 
 

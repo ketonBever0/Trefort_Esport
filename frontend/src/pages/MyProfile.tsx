@@ -268,29 +268,6 @@ function MyProfile() {
                   <p className=''>OFFLINE<span className='h6'>ㅤ</span><i className="mr-5 bi bi-circle-fill h6 position-absolute mt-4 m-auto text-secondary m-auto"></i></p>
                   <p>BANNED<span className='h6'>ㅤ</span><i className="mr-5 bi bi-circle-fill h6 position-absolute mt-4 m-auto text-danger m-auto"></i></p> */}
                   <hr />
-
-                  <h5 className='mt-10 text-start mt-30 ml-30 mb-10'>Felhasználó rangja: </h5>
-                  <form action="" className='text-start ml-30 mb-30 rankInputs'>
-                    <input id='felhasznalo' name='rank' type="radio" /> <span> </span>
-                    <label className='fw-normal ' htmlFor="felhasznalo">felhasználó</label><br />
-                    <p>Felhasználó jogkörei: </p> <br />
-                    <input id='admin' name='rank' type="radio" /> <span> </span>
-                    <label className='fw-normal ' htmlFor="admin">admin</label><br />
-                    <input id='szuperadmin' name='rank' type="radio" /> <span> </span>
-                    <label className='fw-normal ' htmlFor="szuperadmin">szuperadmin</label><br />
-                    <input id='tanar' name='rank' type="radio" /> <span> </span>
-                    <label className='fw-normal ' htmlFor="tanar">tanár</label>
-                    <div className='m-10'><Button2 content="Mentés" /></div>
-
-
-                  </form>
-
-                  <hr />
-                  <div className='m-40'><Button2 content="Felhasználó bannolása" /></div>
-
-
-                  <hr />
-
                   {
                     editDescr ?
                       <>
@@ -352,6 +329,10 @@ function MyProfile() {
                       <div className='col-lg-5 text-start'>
                         {user && user?.lastLogin.slice(0, 10).replaceAll('-', '. ') + '.'}
                       </div>
+                    </div>
+                    <hr />
+                    <div className='card-body  d-flex justify-content-center gap-2 gap-lg-0'>
+                      <Button2 content="Profilom törlése"/>
                     </div>
                   </div>
 

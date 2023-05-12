@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import Button2 from '../ui/Button2'
 import ProgressBar from '../ui/ProgressBar'
 import UserContext from '../_context/UserContext';
-import ApprovalModal from './ApprovalModal';
+import ApprovalModal from './AddClanApprovalModal';
 
 function AddClan() {
   const [width, setWidth] = useState(0);

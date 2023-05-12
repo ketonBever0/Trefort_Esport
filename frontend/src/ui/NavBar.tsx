@@ -336,7 +336,7 @@ function NavBar() {
                                                 className="no-link-effect"
                                                 data-nav-toggle="#nk-nav-mobile"
                                             >
-                                                <span className="nk-icon-burger border">
+                                                <span className="nk-icon-burger">
                                                     <span className="nk-t-1" />
                                                     <span className="nk-t-2" />
                                                     <span className="nk-t-3" />

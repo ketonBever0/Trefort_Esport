@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import UserContext from '../_context/UserContext';
 import './_css/approvalModal.css'
 
-function ApprovalModal() {
+function AddClanApprovalModal() {
     const {
         login,
         loggingIn,
@@ -63,4 +63,4 @@ function ApprovalModal() {
     )
 }
 
-export default ApprovalModal
+export default AddClanApprovalModal
