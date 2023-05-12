@@ -17,17 +17,13 @@ function ReviewOrganisations() {
         <div className="nk-gap" />
         <div className='container'>
           <div className='d-flex row'>
-            <div className='col-lg-5 lightgreybg'>
-              <div id='reviewList' className="reviewList ">
+            <div className='col-lg-5 pt-20'>
+              <div id='reviewList' className="reviewList lightgreybg">
                 <div className='reviewList_itemcontainer container'>
                   <div className='reviewList_item row gap-1 justify-content-between'>
-  
-  
-                    <div className='col-md-3 col-3 p-10'>
+                    <div style={{backgroundImage:"url('https://taszi.hu/kepek/fooldali_banner/19_1.jpg')"}} className='col-md-3 col-3 p-10'>
   
                     </div>
-  
-  
                     <div className='col-md-5 col-5'>
                       <h3 className="reviewList_item_title" >Szervezet neve</h3>
                       <div className="">
@@ -43,13 +39,9 @@ function ReviewOrganisations() {
                 </div>
                 <div className='reviewList_itemcontainer container'>
                   <div className='reviewList_item row gap-1 justify-content-between'>
-  
-  
                     <div className='col-md-3 col-3 p-10'>
   
                     </div>
-  
-  
                     <div className='col-md-5 col-5'>
                       <h3 className="reviewList_item_title" >Szervezet neve</h3>
                       <div className="">
@@ -65,13 +57,9 @@ function ReviewOrganisations() {
                 </div>
                 <div className='reviewList_itemcontainer container'>
                   <div className='reviewList_item row gap-1 justify-content-between'>
-  
-  
                     <div className='col-md-3 col-3 p-10'>
-  
+
                     </div>
-  
-  
                     <div className='col-md-5 col-5'>
                       <h3 className="reviewList_item_title" >Szervezet neve</h3>
                       <div className="">
@@ -87,123 +75,9 @@ function ReviewOrganisations() {
                 </div>
                 <div className='reviewList_itemcontainer container'>
                   <div className='reviewList_item row gap-1 justify-content-between'>
-  
-  
                     <div className='col-md-3 col-3 p-10'>
   
                     </div>
-  
-  
-                    <div className='col-md-5 col-5'>
-                      <h3 className="reviewList_item_title" >Szervezet neve</h3>
-                      <div className="">
-                        <p>Intézmény</p>
-                        <div className="">
-                          <span className="fa fa-calendar" /> 2022.02.02.
-                        </div>
-                      </div>
-                    </div>
-                    <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
-                    </p>
-                  </div>
-                </div>
-                <div className='reviewList_itemcontainer container'>
-                  <div className='reviewList_item row gap-1 justify-content-between'>
-  
-  
-                    <div className='col-md-3 col-3 p-10'>
-  
-                    </div>
-  
-  
-                    <div className='col-md-5 col-5'>
-                      <h3 className="reviewList_item_title" >Szervezet neve</h3>
-                      <div className="">
-                        <p>Intézmény</p>
-                        <div className="">
-                          <span className="fa fa-calendar" /> 2022.02.02.
-                        </div>
-                      </div>
-                    </div>
-                    <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
-                    </p>
-                  </div>
-                </div>
-                <div className='reviewList_itemcontainer container'>
-                  <div className='reviewList_item row gap-1 justify-content-between'>
-  
-  
-                    <div className='col-md-3 col-3 p-10'>
-  
-                    </div>
-  
-  
-                    <div className='col-md-5 col-5'>
-                      <h3 className="reviewList_item_title" >Szervezet neve</h3>
-                      <div className="">
-                        <p>Intézmény</p>
-                        <div className="">
-                          <span className="fa fa-calendar" /> 2022.02.02.
-                        </div>
-                      </div>
-                    </div>
-                    <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
-                    </p>
-                  </div>
-                </div>
-                <div className='reviewList_itemcontainer container'>
-                  <div className='reviewList_item row gap-1 justify-content-between'>
-  
-  
-                    <div className='col-md-3 col-3 p-10'>
-  
-                    </div>
-  
-  
-                    <div className='col-md-5 col-5'>
-                      <h3 className="reviewList_item_title" >Szervezet neve</h3>
-                      <div className="">
-                        <p>Intézmény</p>
-                        <div className="">
-                          <span className="fa fa-calendar" /> 2022.02.02.
-                        </div>
-                      </div>
-                    </div>
-                    <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
-                    </p>
-                  </div>
-                </div>
-                <div className='reviewList_itemcontainer container'>
-                  <div className='reviewList_item row gap-1 justify-content-between'>
-  
-  
-                    <div className='col-md-3 col-3 p-10'>
-  
-                    </div>
-  
-  
-                    <div className='col-md-5 col-5'>
-                      <h3 className="reviewList_item_title" >Szervezet neve</h3>
-                      <div className="">
-                        <p>Intézmény</p>
-                        <div className="">
-                          <span className="fa fa-calendar" /> 2022.02.02.
-                        </div>
-                      </div>
-                    </div>
-                    <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold'> &#10710;</span>
-                    </p>
-                  </div>
-                </div>
-                <div className='reviewList_itemcontainer container'>
-                  <div className='reviewList_item row gap-1 justify-content-between'>
-  
-  
-                    <div className='col-md-3 col-3 p-10'>
-  
-                    </div>
-  
-  
                     <div className='col-md-5 col-5'>
                       <h3 className="reviewList_item_title" >Szervezet neve</h3>
                       <div className="">

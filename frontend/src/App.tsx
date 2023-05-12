@@ -67,10 +67,7 @@ function App() {
                     <Route path='/tournaments' element={<Tournaments />} >
                       <Route path='/tournaments/latest' />
                       <Route path='/tournaments/upcoming' />
-
                     </Route>
-
-
 
                     {/* <Route path='/events/:id' element={<EventPage />} /> */}
 

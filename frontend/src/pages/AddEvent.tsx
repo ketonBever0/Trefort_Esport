@@ -10,7 +10,7 @@ function AddEvent() {
 
     const [myFile, setMyFile] = useState();
 
-    function handleFileChange(e:any) {
+    function handleFileChange(e: any) {
         console.log(e.target.files);
     }
 
@@ -22,11 +22,11 @@ function AddEvent() {
 
 
     return (
-        <div className='m-20'>
-                        <div className='d-flex justify-content-start'>
-            <GoBackButton/>
+        <div>
+            <div className='d-flex justify-content-start'>
+                <GoBackButton />
             </div>
-            <div className='nk-decorated-h-2 h3 p-15 mt-40 text-sm-h6'><span> </span>Esemény adatai<span> </span></div>
+            <div className='nk-decorated-h-2 h3 p-15 text-sm-h6'><span> </span>Esemény adatai<span> </span></div>
             <div className="row vertical-gap text-white">
                 <div className="col-lg-6">
                     <div style={{ borderTop: "2px solid #dd163b" }} className="nk-box-2 bg-dark-2">
@@ -73,7 +73,7 @@ function AddEvent() {
             </div>
             <div className='nk-decorated-h-2 h3 p-15 mt-40 text-sm-h6'><span> </span>Versenyszámok adatai<span> </span></div>
             <span style={{ zIndex: '100' }}>
-            <button onClick={() => addGame()} id='addBtn' className='nk-btn nk-btn-rounded nk-btn-color-main-1'>+ játék <br /> hozzáadása</button>
+                <button onClick={() => addGame()} id='addBtn' className='nk-btn nk-btn-rounded nk-btn-color-main-1'>+ játék <br /> hozzáadása</button>
             </span>
             {
                 item?.map((currentitem, index) => {
@@ -82,11 +82,7 @@ function AddEvent() {
                             <div className="p-30 text-danger d-flex bg-dark-3 border-top-btm-main">
                                 <div className='col-11 container'>
                                     <div className='d-flex container row'>
-                                        <div className='col-12 col-md-4 row p-0 justify-content-center'>
-                                        <img style={{ width: '300px', height:"150px"}} className='' src={myFile}/>
-                                        <input className='custom-file-input p-0 m-auto border' type="file" onChange={handleFileChange}  />                                            
-                                        </div>
-                                        <div className='m-20 darkInputs border col-12 col-md'>
+                                        <div className='darkInputs col-12 col-md'>
                                             <label className='h4 m-10'>Játék neve</label><br />
                                             <input type="text" />
                                         </div>
@@ -160,7 +156,7 @@ function AddEvent() {
                     </div>
                 })
             }
-            <Button2 content="Mentés"/>
+            <Button2 content="Mentés" />
         </div>
     )
 }
