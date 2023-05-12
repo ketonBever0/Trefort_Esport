@@ -94,7 +94,8 @@ export class SessionteamService {
                         id: true,
                         name: true,
                         game: true,
-                        platform: true
+                        platform: true,
+                        maxMemberCount: true,
                     }
                 },
                 members: {
