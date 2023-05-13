@@ -36,7 +36,7 @@ export class AuthService {
 
             return {
                 success: true,
-                mesage: "Sikeres regisztráció",
+                message: "Sikeres regisztráció",
                 access_token: token
             }
         } catch (error) {

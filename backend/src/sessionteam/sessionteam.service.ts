@@ -37,7 +37,7 @@ export class SessionteamService {
         });
 
         return {
-            message: 'Csapat sikeresen lérehozva!',
+            message: 'Csapat sikeresen létrehozva!',
             sessionTeam
         }
     }
