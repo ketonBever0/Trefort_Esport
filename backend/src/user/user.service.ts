@@ -18,6 +18,16 @@ export class UserService {
                 email: true,
                 firstName: true,
                 lastName: true,
+                userClan: {
+                    select: {
+                        clan: {
+                            select: {
+                                id: true,
+                                name: true,
+                            }
+                        }
+                    }
+                },
                 educationNumber: true,
                 registrationDate: true,
                 lastLogin: true,
@@ -42,6 +52,16 @@ export class UserService {
                 email: true,
                 firstName: true,
                 lastName: true,
+                userClan: {
+                    select: {
+                        clan: {
+                            select: {
+                                id: true,
+                                name: true,
+                            }
+                        }
+                    }
+                },
                 educationNumber: true,
                 registrationDate: true,
                 lastLogin: true,

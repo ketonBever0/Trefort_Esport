@@ -159,7 +159,7 @@ model SessionTeamUser {
 
 model Competition {
   id                Int           @id @default(autoincrement())
-  eventId           Int           @unique
+  eventId           Int           
   event             Event         @relation(fields: [eventId], references: [id])
   plannedStartDate  DateTime
   startDate         DateTime?
