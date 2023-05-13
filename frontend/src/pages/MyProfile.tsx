@@ -228,7 +228,7 @@ function MyProfile() {
 
   return (
     <div>
-      <section className='bg-dark-1'>
+      <section id='main-container'>
         <div className="container pb-5">
           <div className='row'>
             <div className="justify-content-start d-flex pl-70 mt-40 mb-40">
@@ -332,7 +332,7 @@ function MyProfile() {
                     </div>
                     <hr />
                     <div className='card-body  d-flex justify-content-center gap-2 gap-lg-0'>
-                      <Button2 content="Profilom törlése"/>
+                      <Button2 content="Profilom törlése" />
                     </div>
                   </div>
 
