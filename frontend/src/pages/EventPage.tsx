@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import EventContext from "../_context/EventContext";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CompetitionContext from "../_context/CompetitionContext";
 
 function EventPage() {
@@ -90,20 +90,25 @@ function EventPage() {
                                 <span className="text-main-6">Induló játékok</span>
                             </span>
                         </h3>
-                        <div className="nk-info-box text-danger">
-                            <div className="nk-info-box-icon">
+                        {
+                            !isEventCompetitionsLoading &&
+                            eventCompetitions.length > 0 && (
+                                eventCompetitions.map((competition: any, index: React.Key) => (
+                                    <div className="nk-info-box text-danger">
+                                        <div className="nk-info-box-icon">
 
-                            </div>
-                            <h3>Valorant</h3>
-                            <em>Játék leírása</em>
-                            <div className='d-flex justify-content-end'>
-                                <a href="#" className="nk-btn nk-btn-rounded nk-btn-color-main-1">
-                                    Jelentkezem!
-                                </a>
-                            </div>
+                                        </div>
+                                        <h3>{competition.name}</h3>
+                                        <em>{competition.description}</em>
+                                        <div className='d-flex justify-content-end'>
+                                            <Link to={`/events/${id}/register/${competition.id}`} className="nk-btn nk-btn-rounded nk-btn-color-main-1">Jelentkezem!</Link>
+                                        </div>
 
 
-                        </div>
+                                    </div>
+                                ))
+                            )
+                        }
 
 
                         {/* <div className="nk-info-box text-warning">

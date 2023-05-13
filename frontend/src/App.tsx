@@ -38,6 +38,7 @@ import ApprovalModal from './pages/AddClanApprovalModal'
 import JoinClanApprovalModal from './pages/JoinClanApprovalModal'
 import AddClanApprovalModal from './pages/AddClanApprovalModal'
 import { CompetitionProvider } from './_context/CompetitionContext'
+import CompetitionRegister from './pages/CompetitionRegister'
 
 function App() {
 
@@ -78,7 +79,7 @@ function App() {
 
                       <Route path='/events' element={<Events />} />
                       <Route path='/events/:id' element={<EventPage />} />
-                      <Route path='/events/:id/register' />
+                      <Route path='/events/:id/register/:competitionid' element={<CompetitionRegister />} />
 
                       <Route path='/offline' element={<OfflinePage />} />
                       <Route path='/editevent' element={<EditEvent />} />

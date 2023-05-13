@@ -13,7 +13,7 @@ export const CompetitionProvider = ({ children }: any) => {
         setIsEventCompetitionsLoading(true);
         await fetch(`http://localhost:3333/api/competitions/event/${id}`)
             .then(res => res.json())
-            .then(data => setEventCompetitions(data))
+            .then(data => setEventCompetitions(data.competitions))
             .catch(err => console.log(err))
             .finally(() => setIsEventCompetitionsLoading(false));
 
