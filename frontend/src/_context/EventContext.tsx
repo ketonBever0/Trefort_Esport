@@ -9,7 +9,7 @@ export const EventProvider = ({ children }: any) => {
 
     const getEvents = async () => {
         setIsEventsLoading(true);
-        await fetch('http://localhost:8000/api/events/allevents')
+        await fetch('http://localhost:3333/api/events/all')
             .then(res => res.json())
             .then(data => {
                 if (!data.message) setEvents(data);

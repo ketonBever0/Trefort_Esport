@@ -110,7 +110,7 @@ function Register1() {
                             <form>
                                 <div className='row d-flex'>
                                     <div className='col row justify-content-center'>
-                                        <div className='d-flex m-30 justify-content-center'><GoBackButton/></div>
+                                        <div className='d-flex m-30 justify-content-center'><GoBackButton /></div>
                                     </div>
 
 
