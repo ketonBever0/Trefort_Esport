@@ -10,7 +10,10 @@ export class SessionteamService {
         private prismaService: PrismaService
     ) {}
 
-    async newSessionTeam(dto: SessionTeamDto) {
+    async newSessionTeam(
+        dto: SessionTeamDto,
+        user: User
+    ) {
         
         const hash = await argon.hash(dto.password);
 
@@ -26,18 +29,15 @@ export class SessionteamService {
            }
         });
 
-        // append users to sessionTeam
-        dto.users.forEach(async (user) => {
-            const sessionTeamUser = await this.prismaService.sessionTeamUser.create({
-                data: {
-                    userId: user,
-                    teamId: sessionTeam.id,
-                }
-            });
+        await this.prismaService.sessionTeamUser.create({
+            data: {
+                userId: user.id,
+                teamId: sessionTeam.id
+            }
         });
 
         return {
-            message: 'Csapat sikeresen lérehozva!',
+            message: 'Csapat sikeresen létrehozva!',
             sessionTeam
         }
     }
