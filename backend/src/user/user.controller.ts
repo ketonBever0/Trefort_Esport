@@ -5,32 +5,18 @@ import { JwtGuard } from 'src/auth/guard';
 import { UserPatchDto } from './dto';
 import { UserService } from './user.service';
 import { RoleGuard } from 'src/auth/guard/role.guard';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { diskStorage } from 'multer';
-import { v4 as uuidv4 } from 'uuid';
-import path = require('path');
+import { FileUploadService } from 'src/fileupload/fileupload.service';
 
-export const storage = {
-    storage: diskStorage({
-        destination: './uploads/profileimages',
-        filename: (req, file, cb) => {
-            // get file name
-            const fileName = path.parse(file.originalname).name.replace(/\s/g, '') + uuidv4();
-            // get file extension
-            const fileExtName = path.parse(file.originalname).ext;
-            // return file name and extension
-            cb(null, `${fileName}${fileExtName}`);
-        }
-    })
-}
+const storage = new FileUploadService().setStorage('profileimages').storage;
 
-@UseGuards(JwtGuard, RoleGuard)
+//@UseGuards(JwtGuard, RoleGuard)
 @Controller('users')
 export class UserController {
     constructor(
         private userService: UserService,
-        
+        private fileUploadService: FileUploadService
     ) { }
 
     // @Roles('admin')
@@ -68,7 +54,7 @@ export class UserController {
     }
 
     @Post('upload')
-    @UseInterceptors(FileInterceptor('file', storage))
+    @UseInterceptors(FileInterceptor('file', { storage }))
     uploadFile(
         @UploadedFile() file: Express.Multer.File,
         @GetUser() user: User
@@ -82,6 +68,6 @@ export class UserController {
         imageName: string,
         @Res() res
     ): Observable<Object> {
-        return of(res.sendFile(path.join(process.cwd(), 'uploads/profileimages/' + imageName)));
+        return this.fileUploadService.sendFile(imageName, res);
     }
 }

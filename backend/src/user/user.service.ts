@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
 import { User } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { UserPatchDto } from './dto';
@@ -106,20 +106,24 @@ export class UserService {
         user: User,
         file: Express.Multer.File
     ) {
-        const updateUser = await this.prisma.user.update({
-            where: {
-                id: user.id
-            },
-            data: {
-                profilePicture: file.filename
-            }
-        });
-
-        delete updateUser.password;
-
-        return {
-            message: "Sikeres feltöltés",
-            updateUser
+        try {
+            const updateUser = await this.prisma.user.update({
+                where: {
+                    id: user.id
+                },
+                data: {
+                    profilePicture: file.filename
+                }
+            });
+    
+            delete updateUser.password;
+    
+            return {
+                message: "Sikeres feltöltés",
+                updateUser
+            }   
+        } catch (error) {
+            throw new ForbiddenException('Nem sikerült a feltöltés');
         }
     }
 
