@@ -3,6 +3,7 @@ import { FileUploadService } from './fileupload.service';
 
 @Global()
 @Module({
-  providers: [FileUploadService]
+  providers: [FileUploadService],
+  exports: [FileUploadService]
 })
 export class FileuploadModule {}
