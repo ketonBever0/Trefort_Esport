@@ -5,7 +5,7 @@ const CompetitionContext = createContext<any | null>(null);
 export const CompetitionProvider = ({ children }: any) => {
 
 
-    const [eventCompetitions, setEventCompetitions] = useState(null);
+    const [eventCompetitions, setEventCompetitions] = useState([]);
     const [isEventCompetitionsLoading, setIsEventCompetitionsLoading] = useState(false);
 
 
