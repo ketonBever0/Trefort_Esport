@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import EventContext from "../_context/EventContext";
 import { useParams } from "react-router-dom";
+import CompetitionContext from "../_context/CompetitionContext";
 
 function EventPage() {
 
@@ -35,6 +36,19 @@ function EventPage() {
     }
 
 
+    const {
+        getAllCompetitionsByEventId,
+        eventCompetitions,
+        isEventCompetitionsLoading
+    } = useContext(CompetitionContext);
+
+
+    useEffect(() => {
+        getAllCompetitionsByEventId(id);
+    }, [])
+
+
+
     return (
         <>
             {
@@ -51,6 +65,7 @@ function EventPage() {
                                 <div className="nk-box-2 bg-dark-2">
                                     <h4>{event.address}</h4>
                                     {/* Az épületen belüli helyszínek az eseményen lesznek elmondva. */}
+                                    <h4><span className="text-main-1">Helyszín:</span></h4>
                                     {event.location}
                                 </div>
                             </div>
@@ -64,9 +79,11 @@ function EventPage() {
                             </div>
                         </div>
 
+                        <div className="nk-gap-6" />
 
-                        <p>{event.description}</p>
+                        <p className="text-center">{event.description}</p>
 
+                        <div className="nk-gap-4" />
 
                         <h3 className="nk-decorated-h m-20">
                             <span>
@@ -86,9 +103,10 @@ function EventPage() {
                             </div>
 
 
-
                         </div>
-                        <div className="nk-info-box text-warning">
+
+
+                        {/* <div className="nk-info-box text-warning">
                             <div className="nk-info-box-icon">
 
                             </div>
@@ -105,7 +123,7 @@ function EventPage() {
                             <em>
                                 Játék leírása
                             </em>
-                        </div>
+                        </div> */}
                     </div>
                 )
             }

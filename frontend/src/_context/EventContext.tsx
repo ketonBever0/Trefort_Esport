@@ -12,7 +12,7 @@ export const EventProvider = ({ children }: any) => {
         await fetch('http://localhost:3333/api/events/all')
             .then(res => res.json())
             .then(data => {
-                if (!data.message) setEvents(data);
+                if (!data.message) setEvents(data.events);
             })
             .catch(err => console.log(err))
             .finally(() => setIsEventsLoading(false));
@@ -24,7 +24,7 @@ export const EventProvider = ({ children }: any) => {
 
     const getEventById = async (id: number) => {
         setIsEventLoading(true);
-        await fetch(`http://localhost:8000/api/events/event/${id}`)
+        await fetch(`http://localhost:3333/api/events/${id}`)
             .then(res => res.json())
             .then(data => { if (!data.message) setEvent(data) })
             .catch(err => console.log(err))

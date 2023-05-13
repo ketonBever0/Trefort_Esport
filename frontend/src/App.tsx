@@ -37,6 +37,7 @@ import Footer from './ui/Footer'
 import ApprovalModal from './pages/AddClanApprovalModal'
 import JoinClanApprovalModal from './pages/JoinClanApprovalModal'
 import AddClanApprovalModal from './pages/AddClanApprovalModal'
+import { CompetitionProvider } from './_context/CompetitionContext'
 
 function App() {
 
@@ -45,80 +46,82 @@ function App() {
       <Toaster />
 
       <EventProvider>
-        <BlogArticleProvider>
-          <UserProvider>
+        <CompetitionProvider>
+          <BlogArticleProvider>
+            <UserProvider>
 
 
-            <div className="nk-main">
+              <div className="nk-main">
 
 
-              <Router>
-                <NavBar />
-                {/* <div className="nk-gap-6" /> */}
-                {/* <div id='fillitsplace' style={{ height: "70px" }} /> */}
-                <div className="nk-gap-4" />
-                <div className='container'>
-                  <Routes>
-                    <Route path='*' element={<NotFoundPage />} />
-                    <Route path='/' element={<Main />} />
+                <Router>
+                  <NavBar />
+                  {/* <div className="nk-gap-6" /> */}
+                  {/* <div id='fillitsplace' style={{ height: "70px" }} /> */}
+                  <div className="nk-gap-4" />
+                  <div className='container'>
+                    <Routes>
+                      <Route path='*' element={<NotFoundPage />} />
+                      <Route path='/' element={<Main />} />
 
-                    <Route path='/profile/:id' element={<ProfilePage />} />
+                      <Route path='/profile/:id' element={<ProfilePage />} />
 
-                    <Route path='/news' element={<BlogArticles />} />
-                    <Route path='/post/:id' element={<BlogArticlePage />} />
+                      <Route path='/news' element={<BlogArticles />} />
+                      <Route path='/post/:id' element={<BlogArticlePage />} />
 
-                    <Route path='/tournaments' element={<Tournaments />} >
-                      <Route path='/tournaments/latest' />
-                      <Route path='/tournaments/upcoming' />
-                    </Route>
+                      <Route path='/tournaments' element={<Tournaments />} >
+                        <Route path='/tournaments/latest' />
+                        <Route path='/tournaments/upcoming' />
+                      </Route>
 
-                    {/* <Route path='/events/:id' element={<EventPage />} /> */}
+                      {/* <Route path='/events/:id' element={<EventPage />} /> */}
 
-                    <Route path='/events' element={<Events />} />
-                    <Route path='/events/:id' element={<EventPage />} />
-                    <Route path='/events/:id/register' />
+                      <Route path='/events' element={<Events />} />
+                      <Route path='/events/:id' element={<EventPage />} />
+                      <Route path='/events/:id/register' />
 
-                    <Route path='/offline' element={<OfflinePage />} />
-                    <Route path='/editevent' element={<EditEvent />} />
-                    <Route path='/addevent' element={<AddEvent />} />
-
-
-                    <Route path='/register1' element={<Register1 />} />
-                    <Route path='/register2' element={<Register2 />} />
+                      <Route path='/offline' element={<OfflinePage />} />
+                      <Route path='/editevent' element={<EditEvent />} />
+                      <Route path='/addevent' element={<AddEvent />} />
 
 
-                    <Route path='/btn2' element={<Button2 />} />
+                      <Route path='/register1' element={<Register1 />} />
+                      <Route path='/register2' element={<Register2 />} />
 
 
-                    <Route path='/submitorg1' element={<SubmitOrganisation1 />} />
-                    <Route path='/submitorg2' element={<SubmitOrganisation2 />} />
+                      <Route path='/btn2' element={<Button2 />} />
 
 
-                    <Route path='/elements' element={<Elements />} />
-                    <Route path='/myprofile' element={<MyProfile />} />
-                    <Route path='/test' element={<Test />} />
-                    <Route path='/revieworg' element={<ReviewOrganisations />} />
-                    <Route path='/addclan' element={<AddClan />} />
-                    <Route path='/clanprofile' element={<ClanProfile />} />
-                    <Route path='/organisationprofile' element={<OrganisationProfile />} />
-                    <Route path='/users' element={<Users />} />
-                    <Route path='/clans' element={<Clans />} />
-                    <Route path='/addclanapproval' element={<AddClanApprovalModal />} />
-                    <Route path='/joinclanapproval' element={<JoinClanApprovalModal />} />
-                    {/* <Route path='/footer' element={<Footer />} /> */}
+                      <Route path='/submitorg1' element={<SubmitOrganisation1 />} />
+                      <Route path='/submitorg2' element={<SubmitOrganisation2 />} />
 
 
-                  </Routes>
-                </div>
-                <div className='nk-gap-6' />
-                <Footer />
-                <OnRouting />
-              </Router>
+                      <Route path='/elements' element={<Elements />} />
+                      <Route path='/myprofile' element={<MyProfile />} />
+                      <Route path='/test' element={<Test />} />
+                      <Route path='/revieworg' element={<ReviewOrganisations />} />
+                      <Route path='/addclan' element={<AddClan />} />
+                      <Route path='/clanprofile' element={<ClanProfile />} />
+                      <Route path='/organisationprofile' element={<OrganisationProfile />} />
+                      <Route path='/users' element={<Users />} />
+                      <Route path='/clans' element={<Clans />} />
+                      <Route path='/addclanapproval' element={<AddClanApprovalModal />} />
+                      <Route path='/joinclanapproval' element={<JoinClanApprovalModal />} />
+                      {/* <Route path='/footer' element={<Footer />} /> */}
 
-            </div>
 
-          </UserProvider>
-        </BlogArticleProvider>
+                    </Routes>
+                  </div>
+                  <div className='nk-gap-6' />
+                  <Footer />
+                  <OnRouting />
+                </Router>
+
+              </div>
+
+            </UserProvider>
+          </BlogArticleProvider>
+        </CompetitionProvider>
       </EventProvider>
 
 
