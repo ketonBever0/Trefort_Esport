@@ -12,5 +12,5 @@ export class PostDto {
 
     @IsNotEmpty()
     @IsString()
-    content: Text;
+    content: string;
 }
