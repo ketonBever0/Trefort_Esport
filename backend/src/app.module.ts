@@ -9,6 +9,7 @@ import { CompetitionModule } from './competition/competition.module';
 import { SessionteamModule } from './sessionteam/sessionteam.module';
 import { ClanModule } from './clan/clan.module';
 import { PostModule } from './post/post.module';
+import { FileuploadModule } from './fileupload/fileupload.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { PostModule } from './post/post.module';
     SessionteamModule,
     ClanModule,
     PostModule,
+    FileuploadModule,
   ],
 })
 export class AppModule {}

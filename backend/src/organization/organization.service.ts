@@ -101,6 +101,28 @@ export class OrganizationService {
         }
     }
 
+    async uploadOrgPicture(
+        paramId: number,
+        file: Express.Multer.File
+    ){
+        try {
+            const org = await this.prisma.organization.update({
+                where: {
+                    id: paramId,
+                },
+                data: {
+                    picture: file.filename,
+                }
+            });
+            return {
+                message: 'Sikeres kép feltöltés',
+                org
+            }
+        } catch (err) {
+            throw new ForbiddenException('Valami hiba lépett fel a művelet közben');
+        }
+    }
+
     async deleteOrg(paramId: number) {
         try {
             const org = await this.prisma.organization.update({

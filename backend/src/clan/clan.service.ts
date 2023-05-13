@@ -200,6 +200,27 @@ export class ClanService {
 
     }
 
+    async uploadLogo(
+        file: Express.Multer.File,
+        paramId: number
+    ) {
+        const clan = await this.getClan(paramId);
+
+        const updateClan = await this.prismaService.clan.update({
+            where: {
+                id: clan.id
+            },
+            data: {
+                logo: file.filename
+            }
+        });
+
+        return {
+            message: "Logo sikeresen feltöltve!",
+            updateClan
+        }
+    }
+
     async leaveClan(
         paramId: number,
         user: User
