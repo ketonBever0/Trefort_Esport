@@ -107,3 +107,7 @@
   background-color: #ee526f;
   border-color: #f1728a;
 }
+
+.cursor-text {
+  cursor: text;
+}

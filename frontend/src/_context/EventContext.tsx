@@ -21,18 +21,23 @@ export const EventProvider = ({ children }: any) => {
 
     const [isEventLoading, setIsEventLoading] = useState<boolean>(false);
     const [event, setEvent] = useState(null);
+    
 
-    const getEventById = async (id: number) => {
+    const getEventById = async (id: number, token: any) => {
         setIsEventLoading(true);
-        await fetch(`http://localhost:8000/api/events/event/${id}`)
+        await fetch(`http://localhost:3333/api/events/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
             .then(res => res.json())
             .then(data => { if (!data.message) setEvent(data) })
             .catch(err => console.log(err))
             .finally(() => setIsEventLoading(false));
+
     }
-
-
-
 
     return <EventContext.Provider value={{
 

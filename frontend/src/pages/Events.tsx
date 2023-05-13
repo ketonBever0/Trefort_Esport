@@ -23,12 +23,9 @@ function Events() {
         getEvents();
     }, [])
 
-
-
     const myFunction = (param: any) => {
         console.log(param)
     }
-
 
     return (
         <div>
