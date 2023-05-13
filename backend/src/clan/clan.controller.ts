@@ -1,14 +1,22 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post, Res, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { ClanService } from './clan.service';
 import { JwtGuard } from 'src/auth/guard';
 import { ClanDto } from './dto';
 import { GetUser } from 'src/auth/decorator';
 import { User } from '@prisma/client';
+import { FileUploadService } from 'src/fileupload/fileupload.service';
+import { FileInterceptor } from '@nestjs/platform-express';
 
-@UseGuards(JwtGuard)
+const dir = 'clanlogos';
+const storage = new FileUploadService().setStorage(dir).storage;
+
+//@UseGuards(JwtGuard)
 @Controller('clans')
 export class ClanController {
-    constructor(private clanService: ClanService) {}
+    constructor(
+        private clanService: ClanService,
+        private fileUploadService: FileUploadService
+    ) {}
 
     @Get('all')
     async getClans() {
@@ -45,6 +53,25 @@ export class ClanController {
         id: number
     ) {
         return this.clanService.getClanMembers(id);
+    }
+
+    @Get('logo/:logoname')
+    getClanLogo(
+        @Param('logoname')
+        logoname: string,
+        @Res() res
+    ){
+        return this.fileUploadService.sendFile(logoname, res, dir);
+    }
+
+    @Post('uploadlogo/:id')
+    @UseInterceptors(FileInterceptor('file', { storage }))
+    uploadLogo(
+        @UploadedFile() file: Express.Multer.File,
+        @Param('id', new ParseIntPipe())
+        id: number
+    ){
+        return this.clanService.uploadLogo(file, id);
     }
 
     @Post('leave/:id')
