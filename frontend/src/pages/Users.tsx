@@ -1,7 +1,46 @@
 import React from 'react'
 import GoBackButton from '../ui/GoBackButton'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router';
 
 function Users() {
+
+  const token = localStorage.getItem('usertoken');
+
+  const [userData, setuserData] = React.useState([]);
+
+  const [userID, setuserID] = React.useState();
+
+  const navigate = useNavigate();
+
+
+  useEffect(() => {
+    fetch('http://localhost:3333/api/users/all', {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then(response => response.json())
+      .then(data => { console.log(data); setuserData(data.users); })
+      .catch(error => console.error(error));
+  }, [])
+
+  function navigateToUserProfile(clickedID:any) {
+    fetch(`http://localhost:3333/api/users/${clickedID}`, {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then(response => response.json())
+      .then(data => { console.log(data); navigate('/')})
+      .catch(error => console.error(error));
+  }
+
+
   return (
     <div className='container'>
       <div className='d-flex'>
@@ -28,50 +67,24 @@ function Users() {
             </tr>
           </tbody>
         </table>
-
         <div className='row d-flex gap-3 p-5 justify-content-center'>
-          <div className="nk-info-box d-flex gap-3 pl-30 clanusers_col-lg-custom clanuser">
-            <div className='clanUserImgContainer'>
-              <img width={'100px'} className='clanuserImage' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
-            </div>
-            <div className='row align-items-center'>
-              <h3 className='text-main-1'>user_43</h3>
-              <p className='lead mb-10'>klán neve</p>
-              <p>Leírás... It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-            </div>
-          </div>
-          <div className="nk-info-box d-flex gap-4 pl-40 clanusers_col-lg-custom">
-            <div>
-              <img width={'100px'} src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
-            </div>
-            <div className='row align-items-center '>
-              <h3 className='text-main-1'>user_43</h3>
-              <p className='lead mb-10'>klán neve</p>
-              <p>Leírás... It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-            </div>
-          </div>
-          <div className="nk-info-box d-flex gap-3 pl-30 clanusers_col-lg-custom">
-            <div>
-              <img width={'100px'} src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
-            </div>
-            <div className='row align-items-center'>
-              <h3 className='text-main-1'>user_43</h3>
-              <p className='lead mb-10'>klán neve</p>
-              <p>Leírás... It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-            </div>
-          </div>
-          <div className="nk-info-box d-flex gap-3 pl-30 clanusers_col-lg-custom">
-            <div>
-              <img width={'100px'} src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
-            </div>
-            <div className='row align-items-center'>
-              <h3 className='text-main-1'>user_43</h3>
-              <p className='lead mb-10'>klán neve</p>
-              <p>Leírás... It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-            </div>
-          </div>
 
+          {
+            userData && userData.map(user => (
 
+              <div className="nk-info-box d-flex gap-3 pl-30 clanusers_col-lg-custom clanuser">
+                <div className='clanUserImgContainer'>
+                  <img width={'100px'} className='clanuserImage' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
+                </div>
+                <div className='row align-items-center'>
+                  <h3 className='text-main-1'>{user.username}</h3>
+                  <p className='lead mb-10'>klán neve</p>
+                  <p>{user.description}</p>
+                </div>
+              </div>
+
+            ))
+          }
         </div>
       </div>
     </div>
