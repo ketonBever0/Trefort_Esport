@@ -27,9 +27,10 @@ export class FileUploadService {
 
     sendFile(
         imageName: string,
-        res: any
+        res: any,
+        dir: string
     ): Observable<Object> {
-        return of(res.sendFile(path.join(process.cwd(), 'uploads/profileimages/' + imageName)));
+        return of(res.sendFile(path.join(process.cwd(), `uploads/${dir}/` + imageName)));
     }
 }
 
