@@ -102,6 +102,27 @@ export class UserService {
         };
     }
 
+    async uploadPicture(
+        user: User,
+        file: Express.Multer.File
+    ) {
+        const updateUser = await this.prisma.user.update({
+            where: {
+                id: user.id
+            },
+            data: {
+                profilePicture: file.filename
+            }
+        });
+
+        delete updateUser.password;
+
+        return {
+            message: "Sikeres feltöltés",
+            updateUser
+        }
+    }
+
     async deleteUser(
         user: User
     ): Promise<{message: string}> {
