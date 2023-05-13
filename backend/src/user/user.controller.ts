@@ -11,7 +11,7 @@ import { FileUploadService } from 'src/fileupload/fileupload.service';
 
 const storage = new FileUploadService().setStorage('profileimages').storage;
 
-//@UseGuards(JwtGuard, RoleGuard)
+@UseGuards(JwtGuard, RoleGuard)
 @Controller('users')
 export class UserController {
     constructor(
