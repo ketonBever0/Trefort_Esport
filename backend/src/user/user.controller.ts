@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { FileUploadService } from 'src/fileupload/fileupload.service';
 
-const storage = new FileUploadService().setStorage('profileimages').storage;
+const dir = 'profileimages';
+const storage = new FileUploadService().setStorage(dir).storage;
 
 @UseGuards(JwtGuard, RoleGuard)
 @Controller('users')
@@ -66,8 +67,8 @@ export class UserController {
     findProfileImage(
         @Param('imageName')
         imageName: string,
-        @Res() res
+        @Res() res,
     ): Observable<Object> {
-        return this.fileUploadService.sendFile(imageName, res);
+        return this.fileUploadService.sendFile(imageName, res, dir);
     }
 }
