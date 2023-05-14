@@ -40,7 +40,7 @@
 
 .nk-drop-item:hover {
     text-decoration: none;
-    color: #dd163b;
+    /* color: #dd163b; */
     cursor: pointer;
 }
 

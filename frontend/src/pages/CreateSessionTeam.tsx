@@ -24,6 +24,7 @@ function CreateSessionTeam() {
         competitionId: null,
         password: null,
         public: true,
+        description: null
     })
 
     useEffect(() => {
@@ -155,6 +156,20 @@ function CreateSessionTeam() {
                                     )
                                 }
                             </div>
+
+                            <textarea className='myform-control form-control required bg-dark p-10 w-50' onChange={(e: any) => {
+                                if (e.target.value == "") {
+                                    setPayload((prev: any) => ({
+                                        ...prev,
+                                        description: null
+                                    }))
+                                } else {
+                                    setPayload((prev: any) => ({
+                                        ...prev,
+                                        description: e.target.value
+                                    }))
+                                }
+                            }} />
 
                             <Button2 content="Létrehozás" myFunct={async (e: any) => {
                                 // e.preventDefault();
