@@ -5,7 +5,6 @@ import { ClanDto } from './dto';
 import { GetUser } from 'src/auth/decorator';
 import { User } from '@prisma/client';
 
-@UseGuards(JwtGuard)
 @Controller('clans')
 export class ClanController {
     constructor(private clanService: ClanService) {}
@@ -15,6 +14,7 @@ export class ClanController {
         return this.clanService.getClans();
     }
 
+    @UseGuards(JwtGuard)
     @Post()
     async createClan(
         @Body() dto: ClanDto,
@@ -47,6 +47,7 @@ export class ClanController {
         return this.clanService.getClanMembers(id);
     }
 
+    @UseGuards(JwtGuard)
     @Post('leave/:id')
     leaveClan(
         @Param('id', new ParseIntPipe())
@@ -56,6 +57,7 @@ export class ClanController {
         return this.clanService.leaveClan(id, user);
     }
 
+    @UseGuards(JwtGuard)
     @Post('/join/:id')
     joinClan(
         @Param('id', new ParseIntPipe())
@@ -65,6 +67,7 @@ export class ClanController {
         return this.clanService.joinClan(id, user);
     }
 
+    @UseGuards(JwtGuard)
     @Post('accept/clan/:id/user/:userId')
     acceptClanRequest(
         @Param('id', new ParseIntPipe())
