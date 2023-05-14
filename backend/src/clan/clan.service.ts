@@ -2,10 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ClanDto } from './dto';
 import { Clan, User } from '@prisma/client';
+import { FileUploadService } from 'src/fileupload/fileupload.service';
 
 @Injectable()
 export class ClanService {
-    constructor(private prismaService: PrismaService) {}
+    constructor(
+        private prismaService: PrismaService,
+        private fileUploadService: FileUploadService
+    ) {}
 
     async createClan(
         dto: ClanDto,
@@ -200,6 +204,34 @@ export class ClanService {
 
     }
 
+<<<<<<< Updated upstream
+=======
+    async uploadLogo(
+        file: Express.Multer.File,
+        paramId: number
+    ) {
+
+        const valid = await this.fileUploadService.validateImage(file);
+        if(!valid) return {message: "Nem megfelelő kép formátum!"}
+
+        const clan = await this.getClan(paramId);
+
+        const updateClan = await this.prismaService.clan.update({
+            where: {
+                id: clan.id
+            },
+            data: {
+                logo: file.filename
+            }
+        });
+
+        return {
+            message: "Logo sikeresen feltöltve!",
+            updateClan
+        }
+    }
+
+>>>>>>> Stashed changes
     async leaveClan(
         paramId: number,
         user: User

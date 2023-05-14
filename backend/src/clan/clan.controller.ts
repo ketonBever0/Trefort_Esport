@@ -77,5 +77,4 @@ export class ClanController {
     ) {
         return this.clanService.acceptClanRequest(userId, id);
     }
-
 }
