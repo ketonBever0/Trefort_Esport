@@ -2,12 +2,13 @@ import React from 'react'
 import GoBackButton from '../ui/GoBackButton'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 function Users() {
 
   const token = localStorage.getItem('usertoken');
 
-  const [userData, setuserData] = React.useState([]);
+  const [userData, setuserData] = React.useState<string[]>([]);
 
   const [userID, setuserID] = React.useState();
 
@@ -27,7 +28,7 @@ function Users() {
       .catch(error => console.error(error));
   }, [])
 
-  function navigateToUserProfile(clickedID:any) {
+  function navigateToUserProfile(clickedID: any) {
     fetch(`http://localhost:3333/api/users/${clickedID}`, {
       method: 'GET',
       headers: {
@@ -36,7 +37,7 @@ function Users() {
       }
     })
       .then(response => response.json())
-      .then(data => { console.log(data); navigate('/')})
+      .then(data => { console.log(data); navigate('/') })
       .catch(error => console.error(error));
   }
 
@@ -72,15 +73,34 @@ function Users() {
           {
             userData && userData.map(user => (
 
-              <div className="nk-info-box d-flex gap-3 pl-30 clanusers_col-lg-custom clanuser">
-                <div className='clanUserImgContainer'>
-                  <img width={'100px'} className='clanuserImage' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
-                </div>
-                <div className='row align-items-center'>
-                  <h3 className='text-main-1'>{user.username}</h3>
-                  <p className='lead mb-10'>klán neve</p>
-                  <p>{user.description}</p>
-                </div>
+              <div className='d-flex justify-content-center'>
+                <Link style={{ textDecoration: 'none' }} to={`/profile/${user.id}`}>
+
+                  <div className="nk-info-box d-flex gap-3 pl-30 clanusers_col-lg-custom clanuser">
+                    <div className='clanUserImgContainer'>
+                      <img width={'100px'} className='clanuserImage' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
+                    </div>
+                    <div className='row align-items-center'>
+                      <h3 className='text-main-1'>{user.username}</h3>
+                      {/* {
+                        user?.userClan[0].clan.name ? <li className="list-group-item bg-dark-2 d-flex justify-content-center gap-3 align-items-center p-10 ">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                            alt="avatar"
+                            className="rounded-circle img-fluid"
+                            style={{ width: 50 }}
+                          />
+                          <p className='mb-0 lead fw-bold  text-main-1'>{user?.userClan[0].clan.name}</p>
+                          <div className="mb-0 text-white">klán tagja</div>
+                        </li>
+                          :
+                          <></>
+                      } */}
+
+                      <p>{user.description}</p>
+                    </div>
+                  </div>
+                </Link>
               </div>
 
             ))

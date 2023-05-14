@@ -96,7 +96,7 @@ function App() {
                         <Route path='/register2' element={<Register2 />} />
 
 
-                        <Route path='/btn2' element={<Button2 />} />
+                        {/* <Route path='/btn2' element={<Button2 />} /> */}
 
 
                         <Route path='/submitorg1' element={<SubmitOrganisation1 />} />

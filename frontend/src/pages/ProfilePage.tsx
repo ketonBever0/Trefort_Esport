@@ -67,7 +67,6 @@ function ProfilePage() {
 
                                     <p className="my-3 lead text-white fw-bold text-center">{user?.username}</p>
                                     <hr />
-
                                     <div className='mt-20 d-flex justify-content-center gap-3'>
                                         <p className='lead fw-bold'>RANG: </p> <p className='d-flex align-items-center'>felhasználó</p>
                                     </div>
@@ -153,16 +152,21 @@ function ProfilePage() {
                                             />
                                             <p className="mb-0">discorduser</p>
                                         </li>
-                                        <li className="list-group-item bg-dark-2 d-flex justify-content-center gap-3 align-items-center p-10">
-                                            <img
-                                                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                                                alt="avatar"
-                                                className="rounded-circle img-fluid"
-                                                style={{ width: 50 }}
-                                            />
-                                            <p className='mb-0 lead fw-bold  text-main-1'>clan_name</p>
-                                            <div className="mb-0 text-white">klán tagja</div>
-                                        </li>
+                                        {
+                                            user?.userClan[0].clan.name ? <li className="list-group-item bg-dark-2 d-flex justify-content-center gap-3 align-items-center p-10 ">
+                                                <img
+                                                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                                                    alt="avatar"
+                                                    className="rounded-circle img-fluid"
+                                                    style={{ width: 50 }}
+                                                />
+                                                <p className='mb-0 lead fw-bold  text-main-1'>{user?.userClan[0].clan.name}</p>
+                                                <div className="mb-0 text-white">klán tagja</div>
+                                            </li>
+                                            :
+                                            <></>
+                                        }
+
 
                                     </ul>
                                 </div>

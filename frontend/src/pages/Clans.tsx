@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import GoBackButton from '../ui/GoBackButton'
 
 function Clans() {
+
+  useEffect(() => {
+    const pageBG: Element = document.querySelector('.full-page')!;
+    pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-4.png')")
+  }, [])
+
+  
+
   return (
     <div className='container'>
       <div className='d-flex'>
-        <GoBackButton/>
+        <GoBackButton />
       </div>
-      
+
       <div className='row gap-1 container justify-content-center'>
         <div className='nk-decorated-h-2 h3 p-15 mt-40 text-sm-h6'><span>Klánok</span></div>
         <table className="nk-table mb-20">
@@ -72,7 +80,7 @@ function Clans() {
       </div>
     </div>
 
-    
+
   )
 }
 

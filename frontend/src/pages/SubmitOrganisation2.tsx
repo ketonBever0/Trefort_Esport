@@ -1,10 +1,15 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProgressBar from '../ui/ProgressBar';
 import Button2 from '../ui/Button2';
 import GoBackButton from '../ui/GoBackButton';
 
 function SubmitOrganisation2() {
+
+  useEffect(() => {
+    const pageBG: Element = document.querySelector('.full-page')!;
+    pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-4.png')")
+}, [])
 
   const [width, setWidth] = useState(50);
 
@@ -25,10 +30,10 @@ function SubmitOrganisation2() {
 
   return (
     <div>
-      <div className='bg-dark bg-gradient p-30 rounded text-xl'>
+      <div className='bg-dark bg-transparent p-30 rounded text-xl'>
       <div className='row d-flex'>
           <div className='col row justify-content-center'>
-            <div className='d-flex m-30 justify-content-center'><GoBackButton/></div>
+            <div className='d-flex m-30 justify-content-start'><GoBackButton/></div>
           </div>
           <div className='col'>
           </div>

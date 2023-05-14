@@ -22,8 +22,8 @@ function AddClan() {
     })
       .then(res => res.json())
       .then(data => {
-        if (data.exists) alert(data.message);
-        else alert(data.message);
+        if (data.exists) Notify.tSuccess(data.message);
+        else { Notify.tError("Hiba történt.")};
       })
       .catch(err => { console.log(err); Notify.tError(err) });
   }
@@ -55,6 +55,7 @@ function AddClan() {
   const writeClanData = (e: any) => {
     setclanFormData((prevState) => ({ ...prevState, [e.target.id]: e.target.value }));
     console.log(e.target.value, e.target.type);
+    console.log(clanformData)
   }
 
   const onSubmit = () => {
@@ -90,7 +91,7 @@ function AddClan() {
                             handleInputChange();
                             writeClanData(e);
                           }} type="text"
-                            name="nev" id="nev" className="myform-control form-control required bg-dark p-10" required />
+                          id="name" className="myform-control form-control required bg-dark p-10" required />
                           <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="nev">Klán neve</label>
                         </div>
                       </div>
@@ -99,7 +100,7 @@ function AddClan() {
                           <input onChange={e => {
                             handleInputChange();
                             writeClanData(e);
-                          }} type="text" name="email" id="email" className="myform-control form-control required bg-dark p-10" required />
+                          }} type="text" id="clanEmail" className="myform-control form-control required bg-dark p-10" required />
                           <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="email">E-mail cím</label>
                         </div>
                       </div>

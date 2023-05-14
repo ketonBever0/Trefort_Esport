@@ -2,14 +2,18 @@ import { Link } from "react-router-dom"
 import './_css/reviewOrg.css'
 import Button2 from "../ui/Button2"
 import GoBackButton from "../ui/GoBackButton"
+import { useEffect } from "react"
 
 function ReviewOrganisations() {
+  useEffect(() => {
+    const pageBG: Element = document.querySelector('.full-page')!;
+    pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-4.png')")
+}, [])
   return (<div>
     <div className='d-flex justify-content-start mb-40'>
       <GoBackButton />
     </div>
     <h3 className="nk-decorated-h-2 text-sm-h6">
-
       <span>
         Beküldött <span className="text-main-1">szervezetek</span>
       </span>
@@ -17,22 +21,21 @@ function ReviewOrganisations() {
     <div className="nk-gap" />
     <div className='container'>
       <div className='d-flex row'>
-        <div className='col-lg-5 pt-20'>
-          <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <div className='col-lg-5'>
+          {/* <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li className="nav-item" role="presentation">
               <button className="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Függőben</button>
             </li>
             <li className="nav-item" role="presentation">
               <button className="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Elutasított</button>
             </li>
-          </ul>
+          </ul> */}
           <div className="tab-content" id="pills-tabContent">
-            <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-
-              <div id='reviewList' className="reviewList lightgreybg border">
+            <div className="tab-panel fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+              <div id='reviewList' className="reviewList lightgreybg">
                 <div className='reviewList_itemcontainer container'>
                   <div className='reviewList_item row gap-1 justify-content-between'>
-                    <div style={{ backgroundImage: "url('https://taszi.hu/kepek/fooldali_banner/19_1.jpg')" }} className='col-md-3 col-3 p-10'>
+                    <div className='col-md-3 col-3 p-10'>
                     </div>
                     <div className='col-md-5 col-5'>
                       <h3 className="reviewList_item_title" >Szervezet neve</h3>
