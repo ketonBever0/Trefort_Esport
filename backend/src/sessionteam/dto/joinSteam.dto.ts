@@ -1,7 +1,7 @@
-import { IsNotEmpty, IsOptional, IsString } from "class-validator";
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 
 export class JoinSessionTeamDto {
-    
+
     @IsString()
     @IsNotEmpty()
     @IsOptional()
