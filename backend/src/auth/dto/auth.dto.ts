@@ -27,7 +27,7 @@ export class SignUpDto {
     address: string;
 
     @IsOptional()
-    @IsNumber()
+    @IsString()
     @IsNotEmpty()
     educationNumber: string;
 
