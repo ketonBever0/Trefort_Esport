@@ -2,19 +2,18 @@ import { Injectable } from '@nestjs/common';
 import { diskStorage } from 'multer';
 import path = require('path');
 import { Observable, of } from 'rxjs';
-import sharp = require('sharp');
 import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class FileUploadService {
 
-    async validateImage(file: any) {
+    /*async validateImage(file: any) {
 
         const image = sharp(file.path);
         const metadata = await image.metadata();
         
         return metadata.format === 'jpeg';
-    }
+    }*/
 
     setStorage(
         foldername: string
