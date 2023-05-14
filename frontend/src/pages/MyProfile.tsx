@@ -509,10 +509,10 @@ function MyProfile() {
                                 <input type="text" id="omazonosito" name='educationNumber' value={editDataForm.educationNumber}
                                   onChange={(e: any) => {
                                     if (e.target.value == "") setEditDataForm((prev: any) => ({ ...prev, [e.target.name]: "" }));
-                                    else setEditDataForm((prev: any) => ({ ...prev, [e.target.name]: parseInt(e.target.value) }));
+                                    else setEditDataForm((prev: any) => ({ ...prev, [e.target.name]: e.target.value }));
                                   }} onBlur={(e: any) => {
                                     if (e.target.value == "") setUpdateUserPayload((prev: any) => ({ ...prev, [e.target.name]: null }))
-                                    else setUpdateUserPayload((prev: any) => ({ ...prev, [e.target.name]: parseInt(e.target.value) }))
+                                    else setUpdateUserPayload((prev: any) => ({ ...prev, [e.target.name]: e.target.value }))
                                   }} defaultValue={user?.educationNumber} className="myform-control form-control required bg-dark p-10 align-items-center" />
                               </div>
                             </div>
