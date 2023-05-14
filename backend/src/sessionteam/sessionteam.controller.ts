@@ -5,7 +5,6 @@ import { JwtGuard } from 'src/auth/guard';
 import { GetUser } from 'src/auth/decorator';
 import { User } from '@prisma/client';
 
-@UseGuards(JwtGuard)
 @Controller('sessionteams')
 export class SessionteamController {
     constructor(private sessionTeamService: SessionteamService){}
@@ -15,6 +14,7 @@ export class SessionteamController {
         return this.sessionTeamService.getAllSessionTeam();
     }
 
+    @UseGuards(JwtGuard)
     @Post()
     createSessionTeam(
         @Body() dto: SessionTeamDto,
@@ -39,6 +39,7 @@ export class SessionteamController {
         return this.sessionTeamService.getSessionTeamsByCompetition(competitionId);
     }
 
+    @UseGuards(JwtGuard)
     @Post('/join/:teamId')
     joinSessionTeam(
         @Param('teamId', new ParseIntPipe())
