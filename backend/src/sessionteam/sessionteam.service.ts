@@ -86,6 +86,7 @@ export class SessionteamService {
                         game: true,
                         platform: true,
                         maxMemberCount: true,
+                        endDate: true,
                     }
                 },
                 members: {
@@ -124,6 +125,7 @@ export class SessionteamService {
                         game: true,
                         platform: true,
                         maxMemberCount: true,
+                        endDate: true,
                     }
                 },
                 members: {
@@ -206,6 +208,7 @@ export class SessionteamService {
                         game: true,
                         platform: true,
                         maxMemberCount: true,
+                        endDate: true,
                     }
                 },
                 members: {
@@ -244,7 +247,8 @@ export class SessionteamService {
                 competition: {
                     select: {
                         id: true,
-                        maxMemberCount: true
+                        maxMemberCount: true,
+                        endDate: true,
                     }
                 }
             }
