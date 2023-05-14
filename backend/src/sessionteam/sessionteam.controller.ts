@@ -23,6 +23,14 @@ export class SessionteamController {
         return this.sessionTeamService.newSessionTeam(dto, user);
     }
 
+    @UseGuards(JwtGuard)
+    @Get('myteams')
+    getMyTeams(
+        @GetUser() user: User
+    ) {
+        return this.sessionTeamService.getMyTeams(user);
+    }
+
     @Get('/:teamId')
     getSEssionTeam(
         @Param('teamId', new ParseIntPipe())
