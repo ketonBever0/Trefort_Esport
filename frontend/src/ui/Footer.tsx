@@ -61,7 +61,7 @@ function Footer() {
             <div className=' p-10 justify-content-center bg-black border-top-main-1 border-btm-main-1'>
                 <div className='text-center m-10'>
                     <a className='footerLink text-center' href="https://taszi.hu/" target="_blank">
-                        <span><img className='logoImg' style={{ width: "100px" }} src="assets\images\trefort_logo.png" alt="Trefort logó" /></span> <br />
+                        <span><img className='logoImg' style={{ width: "100px" }} src="assets/images/trefort_logo.png" /></span> <br />
                         <span className='mb-10 fw-bold w-100'>Trefort Ágoston Technikum, Szakképző Iskola és Kollégium</span>
                     </a> <br />
                     <div className="nk-gap" />
@@ -74,7 +74,7 @@ function Footer() {
                 <div className="container justify-content-center">
                     <div className='d-flex align-items-center ml-30 bszc'>
                         <a className='footerLink text-center' href="https://bekescsabai.szc.edir.hu/" target='_blank'>
-                            <img style={{ width: "50px" }} src="assets\images\bszc_logo.png" alt="" />
+                            <img style={{ width: "50px" }} src="assets\images\bszc_logo.png" />
                             <span className='ml-10'><b>BSZC</b> • Békéscsabai Szakképzési Centrum</span>
                         </a>
                     </div>

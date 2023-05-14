@@ -38,12 +38,9 @@
   }
 }
 
-
 .jatekAdatok div {
   margin: 0px;
 }
-
-
 
 .darkInputs input[type=date]:focus, .darkInputs input:focus, .darkInputs textarea:focus {
   border: 1px solid #dd163b;
@@ -106,4 +103,8 @@
 .custom-file-input:active::before {
   background-color: #ee526f;
   border-color: #f1728a;
+}
+
+.cursor-text {
+  cursor: text;
 }

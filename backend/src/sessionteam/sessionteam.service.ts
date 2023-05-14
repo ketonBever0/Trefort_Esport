@@ -10,10 +10,7 @@ export class SessionteamService {
         private prismaService: PrismaService
     ) {}
 
-    async newSessionTeam(
-        dto: SessionTeamDto,
-        user: User
-    ) {
+    async newSessionTeam(dto: SessionTeamDto) {
         
         let hash = null;
         if(dto.password) {
@@ -45,15 +42,18 @@ export class SessionteamService {
            }
         });
 
-        await this.prismaService.sessionTeamUser.create({
-            data: {
-                userId: user.id,
-                teamId: sessionTeam.id
-            }
+        // append users to sessionTeam
+        dto.users.forEach(async (user) => {
+            const sessionTeamUser = await this.prismaService.sessionTeamUser.create({
+                data: {
+                    userId: user,
+                    teamId: sessionTeam.id,
+                }
+            });
         });
 
         return {
-            message: 'Csapat sikeresen létrehozva!',
+            message: 'Csapat sikeresen lérehozva!',
             sessionTeam
         }
     }

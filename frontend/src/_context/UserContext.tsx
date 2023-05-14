@@ -44,7 +44,10 @@ export const UserProvider = ({ children }: any) => {
                     userUpdate();
                 } else {
                     setIsThereLoginError(true);
-                    Notify.tError(token.message);
+                    Notify.tError(
+                        "Nem megfelelő adatok!"
+                        //token.message
+                        );
                 }
             })
             .catch(err => console.log(err))

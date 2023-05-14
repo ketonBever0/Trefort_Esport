@@ -3,11 +3,11 @@ import { CompetitionService } from './competition.service';
 import { CompetitionDto } from './dto';
 import { JwtGuard } from 'src/auth/guard';
 
+@UseGuards(JwtGuard)
 @Controller('competitions')
 export class CompetitionController {
     constructor(private competitionService: CompetitionService) {}
 
-    @UseGuards(JwtGuard)
     @Post()
     createCompetition(@Body() dto: CompetitionDto){
         return this.competitionService.createCompetition(dto);
@@ -34,7 +34,6 @@ export class CompetitionController {
         return this.competitionService.getCompetitionsByEvent(id);
     }
 
-    @UseGuards(JwtGuard)
     @Patch(':id')
     updateCompetition(
         @Param('id', new ParseIntPipe())

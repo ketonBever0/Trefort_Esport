@@ -20,7 +20,7 @@ CREATE TABLE `organizations` (
     `email` VARCHAR(255) NOT NULL,
     `phoneNumber` VARCHAR(255) NOT NULL,
     `type` VARCHAR(255) NOT NULL,
-    `status` VARCHAR(255) NOT NULL DEFAULT 'pending',
+    `status` VARCHAR(255) NOT NULL DEFAULT 'active',
     `description` TEXT NOT NULL,
 
     UNIQUE INDEX `organizations_email_key`(`email`),
@@ -52,12 +52,7 @@ CREATE TABLE `events` (
 -- CreateTable
 CREATE TABLE `posts` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `userId` INTEGER NOT NULL,
-    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `publishedAt` DATETIME(3) NULL,
-    `title` VARCHAR(255) NOT NULL,
-    `header` VARCHAR(255) NOT NULL,
-    `content` TEXT NOT NULL,
+    `text` TEXT NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -150,6 +145,7 @@ CREATE TABLE `competitions` (
     `competitionType` VARCHAR(255) NOT NULL,
     `description` TEXT NOT NULL,
 
+    UNIQUE INDEX `competitions_eventId_key`(`eventId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -173,9 +169,6 @@ ALTER TABLE `eventcontributors` ADD CONSTRAINT `eventcontributors_orgId_fkey` FO
 
 -- AddForeignKey
 ALTER TABLE `eventcontributors` ADD CONSTRAINT `eventcontributors_eventId_fkey` FOREIGN KEY (`eventId`) REFERENCES `events`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `posts` ADD CONSTRAINT `posts_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `users`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `clanusers` ADD CONSTRAINT `clanusers_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `users`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

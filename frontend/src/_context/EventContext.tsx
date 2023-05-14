@@ -7,9 +7,16 @@ export const EventProvider = ({ children }: any) => {
     const [isEventsLoading, setIsEventsLoading] = useState<boolean>(false);
     const [events, setEvents] = useState([]);
 
-    const getEvents = async () => {
+    const getEvents = async (token: any) => {
         setIsEventsLoading(true);
-        await fetch('http://localhost:3333/api/events/all')
+        await fetch('http://localhost:3333/api/events/all', {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        )
             .then(res => res.json())
             .then(data => {
                 if (!data.message) setEvents(data.events);
@@ -21,18 +28,23 @@ export const EventProvider = ({ children }: any) => {
 
     const [isEventLoading, setIsEventLoading] = useState<boolean>(false);
     const [event, setEvent] = useState(null);
+    
 
-    const getEventById = async (id: number) => {
+    const getEventById = async (id: number, token: any) => {
         setIsEventLoading(true);
-        await fetch(`http://localhost:3333/api/events/${id}`)
+        await fetch(`http://localhost:3333/api/events/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
             .then(res => res.json())
             .then(data => { if (!data.message) setEvent(data) })
             .catch(err => console.log(err))
             .finally(() => setIsEventLoading(false));
+
     }
-
-
-
 
     return <EventContext.Provider value={{
 

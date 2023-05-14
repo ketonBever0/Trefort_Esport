@@ -36,11 +36,15 @@ export class AuthService {
 
             return {
                 success: true,
-                message: "Sikeres regisztráció",
+                mesage: "Sikeres regisztráció",
                 access_token: token
             }
         } catch (error) {
-            throw new Error(error)
+            if(error.meta.target.includes('key')) {
+                if(error.code === 'P2002') {
+                    throw new ForbiddenException('Credentials taken');
+                }
+            }
         }
     }
 

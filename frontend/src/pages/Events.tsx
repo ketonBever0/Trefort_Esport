@@ -19,70 +19,84 @@ function Events() {
     } = useContext(EventContext);
 
 
+    const token = localStorage.getItem('usertoken');
+
     useEffect(() => {
-        getEvents();
+        getEvents(token);
     }, [])
-
-
 
     const myFunction = (param: any) => {
         console.log(param)
     }
 
+    const formatDate = (date: string) => {
+        const year = date.slice(0, 4);
+        const month = date.slice(5, 7);
+        const day = date.slice(8, 10);
+
+        return `${year}. ${month}. ${day}.`
+    }
+
+    
 
     return (
         <div>
             <div className="nk-blog-fullwidth">
-            <div className='d-flex justify-content-start'>
+            <div className='d-flex justify-content-start mb-40'>
             <GoBackButton/>
             </div>
 
                 {
                     !isEventsLoading && events.length > 0 && (
                         events.map((event: any, index: React.Key) => (
-                            <div className="nk-blog-post" key={index}>
+                            <div className="nk-blog-post container" key={index}>
                                 <Link to={`/events/${event.id}`} className="nk-post-img">
                                     <img
+                                    style={{width:"rem"}}
                                         src={event.image || 'assets/images/post-1-fw.jpg'}
-                                        alt="Smell magic in the air. Or maybe barbecue"
                                     />
                                     <span className="nk-post-comments-count">0</span>
                                 </Link>
                                 <div className="nk-gap-2" />
                                 <div className="row vertical-gap">
                                     <div className="col-md-8 col-lg-9">
-                                        <h2 className="nk-post-title h4">
+                                        <h2 className="nk-post-title h3">
                                             <Link to={`/events/${event.id}`}>
                                                 {event.name}
                                             </Link>
                                         </h2>
+                                        <hr />
                                         <div className="nk-gap" />
                                         <div className="nk-post-text">
                                             <p>{event.description.slice(0, 500)}</p>
                                         </div>
                                     </div>
                                     <div className="col-md-4 col-lg-3">
-                                        <div className="nk-post-by">
-                                            <img
+                                        <div className="nk-post-by text-start">
+                                            {/* <img
                                                 src="assets/images/avatar-1.jpg"
-                                                alt="Hitman"
                                                 className="rounded-circle"
                                                 width={60}
-                                            />
-                                            by <button onClick={() => Notify.tPromise(myFunction("szia"), "betöltés", "sikeres", "nem sikerült")}>{event.organizers?.representative?.username}</button>
-                                            <br /> {event.startDate} <br /> Helyszín:<br />
+                                            /> */}
+                                            {/* <button onClick={() => Notify.tPromise(myFunction("szia"), "betöltés", "sikeres", "nem sikerült")}>{event.organizers?.representative?.username}</button> */}
+                                            <br /> Időpont: <span className='text-white'> {formatDate(event.startDate)} </span> <br /> Helyszín: <span className='text-white'>{event.location}</span>  <br />
                                             <p title={event.organizers?.location}>{event.organizers?.name}</p>
                                         </div>
-                                        <div className="nk-gap-3" />
-                                        <div className="text-right">
-                                            <Link to={`/events/${event.id}`}
-                                                className="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1"
-                                            >
-                                                Read More
-                                            </Link>
-                                        </div>
+
+
                                     </div>
+                                    <div className="text-right d-flex justify-content-center">
+                                            <div>
+                                                <Link to={`/events/${event.id}`}
+                                                    className="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1"
+                                                >
+                                                    Megnézem
+                                                </Link>                                                
+                                            </div>
+                                        </div>
                                 </div>
+                                <div className="nk-gap-3" style={{borderBottom:'4px solid #dd163b'}} />
+                                
                             </div>
                         ))
                     )

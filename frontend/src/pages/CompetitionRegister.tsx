@@ -74,7 +74,7 @@ function CompetitionRegister() {
 
             <div className='row'>
                 <div className='col'><GoBackButton /></div>
-                <div className='col'><Button2 content={joinToPrivateTeam ? "Nyított csapatok" : "Belépés privát csapatba"} myFunct={() => setJoinToPrivateTeam((prev: boolean) => !prev)} /></div>
+                <div className='col'><Button2 content={joinToPrivateTeam ? "Nyitott csapatok" : "Belépés privát csapatba"} myFunct={() => setJoinToPrivateTeam((prev: boolean) => !prev)} /></div>
                 <div className='col'><Button2 content="Új csapat ➕" myFunct={() => navigate(`/events/${eventId}/register/${competitionId}/create`)} /></div>
             </div>
 

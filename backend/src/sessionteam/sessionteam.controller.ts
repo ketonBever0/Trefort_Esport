@@ -17,10 +17,9 @@ export class SessionteamController {
 
     @Post()
     createSessionTeam(
-        @Body() dto: SessionTeamDto,
-        @GetUser() user: User
+        @Body() dto: SessionTeamDto
     ) {
-        return this.sessionTeamService.newSessionTeam(dto, user);
+        return this.sessionTeamService.newSessionTeam(dto);
     }
 
     @Get('/:teamId')

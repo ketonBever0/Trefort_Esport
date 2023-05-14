@@ -101,7 +101,7 @@ model User {
   lastName                  String            @db.VarChar(255)
   password                  String            @db.VarChar(255)
   address                   String            @db.VarChar(255)
-  educationNumber           String?           @db.VarChar(255)
+  educationNumber           Int?              @db.Int
   status                    String?           @default("active") @db.VarChar(255)
   registrationDate          DateTime          @default(now())
   lastLogin                 DateTime          @default(now())

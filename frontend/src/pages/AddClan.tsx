@@ -3,11 +3,30 @@ import Button2 from '../ui/Button2'
 import ProgressBar from '../ui/ProgressBar'
 import UserContext from '../_context/UserContext';
 import ApprovalModal from './AddClanApprovalModal';
+import Notify from '../ui/Toasts';
 
 function AddClan() {
   const [width, setWidth] = useState(0);
   const [approvalModalOpen, setApprovalModalOpen] = useState(false);
 
+  const token = localStorage.getItem('usertoken');
+
+  const clanAdatKuldes = (adat: any, method: any) => {
+    fetch('http://localhost:3333/api/clans', {
+      method: method,
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(adat)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.exists) alert(data.message);
+        else alert(data.message);
+      })
+      .catch(err => { console.log(err); Notify.tError(err) });
+  }
 
   const handleInputChange = () => {
     const inputs = document.querySelectorAll('input');
@@ -23,20 +42,36 @@ function AddClan() {
     setWidth(count * 33.3)
   };
 
-
   function modalOpener() {
     setApprovalModalOpen(true);
-
   }
+
+  const [clanformData, setclanFormData] = useState({
+    name: "",
+    clanEmail: ""
+  });
+
+
+  const writeClanData = (e: any) => {
+    setclanFormData((prevState) => ({ ...prevState, [e.target.id]: e.target.value }));
+    console.log(e.target.value, e.target.type);
+  }
+
+  const onSubmit = () => {
+    //e.preventDefault();
+    clanAdatKuldes(clanformData, 'POST');
+  }
+
+
   return (
     <div>
       <div>
         {
-          approvalModalOpen ? 
-          <ApprovalModal/> 
-          :
-          <>
-          </>
+          approvalModalOpen ?
+            <ApprovalModal />
+            :
+            <>
+            </>
         }
         <div className='bg-dark bg-gradient p-30 rounded text-xl'>
           <ProgressBar myWidth={width} />
@@ -51,14 +86,20 @@ function AddClan() {
                     <div className='row justify-content-center gap-5 m-30'>
                       <div className="col-xl-2 col-lg-3 col-md-4 col-10">
                         <div className="form-group myform-group">
-                          <input onChange={handleInputChange} type="text"
+                          <input onChange={e => {
+                            handleInputChange();
+                            writeClanData(e);
+                          }} type="text"
                             name="nev" id="nev" className="myform-control form-control required bg-dark p-10" required />
                           <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="nev">Klán neve</label>
                         </div>
                       </div>
                       <div className="col-xl-2 col-lg-3 col-md-4 col-10">
                         <div className="form-group myform-group">
-                          <input onChange={handleInputChange} type="text" name="email" id="email" className="myform-control form-control required bg-dark p-10" required />
+                          <input onChange={e => {
+                            handleInputChange();
+                            writeClanData(e);
+                          }} type="text" name="email" id="email" className="myform-control form-control required bg-dark p-10" required />
                           <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="email">E-mail cím</label>
                         </div>
                       </div>
@@ -67,14 +108,19 @@ function AddClan() {
                       <div className='row justify-content-center gap-4 p-20'>
                         <div className="col-xl-4 col-md-5 col-lg-4 col-10">
                           <label>Logó feltöltése <span className='opacity-50 fw-normal'>(opcionális)</span></label>
-                          <input onChange={handleInputChange} type="file" className="form-control required bg-dark" />
+                          <input  onChange={() => {
+                            handleInputChange();
+                            //writeClanData;
+                          }} type="file" className="form-control required bg-dark" />
                         </div>
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className='p-20'>
-                    <Button2 content="Létrehozás" myFunct={modalOpener} />
+                    <Button2 content="Létrehozás" myFunct={onSubmit}
+                    //myFunct={modalOpener} 
+                    />
                   </div>
                 </form>
               </div>

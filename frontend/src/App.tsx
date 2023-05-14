@@ -78,7 +78,7 @@ function App() {
                           <Route path='/tournaments/upcoming' />
                         </Route>
 
-                        {/* <Route path='/events/:id' element={<EventPage />} /> */}
+                    <Route path='/events/:id' element={<EventPage />} />
 
                         <Route path='/events' element={<Events />} />
                         <Route path='/events/:id' element={<EventPage />} />
