@@ -29,6 +29,7 @@ export class SessionteamService {
                 password: dto.public !== undefined ? hash : null,
                 public: dto.public,
                 points: dto.points,
+                description: dto.description || null,
            }
         });
 
