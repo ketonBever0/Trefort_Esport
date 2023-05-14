@@ -16,8 +16,18 @@ export const CompetitionProvider = ({ children }: any) => {
             .then(data => setEventCompetitions(data.competitions))
             .catch(err => console.log(err))
             .finally(() => setIsEventCompetitionsLoading(false));
+    }
 
 
+    const [oneCompetition, setOneCompetition] = useState(null);
+
+    const getOneCompetitionById = async (id: number) => {
+        setIsEventCompetitionsLoading(true);
+        await fetch(`http://localhost:3333/api/competitions/${id}`)
+            .then(res => res.json())
+            .then(data => setOneCompetition(data.competition))
+            .catch(err => console.log(err))
+            .finally(() => setIsEventCompetitionsLoading(false));
     }
 
 
@@ -25,7 +35,10 @@ export const CompetitionProvider = ({ children }: any) => {
     return <CompetitionContext.Provider value={{
         getAllCompetitionsByEventId,
         eventCompetitions,
-        isEventCompetitionsLoading
+        isEventCompetitionsLoading,
+
+        getOneCompetitionById,
+        oneCompetition
     }}>{children}</CompetitionContext.Provider>
 
 

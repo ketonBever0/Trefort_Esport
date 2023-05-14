@@ -26,6 +26,7 @@ export const SessionTeamProvider = ({ children }: any) => {
     }
 
 
+
     const createSessionTeam = async (form: any, token: string) => {
         await fetch(`http://localhost:3333/api/sessionteams`, {
             method: 'POST',
