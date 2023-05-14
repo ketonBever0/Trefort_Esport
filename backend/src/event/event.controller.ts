@@ -3,11 +3,10 @@ import { EventService } from './event.service';
 import { JwtGuard } from 'src/auth/guard';
 import { EventDto } from './dto';
 
-@UseGuards(JwtGuard)
 @Controller('events')
 export class EventController {
     constructor (private eventService: EventService){}
-
+    @UseGuards(JwtGuard)
     @Post()
     addNewEvent(@Body() dto: EventDto){
         return this.eventService.createEvent(dto);
@@ -25,7 +24,8 @@ export class EventController {
     ){
         return this.eventService.getEvent(id);
     }
-
+    
+    @UseGuards(JwtGuard)
     @Patch(':id')
     updateEvent(
         @Param('id', new ParseIntPipe())

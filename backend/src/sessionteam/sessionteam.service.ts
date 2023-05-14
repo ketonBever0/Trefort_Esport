@@ -141,32 +141,13 @@ export class SessionteamService {
     ){
         const sessionTeam = await this.getSessionTeamById(steamId);
 
-        const sessionTeamUsers = await this.prismaService.sessionTeam.findMany({
-            select: {
-                members: {
-                    select: {
-                        userId: true,
-                        user: {
-                            select: {
-                                id: true,
-                                username: true,
-                            }
-                        }
-                    }
-                }
-            },
+        const sessionTeamTeamMembers = await this.prismaService.sessionTeamUser.findMany({
             where: {
-                competitionId: sessionTeam.competitionId,
-                members: {
-                    some: {
-                        userId: user.id,
-                        teamId: sessionTeam.id,   
-                    }
-                }
+                teamId: sessionTeam.id,
             }
         });
         // check if user is already in the team
-        const member = sessionTeamUsers.map((team) => team.members.map((user) => user.userId)).map((id) => id.includes(user.id));
+        const member = sessionTeamTeamMembers.map(member => member.userId === user.id).includes(true);
         if(member) return {message: 'Már csatlakoztál a csapathoz!'};
 
         if (!sessionTeam.public) {
