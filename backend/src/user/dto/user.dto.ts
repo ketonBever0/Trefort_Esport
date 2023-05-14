@@ -35,7 +35,7 @@ export class UserPatchDto {
     address: string;
 
     @IsOptional()
-    @IsNumber()
+    @IsString()
     @IsNotEmpty()
     educationNumber: string;
 
