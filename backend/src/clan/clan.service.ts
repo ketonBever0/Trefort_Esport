@@ -204,34 +204,6 @@ export class ClanService {
 
     }
 
-<<<<<<< Updated upstream
-=======
-    async uploadLogo(
-        file: Express.Multer.File,
-        paramId: number
-    ) {
-
-        const valid = await this.fileUploadService.validateImage(file);
-        if(!valid) return {message: "Nem megfelelő kép formátum!"}
-
-        const clan = await this.getClan(paramId);
-
-        const updateClan = await this.prismaService.clan.update({
-            where: {
-                id: clan.id
-            },
-            data: {
-                logo: file.filename
-            }
-        });
-
-        return {
-            message: "Logo sikeresen feltöltve!",
-            updateClan
-        }
-    }
-
->>>>>>> Stashed changes
     async leaveClan(
         paramId: number,
         user: User
