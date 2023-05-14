@@ -37,7 +37,7 @@ export class UserPatchDto {
     @IsOptional()
     @IsNumber()
     @IsNotEmpty()
-    educationNumber: number;
+    educationNumber: string;
 
     @IsOptional()
     @IsString()

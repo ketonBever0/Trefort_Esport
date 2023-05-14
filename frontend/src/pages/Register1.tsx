@@ -187,7 +187,7 @@ function Register1() {
                                                         return;
                                                     } else {
                                                         setRegisterFormData((prev: any) =>
-                                                            ({ ...prev, [e.target.name]: parseInt(e.target.value) }));
+                                                            ({ ...prev, [e.target.name]: e.target.value }));
                                                     }
                                                 }} type="number"
                                                     name="educationNumber" value={registerFormData.educationNumber} id="omazonosito" className="myform-control form-control required bg-dark p-10" required />
