@@ -107,6 +107,51 @@ export class SessionteamService {
         }: {message: 'Nincs ilyen csapat!'};
     }
 
+    async getMyTeams(
+        user: User
+    ) {
+        const sessionTeams = await this.prismaService.sessionTeam.findMany({
+            where: {
+                members: {
+                    some: {
+                        userId: user.id
+                    }
+                }
+            },
+            select: {
+                id: true,
+                teamName: true,
+                public: true,
+                points: true,
+                description: true,
+                competition: {
+                    select: {
+                        id: true,
+                        name: true,
+                        game: true,
+                        platform: true,
+                        maxMemberCount: true,
+                        endDate: true,
+                    }
+                },
+                members: {
+                    select: {
+                        user: {
+                            select: {
+                                username: true,
+                                profilePicture: true
+                            }
+                        }
+                    }
+                }
+           }
+        });
+
+        return {
+            sessionTeams
+        };
+    }
+
     async getAllSessionTeam() {
         const sessionTeams = await this.prismaService.sessionTeam.findMany({
             where: {
