@@ -44,6 +44,8 @@ function CompetitionRegister() {
         getOneCompetitionById(competitionId);
     }, [])
 
+    
+
     useEffect(() => {
         oneCompetition && getPublicSessionTeams(oneCompetition, userToken);
     }, [oneCompetition])
