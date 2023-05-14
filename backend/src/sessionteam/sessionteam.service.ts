@@ -20,11 +20,21 @@ export class SessionteamService {
             hash = await argon.hash(dto.password);
         }
 
+        // check if user already has a sessionTeam
+       
+
         const sessionTeamsByCompetition = await this.prismaService.sessionTeam.findMany({
             where: {
                 competitionId: dto.competitionId
             }
         });
+
+        // check if user has a sessionTeam in this competition
+        const partOfAnyTeam = sessionTeamsByCompetition.some((sessionTeam) => async () =>{
+            await this.partOfAnyTeam(user, sessionTeam)
+        });
+
+        if(partOfAnyTeam) return {message: "Már tagja vagy egy csapatnak ebben a versenyben!"}
 
         sessionTeamsByCompetition.forEach(sessionTeam => {
             if(sessionTeam.teamName === dto.teamName) {
@@ -145,29 +155,9 @@ export class SessionteamService {
                 teamId: sessionTeam.id,
             }
         });
-        const competitionTeams = await this.prismaService.competition.findUnique({
-            select: {
-                sessionTeams: {
-                    select: {
-                        members: {
-                            select: {
-                                user: {
-                                    select: {
-                                        id: true
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            where: {
-                id: sessionTeam.competitionId
-            }
-        });
-
-        const partOfAnyTeam = competitionTeams.sessionTeams.map(team => team.members.map(member => member.user.id === user.id).includes(true)).includes(true);
-        if(partOfAnyTeam) return {message: 'Már részt veszel egy csapatban!'};
+       
+        
+        if(await this.partOfAnyTeam(user, sessionTeam)) return {message: 'Már részt veszel egy csapatban!'};
 
         // check if team is full
         if(sessionTeamTeamMembers.length >= sessionTeam.competition.maxMemberCount) return {message: 'A csapat megtelt!'};
@@ -274,6 +264,34 @@ export class SessionteamService {
         delete updatedSessionTeam.password;
 
         return updatedSessionTeam;
+    }
+
+    async partOfAnyTeam(
+        user: User,
+        sessionTeam: SessionTeam
+    ) {
+        const competitionTeams = await this.prismaService.competition.findUnique({
+            select: {
+                sessionTeams: {
+                    select: {
+                        members: {
+                            select: {
+                                user: {
+                                    select: {
+                                        id: true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            where: {
+                id: sessionTeam.competitionId
+            }
+        });
+
+        return competitionTeams.sessionTeams.map(team => team.members.map(member => member.user.id === user.id).includes(true)).includes(true);
     }
 
 }
