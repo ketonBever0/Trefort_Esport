@@ -12,7 +12,7 @@ export const SessionTeamProvider = ({ children }: any) => {
 
     const getSessionTeams = async (id: number, token: string) => {
         setIsSessionTeamLoading(true);
-        await fetch(`http://localhost:3333/api/sessionteams/${id}`, {
+        await fetch(`http://localhost:3333/api/sessionteams/competition/${id}`, {
             method: 'GET',
             headers: {
                 "Content-type": "application/json",
