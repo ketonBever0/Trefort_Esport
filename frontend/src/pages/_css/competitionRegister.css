@@ -1,0 +1,24 @@
+.c-team {
+    /* display: flex; */
+    /* min-height: fit-content; */
+    /* overflow: hidden; */
+    width: 100%;
+    color: #fff;
+    background-color: #292e38;
+    border-radius: 20px;
+    /* padding: 1rem; */
+}
+
+/* .c-team-element {
+    border: 1px solid white;
+} */
+
+.c-team-logo {
+    width: auto;
+}
+
+.c-border {
+    border-right: 1px solid #dd163b;
+    border-left: 1px solid #dd163b;
+    /* border-radius: 10%; */
+}

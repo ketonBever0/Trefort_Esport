@@ -23,3 +23,8 @@ hr {
 .rankInputs label:hover {
     cursor: pointer;
 }
+
+#main-container {
+    background-color: rgba(24, 28, 35, 0.7);
+    border-radius: 2%;
+}

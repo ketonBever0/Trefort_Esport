@@ -7,12 +7,19 @@ export const EventProvider = ({ children }: any) => {
     const [isEventsLoading, setIsEventsLoading] = useState<boolean>(false);
     const [events, setEvents] = useState([]);
 
-    const getEvents = async () => {
+    const getEvents = async (token: any) => {
         setIsEventsLoading(true);
-        await fetch('http://localhost:8000/api/events/allevents')
+        await fetch('http://localhost:3333/api/events/all', {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        )
             .then(res => res.json())
             .then(data => {
-                if (!data.message) setEvents(data);
+                if (!data.message) setEvents(data.events);
             })
             .catch(err => console.log(err))
             .finally(() => setIsEventsLoading(false));
