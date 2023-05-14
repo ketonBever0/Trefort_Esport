@@ -143,7 +143,10 @@ export class SessionteamService {
 
         const sessionTeamUsers = await this.prismaService.sessionTeamUser.findMany({
             where: {
-                teamId: sessionTeam.id
+                teamId: sessionTeam.id,
+                team: {
+                    teamName: dto.teamName
+                }
             }
         });
         // check if user is already in the team
