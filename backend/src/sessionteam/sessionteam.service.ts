@@ -10,7 +10,10 @@ export class SessionteamService {
         private prismaService: PrismaService
     ) {}
 
-    async newSessionTeam(dto: SessionTeamDto) {
+    async newSessionTeam(
+        dto: SessionTeamDto,
+        user: User
+    ) {
         
         let hash = null;
         if(dto.password) {
@@ -42,14 +45,11 @@ export class SessionteamService {
            }
         });
 
-        // append users to sessionTeam
-        dto.users.forEach(async (user) => {
-            const sessionTeamUser = await this.prismaService.sessionTeamUser.create({
-                data: {
-                    userId: user,
-                    teamId: sessionTeam.id,
-                }
-            });
+        const sessionTeamUser = await this.prismaService.sessionTeamUser.create({
+            data: {
+                userId: user.id,
+                teamId: sessionTeam.id,
+            }
         });
 
         return {
