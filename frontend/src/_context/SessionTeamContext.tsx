@@ -103,6 +103,14 @@ export const SessionTeamProvider = ({ children }: any) => {
     }
 
 
+    const [mySessionTeams, setMySessionTeams] = useState([]);
+    const [mySessionTeamsOfThisCompetition, setMySessionTeamsOfThisCompetition] = useState([]);
+
+
+    // const getMyCompetitionTeams
+
+
+
 
     return <SessionTeamContext.Provider value={{
         isSessionTeamsLoading,
