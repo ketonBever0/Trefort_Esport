@@ -107,8 +107,21 @@ export const SessionTeamProvider = ({ children }: any) => {
     const [myActiveSessionTeamsOfThisCompetition, setMyActiveSessionTeamsOfThisCompetition] = useState([]);
 
 
-    const getMyActiveSessionTeams = async () => {
-        await fetch(`http://localhost:3333/api/sessionteams/all`)
+    const getMyActiveSessionTeams = async (token: string) => {
+        await fetch(`http://localhost:3333/api/sessionteams/myteams`, {
+            method: 'GET',
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (!data.message) {
+                    console.log(data.sessionTeams);
+
+                }
+            })
     }
 
 
@@ -122,7 +135,10 @@ export const SessionTeamProvider = ({ children }: any) => {
         createSessionTeam,
 
         joinSessionTeam,
-        joinPrivateSessionTeam
+        joinPrivateSessionTeam,
+
+        getMyActiveSessionTeams,
+        myActiveSessionTeams
     }}>{children}</SessionTeamContext.Provider>
 
 
