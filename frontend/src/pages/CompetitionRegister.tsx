@@ -22,7 +22,8 @@ function CompetitionRegister() {
     const { id: eventId, competitionid: competitionId } = useParams();
 
     const {
-        userToken
+        userToken,
+        userData
     } = useContext(UserContext);
 
     const {
@@ -31,7 +32,10 @@ function CompetitionRegister() {
         sessionTeams,
 
         joinSessionTeam,
-        joinPrivateSessionTeam
+        joinPrivateSessionTeam,
+
+        getMyActiveSessionTeams,
+        myActiveSessionTeams
     } = useContext(SessionTeamContext);
 
     const {
@@ -44,11 +48,16 @@ function CompetitionRegister() {
         getOneCompetitionById(competitionId);
     }, [])
 
-    
+
 
     useEffect(() => {
         oneCompetition && getPublicSessionTeams(oneCompetition, userToken);
     }, [oneCompetition])
+
+
+    useEffect(() => {
+        if (userData && oneCompetition) getMyActiveSessionTeams(userToken, oneCompetition);
+    }, [userData, oneCompetition])
 
 
     const [joinToPrivateTeam, setJoinToPrivateTeam] = useState(false);
