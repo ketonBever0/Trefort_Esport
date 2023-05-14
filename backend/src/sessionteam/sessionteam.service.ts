@@ -55,6 +55,7 @@ export class SessionteamService {
                 teamName: true,
                 public: true,
                 points: true,
+                description: true,
                 competition: {
                     select: {
                         id: true,
@@ -73,7 +74,7 @@ export class SessionteamService {
                             }
                         }
                     }
-                }
+                },
            }
         });
 
@@ -92,6 +93,7 @@ export class SessionteamService {
                 teamName: true,
                 public: true,
                 points: true,
+                description: true,
                 competition: {
                     select: {
                         id: true,
@@ -168,6 +170,7 @@ export class SessionteamService {
                 teamName: true,
                 public: true,
                 points: true,
+                description: true,
                 competition: {
                     select: {
                         id: true,

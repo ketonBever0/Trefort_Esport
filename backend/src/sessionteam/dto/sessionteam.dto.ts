@@ -29,4 +29,9 @@ export class SessionTeamDto {
     @IsNotEmpty()
     @IsNumber()
     points: number;
+
+    @IsOptional()
+    @IsNotEmpty()
+    @IsString()
+    description: string;
 }
