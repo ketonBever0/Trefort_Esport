@@ -140,15 +140,45 @@ export class SessionteamService {
         dto: JoinSessionTeamDto
     ){
         const sessionTeam = await this.getSessionTeamById(steamId);
-
         const sessionTeamTeamMembers = await this.prismaService.sessionTeamUser.findMany({
             where: {
                 teamId: sessionTeam.id,
             }
         });
+        const competitionTeams = await this.prismaService.competition.findUnique({
+            select: {
+                sessionTeams: {
+                    select: {
+                        id: true,
+                        members: {
+                            select: {
+                                user: {
+                                    select: {
+                                        id: true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            where: {
+                id: sessionTeam.competitionId
+            }
+        });
+
+        return {
+            competitionTeams
+        }
+
         // check if user is already in the team
         const member = sessionTeamTeamMembers.map(member => member.userId === user.id).includes(true);
         if(member) return {message: 'Már csatlakoztál a csapathoz!'};
+
+        // check if team is full
+        if(sessionTeamTeamMembers.length >= sessionTeam.competition.maxMemberCount) return {message: 'A csapat megtelt!'};
+
+
 
         if (!sessionTeam.public) {
             const valid = await argon.verify(sessionTeam.password, dto.password);
@@ -225,6 +255,12 @@ export class SessionteamService {
                                 profilePicture: true
                             }
                         }
+                    }
+                },
+                competition: {
+                    select: {
+                        id: true,
+                        maxMemberCount: true
                     }
                 }
             }
