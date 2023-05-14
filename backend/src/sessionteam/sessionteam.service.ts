@@ -15,7 +15,10 @@ export class SessionteamService {
         user: User
     ) {
         
-        const hash = await argon.hash(dto.password);
+        let hash = null;
+        if(dto.password) {
+            hash = await argon.hash(dto.password);
+        }
 
         // create sessionTeam
         const sessionTeam = await this.prismaService.sessionTeam.create({
