@@ -13,7 +13,6 @@ export const EventProvider = ({ children }: any) => {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',
-                'Authorization': `Bearer ${token}`
             }
         }
         )
@@ -28,7 +27,7 @@ export const EventProvider = ({ children }: any) => {
 
     const [isEventLoading, setIsEventLoading] = useState<boolean>(false);
     const [event, setEvent] = useState(null);
-    
+
 
     const getEventById = async (id: number, token: any) => {
         setIsEventLoading(true);
