@@ -261,72 +261,25 @@ function NavBar() {
                                         data-nav-mobile="#nk-nav-mobile"
                                     >
                                         <li>
+                                            <Link to='/' className='text-decoration-none'> Főoldal </Link>
+                                        </li>
+                                        <li>
                                             <Link to='/news' className='text-decoration-none'> Hírek </Link>
                                         </li>
                                         <li className="nk-drop-item">
                                             <a href="blog-list.html" className='text-decoration-none'> Versenyek </a>
                                             <ul className="dropdown">
                                                 <li>
-                                                    <a href="news.html" className='text-decoration-none'> Legutóbbi </a>
-                                                </li>
-                                                <li className=" nk-drop-item">
-                                                    <a href="blog-grid.html" className='text-decoration-none'> Blog With Sidebar </a>
-                                                    <ul className="dropdown">
-                                                        <li>
-                                                            <a href="blog-grid.html" className='text-decoration-none'> Blog Grid </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="blog-list.html" className='text-decoration-none'> Blog List </a>
-                                                        </li>
-                                                    </ul>
+                                                    <Link to='/events' className='text-decoration-none'> Meghirdetettek </Link>
                                                 </li>
                                                 <li>
-                                                    <a href="blog-fullwidth.html" className='text-decoration-none'> Blog Fullwidth </a>
+                                                    <a href="news.html" className='text-decoration-none'> Lezajlottak </a>
                                                 </li>
-                                                <li>
-                                                    <a href="blog-article.html" className='text-decoration-none'> Blog Article </a>
-                                                </li>
+
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="gallery.html" className='text-decoration-none'> Gallery </a>
-                                        </li>
-                                        <li className=" nk-drop-item">
-                                            <a href="tournaments.html" className='text-decoration-none'> Tournaments </a>
-                                            <ul className="dropdown">
-                                                <li>
-                                                    <a href="tournaments.html" className='text-decoration-none'> Tournament </a>
-                                                </li>
-                                                <li>
-                                                    <a href="tournaments-teams.html" className='text-decoration-none'> Teams </a>
-                                                </li>
-                                                <li>
-                                                    <a href="tournaments-teammate.html" className='text-decoration-none'> Teammate </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li className=" nk-drop-item">
-                                            <a href="store.html" className='text-decoration-none'> Store </a>
-                                            <ul className="dropdown">
-                                                <li>
-                                                    <a href="store.html" className='text-decoration-none'> Store </a>
-                                                </li>
-                                                <li>
-                                                    <a href="store-product.html" className='text-decoration-none'> Product </a>
-                                                </li>
-                                                <li>
-                                                    <a href="store-catalog.html" className='text-decoration-none'> Catalog </a>
-                                                </li>
-                                                <li>
-                                                    <a href="store-catalog-alt.html" className='text-decoration-none'> Catalog Alt </a>
-                                                </li>
-                                                <li>
-                                                    <a href="store-checkout.html" className='text-decoration-none'> Checkout </a>
-                                                </li>
-                                                <li>
-                                                    <a href="store-cart.html" className='text-decoration-none'> Cart </a>
-                                                </li>
-                                            </ul>
+                                            <Link to='/clans' className='text-decoration-none'> Klánjaink </Link>
                                         </li>
                                     </ul>
                                     <ul className="nk-nav nk-nav-right nk-nav-icons">
@@ -350,7 +303,7 @@ function NavBar() {
                     </div>
                 </div>
                 {/* END: Navbar */}
-                <Dashboard/>
+                <Dashboard />
             </header >
 
             <div id='fillitsplace' style={{ height: "155px" }} />
@@ -370,7 +323,7 @@ function NavBar() {
                             </a>
                             <div className="nk-navbar-mobile-content">
                                 <ul className="nk-nav">
-                                    
+
                                     <li>hello</li>
                                 </ul>
                             </div>

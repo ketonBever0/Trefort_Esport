@@ -132,7 +132,7 @@ export const UserProvider = ({ children }: any) => {
         educationNumber: null,
         username: "",
         email: "",
-        description: "",
+        description: null,
         password: ""
     });
 
@@ -167,7 +167,7 @@ export const UserProvider = ({ children }: any) => {
                         educationNumber: null,
                         username: "",
                         email: "",
-                        description: "",
+                        description: null,
                         password: ""
                     });
                     sessionStorage.removeItem("regForm");

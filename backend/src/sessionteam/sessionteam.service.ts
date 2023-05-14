@@ -12,7 +12,22 @@ export class SessionteamService {
 
     async newSessionTeam(dto: SessionTeamDto) {
         
-        const hash = await argon.hash(dto.password);
+        let hash = null;
+        if(dto.password) {
+            hash = await argon.hash(dto.password);
+        }
+
+        const sessionTeamsByCompetition = await this.prismaService.sessionTeam.findMany({
+            where: {
+                competitionId: dto.competitionId
+            }
+        });
+
+        sessionTeamsByCompetition.forEach(sessionTeam => {
+            if(sessionTeam.teamName === dto.teamName) {
+                return {message: "Már létezik ilyen nevű csapat erre a versenyre!"}
+            }
+        });
 
         // create sessionTeam
         const sessionTeam = await this.prismaService.sessionTeam.create({
@@ -23,6 +38,7 @@ export class SessionteamService {
                 password: dto.public !== undefined ? hash : null,
                 public: dto.public,
                 points: dto.points,
+                description: dto.description || null,
            }
         });
 
@@ -52,6 +68,7 @@ export class SessionteamService {
                 teamName: true,
                 public: true,
                 points: true,
+                description: true,
                 competition: {
                     select: {
                         id: true,
@@ -70,7 +87,7 @@ export class SessionteamService {
                             }
                         }
                     }
-                }
+                },
            }
         });
 
@@ -89,6 +106,7 @@ export class SessionteamService {
                 teamName: true,
                 public: true,
                 points: true,
+                description: true,
                 competition: {
                     select: {
                         id: true,
@@ -123,13 +141,33 @@ export class SessionteamService {
     ){
         const sessionTeam = await this.getSessionTeamById(steamId);
 
-        const sessionTeamUsers = await this.prismaService.sessionTeamUser.findMany({
+        const sessionTeamUsers = await this.prismaService.sessionTeam.findMany({
+            select: {
+                members: {
+                    select: {
+                        userId: true,
+                        user: {
+                            select: {
+                                id: true,
+                                username: true,
+                            }
+                        }
+                    }
+                }
+            },
             where: {
-                teamId: sessionTeam.id
+                competitionId: sessionTeam.competitionId,
+                members: {
+                    some: {
+                        userId: user.id,
+                        teamId: sessionTeam.id,   
+                    }
+                }
             }
         });
         // check if user is already in the team
-        if(sessionTeamUsers.map((user) => user.userId).includes(user.id)) return {message: 'Már csatlakoztál a csapathoz!'};
+        const member = sessionTeamUsers.map((team) => team.members.map((user) => user.userId)).map((id) => id.includes(user.id));
+        if(member) return {message: 'Már csatlakoztál a csapathoz!'};
 
         if (!sessionTeam.public) {
             const valid = await argon.verify(sessionTeam.password, dto.password);
@@ -160,6 +198,32 @@ export class SessionteamService {
             where: {
                 competitionId: competitionId
             },
+            select: {
+                id: true,
+                teamName: true,
+                public: true,
+                points: true,
+                description: true,
+                competition: {
+                    select: {
+                        id: true,
+                        name: true,
+                        game: true,
+                        platform: true,
+                        maxMemberCount: true,
+                    }
+                },
+                members: {
+                    select: {
+                        user: {
+                            select: {
+                                username: true,
+                                profilePicture: true
+                            }
+                        }
+                    }
+                }
+            }
         });
 
         return {

@@ -60,3 +60,11 @@
 .normal-link:hover {
     text-decoration: underline;
 }
+
+.c-checkbox:checked {
+    background-color: #c41536;
+}
+
+.c-checkbox:focus {
+    border-color: #c41536;
+}
