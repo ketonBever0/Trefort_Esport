@@ -2,13 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ClanDto } from './dto';
 import { Clan, User } from '@prisma/client';
-import { FileUploadService } from 'src/fileupload/fileupload.service';
 
 @Injectable()
 export class ClanService {
     constructor(
         private prismaService: PrismaService,
-        private fileUploadService: FileUploadService
     ) {}
 
     async createClan(
