@@ -103,11 +103,13 @@ export const SessionTeamProvider = ({ children }: any) => {
     }
 
 
+    const [myAllSessionTeams, setMyAllSessionTeams] = useState([]);
     const [myActiveSessionTeams, setMyActiveSessionTeams] = useState([]);
+    const [myAllSessionTeamsOfThisCompetition, setMyAllSessionTeamsOfThisCompetition] = useState([]);
     const [myActiveSessionTeamsOfThisCompetition, setMyActiveSessionTeamsOfThisCompetition] = useState([]);
 
 
-    const getMyActiveSessionTeams = async (token: string) => {
+    const getMyActiveSessionTeams = async (token: string, competition: any | null) => {
         await fetch(`http://localhost:3333/api/sessionteams/myteams`, {
             method: 'GET',
             headers: {
@@ -117,9 +119,27 @@ export const SessionTeamProvider = ({ children }: any) => {
         })
             .then(res => res.json())
             .then(data => {
-                if (!data.message) {
-                    console.log(data.sessionTeams);
+                if (data.sessionTeams) {
+                    console.log(data.sessionTeams?.filter((x: any) => x.competition?.endDate == null));
 
+                    setMyAllSessionTeams(data.sessionTeams);
+
+                    setMyActiveSessionTeams(
+                        data.sessionTeams
+                            .filter((x: any) => x.competition?.endDate == null));
+
+                    if (competition) {
+                        setMyAllSessionTeamsOfThisCompetition(
+                            data.sessionTeams
+                                .filter((x: any) => x.competition?.id == competition.id)
+                        );
+
+                        setMyActiveSessionTeamsOfThisCompetition(
+                            data.sessionTeams
+                                .filter((x: any) => x.competition?.endDate == null)
+                                .filter((x: any) => x.competition?.id == competition.id)
+                        );
+                    }
                 }
             })
     }

@@ -56,8 +56,8 @@ function CompetitionRegister() {
 
 
     useEffect(() => {
-        if (userData) getMyActiveSessionTeams(userToken);
-    }, [userData])
+        if (userData && oneCompetition) getMyActiveSessionTeams(userToken, oneCompetition);
+    }, [userData, oneCompetition])
 
 
     const [joinToPrivateTeam, setJoinToPrivateTeam] = useState(false);
