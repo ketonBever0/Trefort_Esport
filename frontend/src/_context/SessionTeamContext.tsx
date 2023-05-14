@@ -103,12 +103,12 @@ export const SessionTeamProvider = ({ children }: any) => {
     }
 
 
-    const [mySessionTeams, setMySessionTeams] = useState([]);
-    const [mySessionTeamsOfThisCompetition, setMySessionTeamsOfThisCompetition] = useState([]);
+    const [myActiveSessionTeams, setMyActiveSessionTeams] = useState([]);
+    const [myActiveSessionTeamsOfThisCompetition, setMyActiveSessionTeamsOfThisCompetition] = useState([]);
 
 
-    const getMySessionTeams = async () => {
-        await fetch(`http://localhost:3333/api/sessionteams/`)
+    const getMyActiveSessionTeams = async () => {
+        await fetch(`http://localhost:3333/api/sessionteams/all`)
     }
 
 
