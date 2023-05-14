@@ -6,6 +6,7 @@ import GoBackButton from '../ui/GoBackButton'
 import { useNavigate, useParams } from 'react-router'
 import SessionTeamContext from '../_context/SessionTeamContext'
 import UserContext from '../_context/UserContext'
+import CompetitionContext from '../_context/CompetitionContext'
 
 function CompetitionRegister() {
 
@@ -30,9 +31,15 @@ function CompetitionRegister() {
         sessionTeams
     } = useContext(SessionTeamContext);
 
+    const {
+        getOneCompetitionById,
+        oneCompetition
+    } = useContext(CompetitionContext);
+
 
     useEffect(() => {
         getSessionTeams(competitionId, userToken);
+        getOneCompetitionById(competitionId);
     }, [])
 
 
@@ -96,7 +103,7 @@ function CompetitionRegister() {
                                         </div>
 
                                         <div className='c-team-element my-auto col-md-2 py-5'>
-                                            <p className='mt-15 text-center h4'>4/5</p>
+                                            <p className='mt-15 text-center h4'>4/{oneCompetition?.maxMemberCount}</p>
                                             <Button2 content="Csatlakozás" />
                                         </div>
 
