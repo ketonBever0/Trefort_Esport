@@ -8,6 +8,12 @@ import Button2 from '../ui/Button2';
 function CreateSessionTeam() {
 
 
+    useEffect(() => {
+        const pageBG: Element = document.querySelector('.full-page')!;
+        pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top.png')")
+    }, [])
+
+
     const { id: eventId, competitionid: competitionId } = useParams();
 
     const {
