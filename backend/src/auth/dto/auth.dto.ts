@@ -29,7 +29,7 @@ export class SignUpDto {
     @IsOptional()
     @IsNumber()
     @IsNotEmpty()
-    educationNumber: number;
+    educationNumber: string;
 
     @IsOptional()
     @IsString()
