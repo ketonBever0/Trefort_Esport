@@ -168,10 +168,6 @@ export class SessionteamService {
 
         const partOfAnyTeam = competitionTeams.sessionTeams.map(team => team.members.map(member => member.user.id === user.id).includes(true)).includes(true);
         if(partOfAnyTeam) return {message: 'Már részt veszel egy csapatban!'};
-        
-        // check if user is already in the team
-        const member = sessionTeamTeamMembers.map(member => member.userId === user.id).includes(true);
-        if(member) return {message: 'Már csatlakoztál a csapathoz!'};
 
         // check if team is full
         if(sessionTeamTeamMembers.length >= sessionTeam.competition.maxMemberCount) return {message: 'A csapat megtelt!'};
