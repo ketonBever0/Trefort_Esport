@@ -5,6 +5,7 @@ import image from '../assets/images/team-2.jpg'
 import GoBackButton from '../ui/GoBackButton'
 import { useNavigate, useParams } from 'react-router'
 import SessionTeamContext from '../_context/SessionTeamContext'
+import UserContext from '../_context/UserContext'
 
 function CompetitionRegister() {
 
@@ -19,6 +20,9 @@ function CompetitionRegister() {
 
     const { id: eventId, competitionid: competitionId } = useParams();
 
+    const {
+        userToken
+    } = useContext(UserContext);
 
     const {
         getSessionTeams,
@@ -26,6 +30,10 @@ function CompetitionRegister() {
         sessionTeams
     } = useContext(SessionTeamContext);
 
+
+    useEffect(() => {
+        getSessionTeams(competitionId, userToken);
+    }, [])
 
 
     return (
@@ -59,7 +67,7 @@ function CompetitionRegister() {
 
                     {
                         !isSessionTeamsLoading &&
-                        (sessionTeams.length > 0 ?
+                        (sessionTeams?.length > 0 ?
                             sessionTeams.map((team: any, index: React.Key) => (
                                 <div className="c-team h-100">
                                     <div className='row w-100 px-2 mx-auto'>
@@ -70,7 +78,7 @@ function CompetitionRegister() {
 
                                         <div className="c-team-element nk-team-cont col-md-4 c-border py-5">
                                             <h3 className="mb-20">
-                                                <span className="text-main-1 h5">Csapat: <br /><span className='mt-1 h3'>SK Telecom T1</span></span>
+                                                <span className="text-main-1 h5">Csapat: <br /><span className='mt-1 h3'>{team.teamName}</span></span>
                                             </h3>
                                             <h4 className="h6 mb-5 text-main-1">Eddigi tagok:</h4>
                                             <p>Tag, Tag, Tag, Tag, Tag</p>
@@ -83,7 +91,7 @@ function CompetitionRegister() {
 
                                         <div className='c-team-element my-auto col-md-4 text-center d-flex align-items-center justify-content-center py-5'>
                                             {/* <div className='nk-gap-1' /> */}
-                                            <p>Ez egy csapat!</p>
+                                            <p>{team.description}</p>
                                             {/* <div className='nk-gap-1' /> */}
                                         </div>
 
