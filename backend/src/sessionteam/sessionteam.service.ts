@@ -163,6 +163,31 @@ export class SessionteamService {
             where: {
                 competitionId: competitionId
             },
+            select: {
+                id: true,
+                teamName: true,
+                public: true,
+                points: true,
+                competition: {
+                    select: {
+                        id: true,
+                        name: true,
+                        game: true,
+                        platform: true,
+                        maxMemberCount: true,
+                    }
+                },
+                members: {
+                    select: {
+                        user: {
+                            select: {
+                                username: true,
+                                profilePicture: true
+                            }
+                        }
+                    }
+                }
+            }
         });
 
         return {
