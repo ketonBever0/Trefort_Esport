@@ -41,6 +41,7 @@ import { CompetitionProvider } from './_context/CompetitionContext'
 import CompetitionRegister from './pages/CompetitionRegister'
 import { SessionTeamProvider } from './_context/SessionTeamContext'
 import CreateSessionTeam from './pages/CreateSessionTeam'
+import AddCompetitions from './pages/AddCompetitions'
 
 function App() {
 
@@ -78,7 +79,8 @@ function App() {
                           <Route path='/tournaments/upcoming' />
                         </Route>
 
-                        <Route path='/events/:id' element={<EventPage />} />
+                        <Route path='/addcompetitions/:id' element={<AddCompetitions />} />
+
 
                         <Route path='/events' element={<Events />} />
                         <Route path='/events/:id' element={<EventPage />} />
