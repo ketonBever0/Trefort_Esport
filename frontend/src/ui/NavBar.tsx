@@ -181,7 +181,7 @@ function NavBar() {
                                                                 <Link to='/stats/:id'
                                                                     className="nk-btn nk-btn-rounded nk-btn-block nk-btn-color-main-2" //nk-btn-color-white
                                                                 >
-                                                                    Korábbi eredményeim
+                                                                    Versenycsapataim
                                                                 </Link>
                                                                 <button onClick={async () => {
                                                                     await logout();

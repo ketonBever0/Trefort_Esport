@@ -10,18 +10,31 @@ export class SessionteamService {
         private prismaService: PrismaService
     ) {}
 
-    async newSessionTeam(dto: SessionTeamDto) {
+    async newSessionTeam(
+        dto: SessionTeamDto,
+        user: User
+    ) {
         
         let hash = null;
         if(dto.password) {
             hash = await argon.hash(dto.password);
         }
 
+        // check if user already has a sessionTeam
+       
+
         const sessionTeamsByCompetition = await this.prismaService.sessionTeam.findMany({
             where: {
                 competitionId: dto.competitionId
             }
         });
+
+        // check if user has a sessionTeam in this competition
+        const partOfAnyTeam = sessionTeamsByCompetition.some((sessionTeam) => async () =>{
+            await this.partOfAnyTeam(user, sessionTeam)
+        });
+
+        if(partOfAnyTeam) return {message: "Már tagja vagy egy csapatnak ebben a versenyben!"}
 
         sessionTeamsByCompetition.forEach(sessionTeam => {
             if(sessionTeam.teamName === dto.teamName) {
@@ -42,14 +55,11 @@ export class SessionteamService {
            }
         });
 
-        // append users to sessionTeam
-        dto.users.forEach(async (user) => {
-            const sessionTeamUser = await this.prismaService.sessionTeamUser.create({
-                data: {
-                    userId: user,
-                    teamId: sessionTeam.id,
-                }
-            });
+        const sessionTeamUser = await this.prismaService.sessionTeamUser.create({
+            data: {
+                userId: user.id,
+                teamId: sessionTeam.id,
+            }
         });
 
         return {
@@ -76,6 +86,7 @@ export class SessionteamService {
                         game: true,
                         platform: true,
                         maxMemberCount: true,
+                        endDate: true,
                     }
                 },
                 members: {
@@ -96,6 +107,51 @@ export class SessionteamService {
         }: {message: 'Nincs ilyen csapat!'};
     }
 
+    async getMyTeams(
+        user: User
+    ) {
+        const sessionTeams = await this.prismaService.sessionTeam.findMany({
+            where: {
+                members: {
+                    some: {
+                        userId: user.id
+                    }
+                }
+            },
+            select: {
+                id: true,
+                teamName: true,
+                public: true,
+                points: true,
+                description: true,
+                competition: {
+                    select: {
+                        id: true,
+                        name: true,
+                        game: true,
+                        platform: true,
+                        maxMemberCount: true,
+                        endDate: true,
+                    }
+                },
+                members: {
+                    select: {
+                        user: {
+                            select: {
+                                username: true,
+                                profilePicture: true
+                            }
+                        }
+                    }
+                }
+           }
+        });
+
+        return {
+            sessionTeams
+        };
+    }
+
     async getAllSessionTeam() {
         const sessionTeams = await this.prismaService.sessionTeam.findMany({
             where: {
@@ -114,6 +170,7 @@ export class SessionteamService {
                         game: true,
                         platform: true,
                         maxMemberCount: true,
+                        endDate: true,
                     }
                 },
                 members: {
@@ -145,33 +202,9 @@ export class SessionteamService {
                 teamId: sessionTeam.id,
             }
         });
-        const competitionTeams = await this.prismaService.competition.findUnique({
-            select: {
-                sessionTeams: {
-                    select: {
-                        members: {
-                            select: {
-                                user: {
-                                    select: {
-                                        id: true
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            where: {
-                id: sessionTeam.competitionId
-            }
-        });
-
-        const partOfAnyTeam = competitionTeams.sessionTeams.map(team => team.members.map(member => member.user.id === user.id).includes(true)).includes(true);
-        if(partOfAnyTeam) return {message: 'Már részt veszel egy csapatban!'};
+       
         
-        // check if user is already in the team
-        const member = sessionTeamTeamMembers.map(member => member.userId === user.id).includes(true);
-        if(member) return {message: 'Már csatlakoztál a csapathoz!'};
+        if(await this.partOfAnyTeam(user, sessionTeam)) return {message: 'Már részt veszel egy csapatban!'};
 
         // check if team is full
         if(sessionTeamTeamMembers.length >= sessionTeam.competition.maxMemberCount) return {message: 'A csapat megtelt!'};
@@ -220,6 +253,7 @@ export class SessionteamService {
                         game: true,
                         platform: true,
                         maxMemberCount: true,
+                        endDate: true,
                     }
                 },
                 members: {
@@ -258,7 +292,8 @@ export class SessionteamService {
                 competition: {
                     select: {
                         id: true,
-                        maxMemberCount: true
+                        maxMemberCount: true,
+                        endDate: true,
                     }
                 }
             }
@@ -278,6 +313,34 @@ export class SessionteamService {
         delete updatedSessionTeam.password;
 
         return updatedSessionTeam;
+    }
+
+    async partOfAnyTeam(
+        user: User,
+        sessionTeam: SessionTeam
+    ) {
+        const competitionTeams = await this.prismaService.competition.findUnique({
+            select: {
+                sessionTeams: {
+                    select: {
+                        members: {
+                            select: {
+                                user: {
+                                    select: {
+                                        id: true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            where: {
+                id: sessionTeam.competitionId
+            }
+        });
+
+        return competitionTeams.sessionTeams.map(team => team.members.map(member => member.user.id === user.id).includes(true)).includes(true);
     }
 
 }

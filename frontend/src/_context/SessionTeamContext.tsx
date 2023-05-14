@@ -103,6 +103,49 @@ export const SessionTeamProvider = ({ children }: any) => {
     }
 
 
+    const [myAllSessionTeams, setMyAllSessionTeams] = useState([]);
+    const [myActiveSessionTeams, setMyActiveSessionTeams] = useState([]);
+    const [myAllSessionTeamsOfThisCompetition, setMyAllSessionTeamsOfThisCompetition] = useState([]);
+    const [myActiveSessionTeamsOfThisCompetition, setMyActiveSessionTeamsOfThisCompetition] = useState([]);
+
+
+    const getMyActiveSessionTeams = async (token: string, competition: any | null) => {
+        await fetch(`http://localhost:3333/api/sessionteams/myteams`, {
+            method: 'GET',
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.sessionTeams) {
+                    console.log(data.sessionTeams?.filter((x: any) => x.competition?.endDate == null));
+
+                    setMyAllSessionTeams(data.sessionTeams);
+
+                    setMyActiveSessionTeams(
+                        data.sessionTeams
+                            .filter((x: any) => x.competition?.endDate == null));
+
+                    if (competition) {
+                        setMyAllSessionTeamsOfThisCompetition(
+                            data.sessionTeams
+                                .filter((x: any) => x.competition?.id == competition.id)
+                        );
+
+                        setMyActiveSessionTeamsOfThisCompetition(
+                            data.sessionTeams
+                                .filter((x: any) => x.competition?.endDate == null)
+                                .filter((x: any) => x.competition?.id == competition.id)
+                        );
+                    }
+                }
+            })
+    }
+
+
+
 
     return <SessionTeamContext.Provider value={{
         isSessionTeamsLoading,
@@ -112,7 +155,10 @@ export const SessionTeamProvider = ({ children }: any) => {
         createSessionTeam,
 
         joinSessionTeam,
-        joinPrivateSessionTeam
+        joinPrivateSessionTeam,
+
+        getMyActiveSessionTeams,
+        myActiveSessionTeams
     }}>{children}</SessionTeamContext.Provider>
 
 

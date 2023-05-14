@@ -5,7 +5,9 @@ import { Clan, User } from '@prisma/client';
 
 @Injectable()
 export class ClanService {
-    constructor(private prismaService: PrismaService) {}
+    constructor(
+        private prismaService: PrismaService,
+    ) {}
 
     async createClan(
         dto: ClanDto,

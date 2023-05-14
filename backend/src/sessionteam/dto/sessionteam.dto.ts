@@ -20,10 +20,6 @@ export class SessionTeamDto {
     @IsString()
     password: string;
 
-    @IsNotEmpty()
-    @IsArray()
-    users: Array<number>;
-
     @IsOptional()
     @IsBoolean()
     @IsNotEmpty()
