@@ -20,6 +20,18 @@ export class SessionteamService {
             hash = await argon.hash(dto.password);
         }
 
+        const sessionTeamsByCompetition = await this.prismaService.sessionTeam.findMany({
+            where: {
+                competitionId: dto.competitionId
+            }
+        });
+
+        sessionTeamsByCompetition.forEach(sessionTeam => {
+            if(sessionTeam.teamName === dto.teamName) {
+                return {message: "Már létezik ilyen nevű csapat erre a versenyre!"}
+            }
+        });
+
         // create sessionTeam
         const sessionTeam = await this.prismaService.sessionTeam.create({
            data: {
@@ -131,7 +143,10 @@ export class SessionteamService {
 
         const sessionTeamUsers = await this.prismaService.sessionTeamUser.findMany({
             where: {
-                teamId: sessionTeam.id
+                teamId: sessionTeam.id,
+                team: {
+                    teamName: dto.teamName
+                }
             }
         });
         // check if user is already in the team
