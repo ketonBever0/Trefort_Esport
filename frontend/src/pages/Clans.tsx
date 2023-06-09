@@ -1,5 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import GoBackButton from '../ui/GoBackButton'
+import ClanContext from '../_context/ClanContext';
+import { Link } from 'react-router-dom';
 
 function Clans() {
 
@@ -8,7 +10,13 @@ function Clans() {
     pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-4.png')")
   }, [])
 
-  
+  const { isClansLoading, clansData, ClansDataByID, getClans, getClanById } = useContext(ClanContext);
+
+  useEffect(() => {
+    getClans();
+    console.log('clansData: ', clansData)
+  }, [])
+
 
   return (
     <div className='container'>
@@ -38,42 +46,28 @@ function Clans() {
         </table>
 
         <div className='row d-flex gap-3 p-5 justify-content-center'>
-          <div className="nk-info-box d-flex gap-3 pl-30 clanusers_col-lg-custom clanuser">
-            <div className='clanUserImgContainer'>
-              <img width={'100px'} className='clanuserImage' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
-            </div>
-            <div className='row align-items-center'>
-              <h3 className='text-main-1'>klan_123</h3>
-              <p>Leírás... It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-            </div>
-          </div>
-          <div className="nk-info-box d-flex gap-4 pl-40 clanusers_col-lg-custom">
-            <div>
-              <img width={'100px'} src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
-            </div>
-            <div className='row align-items-center '>
-              <h3 className='text-main-1'>klan_123</h3>
-              <p>Leírás... It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-            </div>
-          </div>
-          <div className="nk-info-box d-flex gap-3 pl-30 clanusers_col-lg-custom">
-            <div>
-              <img width={'100px'} src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
-            </div>
-            <div className='row align-items-center'>
-              <h3 className='text-main-1'>klan_123</h3>
-              <p>Leírás... It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-            </div>
-          </div>
-          <div className="nk-info-box d-flex gap-3 pl-30 clanusers_col-lg-custom">
-            <div>
-              <img width={'100px'} src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
-            </div>
-            <div className='row align-items-center'>
-              <h3 className='text-main-1'>klan_123</h3>
-              <p>Leírás... It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-            </div>
-          </div>
+
+
+          {
+            clansData && (
+              clansData.map((clan: any, index: React.Key) => (
+                <Link style={{ textDecoration: 'none' }} to={`/clanprofile/${clan?.id}`}>
+                <div className="nk-info-box d-flex gap-3 pl-30 clanusers_col-lg-custom clanuser">
+                  <div className='clanUserImgContainer'>
+                    <img width={'100px'} className='clanuserImage' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
+                  </div>
+                  <div className='row align-items-center'>
+                    <h3 className='text-main-1'>{clan?.name}</h3>
+                    <p>Státusz: {clan?.status}</p>
+                    <p>Leader: {clan?.leaderId}</p>
+                  </div>
+                </div>
+                </Link>
+              )
+              )
+            )
+          }
+
 
 
         </div>

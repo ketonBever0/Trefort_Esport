@@ -18,7 +18,7 @@ export const EventProvider = ({ children }: any) => {
         )
             .then(res => res.json())
             .then(data => {
-                if (!data.message) setEvents(data.events);
+                if (!data.message) {setEvents(data.events); sessionStorage.setItem("eventsNumberSSN", data.events.length)};
             })
             .catch(err => console.log(err))
             .finally(() => setIsEventsLoading(false));

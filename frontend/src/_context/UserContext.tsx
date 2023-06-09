@@ -125,6 +125,25 @@ export const UserProvider = ({ children }: any) => {
             .finally(() => setIsOtherUserDataLoading(false));
     }
 
+    const [isUsersLoading, setIsUsersLoading] = useState<boolean>(false);
+    const [usersData, setusersData] = useState([]);
+
+    const getAllUsers = async () => {
+        //setIsOtherUserDataLoading(true);
+        await fetch(`http://localhost:3333/api/users/all`, {
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${userToken}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {sessionStorage.setItem("usersNumberSSN", data.users.length)})
+            .catch(err => {console.log('error:',err); Notify.tError("Hiba történt.")})
+            .finally(() => setIsUsersLoading(false));
+    }
+
+
+
     const [registerFormData, setRegisterFormData] = useState({
         firstName: "",
         lastName: "",
@@ -203,6 +222,9 @@ export const UserProvider = ({ children }: any) => {
         isOtherUserDataLoading,
         otherUser,
         getOtherUserById,
+        getAllUsers,
+        usersData,
+        isUsersLoading,
 
         registerFormData, setRegisterFormData,
         register,

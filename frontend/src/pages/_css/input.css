@@ -10,7 +10,8 @@
   top: 0;
   padding: 7px 0 0 13px;
   transition: all 200ms;
-  opacity: 0.5;
+  opacity: 0.8;
+  font-weight: 100;
 }
 
 .myform-control:focus+.myform-control-placeholder,

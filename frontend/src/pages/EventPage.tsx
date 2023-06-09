@@ -20,7 +20,7 @@ function EventPage() {
 
     useEffect(() => {
         id && getEventById(id);
-    }, [])
+    }, []);
 
 
     const formatDate = (date: string) => {

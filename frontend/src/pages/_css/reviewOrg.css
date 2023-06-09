@@ -108,3 +108,23 @@ p {
 .lightgreybg {
     background-color: #292e38;
 }
+
+.overflow-y-auto {
+    overflow-y: auto;
+    max-height: 70rem;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb { 
+    background: grey; 
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover { 
+    background: rgb(88, 88, 88); 
+    cursor: pointer;
+}
+
+.overflow-y-auto::-webkit-scrollbar {
+    width: 5px;
+  }
+
+

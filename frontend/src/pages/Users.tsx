@@ -71,7 +71,7 @@ function Users() {
         <div className='row d-flex gap-3 p-5 justify-content-center'>
 
           {
-            userData && userData.map(user => (
+            userData && userData.map((user: any, index: React.Key) => (
 
               <div className='d-flex justify-content-center'>
                 <Link style={{ textDecoration: 'none' }} to={`/profile/${user.id}`}>
