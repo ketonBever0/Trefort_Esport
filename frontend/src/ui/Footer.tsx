@@ -1,13 +1,34 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import './_css/footer.css'
+import UserContext from '../_context/UserContext';
+import EventContext from '../_context/EventContext';
+import OrganisationContext from '../_context/OrganisationContext';
 
 function Footer() {
+
+
+    const {
+        getAllUsers,
+        usersData,
+        isUsersLoading
+    } = useContext(UserContext)
+
+    const {
+        getEvents
+    } = useContext(EventContext)
+
+    const {
+        getOrganizations
+    } = useContext(OrganisationContext)
+
+
+
 
     function counter(id: any, start: any, end: any, duration: any) {
         let obj: any = document.getElementById(id),
             current = start,
             range = end - start,
-            increment = end > start ? 1 : -1,
+            increment = 1,
             step = Math.abs(Math.floor(duration / range)),
             timer = setInterval(() => {
                 current += increment;
@@ -18,11 +39,22 @@ function Footer() {
             }, step);
     }
 
+
+
     useEffect(() => {
-        counter("count1", 0, 400, 2000);
-        counter("count2", 0, 70, 2000);
-        counter("count3", 0, 200, 2000);
-    }, [])
+        const fetchDataForFooter = async () => {
+            //await Promise.all([getAllUsers(), getEvents(), getOrganizations()]);
+            counter("count1", 0, 400, 2000);
+            counter("count2", 0, 40, 2000);
+            counter("count3", 0, 50, 2000);
+            // sessionStorage.getItem("orgsNumberSSN")
+            // sessionStorage.getItem("eventsNumberSSN")
+            // sessionStorage.getItem("usersNumberSSN")
+        };
+    
+        fetchDataForFooter();
+    }, []);
+
 
     return (
         <div>

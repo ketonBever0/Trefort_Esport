@@ -9,7 +9,7 @@ function SubmitOrganisation2() {
   useEffect(() => {
     const pageBG: Element = document.querySelector('.full-page')!;
     pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-4.png')")
-}, [])
+  }, [])
 
   const [width, setWidth] = useState(50);
 
@@ -33,7 +33,7 @@ function SubmitOrganisation2() {
       <div className='bg-dark bg-transparent p-30 rounded text-xl'>
       <div className='row d-flex'>
           <div className='col row justify-content-center'>
-            <div className='d-flex m-30 justify-content-start'><GoBackButton/></div>
+            <div className='d-flex mb-30 justify-content-start'><GoBackButton /></div>
           </div>
           <div className='col'>
           </div>
@@ -43,7 +43,7 @@ function SubmitOrganisation2() {
         <ProgressBar myWidth={width} />
         <>
           <div className="tab-content">
-            <div className="tab-pane fade show active"id="pills-login"role="tabpanel"aria-labelledby="tab-login">
+            <div className="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
               <h3 className='nk-decorated-h-2 m-30 text-sm-h6'>
                 <span className='text-main'>Új szervezet beküldése</span>
               </h3>
@@ -78,11 +78,11 @@ function SubmitOrganisation2() {
                           <textarea name="leiras" id="leiras" className="myform-control form-control required bg-dark p-10" required />
                           <label className="form-control-placeholder myform-control-placeholder p-10" htmlFor="leiras">Cég leírása</label>
                         </div>
-                        </div>
-                        <div className="col-xl-4 col-md-5 col-lg-4 col-10">
-                          <label className=''>Profilkép feltöltése</label>
-                          <input onChange={handleInputChange} type="file" className="form-control required bg-dark"/>
-                        </div>
+                      </div>
+                      <div className="col-xl-4 col-md-5 col-lg-4 col-10">
+                        <label className=''>Profilkép feltöltése</label>
+                        <input onChange={handleInputChange} type="file" className="form-control required bg-dark" />
+                      </div>
                     </div>
                   </div>
                 </div>
