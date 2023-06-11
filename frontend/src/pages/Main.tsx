@@ -6,6 +6,8 @@ import LatestMatches from '../components/Main/LatestMatches'
 import LatestNews from '../components/Main/LatestNews'
 import Sidebar from '../components/Sidebar'
 import Dashboard from '../ui/Dashboard'
+import trefortImg from './images/esport_kep.png';
+import Header from '../components/Main/Header'
 
 function Main() {
 
@@ -23,13 +25,71 @@ function Main() {
 
                         <div className='m-10'>
                             {/* START: Image Slider */}
-                            <div className="nk-image-slider" data-autoplay={8000}>
-                                <div className="nk-image-slider-item">
-                                    <div className=''>Images</div>
+                            {/* <div className="nk-image-slider" data-autoplay={8000}>
+                                <div className="nk-image-slider-item" style={{height: "40rem"}}>
+                                    <img
+                                        src={trefortImg}
+                                        alt=""
+                                        className="nk-image-slider-img"
+                                        style={{objectFit:"contain", width: "100%"}}
+                                    // data-thumb="assets/images/slide-1-thumb.jpg"
+                                    />
+                                    <div className="nk-image-slider-content">
+                                        <h3 className="h4">As we Passed, I remarked</h3>
+                                        <p className="text-white">
+                                            As we passed, I remarked a beautiful church-spire rising above some old
+                                            elms in the park; and before them, in the midst of a lawn, chimneys
+                                            covered with ivy, and the windows shining in the sun.
+                                        </p>
+                                        <a
+                                            href="#"
+                                            className="nk-btn nk-btn-rounded nk-btn-color-white nk-btn-hover-color-main-1"
+                                        >
+                                            Read More
+                                        </a>
+
+                                    </div>
                                 </div>
-                            </div>
+
+                                <div className="nk-image-slider-item" style={{height: "40rem"}}>
+                                    <img
+                                        src="assets/images/slide-1.jpg"
+                                        alt=""
+                                        className="nk-image-slider-img"
+                                        style={{objectFit:"contain", width: "100%"}}
+                                    // data-thumb="assets/images/slide-1-thumb.jpg"
+                                    />
+                                    <div className="nk-image-slider-content">
+                                        <h3 className="h4">As we Passed, I remarked</h3>
+                                        <p className="text-white">
+                                            As we passed, I remarked a beautiful church-spire rising above some old
+                                            elms in the park; and before them, in the midst of a lawn, chimneys
+                                            covered with ivy, and the windows shining in the sun.
+                                        </p>
+                                        <a
+                                            href="#"
+                                            className="nk-btn nk-btn-rounded nk-btn-color-white nk-btn-hover-color-main-1"
+                                        >
+                                            Read More
+                                        </a>
+
+                                    </div>
+                                </div>
+
+
+
+                            </div> */}
+
+
                         </div>
                         {/* END: Image Slider */}
+
+
+
+                        <Header />
+
+
+
 
                         {/* START: Categories */}
                         {/* <div className="nk-gap-2" />
@@ -81,7 +141,7 @@ function Main() {
                     </div>
                 </div> */}
 
-                        <div className="nk-gap-6" />
+                        <div className="nk-gap-4" />
                         <div className="row vertical-gap">
                             <div className="col-lg-8">
                                 <UpComingEvents />
