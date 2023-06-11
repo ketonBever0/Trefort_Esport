@@ -33,7 +33,7 @@ model Organization {
   email         String             @unique @db.VarChar(255)
   phoneNumber   String             @db.VarChar(255)
   type          String             @db.VarChar(255)
-  status        String             @default("pending") @db.VarChar(255)
+  status        String             @default("függőben") @db.VarChar(255)
   contributions EventContributor[]
   description   String             @db.Text()
 
