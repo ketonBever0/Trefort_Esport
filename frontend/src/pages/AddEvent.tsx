@@ -98,15 +98,15 @@ function AddEvent() {
 
                     <div className="col-lg-6">
                         <div style={{ borderTop: "2px solid #dd163b" }} className="nk-box-2 bg-dark-2">
-                            <label className='h4 m-10 border-main-left text-sm-h6'>Esemény neve:</label><br></br>
+                            <label className='h4 p-10 border-main-left text-sm-h6'>Esemény neve:</label><br></br>
                             <input onChange={writeEventData} required id='name' className="form-control required bg-dark m-10"></input>
 
-                            <label className='h4 m-10 border-main-left text-sm-h6'>Megrendező:</label><br></br>
+                            <label className='h4 p-10 border-main-left text-sm-h6'>Megrendező:</label><br></br>
                             <input className="form-control bg-dark m-10"></input>
-                            <label className='h4 m-10 border-main-left text-sm-h6'>Szponzor:</label><br></br>
+                            <label className='h4 p-10 border-main-left text-sm-h6'>Szponzor:</label><br></br>
                             <input className="form-control bg-dark m-10"></input>
 
-                            <label className='h4 m-10 border-main-left text-sm-h6'>Esemény leírása:</label>
+                            <label className='h4 p-10 border-main-left text-sm-h6'>Esemény leírása:</label>
                             <textarea onChange={writeEventData} required id='description' className="form-control bg-dark m-10"></textarea>
                         </div>
 
@@ -115,34 +115,34 @@ function AddEvent() {
                     <div className="col-lg-6  myColor2">
                         <div style={{ borderTop: "2px solid #dd163b" }} className="nk-box-2 bg-dark-2">
 
-                            <label className='h4 m-10 border-main-left text-sm-h6'>Esemény helyszíne:</label><br></br>
+                            <label className='h4 p-10 border-main-left text-sm-h6'>Esemény helyszíne:</label><br></br>
                             <label className='ml-10'>(Város, utca, házszám)</label>
                             <input onChange={writeEventData} required id='location' className="form-control required bg-dark m-10" ></input>
 
-                            <label className='h4 m-10 border-main-left text-sm-h6'>Egyéb információ:</label>
+                            <label className='h4 p-10 border-main-left text-sm-h6'>Egyéb információ:</label>
                             <textarea className="form-control bg-dark m-10"></textarea>
                         </div>
                     </div>
                     <div className="col-lg-6">
                         <div style={{ borderTop: "2px solid #dd163b" }} className="nk-box-2 bg-dark-2">
 
-                            <label className='h4 m-10 border-main-left text-sm-h6'>Esemény kezdési időpontja:</label><br></br>
+                            <label className='h4 p-10 border-main-left text-sm-h6'>Esemény kezdési időpontja:</label><br></br>
                             <label className='ml-10'>(Év, hónap, nap, óra, perc)</label>
                             <input onChange={writeEventData} required id='startDate' type='date' className="form-control cursor-text required bg-dark m-10"></input>
 
-                            <label className='h4 m-10 border-main-left text-sm-h6'>Egyéb információ:</label>
+                            <label className='h4 p-10 border-main-left text-sm-h6'>Egyéb információ:</label>
                             <textarea className="form-control bg-dark m-10"></textarea>
                         </div>
                     </div>
                     <div className="col-lg-6">
                         <div style={{ borderTop: "2px solid #dd163b" }} className="nk-box-2 bg-dark-2">
 
-                            <label className='h4 m-10 border-main-left text-sm-h6'>Esemény vége:</label><br></br>
+                            <label className='h4 p-10 border-main-left text-sm-h6'>Esemény vége:</label><br></br>
                             <p className='opacity-50 p-10'>Kizárólag a verseny végén töltendő ki.</p>
                             <label className='ml-10'>(Év, hónap, nap, óra, perc)</label>
                             <input onChange={writeEventData} required id='endDate' type='date' className="form-control cursor-text required bg-dark m-10"></input>
 
-                            <label className='h4 m-10 border-main-left text-sm-h6'>Egyéb információ:</label>
+                            <label className='h4 p-10 border-main-left text-sm-h6'>Egyéb információ:</label>
                             <textarea className="form-control bg-dark m-10"></textarea>
                         </div>
                     </div>

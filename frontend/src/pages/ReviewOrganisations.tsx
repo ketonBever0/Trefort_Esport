@@ -8,7 +8,9 @@ const Test = () => {
   const { orgs, getOrganizations, acceptOrg } = useContext(OrganisationContext);
 
   //kiválasztott szervezet adatai, amelyeket betöltünk a jobb oldali div-be
-  const [currentOrgDetails, setCurrentOrgDetails] = useState({});
+  //akkor állítódik be, mikor rákattintunk a listában az egyik szervezetre
+
+ 
 
   //éppen kiválasztott szervezet
   const [activeOrg, setactiveOrg] = useState(0);
@@ -16,10 +18,13 @@ const Test = () => {
   //függőben és elutasítva fülek
   const [activeTab, setActiveTab] = useState(0);
 
-  //eltároljuk a függőben lévő és elutasított szervezeteket
-  const pendingOrganisations = orgs.filter((myOrg: any) => myOrg.status == 'pending');
+  //eltároljuk a függőben lévő és elutasított szervezeteket. orgs-ból jönnek a pendingOrgs
+  const pendingOrgs = orgs.filter((myOrg: any) => myOrg.status == 'pending');
+
   //const rejectedOrganisations = orgs.filter((myOrg: any) => myOrg.status == 'pending');
 
+ const [currentOrgDetails, setCurrentOrgDetails] = useState(pendingOrgs[0]);
+ 
   useEffect(() => {
     const pageBG: Element = document.querySelector('.full-page')!;
     pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-4.png')");
@@ -28,12 +33,12 @@ const Test = () => {
 
   }, []);
 
-  const rejectOrg = () => {
-
+  const logging = () => {
+    console.log(currentOrgDetails);
   }
 
   const update = () => {
-    
+
   }
 
   const tabs = [
@@ -44,8 +49,11 @@ const Test = () => {
             <div id='reviewList' className="reviewList lightgreybg">
 
               {
-                pendingOrganisations && (
-                  pendingOrganisations.map((myOrg: any, index: any) => (
+
+                //myOrg: mapen belüli változó a pendingOrgs-re
+                //orgs contextből -> pendingOrgs (filterezett orgs) -> myOrg (map)
+                pendingOrgs && (
+                  pendingOrgs.map((myOrg: any, index: any) => (
                     <div onClick={() => { setCurrentOrgDetails(myOrg); setactiveOrg(index); }}
                       className={`reviewList_itemcontainer container ${activeOrg === index ? 'bg-dark-4' : ''}`}
                     >
@@ -72,6 +80,7 @@ const Test = () => {
 
             </div>
           </div>
+
           <div id='reviewDetails' className='col reviewDetails bg-dark-4'>
             <div className="nano-content p-50">
               <div className="nk-news-box-item-image">
@@ -85,12 +94,12 @@ const Test = () => {
               <div className="p-5">
                 <h4>Szervezet adatai:</h4>
                 <ul>
-                  <li className="text-lg">Típus: <span className="text-white text-lg"> Iskola</span></li>
-                  <li className="text-lg">Képviselő személy:<span className="text-white text-lg">  John Doe</span></li>
-                  <li className="text-lg">Cím:<span className="text-white text-lg">  5600 Békéscsaba, Gyulai út 32.</span></li>
-                  <li className="text-lg">E-mail cím:<span className="text-white text-lg"> user@outlook.com</span></li>
-                  <li className="text-lg">Telefonszám:<span className="text-white text-lg"> +36 (20) 476-2340</span></li>
-                  <li className="text-lg">Adószám:<span className="text-white text-lg"> 12345678-2-10</span></li>
+                  <li className="text-lg">Típus: <span className="text-white text-lg">{currentOrgDetails.type}</span></li>
+                  {/* <li className="text-lg">Képviselő személy:<span className="text-white text-lg"></span></li> */}
+                  <li className="text-lg">Cím: <span className="text-white text-lg">{currentOrgDetails.location}</span></li>
+                  <li className="text-lg">E-mail cím: <span className="text-white text-lg">{currentOrgDetails.email}</span></li>
+                  <li className="text-lg">Telefonszám:<span className="text-white text-lg">{currentOrgDetails.phoneNumber}</span></li>
+                  {/* <li className="text-lg">Adószám:<span className="text-white text-lg"></span></li> */}
 
                 </ul>
               </div>
@@ -102,9 +111,9 @@ const Test = () => {
               </div>
 
               <div className="m-20 d-flex justify-content-around gap-5">
-                <button 
-                onClick={()=>{acceptOrg(currentOrgDetails.id); update()}}
-                id="reviewAcceptBtn" className="button2">Intézmény elfogadása</button>
+                <button
+                  onClick={() => { acceptOrg(currentOrgDetails.id); update() }}
+                  id="reviewAcceptBtn" className="button2">Intézmény elfogadása</button>
                 <button id="reviewDeclineBtn" className="button2">Intézmény elutasítása</button>
               </div>
               <div className="nk-news-box-item-date text-end">
@@ -188,7 +197,7 @@ const Test = () => {
 
   return (
     <div>
-
+      <button onClick={logging}>hiii</button>
       <BreadCrumbs />
       <div className='container'>
         <div className='row'>

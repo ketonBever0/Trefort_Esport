@@ -22,7 +22,7 @@ export const OrganisationProvider = ({ children }: any) => {
         )
             .then(res => res.json())
             .then(data => {
-                if (!data.message) {setOrgs(data.orgs); console.log(orgs); sessionStorage.setItem("orgsNumberSSN", data.orgs.length)};
+                if (!data.message) {setOrgs(data.orgs); sessionStorage.setItem("orgsNumberSSN", data.orgs.length)};
             })
             .catch(err => console.log(err))
             .finally(() => setIsOrgsLoading(false));
@@ -39,7 +39,7 @@ export const OrganisationProvider = ({ children }: any) => {
       )
           .then(res => res.json())
           .then(data => {
-              if (!data.message) {console.log("elfogadás"); Notify.tSuccess("Elfogadva!")}
+              if (!data.message) {Notify.tSuccess("Elfogadva!")}
               else {Notify.tSuccess(data.message)}
               ;
           })

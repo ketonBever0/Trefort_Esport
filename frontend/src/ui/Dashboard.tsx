@@ -30,7 +30,7 @@ function Dashboard() {
                 </a>
                 <h3 className='border-main-1 text-main-1 border-2 mt-70 pb-30'>Dashboard</h3>
                 <Link to="/users"><a href="#">Felhasználók</a></Link>
-                <Link to="/"><a href="#">Klánok</a></Link>
+                <Link to="/clans"><a href="#">Klánok</a></Link>
                 <Link to="/"><a href="#">Bejegyzések</a></Link>
                 <Link to="/events"> <a href="#">Események szerkesztése</a></Link>
                 <Link to="/revieworg"><a href="#">Beküldött szervezetek</a></Link>

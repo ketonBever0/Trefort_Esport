@@ -8,7 +8,7 @@ function EventPage() {
     useEffect(() => {
         const pageBG: Element = document.querySelector('.full-page')!;
         pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-4.png')")
-    }, [])
+    }, []);
 
     const {
         isEventLoading,
@@ -52,6 +52,7 @@ function EventPage() {
                                 <span className="text-main-6">Esemény adatai</span>
                             </span>
                         </h3>
+                        
                         <div className="row vertical-gap text-white">
                             <div className="col-lg-6">
                                 <div className="nk-box-2 bg-dark-2">

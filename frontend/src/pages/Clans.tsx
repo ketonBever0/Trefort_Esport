@@ -5,14 +5,12 @@ import { Link } from 'react-router-dom';
 
 function Clans() {
 
-  useEffect(() => {
-    const pageBG: Element = document.querySelector('.full-page')!;
-    pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-4.png')")
-  }, [])
-
   const { isClansLoading, clansData, ClansDataByID, getClans, getClanById } = useContext(ClanContext);
 
   useEffect(() => {
+
+    const pageBG: Element = document.querySelector('.full-page')!;
+    pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-4.png')")
     getClans();
     console.log('clansData: ', clansData)
   }, [])
@@ -29,8 +27,8 @@ function Clans() {
         <table className="nk-table mb-20">
           <tbody className='container bg-transparent border-none'>
             <tr className='row bg-transparent text-center'>
-              <th className='col-md'>Ábécé sorrend</th>
-              <th className='col-md'>Legutolsó regisztráció</th>
+              <th className='col-md hoverMain'>Ábécé sorrend</th>
+              <th className='col-md hoverMain'>Legutolsó regisztráció</th>
               <th className='col-md'>
                 <form action="#" method="post" className="nk-form nk-form-style-2">
                   <div className="input-group">
@@ -52,16 +50,16 @@ function Clans() {
             clansData && (
               clansData.map((clan: any, index: React.Key) => (
                 <Link style={{ textDecoration: 'none' }} to={`/clanprofile/${clan?.id}`}>
-                <div className="nk-info-box d-flex gap-3 pl-30 clanusers_col-lg-custom clanuser">
-                  <div className='clanUserImgContainer'>
-                    <img width={'100px'} className='clanuserImage' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
+                  <div className="nk-info-box d-flex gap-3 pl-30 clanusers_col-lg-custom clanuser">
+                    <div className='clanUserImgContainer'>
+                      <img width={'100px'} className='clanuserImage' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
+                    </div>
+                    <div className='row align-items-center'>
+                      <h3 className='text-main-1'>{clan?.name}</h3>
+                      <p>Státusz: {clan?.status}</p>
+                      <p>Leader: {clan?.leaderId}</p>
+                    </div>
                   </div>
-                  <div className='row align-items-center'>
-                    <h3 className='text-main-1'>{clan?.name}</h3>
-                    <p>Státusz: {clan?.status}</p>
-                    <p>Leader: {clan?.leaderId}</p>
-                  </div>
-                </div>
                 </Link>
               )
               )

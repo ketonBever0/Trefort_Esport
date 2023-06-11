@@ -1,6 +1,6 @@
-import React from 'react'
-import GoBackButton from '../ui/GoBackButton'
-import { useEffect, useState } from 'react'
+import React from 'react';
+import GoBackButton from '../ui/GoBackButton';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
@@ -16,6 +16,9 @@ function Users() {
 
 
   useEffect(() => {
+    const pageBG: Element = document.querySelector('.full-page')!;
+    pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-4.png')")
+
     fetch('http://localhost:3333/api/users/all', {
       method: 'GET',
       headers: {
@@ -26,7 +29,7 @@ function Users() {
       .then(response => response.json())
       .then(data => { console.log(data); setuserData(data.users); })
       .catch(error => console.error(error));
-  }, [])
+  }, []);
 
   function navigateToUserProfile(clickedID: any) {
     fetch(`http://localhost:3333/api/users/${clickedID}`, {
@@ -39,8 +42,7 @@ function Users() {
       .then(response => response.json())
       .then(data => { console.log(data); navigate('/') })
       .catch(error => console.error(error));
-  }
-
+  };
 
   return (
     <div className='container'>
@@ -53,8 +55,8 @@ function Users() {
         <table className="nk-table mb-20">
           <tbody className='container bg-transparent border-none'>
             <tr className='row bg-transparent text-center'>
-              <th className='col-md'>Ábécé sorrend</th>
-              <th className='col-md'>Legutolsó regisztráció</th>
+              <th className='col-md hoverMain'>Ábécé sorrend</th>
+              <th className='col-md hoverMain'>Legutolsó regisztráció</th>
               <th className='col-md'>
                 <form action="#" method="post" className="nk-form nk-form-style-2">
                   <div className="input-group">
@@ -68,21 +70,22 @@ function Users() {
             </tr>
           </tbody>
         </table>
-        <div className='row d-flex gap-3 p-5 justify-content-center'>
+        <div className='container'>
+          <div className='row d-flex gap-3 justify-content-center'>
 
-          {
-            userData && userData.map((user: any, index: React.Key) => (
+            {
+              userData && userData.map((user: any, index: React.Key) => (
 
-              <div className='d-flex justify-content-center'>
-                <Link style={{ textDecoration: 'none' }} to={`/profile/${user.id}`}>
+                <div className='col'>
+                  <Link style={{ textDecoration: 'none' }} to={`/profile/${user.id}`}>
 
-                  <div className="nk-info-box d-flex gap-3 pl-30 clanusers_col-lg-custom clanuser">
-                    <div className='clanUserImgContainer'>
-                      <img width={'100px'} className='clanuserImage' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
-                    </div>
-                    <div className='row align-items-center'>
-                      <h3 className='text-main-1'>{user.username}</h3>
-                      {/* {
+                    <div className="nk-info-box d-flex gap-3 pl-30 users_col-custom clanuser">
+                      <div className='clanUserImgContainer'>
+                        <img width={'100px'} className='clanuserImage' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
+                      </div>
+                      <div className='row align-items-center'>
+                        <h4 className='text-main-1'>{user.username}</h4>
+                        {/* {
                         user?.userClan[0].clan.name ? <li className="list-group-item bg-dark-2 d-flex justify-content-center gap-3 align-items-center p-10 ">
                           <img
                             src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
@@ -97,15 +100,17 @@ function Users() {
                           <></>
                       } */}
 
-                      <p>{user.description}</p>
+                        <p>{user.description}</p>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              </div>
+                  </Link>
+                </div>
 
-            ))
-          }
+              ))
+            }
+          </div>
         </div>
+
       </div>
     </div>
 

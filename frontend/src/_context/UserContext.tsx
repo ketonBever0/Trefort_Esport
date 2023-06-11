@@ -126,7 +126,7 @@ export const UserProvider = ({ children }: any) => {
     }
 
     const [isUsersLoading, setIsUsersLoading] = useState<boolean>(false);
-    const [usersData, setusersData] = useState([]);
+    const [allUsersData, setAllUsersData] = useState([]);
 
     const getAllUsers = async () => {
         //setIsOtherUserDataLoading(true);
@@ -137,7 +137,7 @@ export const UserProvider = ({ children }: any) => {
             }
         })
             .then(res => res.json())
-            .then(data => {sessionStorage.setItem("usersNumberSSN", data.users.length)})
+            .then(data => {setAllUsersData(data.users); sessionStorage.setItem("usersNumberSSN", data.users.length)})
             .catch(err => {console.log('error:',err); Notify.tError("Hiba történt.")})
             .finally(() => setIsUsersLoading(false));
     }
@@ -223,7 +223,7 @@ export const UserProvider = ({ children }: any) => {
         otherUser,
         getOtherUserById,
         getAllUsers,
-        usersData,
+        allUsersData,
         isUsersLoading,
 
         registerFormData, setRegisterFormData,

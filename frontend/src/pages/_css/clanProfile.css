@@ -35,3 +35,12 @@
   border-style: none;
   border: none;
 }
+
+.hoverMain:hover {
+  color: #dd163b;
+  cursor: pointer;
+}
+
+.hoverMain:active {
+  color: #ff4466;
+}
