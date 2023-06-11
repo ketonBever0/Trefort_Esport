@@ -23,7 +23,16 @@ const Test = () => {
 
   //const rejectedOrganisations = orgs.filter((myOrg: any) => myOrg.status == 'pending');
 
- const [currentOrgDetails, setCurrentOrgDetails] = useState(pendingOrgs[0]);
+ const [currentOrgDetails, setCurrentOrgDetails] = useState(
+  {
+    id: null,
+    name: "",
+    type: "",
+    location: "",
+    phoneNumber: "",
+    email: ""
+  }
+ );
  
   useEffect(() => {
     const pageBG: Element = document.querySelector('.full-page')!;
