@@ -7,6 +7,12 @@ import UserContext from '../_context/UserContext';
 function SubmitOrganisation1() {
 
 
+  useEffect(() => {
+    const pageBG: Element = document.querySelector('.full-page')!;
+    pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-4.png')")
+  }, []);
+
+
   const navigate = useNavigate();
 
   const {
@@ -155,7 +161,7 @@ function SubmitOrganisation1() {
                               handleInputChange(e)
 
                             }}
-                            name="type" id="type" className="myform-control form-control required bg-dark p-10 submitorg1" required style={{ height: "3rem", cursor: "pointer" }} >
+                            name="type" id="type" className="myform-control form-control required bg-dark p-10 submitorg1" required style={{ height: "3rem", cursor: "pointer" }} defaultValue={""}>
                             <option className='text-white' value={""} disabled ></option>
                             <option className='text-white' value={"Oktatási intézmény"} >Oktatási intézmény</option>
                             <option className='text-white' value={"Szponzor"} >Szponzor</option>

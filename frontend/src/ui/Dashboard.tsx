@@ -32,8 +32,10 @@ function Dashboard() {
                 <Link to="/users"><a href="#">Felhasználók</a></Link>
                 <Link to="/clans"><a href="#">Klánok</a></Link>
                 <Link to="/"><a href="#">Bejegyzések</a></Link>
+                <Link to="/addevent"> <a href="#">Esemény hozzáadása</a></Link>
                 <Link to="/events"> <a href="#">Események szerkesztése</a></Link>
                 <Link to="/revieworg"><a href="#">Beküldött szervezetek</a></Link>
+                <Link to="/submitorg"><a href="#">Új szervezet</a></Link>
                 <Link to="/"><a href="#">Tournament ágrajzok</a></Link>
 
             </nav>
