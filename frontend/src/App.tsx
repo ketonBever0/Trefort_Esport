@@ -101,7 +101,7 @@ function App() {
                             {/* <Route path='/btn2' element={<Button2 />} /> */}
 
 
-                            <Route path='/submitorg1' element={<SubmitOrganisation1 />} />
+                            <Route path='/submitorg' element={<SubmitOrganisation1 />} />
                             <Route path='/submitorg2' element={<SubmitOrganisation2 />} />
 
 

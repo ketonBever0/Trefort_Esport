@@ -7,6 +7,12 @@ import UserContext from '../_context/UserContext';
 function SubmitOrganisation1() {
 
 
+  useEffect(() => {
+    const pageBG: Element = document.querySelector('.full-page')!;
+    pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-4.png')")
+  }, []);
+
+
   const navigate = useNavigate();
 
   const {
