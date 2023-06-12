@@ -3,15 +3,8 @@ import { Link } from 'react-router-dom'
 import './_css/breadCrumbs.css'
 
 const BreadCrumbs = (
-    //crumbs:any
+    crumbs: any
 ) => {
-
-
-    const crumbs = [
-        { title: 'Home', path: '/' },
-        { title: 'Products', path: '/' },
-        { title: 'Category', path: '/' }
-      ];
 
     return (
         <div>

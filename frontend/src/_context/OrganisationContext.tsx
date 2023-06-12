@@ -46,12 +46,40 @@ export const OrganisationProvider = ({ children }: any) => {
           .catch(err => console.log(err));
       }
 
+      const rejectOrg = async (id:any) => {
+        await fetch(`http://localhost:3333/api/organizations/${id}`, {
+          method: 'DELETE',
+          headers: {
+              'Content-type': 'application/json',
+              "Authorization": `Bearer ${userToken}`
+          }
+      }
+      )
+          .then(res => res.json())
+          .then(data => {
+              if (!data.message) {Notify.tError("Hiba történt.")}
+              else {Notify.tSuccess(data.message)}
+              ;
+          })
+          .catch(err => console.log(err));
+      }
+
+      const [crumbs, setCrumbs] = useState(
+        [
+            { title: '', path: '/' },
+            { title: '', path: '/' },
+            { title: '', path: '/' }
+          ]
+      );
 
     return <OrganisationContext.Provider value={{
         getOrganizations,
         isOrgsLoading,
         orgs,
-        acceptOrg
+        acceptOrg,
+        rejectOrg,
+        crumbs,
+        setCrumbs
 
     }}>{children}</OrganisationContext.Provider>
 

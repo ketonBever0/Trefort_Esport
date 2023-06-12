@@ -30,6 +30,8 @@ function ClanProfile() {
     }
   }, []);
 
+
+
   return (
     <div>
       <section>
@@ -52,7 +54,9 @@ function ClanProfile() {
                   <p className="my-3 lead text-white fw-bold text-center">{clanDataByID?.name}</p>
                   <hr />
                   <Button2 content="Csatlakozom!" />
-                  <hr />
+
+
+                  {/* <hr />
 
                   <div className='bg-dark-4'>
                     <div className='card-body d-flex justify-content-center gap-2'>
@@ -63,10 +67,9 @@ function ClanProfile() {
 
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                 </div>
-
               </div>
             </div>
             <div className="col-lg-8">
@@ -223,7 +226,7 @@ function ClanProfile() {
                                 <img width={'100px'} className='clanuserImage' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
                               </div>
                               <div className='row align-items-center'>
-                                <h3 className='text-main-1'>{myuser.userClan[0]?.clan.name}</h3>
+                                <h3 className='text-main-1'>{myuser.username}</h3>
                                 <p>{myuser.description}</p>
                                 <div className='d-flex justify-content-end'>
                                   {/* <button className='nk-btn clanKickBtn nk-btn-rounded text-dark'>Eltávolítás</button> */}

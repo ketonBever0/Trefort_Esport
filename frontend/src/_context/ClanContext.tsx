@@ -47,6 +47,29 @@ export const ClanProvider = ({ children }: any) => {
             .finally(() => setisClansLoading(false));
     }
 
+
+    // const editClanData = () => {
+    //     fetch("http://localhost:3333/api/users", {
+    //       method: "PATCH",
+    //       headers: {
+    //         "Content-type": "application/json",
+    //         "Authorization": `Bearer ${userToken}`
+    //       },
+    //       body: JSON.stringify()
+    //     })
+    //       .then(res => res.json())
+    //       .then(response => {
+    //         if (response.message?.includes("Sikeres")) {
+    //           Notify.tSuccess(response.message);
+    //           userUpdate();
+    //         } else {
+    //           Notify.tError(response.message);
+    //         }
+    //       })
+    //       .catch(err => console.log(err));
+      
+    // }
+
     return <ClanContext.Provider value={{
 
         clansData,

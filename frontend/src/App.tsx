@@ -44,6 +44,7 @@ import CreateSessionTeam from './pages/CreateSessionTeam'
 import AddCompetitions from './pages/AddCompetitions'
 import { ClanProvider } from './_context/ClanContext'
 import { OrganisationProvider } from './_context/OrganisationContext'
+import OrganisationsList from './pages/OrganisationsList'
 
 function App() {
 
@@ -111,6 +112,7 @@ function App() {
                             <Route path='/addclan' element={<AddClan />} />
                             <Route path='/clanprofile/:id' element={<ClanProfile />} />
                             <Route path='/organisationprofile' element={<OrganisationProfile />} />
+                            <Route path='/organisationslist' element={<OrganisationsList />} />
                             <Route path='/users' element={<Users />} />
                             <Route path='/clans' element={<Clans />} />
                             <Route path='/addclanapproval' element={<AddClanApprovalModal />} />
