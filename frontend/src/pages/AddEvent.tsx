@@ -30,7 +30,7 @@ function AddEvent() {
         name: "",
         startDate: "",
         endDate: "",
-        location: 0,
+        location: "",
         description: ""
     });
 
@@ -39,26 +39,30 @@ function AddEvent() {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
-                'Authorization': `Bearer ${UserContext}`
+                'Authorization': `Bearer ${userToken}`
             },
             body: JSON.stringify(adat)
         })
             .then(res => res.json())
             .then(data => {
                 if (data.exists) Notify.tError(data.message);
-                else Notify.tSuccess(data.message);
+                else {
+                    if (data.message == "Esemény létrehozva!") Notify.tSuccess(data.message);
+                    else Notify.tError(data.message);
+                }
                 setMyEventID(data.event.id)
             })
             .catch(err => console.log(err));
     }
 
-    const handleEventChange = (e: any) => {
-        setEventFormData((prevState) => (
+    const handleEventInputChange = (e: any) => {
+        setEventFormData((prevState: any) => (
             {
-                ...prevState, [e.target.id]: e.target.value
+                ...prevState, [e.target.name]: e.target.value
             }));
         // console.log(e.target.value, e.target.type);
     }
+
 
     const onSubmit = (e: any) => {
         e.preventDefault();
@@ -113,11 +117,11 @@ function AddEvent() {
                     <div className="col-lg-6">
                         <div style={{ borderTop: "2px solid #dd163b" }} className="nk-box-2 bg-dark-2">
                             <label className='h4 p-10 border-main-left text-sm-h6'>Esemény neve:</label><br></br>
-                            <input onChange={handleEventChange} required id='name' className="form-control required bg-dark m-10"></input>
+                            <input onChange={handleEventInputChange} required id='name' name="name" className="form-control required bg-dark m-10"></input>
 
                             <label className='h4 p-10 border-main-left text-sm-h6'>Megrendező intézmény:</label><br></br>
-                            <select className="form-control bg-dark m-10" style={{ height: "3rem", cursor: "pointer" }}>
-                                <option className='text-white' value={0}>Válasszon...</option>
+                            <select className="form-control bg-dark m-10" style={{ height: "3rem", cursor: "pointer" }} defaultValue={0}>
+                                <option className='text-white' value={0} disabled>Válasszon...</option>
                                 {
                                     orgs && orgs.length > 0 &&
                                     orgs.map((org: any, index: React.Key) => (
@@ -130,7 +134,7 @@ function AddEvent() {
                             <input className="form-control bg-dark m-10"></input>
 
                             {/* <label className='h4 p-10 border-main-left text-sm-h6'>Esemény leírása:</label>
-                            <textarea onChange={handleEventChange} required id='description' className="form-control bg-dark m-10"></textarea> */}
+                            <textarea onChange={handleEventInputChange} required id='description' className="form-control bg-dark m-10"></textarea> */}
                         </div>
 
                     </div>
@@ -139,11 +143,11 @@ function AddEvent() {
                         <div style={{ borderTop: "2px solid #dd163b" }} className="nk-box-2 bg-dark-2">
 
                             <label className='h4 p-10 border-main-left text-sm-h6'>Esemény helyszíne:</label><br></br>
-                            <label className='ml-10'>(Város, utca, házszám)</label>
-                            <input onChange={handleEventChange} required id='location' className="form-control required bg-dark m-10" ></input>
+                            <label className='ml-10'>(Irányítószám, Település, Közterület, Házszám)</label>
+                            <input onChange={handleEventInputChange} required id='location' name="location" className="form-control required bg-dark m-10" ></input>
 
                             <label className='h4 p-10 border-main-left text-sm-h6'>Esemény leírása és infók:</label>
-                            <textarea className="form-control bg-dark m-10"></textarea>
+                            <textarea name="description" onChange={handleEventInputChange} className="form-control bg-dark m-10" />
                         </div>
                     </div>
                     <div className="col-lg-6">
@@ -151,7 +155,7 @@ function AddEvent() {
 
                             <label className='h4 p-10 border-main-left text-sm-h6'>Esemény kezdési időpontja:</label><br></br>
                             <label className='ml-10'>(Év, hónap, nap, óra, perc)</label>
-                            <input onChange={handleEventChange} required id='startDate' type='date' className="form-control cursor-text required bg-dark m-10"></input>
+                            <input onChange={handleEventInputChange} required id='startDate' name='startDate' type='date' className="form-control cursor-text required bg-dark m-10"></input>
 
                             {/* <label className='h4 p-10 border-main-left text-sm-h6'>Egyéb információ:</label>
                             <textarea className="form-control bg-dark m-10"></textarea> */}
@@ -161,8 +165,8 @@ function AddEvent() {
                         <div style={{ borderTop: "2px solid #dd163b" }} className="nk-box-2 bg-dark-2">
 
                             <label className='h4 p-10 border-main-left text-sm-h6'>Esemény vége:</label><br></br>
-                            <label className='ml-10'>(Év, hónap, nap, óra, perc)</label>
-                            <input onChange={handleEventChange} required id='endDate' type='date' className="form-control cursor-text required bg-dark m-10"></input>
+                            <label className='ml-10'>(Év, hónap, nap)</label>
+                            <input onChange={handleEventInputChange} required id='endDate' name='endDate' type='date' className="form-control cursor-text required bg-dark m-10"></input>
 
                             {/* <p className='opacity-50 p-10'>Kizárólag a verseny végén töltendő ki.</p> */}
 

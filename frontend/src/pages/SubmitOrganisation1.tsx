@@ -161,7 +161,7 @@ function SubmitOrganisation1() {
                               handleInputChange(e)
 
                             }}
-                            name="type" id="type" className="myform-control form-control required bg-dark p-10 submitorg1" required style={{ height: "3rem", cursor: "pointer" }} >
+                            name="type" id="type" className="myform-control form-control required bg-dark p-10 submitorg1" required style={{ height: "3rem", cursor: "pointer" }} defaultValue={""}>
                             <option className='text-white' value={""} disabled ></option>
                             <option className='text-white' value={"Oktatási intézmény"} >Oktatási intézmény</option>
                             <option className='text-white' value={"Szponzor"} >Szponzor</option>
