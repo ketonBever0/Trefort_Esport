@@ -3,6 +3,8 @@ import Button2 from '../ui/Button2';
 import './_css/editEvent.css';
 import GoBackButton from '../ui/GoBackButton';
 import Notify from '../ui/Toasts';
+import UserContext from '../_context/UserContext';
+import OrganisationContext from '../_context/OrganisationContext';
 
 function AddEvent() {
 
@@ -11,11 +13,20 @@ function AddEvent() {
         pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-4.png')")
     }, [])
 
-    const token = localStorage.getItem('usertoken');
+    const { userToken } = useContext(UserContext);
+
+    const {
+        getOrganizations,
+        orgs
+    } = useContext(OrganisationContext);
+
+    useEffect(() => {
+        if (orgs == null || orgs.length == 0) getOrganizations();
+    }, [])
 
     const [myeventID, setMyEventID] = useState();
 
-    const [eventformData, seteventFormData] = useState({
+    const [eventformData, setEventFormData] = useState({
         name: "",
         startDate: "",
         endDate: "",
@@ -23,12 +34,12 @@ function AddEvent() {
         description: ""
     });
 
-    const eventAdatKuldes = (adat: any, method: any) => {
+    const eventAdatKuldes = (adat: any) => {
         fetch('http://localhost:3333/api/events', {
-            method: method,
+            method: 'POST',
             headers: {
                 'Content-type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${UserContext}`
             },
             body: JSON.stringify(adat)
         })
@@ -41,14 +52,17 @@ function AddEvent() {
             .catch(err => console.log(err));
     }
 
-    const writeEventData = (e: any) => {
-        seteventFormData((prevState) => ({ ...prevState, [e.target.id]: e.target.value }));
-        console.log(e.target.value, e.target.type);
+    const handleEventChange = (e: any) => {
+        setEventFormData((prevState) => (
+            {
+                ...prevState, [e.target.id]: e.target.value
+            }));
+        // console.log(e.target.value, e.target.type);
     }
 
     const onSubmit = (e: any) => {
         e.preventDefault();
-        eventAdatKuldes(eventformData, 'POST');
+        eventAdatKuldes(eventformData);
     }
 
     // async function postMyData() {
@@ -99,15 +113,24 @@ function AddEvent() {
                     <div className="col-lg-6">
                         <div style={{ borderTop: "2px solid #dd163b" }} className="nk-box-2 bg-dark-2">
                             <label className='h4 p-10 border-main-left text-sm-h6'>Esemény neve:</label><br></br>
-                            <input onChange={writeEventData} required id='name' className="form-control required bg-dark m-10"></input>
+                            <input onChange={handleEventChange} required id='name' className="form-control required bg-dark m-10"></input>
 
-                            <label className='h4 p-10 border-main-left text-sm-h6'>Megrendező:</label><br></br>
-                            <input className="form-control bg-dark m-10"></input>
+                            <label className='h4 p-10 border-main-left text-sm-h6'>Megrendező intézmény:</label><br></br>
+                            <select className="form-control bg-dark m-10" style={{ height: "3rem", cursor: "pointer" }}>
+                                <option className='text-white' value={0}>Válasszon...</option>
+                                {
+                                    orgs && orgs.length > 0 &&
+                                    orgs.map((org: any, index: React.Key) => (
+                                        <option className='text-white' key={index} value={org.id}>{org.name}</option>
+                                    ))
+                                }
+                            </select>
+
                             <label className='h4 p-10 border-main-left text-sm-h6'>Szponzor:</label><br></br>
                             <input className="form-control bg-dark m-10"></input>
 
-                            <label className='h4 p-10 border-main-left text-sm-h6'>Esemény leírása:</label>
-                            <textarea onChange={writeEventData} required id='description' className="form-control bg-dark m-10"></textarea>
+                            {/* <label className='h4 p-10 border-main-left text-sm-h6'>Esemény leírása:</label>
+                            <textarea onChange={handleEventChange} required id='description' className="form-control bg-dark m-10"></textarea> */}
                         </div>
 
                     </div>
@@ -117,9 +140,9 @@ function AddEvent() {
 
                             <label className='h4 p-10 border-main-left text-sm-h6'>Esemény helyszíne:</label><br></br>
                             <label className='ml-10'>(Város, utca, házszám)</label>
-                            <input onChange={writeEventData} required id='location' className="form-control required bg-dark m-10" ></input>
+                            <input onChange={handleEventChange} required id='location' className="form-control required bg-dark m-10" ></input>
 
-                            <label className='h4 p-10 border-main-left text-sm-h6'>Egyéb információ:</label>
+                            <label className='h4 p-10 border-main-left text-sm-h6'>Esemény leírása és infók:</label>
                             <textarea className="form-control bg-dark m-10"></textarea>
                         </div>
                     </div>
@@ -128,27 +151,30 @@ function AddEvent() {
 
                             <label className='h4 p-10 border-main-left text-sm-h6'>Esemény kezdési időpontja:</label><br></br>
                             <label className='ml-10'>(Év, hónap, nap, óra, perc)</label>
-                            <input onChange={writeEventData} required id='startDate' type='date' className="form-control cursor-text required bg-dark m-10"></input>
+                            <input onChange={handleEventChange} required id='startDate' type='date' className="form-control cursor-text required bg-dark m-10"></input>
 
-                            <label className='h4 p-10 border-main-left text-sm-h6'>Egyéb információ:</label>
-                            <textarea className="form-control bg-dark m-10"></textarea>
+                            {/* <label className='h4 p-10 border-main-left text-sm-h6'>Egyéb információ:</label>
+                            <textarea className="form-control bg-dark m-10"></textarea> */}
                         </div>
                     </div>
                     <div className="col-lg-6">
                         <div style={{ borderTop: "2px solid #dd163b" }} className="nk-box-2 bg-dark-2">
 
                             <label className='h4 p-10 border-main-left text-sm-h6'>Esemény vége:</label><br></br>
-                            <p className='opacity-50 p-10'>Kizárólag a verseny végén töltendő ki.</p>
                             <label className='ml-10'>(Év, hónap, nap, óra, perc)</label>
-                            <input onChange={writeEventData} required id='endDate' type='date' className="form-control cursor-text required bg-dark m-10"></input>
+                            <input onChange={handleEventChange} required id='endDate' type='date' className="form-control cursor-text required bg-dark m-10"></input>
 
-                            <label className='h4 p-10 border-main-left text-sm-h6'>Egyéb információ:</label>
-                            <textarea className="form-control bg-dark m-10"></textarea>
+                            {/* <p className='opacity-50 p-10'>Kizárólag a verseny végén töltendő ki.</p> */}
+
+                            {/* <label className='h4 p-10 border-main-left text-sm-h6'>Egyéb információ:</label>
+                            <textarea className="form-control bg-dark m-10"></textarea> */}
                         </div>
                     </div>
                 </div>
-                <div className='d-flex justify-content-center'><button type='submit' style={{fontSize:'1.2rem',padding:'15px'}} className='nk-btn nk-btn-rounded nk-btn-color-main-1 mt-40'>Beküldés</button></div>
-                
+                <div className='d-flex justify-content-center'>
+                    <button type='submit' style={{ fontSize: '1.2rem', padding: '15px' }} className='nk-btn nk-btn-rounded nk-btn-color-main-1 mt-40'>Beküldés</button>
+                </div>
+
             </form>
         </div>
     )
