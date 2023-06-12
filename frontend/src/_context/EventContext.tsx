@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import Notify from "../ui/Toasts";
 
 const EventContext = createContext<any | null>(null);
 
@@ -6,6 +7,8 @@ export const EventProvider = ({ children }: any) => {
 
     const [isEventsLoading, setIsEventsLoading] = useState<boolean>(false);
     const [events, setEvents] = useState([]);
+
+    const [userToken, setUserToken] = useState<string | null>(localStorage.getItem("usertoken"));
 
     const getEvents = async (token: any) => {
         setIsEventsLoading(true);
@@ -39,9 +42,37 @@ export const EventProvider = ({ children }: any) => {
             }
         })
             .then(res => res.json())
-            .then(data => { if (!data.message) setEvent(data) })
+            .then(data => { 
+                if (!data.message) {
+                setEvent(data);
+                sessionStorage.removeItem("eventByIdSSN");
+                const eventByIdStringified = JSON.stringify(data);
+                sessionStorage.setItem("eventByIdSSN", eventByIdStringified);
+            } 
+        })
             .catch(err => console.log(err))
             .finally(() => setIsEventLoading(false));
+
+    }
+
+    const updateEvent = (id:any, adat:any) => {
+        fetch(`http://localhost:3333/api/events/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${userToken}`
+            },
+            body: JSON.stringify(adat)
+        })
+            .then(res => res.json())
+            .then(response => {
+                if (response.message?.includes("Sikeres")) {
+                    Notify.tSuccess(response.message);
+                } else {
+                    Notify.tError("A dátum helyes formátuma: év-hónap-nap");
+                }
+            })
+            .catch(err => console.log(err));
 
     }
 
@@ -50,11 +81,10 @@ export const EventProvider = ({ children }: any) => {
         isEventsLoading,
         events,
         getEvents,
-
         isEventLoading,
         event,
-        getEventById
-
+        getEventById,
+        updateEvent
 
     }}>
         {children}

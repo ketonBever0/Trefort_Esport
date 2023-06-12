@@ -160,7 +160,7 @@ function Register2() {
     return (
         <div>
 
-            <div className='bg-dark bg-gradient p-30 rounded text-xl'>
+            <div className='p-30 rounded text-xl'>
                 <ProgressBar myWidth={width} />
                 <>
                     <div className="tab-content">

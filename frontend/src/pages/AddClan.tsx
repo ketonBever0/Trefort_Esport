@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import Button2 from '../ui/Button2'
 import ProgressBar from '../ui/ProgressBar'
 import UserContext from '../_context/UserContext';
@@ -6,6 +6,11 @@ import ApprovalModal from './AddClanApprovalModal';
 import Notify from '../ui/Toasts';
 
 function AddClan() {
+
+  useEffect(() => {
+    const pageBG: Element = document.querySelector('.full-page')!;
+    pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-4.png')");
+  }, []);
   const [width, setWidth] = useState(0);
   const [approvalModalOpen, setApprovalModalOpen] = useState(false);
 
@@ -74,7 +79,7 @@ function AddClan() {
             <>
             </>
         }
-        <div className='bg-dark bg-gradient p-30 rounded text-xl'>
+        <div className='p-30 rounded text-xl'>
           <ProgressBar myWidth={width} />
           <>
             <div className="tab-content">

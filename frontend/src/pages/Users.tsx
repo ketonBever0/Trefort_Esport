@@ -3,6 +3,7 @@ import GoBackButton from '../ui/GoBackButton';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
+import { BeatLoader } from 'react-spinners';
 
 function Users() {
 
@@ -28,7 +29,7 @@ function Users() {
     })
       .then(response => response.json())
       .then(data => { console.log(data); setuserData(data.users); })
-      .catch(error => console.error(error));
+      .catch(error => {console.error(error); navigate('*')});
   }, []);
 
   function navigateToUserProfile(clickedID: any) {
@@ -74,18 +75,20 @@ function Users() {
           <div className='row d-flex gap-3 justify-content-center'>
 
             {
-              userData && userData.map((user: any, index: React.Key) => (
+              userData.length != 0
+                ?
+                userData.map((user: any, index: React.Key) => (
 
-                <div className='col'>
-                  <Link style={{ textDecoration: 'none' }} to={`/profile/${user.id}`}>
+                  <div className='col'>
+                    <Link style={{ textDecoration: 'none' }} to={`/profile/${user.id}`}>
 
-                    <div className="nk-info-box d-flex gap-3 pl-30 users_col-custom clanuser">
-                      <div className='clanUserImgContainer'>
-                        <img width={'100px'} className='clanuserImage' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
-                      </div>
-                      <div className='row align-items-center'>
-                        <h4 className='text-main-1'>{user.username}</h4>
-                        {/* {
+                      <div className="nk-info-box d-flex gap-3 pl-30 users_col-custom clanuser">
+                        <div className='clanUserImgContainer'>
+                          <img width={'100px'} className='clanuserImage' src='https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'></img>
+                        </div>
+                        <div className='row align-items-center'>
+                          <h4 className='text-main-1'>{user.username}</h4>
+                          {/* {
                         user?.userClan[0].clan.name ? <li className="list-group-item bg-dark-2 d-flex justify-content-center gap-3 align-items-center p-10 ">
                           <img
                             src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
@@ -100,13 +103,17 @@ function Users() {
                           <></>
                       } */}
 
-                        <p>{user.description}</p>
+                          <p>{user.description}</p>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                </div>
+                    </Link>
+                  </div>
 
-              ))
+                ))
+                :
+                <div className='d-flex justify-content-center'>
+                  <BeatLoader color="#dd163b" className='mt-30' />
+                </div>
             }
           </div>
         </div>

@@ -2,6 +2,8 @@ import React, { useEffect, useState, useContext } from 'react';
 import BreadCrumbs from '../ui/BreadCrumbs';
 import './_css/reviewOrg.css'
 import OrganisationContext from '../_context/OrganisationContext';
+import { BeatLoader } from 'react-spinners';
+import GoBackButton from '../ui/GoBackButton';
 
 const ReviewOrganisations = () => {
 
@@ -43,15 +45,6 @@ const ReviewOrganisations = () => {
 
   }, []);
 
-  const logging = () => {
-    console.log(currentOrgDetails);
-  }
-
-  const update = () => {
-
-  }
-
-
   const tabs = [
     {
       title: 'Függőben', content:
@@ -80,7 +73,7 @@ const ReviewOrganisations = () => {
                             </div> */}
                           </div>
                         </div>
-                        <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>{myOrg.status} <span> </span> <span className='lead fw-bold pl-5'> &#10710;</span>
+                        <p className='col-md-3 col-3 text-center d-flex align-items-center text-warning fw-bold'>Függőben <span> </span> <span className='lead fw-bold pl-5'> &#10710;</span>
                         </p>
                       </div>
                     </div>
@@ -128,7 +121,7 @@ const ReviewOrganisations = () => {
                       <button
                         onClick={() => { acceptOrg(currentOrgDetails.id) }}
                         id="reviewAcceptBtn" className="button2">Szervezet elfogadása</button>
-                      <button onClick={() => {rejectOrg(currentOrgDetails.id); console.log('hello',currentOrgDetails.id)}} id="reviewDeclineBtn" className="button2 bg-dark-4">Szervezet elutasítása</button>
+                      <button onClick={() => { rejectOrg(currentOrgDetails.id); console.log('hello', currentOrgDetails.id) }} id="reviewDeclineBtn" className="button2 bg-dark-4">Szervezet elutasítása</button>
                     </div>
                   </div>
                 </div>
@@ -170,7 +163,7 @@ const ReviewOrganisations = () => {
                             </div> */}
                           </div>
                         </div>
-                        <p className='col-md-3 col-3 text-center d-flex align-items-center text-danger fw-bold'>elutasítva <span> </span> <span className='lead fw-bold pl-5'> &#10007;</span>
+                        <p className='col-md-3 col-3 text-center d-flex align-items-center text-danger fw-bold'>Elutasítva <span> </span> <span className='lead fw-bold pl-5'> &#10007;</span>
                         </p>
                       </div>
                     </div>
@@ -216,7 +209,7 @@ const ReviewOrganisations = () => {
 
                     <div className="m-20 d-flex justify-content-around gap-5">
                       <button
-                        onClick={() => { acceptOrg(currentOrgDetails.id); update() }}
+                        onClick={() => { acceptOrg(currentOrgDetails.id)}}
                         id="reviewAcceptBtn" className="button2">Szervezet elfogadása</button>
                     </div>
                     {/* <div className="nk-news-box-item-date text-end">
@@ -233,7 +226,7 @@ const ReviewOrganisations = () => {
           }
         </div>
     }
-          ];
+  ];
 
   const handleTabClick = (index: any) => {
     setActiveTab(index);
@@ -247,28 +240,41 @@ const ReviewOrganisations = () => {
 
   return (
     <div>
-                  <h3 className='nk-decorated-h-2 m-30 mb-30 text-sm-h6'>
-                <span className='text-main'>Szervezetek kezelése</span>
-              </h3>
-      {/* <BreadCrumbs crumbs={crumbs} /> */}
-      <div className='container'>
-        <div className='row'>
-          <ul className="tabs d-flex p-0">
-            {tabs.map((tab, index) => (
-              <li
-                key={index}
-                className={index === activeTab ? 'active p-15 nk-btn nk-btn-color-main-1' : 'p-15 nk-btn nk-btn-color-main-1'}
-                onClick={() => handleTabClick(index)}
-              >
-                {tab.title}
-              </li>
-            ))}
-          </ul>
-          <div className="tab-content">
-            {tabs[activeTab].content}
+                <div className='row'>
+            <div className="justify-content-start d-flex pl-70">
+              <GoBackButton />
+            </div>
           </div>
-        </div>
-      </div>
+      <h3 className='nk-decorated-h-2 m-30 mb-30 text-sm-h6'>
+        <span className='text-main'>Szervezetek kezelése</span>
+      </h3>
+      {/* <BreadCrumbs crumbs={crumbs} /> */}
+      {
+        orgs.length != 0 ?
+          <div className='container'>
+            <div className='row'>
+              <ul className="tabs d-flex p-0">
+                {tabs.map((tab, index) => (
+                  <li
+                    key={index}
+                    className={index === activeTab ? 'active p-15 nk-btn nk-btn-color-main-1' : 'p-15 nk-btn nk-btn-color-main-1'}
+                    onClick={() => handleTabClick(index)}
+                  >
+                    {tab.title}
+                  </li>
+                ))}
+              </ul>
+              <div className="tab-content">
+                {tabs[activeTab].content}
+              </div>
+            </div>
+          </div>
+          :
+          <div className='d-flex justify-content-center'>
+            <BeatLoader color="#dd163b" className='mt-30' />
+          </div>
+      }
+
     </div>
   );
 };

@@ -18,15 +18,15 @@ function MyProfile() {
   }, [])
 
 
-  function myFunction() {
-    var pwinput: any = document.getElementById("regijelszo");
+  // function myFunction() {
+  //   var pwinput: any = document.getElementById("regijelszo");
 
-    if (pwinput.type === "password") {
-      pwinput.type = "text";
-    } else {
-      pwinput.type = "password";
-    }
-  }
+  //   if (pwinput.type === "password") {
+  //     pwinput.type = "text";
+  //   } else {
+  //     pwinput.type = "password";
+  //   }
+  // }
 
   const {
     userUpdate,

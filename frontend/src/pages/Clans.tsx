@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react'
 import GoBackButton from '../ui/GoBackButton'
 import ClanContext from '../_context/ClanContext';
 import { Link } from 'react-router-dom';
+import { BeatLoader } from 'react-spinners';
 
 function Clans() {
 
@@ -47,7 +48,7 @@ function Clans() {
 
 
           {
-            clansData && (
+            clansData.length != 0 ?
               clansData.map((clan: any, index: React.Key) => (
                 <Link style={{ textDecoration: 'none' }} to={`/clanprofile/${clan?.id}`}>
                   <div className="nk-info-box d-flex gap-3 pl-30 clanusers_col-lg-custom clanuser">
@@ -63,7 +64,10 @@ function Clans() {
                 </Link>
               )
               )
-            )
+              :
+              <div className='d-flex justify-content-center'>
+                <BeatLoader color="#dd163b" className='mt-30' />
+              </div>
           }
 
 

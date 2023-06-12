@@ -4,6 +4,7 @@ import EventContext from '../_context/EventContext'
 import { Link } from 'react-router-dom';
 import Notify from '../ui/Toasts';
 import GoBackButton from '../ui/GoBackButton';
+import { BarLoader, BeatLoader, PulseLoader } from 'react-spinners';
 
 function Events() {
 
@@ -25,10 +26,6 @@ function Events() {
         getEvents(token);
     }, [])
 
-    const myFunction = (param: any) => {
-        console.log(param)
-    }
-
     const formatDate = (date: string) => {
         const year = date.slice(0, 4);
         const month = date.slice(5, 7);
@@ -37,22 +34,23 @@ function Events() {
         return `${year}. ${month}. ${day}.`
     }
 
-    
 
     return (
         <div>
             <div className="nk-blog-fullwidth">
-            <div className='d-flex justify-content-start mb-40'>
-            <GoBackButton/>
-            </div>
+                <div className='d-flex justify-content-start mb-40'>
+                    <GoBackButton />
+                </div>
 
                 {
-                    !isEventsLoading && events.length > 0 && (
+                    !isEventsLoading && events.length > 0
+                        ?
+
                         events.map((event: any, index: React.Key) => (
                             <div className="nk-blog-post container" key={index}>
                                 <Link to={`/events/${event.id}`} className="nk-post-img">
                                     <img
-                                    style={{width:"rem"}}
+                                        style={{ width: "rem" }}
                                         src={event.image || 'assets/images/post-1-fw.jpg'}
                                     />
                                     <span className="nk-post-comments-count">0</span>
@@ -86,20 +84,24 @@ function Events() {
 
                                     </div>
                                     <div className="text-right d-flex justify-content-center">
-                                            <div>
-                                                <Link to={`/events/${event.id}`}
-                                                    className="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1"
-                                                >
-                                                    Megnézem
-                                                </Link>                                                
-                                            </div>
+                                        <div>
+                                            <Link to={`/events/${event.id}`}
+                                                className="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1"
+                                            >
+                                                Megnézem
+                                            </Link>
                                         </div>
+                                    </div>
                                 </div>
-                                <div className="nk-gap-3" style={{borderBottom:'4px solid #dd163b'}} />
-                                
+                                <div className="nk-gap-3" style={{ borderBottom: '4px solid #dd163b' }} />
+
                             </div>
-                        ))
-                    )
+                        )
+                        )
+                        :
+                        <div className='d-flex justify-content-center'>
+                            <BeatLoader color="#dd163b" className='mt-30' />
+                        </div>
                 }
 
             </div>
