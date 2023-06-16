@@ -30,13 +30,13 @@ function UpComingEvents() {
             <div className="nk-blog-grid">
                 <div className="row">
 
-                    {
-                        !isEventsLoading && (
-                            events.length > 0 ?
-                                events.map((event: any, index: React.Key) => (
-                                    (
-                                        <div key={index}>
-                                            <div className="col-md-6 col-lg-4">
+                    <div className="col-md-6 col-lg-4">
+                        {
+                            !isEventsLoading && (
+                                events.length > 0 ?
+                                    events.map((event: any, index: React.Key) => (
+                                        (
+                                            <div key={index}>
                                                 <div className="nk-blog-post">
                                                     <Link to={`/events/${event.id}`} className="nk-post-img">
                                                         <img
@@ -83,23 +83,23 @@ function UpComingEvents() {
                                                         <span className="fa fa-calendar" /> {event.startDate}
                                                     </div>
                                                 </div>
+
                                             </div>
-                                            <div className='nk-gap-2' />
-                                            <Link
-                                                to='/events'
-                                                className="nk-btn nk-btn-rounded nk-btn-color-main-1 ms-5"
-                                            >
-                                                Továbbiak
-                                            </Link>
-                                        </div>
-                                    )
-                                ))
-                                :
-                                <div>Events not found!</div>
-                        )
+                                        )
+                                    ))
+                                    :
+                                    <div>Events not found!</div>
+                            )
 
-                    }
-
+                        }
+                    </div>
+                    <div className='nk-gap-2' />
+                    <Link
+                        to='/events'
+                        className="nk-btn nk-btn-rounded nk-btn-color-main-1 ms-5"
+                    >
+                        Továbbiak
+                    </Link>
 
 
 
