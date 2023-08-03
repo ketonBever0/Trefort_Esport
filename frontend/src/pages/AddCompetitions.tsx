@@ -160,28 +160,21 @@ function AddCompetitions() {
 
     }
 
-
-    // function checkIfAlFilledOnChange() {
-
-    //     var actualDiv: any = document.getElementById(`compdiv${compDivID}`);
-
-    //     const actualDivInputs = actualDiv.querySelectorAll('input, textarea');
-
-    //     actualDivInputs.forEach((actualInput: any) => {
-    //         if (actualInput.value) {
-    //             setareAllFilled(true);
-    //         } else if (!actualInput.value) {
-    //             setareAllFilled(false);
-    //         }
-    //     });
-    // }
+    const writeCompetitionData = (e: any, index: any) => {
 
 
-    const writeCompetitionData = (e: any) => {
-        setcompetitionFormData((prevState) => ({ ...prevState, [e.target.id]: e.target.value }));
-        //console.log(competitionformData,'pushed to this:', formObjectsArray[0]);
-        console.log(competitionformData)
+        setCompetitions((prev: any) => [
+            ...prev.slice(0, index),
+            {
+                ...prev[index],
+                [e.target.name]: e.target.value
+            },
+            ...prev.slice(index + 1)
+        ])
+
     }
+
+
 
     const onSubmit = (e: any) => {
         // e.preventDefault();
@@ -292,12 +285,9 @@ function AddCompetitions() {
                                             <div className='darkInputs col-12 col-md'>
                                                 <label className='h4 m-10'>Játék neve</label><br />
                                                 <input
-                                                    onChange={writeCompetitionData}
-                                                    //onChange={(e) => {
-                                                    //checkIfAlFilledOnChange();
-                                                    //  writeCompetitionData(e);
-                                                    //}}
-                                                    required id='name' type="text" />
+                                                    onChange={(e: any) => writeCompetitionData(e, index)}
+
+                                                    required id='name' name='game' type="text" />
                                             </div>
                                         </div>
 
@@ -308,31 +298,20 @@ function AddCompetitions() {
                                                     <div className='m-10'>
                                                         <label htmlFor="">Tervezett kezdés:</label><br />
                                                         <input
-                                                            onChange={writeCompetitionData}
-                                                            // onChange={(e) => {
-                                                            //     //checkIfAlFilledOnChange();
-                                                            //     writeCompetitionData(e);
-                                                            // }}
+                                                            onChange={(e: any) => writeCompetitionData(e, index)}
+
                                                             required id='plannedStartDate' type="date" />
                                                     </div>
                                                     <div className='m-10'>
                                                         <label htmlFor="">Aktuális kezdés:</label><br />
                                                         <input
-                                                            onChange={writeCompetitionData}
-                                                            // onChange={(e) => {
-                                                            //     //checkIfAlFilledOnChange();
-                                                            //     writeCompetitionData(e);
-                                                            // }}
+                                                            onChange={(e: any) => writeCompetitionData(e, index)}
                                                             required id='startDate' type="date" />
                                                     </div>
                                                     <div className='m-10'>
                                                         <label htmlFor="">Verseny vége:</label><br />
                                                         <input
-                                                            onChange={writeCompetitionData}
-                                                            // onChange={(e) => {
-                                                            //     //checkIfAlFilledOnChange();
-                                                            //     writeCompetitionData(e);
-                                                            // }}
+                                                            onChange={(e: any) => writeCompetitionData(e, index)}
                                                             required id='endDate' type="date" />
                                                     </div>
                                                 </div>
@@ -340,22 +319,14 @@ function AddCompetitions() {
                                                     <div className='m-10'>
                                                         <label htmlFor="">Regisztráció kezdete:</label><br />
                                                         <input
-                                                            onChange={writeCompetitionData}
-                                                            // onChange={(e) => {
-                                                            //     //checkIfAlFilledOnChange();
-                                                            //     writeCompetitionData(e);
-                                                            // }}
+                                                            onChange={(e: any) => writeCompetitionData(e, index)}
                                                             required id='registrationStart' type="date" />
                                                     </div>
 
                                                     <div className='m-10'>
                                                         <label htmlFor="">Regisztráció vége:</label><br />
                                                         <input
-                                                            onChange={writeCompetitionData}
-                                                            // onChange={(e) => {
-                                                            //     //checkIfAlFilledOnChange();
-                                                            //     writeCompetitionData(e);
-                                                            // }}
+                                                            onChange={(e: any) => writeCompetitionData(e, index)}
                                                             required id='registrationEnd' type="date" />
                                                     </div>
                                                 </div>
@@ -363,32 +334,20 @@ function AddCompetitions() {
                                                     <div className='m-10'>
                                                         <label htmlFor="">Verseny típusa:</label> <br />
                                                         <input
-                                                            onChange={writeCompetitionData}
-                                                            // onChange={(e) => {
-                                                            //     //checkIfAlFilledOnChange();
-                                                            //     writeCompetitionData(e);
-                                                            // }}
+                                                            onChange={(e: any) => writeCompetitionData(e, index)}
                                                             required id='competitionType' type="text" />
                                                     </div>
                                                     <div className='m-10'>
                                                         <label htmlFor="">Játék:</label><br />
                                                         <input
-                                                            onChange={writeCompetitionData}
-                                                            // onChange={(e) => {
-                                                            //     //checkIfAlFilledOnChange();
-                                                            //     writeCompetitionData(e);
-                                                            // }}
+                                                            onChange={(e: any) => writeCompetitionData(e, index)}
                                                             required id='game' type="text" />
                                                     </div>
                                                 </div>
                                                 <div className='col-lg-3 col-sm-6 p-10'>
                                                     <label>Platformok:</label>
                                                     <input id='platform'
-                                                        onChange={writeCompetitionData}
-                                                        // onChange={(e) => {
-                                                        //     //checkIfAlFilledOnChange();
-                                                        //     writeCompetitionData(e);
-                                                        // }}
+                                                        onChange={(e: any) => writeCompetitionData(e, index)}
                                                         type="text" />
                                                     {/* <div className='d-flex align-items-center'>
                                                         <input className="form-check-input" type="checkbox" value="" id='platformCheck' />
@@ -406,11 +365,7 @@ function AddCompetitions() {
                                                     <div className='m-10'>
                                                         <label htmlFor="leiras">Leírás</label> <br />
                                                         <textarea
-                                                            onChange={writeCompetitionData}
-                                                            // onChange={(e) => {
-                                                            //     //checkIfAlFilledOnChange();
-                                                            //     writeCompetitionData(e);
-                                                            // }}
+                                                            onChange={(e: any) => writeCompetitionData(e, index)}
                                                             required name="" id="description"></textarea>
                                                     </div>
                                                 </div>
