@@ -150,13 +150,10 @@ function AddCompetitions() {
 
     const deleteCompetition = (index: any) => {
 
-        setCompetitions((prev: any) => {
-
-            var updated = [...competitions];
-            updated.splice(index, 1);
-            setCompetitions(updated);
-
-        })
+        setCompetitions((prev: any) => [
+            ...prev.slice(0, index),
+            ...prev.slice(index + 1)
+        ])
 
     }
 
@@ -285,6 +282,7 @@ function AddCompetitions() {
                                             <div className='darkInputs col-12 col-md'>
                                                 <label className='h4 m-10'>Játék neve</label><br />
                                                 <input
+                                                    value={competition.game}
                                                     onChange={(e: any) => writeCompetitionData(e, index)}
 
                                                     required id='name' name='game' type="text" />
