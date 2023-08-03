@@ -26,18 +26,20 @@ function EventPage() {
     } = useContext(EventContext);
 
     const [eventDataToSend, setEventDataToSend] = useState(
-        {
-            name: SSNEventByIdParsed.name,
-            startDate: SSNEventByIdParsed.startDate,
-            endDate: SSNEventByIdParsed.endDate,
-            location: SSNEventByIdParsed.location,
-            description: SSNEventByIdParsed.description
-        });
+        {});
 
     const { id } = useParams();
 
     useEffect(() => {
         id && getEventById(id);
+
+        event && setEventDataToSend({
+            name: SSNEventByIdParsed.name,
+            startDate: SSNEventByIdParsed.startDate,
+            endDate: SSNEventByIdParsed.endDate,
+            location: SSNEventByIdParsed.location,
+            description: SSNEventByIdParsed.description
+        })
 
         console.log('ID, EVENT, SSNEVENT', id, event, SSNEventByIdParsed.name)
     }, []);
@@ -239,9 +241,10 @@ function EventPage() {
                                             <span className="text-main-6">Induló játékok</span>
                                         </span>
                                     </h3>
+                                    <Link to={`/addcompetitions/${event.id}`} className="nk-btn nk-btn-rounded nk-btn-color-main-1 mb-20 float-end">Hozzáadás</Link>
                                     {
                                         !isEventCompetitionsLoading &&
-                                        eventCompetitions?.length > 0 && (
+                                            eventCompetitions?.length > 0 ? (
                                             eventCompetitions.map((competition: any, index: React.Key) => (
                                                 <div className="nk-info-box text-danger" key={index}>
                                                     <div className="nk-info-box-icon">
@@ -256,6 +259,8 @@ function EventPage() {
 
                                                 </div>
                                             ))
+                                        ) : (
+                                            <div>Nincs még felvéve.</div>
                                         )
                                     }
 
