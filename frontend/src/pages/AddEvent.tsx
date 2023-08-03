@@ -5,6 +5,7 @@ import GoBackButton from '../ui/GoBackButton';
 import Notify from '../ui/Toasts';
 import UserContext from '../_context/UserContext';
 import OrganisationContext from '../_context/OrganisationContext';
+import { useLocation } from 'react-router';
 
 function AddEvent() {
 
@@ -12,6 +13,8 @@ function AddEvent() {
         const pageBG: Element = document.querySelector('.full-page')!;
         pageBG.setAttribute("style", "background-image: url('/assets/images/bg-top-4.png')")
     }, [])
+
+    const navigate = useLocation();
 
     const { userToken } = useContext(UserContext);
 
@@ -47,7 +50,9 @@ function AddEvent() {
             .then(data => {
                 if (data.exists) Notify.tError(data.message);
                 else {
-                    if (data.message == "Esemény létrehozva!") Notify.tSuccess(data.message);
+                    if (data.message == "Esemény létrehozva!") {
+                        Notify.tSuccess(data.message);
+                    }
                     else Notify.tError(data.message);
                 }
                 setMyEventID(data.event.id)
